@@ -1,0 +1,478 @@
+/* 
+  Localizable.strings
+  PackSendMe
+
+  Created by Ricardo Marzochi on 15/09/2018.
+  Copyright © 2018 Ricardo Marzochi. All rights reserved.
+*/
+
+/* SCREEN - MAIN */
+"main-title-welcome" = "Bienvenida a PackSendMe";
+"main-title-mobile" = "Introduce tu móvil";
+
+/* SCREEN - CHOOSE COUNTRY */
+
+"country-label-title" = "Selecciona el país de registro";
+"country-label-searchcountry" = "Bsucar un país";
+"country-label-currentcountry" = "Ubicación actual";
+"country-label-selectcontry" = "España";
+"country-img-currentcountry" = "imgSpain";
+
+// (A)
+"country-afghanistan" = "Afganistán (+93)";
+"afghanistan-format" = "070 123 4567";
+"afghanistan-cod" = "+93";
+
+"country-germany" = "Alemania (+49)";
+"germany-format" = "01512 3456789";
+"germany-cod" = "+49";
+
+"country-albania" = "Albania (+355)";
+"albania-format" = "066 212 3456";
+"albania-cod" = "+355";
+
+"country-algeria" = "Algeria (+213)";
+"algeria-format" = "321 345";
+"algeria-cod" = "+213";
+
+"country-andorra" = "Andorra (+376)";
+"andorra-format" = "321 345";
+"andorra-cod" = "+376";
+
+"country-angola" = "Angola (+244)";
+"angola-format" = "923 123 456";
+"angola-cod" = "+244";
+
+"country-anguilla" = "Anguilla (+1)";
+"anguilla-format" = "235-1234";
+"anguilla-cod" = "+1";
+
+"country-argentina" = "Argentina (+54)";
+"argentina-format" = "011 15-2345-6789";
+"argentina-cod" = "+54";
+
+"country-armenia" = "Armenia (+374)";
+"armenia-format" = "077 123456";
+"armenia-cod" = "+374";
+
+
+"country-australia" = "Australia (+61)";
+"australia-format" = "0412 345 678";
+"australia-cod" = "+61";
+
+"country-austria" = "Aústria (+43)";
+"austria-format" = "0664 123456";
+"austria-cod" = "+43";
+
+"country-saudiarabia" = "Arábia Saudita (+966)";
+"saudiarabia-format" = "055 167 5889";
+"saudiarabia-cod" = "+966";
+
+// (B)
+"country-bahamas" = "Bahamas (+1)";
+"bahamas-format" = "(242) 359-1234";
+"bahamas-cod" = "+1";
+
+"country-belgium" = "Bélgica (+32)";
+"belgium-format" = "0470 12 34 56";
+"belgium-cod" = "+32";
+
+"country-bolivia" = "Bolivia (+591)";
+"bolivia-format" = "71234567";
+"bolivia-cod" = "+591";
+
+"country-brazil" = "Brasil (+55)";
+"brazil-format" = "(11) 96123-4567";
+"brazil-cod" = "+55";
+
+"country-bulgaria" = "Bulgaria (+359)";
+"bulgaria-format" = "048 123 456";
+"bulgaria-cod" = "+359";
+
+// (C)
+"country-qatar" = "Catar (+974)";
+"qatar-format" = "3312 3456";
+"qatar-cod" = "+974";
+
+"country-cambodia" = "Camboya (+855)";
+"cambodia-format" = "010 234 567";
+"cambodia-cod" = "+855";
+
+"country-canada" = "Canadá (+1)";
+"canada-format" = "(204) 234 5678";
+"canada-cod" = "+1";
+
+"country-vaticancity" = "Ciudad del Vaticano (+39)";
+"vaticancity-format" = "312 345 4567";
+"vaticancity-cod" = "+39";
+
+"country-northkorea" = "Corea del Norte (+850)";
+"northkorea-format" = "0192 123 4567";
+"northkorea-cod" = "+850";
+
+"country-southkorea" = "Corea del Sur (+82)";
+"southkorea-format" = "010-0000-0000";
+"southkorea-cod" = "+82";
+
+"country-colombia" = "Colombia (+57)";
+"colombia-format" = "321 1234567";
+"colombia-cod" = "+57";
+
+"country-costarica" = "Costa Rica (+506)";
+"costarica-format" = "8312 3456";
+"costarica-cod" = "+506";
+
+"ountry-chile" = "Chile (+56)";
+"chile-format" = "9 6123 4567";
+"chile-cod" = "+56";
+
+"country-china" = "China (+86)";
+"china-format" = "131 2345 6789";
+"china-cod" = "+86";
+
+// (D)
+"country-denmark" = "Dinamarca (+45)";
+"denmark-format" = "20 12 34 56";
+"denmark-cod" = "+45";
+
+// (E)
+
+"country-eua" = "Estados Unidos (+1)";
+"eua-format" = "(201) 555-0123";
+"eua-cod" = "+1";
+
+"country-spain" = "España (+34)";
+"spain-format" = "656 656 422";
+"spain-cod" = "+34";
+
+"country-estonia" = "Estônia (+372)";
+"estonia-format" = "5123 4567";
+"estonia-cod" = "+372";
+
+"country-unitedarabemirates" = "Emirados Árabes Unidos (+971)";
+"unitedarabemirates-format" = "050 123 4567";
+"unitedarabemirates-cod" = "+971";
+
+"country-ecuador" = "Equador (+593)";
+"ecuador-format" = "099 234 5678";
+"ecuador-cod" = "+593";
+
+"country-egypt" = "Egipto (+20)";
+"egypt-format" = "0100 234 5678";
+"egypt-cod" = "+20";
+
+
+// (F)
+
+"country-philippines" = "Filipinas (+63)";
+"philippines-format" = "0905 123 4567";
+"philippines-cod" = "+63";
+
+
+"country-finland" = "Finlandia (+358)";
+"finland-format" = "041 2345678";
+"finland-cod" = "+358";
+
+"country-france" = "Francia (+33)";
+"france-format" = "06 12 34 56 78";
+"france-cod" = "+33";
+
+
+// (G)
+"country-georgia" = "Georgia (+995)";
+"georgia-format" = "555 12 34 56";
+"georgia-cod" = "+995";
+
+"country-ghana" = "Ghana (+233)";
+"ghana-format" = "023 123 4567";
+"ghana-cod" = "+233";
+
+"country-greece" = "Grecia (+30)";
+"greece-format" = "691 234 5678";
+"greece-cod" = "+30";
+
+"country-guatemala" = "Guatemala (+502)";
+"guatemala-format" = "5123 4567";
+"guatemala-cod" = "+502";
+
+"country-guinea" = "Guinea (+224)";
+"guinea-format" = "501 12 34 56";
+"guinea-cod" = "+224";
+
+// (H)
+
+"country-haiti" = "Haití (+509)";
+"haiti-format" = "34 10 1234";
+"haiti-cod" = "+509";
+
+"country-honduras" = "Honduras (+504)";
+"honduras-format" = "9123 4567";
+"honduras-cod" = "+504";
+
+"country-hungary" = "Hungría (+36)";
+"hungary-format" = "(20) 123 4567";
+"hungary-cod" = "+36";
+
+// (I)
+
+"country-iceland" = "Islandia (+354)";
+"iceland-format" = "611 1234";
+"iceland-cod" = "+354";
+
+"country-india" = "India (+91)";
+"india-format" = "081234 56789";
+"india-cod" = "+91";
+
+"country-indonesia" = "Indonésia (+62)";
+"indonesia-format" = "0812 345 678";
+"indonesia-cod" = "+62";
+
+"country-iran" = "Irã (+98)";
+"iran-format" = "0912 345 6789";
+"iran-cod" = "+98";
+
+"country-ireland" = "Irlanda (+353)";
+"ireland-format" = "0912 345 6789";
+"ireland-cod" = "+353";
+
+"country-israel" = "Israel (+972)";
+"israel-format" = "050 123 4567";
+"israel-cod" = "+972";
+
+"country-italy" = "Italia (+39)";
+"italy-format" = "312 345 6789";
+"italy-cod" = "+39";
+
+// (J)
+"country-jamaica" = "Jamaica (+1)";
+"jamaica-format" = "(876) 210 1234";
+"jamaica-cod" = "+1";
+
+"country-japao" = "Japón (+81)";
+"japao-format" = "090 1234 5678";
+"japao-cod" = "+81";
+
+"country-jordan" = "Jordania (+962)";
+"jordan-format" = "07 9012 3456";
+"jordan-cod" = "+962";
+
+// (K)
+"country-kenya" = "Kenia (+254)";
+"kenya-format" = "0712 123456";
+"kenya-cod" = "+254";
+
+
+// (L)
+"country-luxembourg" = "Luxemburgo (+352)";
+"luxembourg-format" = "628 124 589";
+"luxembourg-cod" = "+352";
+
+"country-lihuania" = "Lituania (+370)";
+"lihuania-format" = "(4-612) 34567";
+"lihuania-cod" = "+370";
+
+// (M)
+"country-macedonia" = "Macedonia (+389)";
+"macedonia-format" = "072 345 678";
+"macedonia-cod" = "+389";
+
+"country-madagascar" = "Madagascar (+261)";
+"madagascar-format" = "032 12 345 67";
+"madagascar-cod" = "+261";
+
+"country-mexico" = "México (+52)";
+"mexico-format" = "222 123 4567";
+"mexico-cod" = "+52";
+
+"country-monaco" = "Mónaco (+377)";
+"monaco-format" = "06 12 34 56 78";
+"monaco-cod" = "+377";
+
+"country-marocco" = "Marruecos (+212)";
+"marocco-format" = "0650 123456";
+"marocco-cod" = "+212";
+
+"country-mozambique" = "Mozambique (+258)";
+"mozambique-format" = "82 123 4567";
+"mozambique-cod" = "+258";
+
+// (N)
+"country-norway" = "Noruega (+47)";
+"norway-format" = "405 12 348";
+"norway-cod" = "+47";
+
+"country-nepal" = "Nepal (+977)";
+"nepal-format" = "984 1234567";
+"nepal-cod" = "+977";
+
+"country-newzealand" = "Nueva Zelanda (+64)";
+"newzealand-format" = "021 123 4567";
+"newzealand-cod" = "+64";
+
+"country-nigeria" = "Nigeria (+234)";
+"nigeria-format" = "0802 123 4567";
+"nigeria-cod" = "+234";
+
+
+// (P)
+
+"country-netherlands" = "Países Bajos (+31)";
+"netherlands-format" = "12345678";
+"netherlands-cod" = "+31";
+
+
+"country-panama" = "Panamá (+507)";
+"panama-format" = "6123 4567";
+"panama-cod" = "+507";
+
+"country-paraguay" = "Paraguay (+595)";
+"paraguay-format" = "0961 456789";
+"paraguay-cod" = "+595";
+
+"country-peru" = "Perú (+51)";
+"peru-format" = "912 345 975";
+"peru-cod" = "+51";
+
+"country-frenchpolynesia" = "Polinesia Francesa (+689)";
+"frenchpolynesia-format" = "87 12 34 56";
+"frenchpolynesia-cod" = "+689";
+
+"country-poland" = "Polonia (+48)";
+"poland-format" = "512 345 678";
+"poland-cod" = "+48";
+
+"country-portugal" = "Portugal (+351)";
+"portugal-format" = "912 345 678";
+"portugal-cod" = "+351";
+
+"country-puertorico" = "Puerto Rico (+1)";
+"puertorico-format" = "(787) 234 5678";
+"puertorico-cod" = "+1";
+
+// (Q)
+
+
+// (R)
+"country-unitedkingdom" = "Reino Unido (+44)";
+"unitedkingdom-format" = "094 231 234";
+"unitedkingdom-cod" = "+44";
+
+"country-dominicanrepublic" = "República Dominicana (+1)";
+"dominicanRepublic-format" = "(809) 234 5678";
+"dominicanRepublic-cod" = "+1";
+
+"country-czechia" = "República Checa (+420)";
+"czechia-format" = "601 123 456";
+"czechia-cod" = "+420";
+
+"country-romania" = "Romania (+40)";
+"romania-format" = "0712 034 567";
+"romania-cod" = "+40";
+
+"country-russia" = "Rusia (+7)";
+"russia-format" = "(912) 345 67 89";
+"russia-cod" = "+7";
+
+
+// (S)
+
+
+"country-senegal" = "Senegal (+221)";
+"senegal-format" = "70 123 45 67";
+"senegal-cod" = "+221";
+
+"country-singapore" = "Singapur (+65)";
+"singapore-format" = "8123 4568";
+"singapore-cod" = "+65";
+
+"country-southafrica" = "Sudáfrica (+27)";
+"southafrica-format" = "080 123 4567";
+"southafrica-cod" = "+27";
+
+"country-swaziland" = "Swazilandia (+268)";
+"swaziland-format" = "7512 2345";
+"swaziland-cod" = "+268";
+
+"country-sweden" = "Suecia (+46)";
+"sweden-format" = "070 123 45 68";
+"sweden-cod" = "+46";
+
+"country-switzerland" = "Suiza (+41)";
+"switzerland-format" = "078 123 45 97";
+"switzerland-cod" = "+41";
+
+"country-syria" = "Siria (+963)";
+"syria-format" = "0944 568 880";
+"syria-cod" = "+963";
+
+// (T)
+"country-taiwan" = "Taiwán (+886)";
+"taiwan-format" = "0912 345 678";
+"taiwan-cod" = "+886";
+
+"country-thailand" = "Tailandia (+66)";
+"thailand-format" = "081 345 6783";
+"thailand-cod" = "+66";
+
+"country-tunisia" = "Túnez (+216)";
+"tunisia-format" = "20 123 456";
+"tunisia-cod" = "+216";
+
+// (U)
+
+"country-uruguay" = "Uruguay (+598)";
+"uruguay-format" = "094 231 234";
+"uruguay-cod" = "+598";
+
+"country-ukraine" = "Ucrania (+380)";
+"ukraine-format" = "039 123 4567";
+"ukraine-cod" = "+380";
+
+// (V)
+"country-venezuela" = "Venezuela (+58)";
+"venezuela-format" = "0412-1234567";
+"venezuela-cod" = "+58";
+
+"country-vietnam" = "Vietnam (+84)";
+"vietnam-format" = "091 234 56 78";
+"vietnam-cod" = "+84";
+
+
+
+/* SCREEN - LOGIN */
+
+"main-title-login" = "Hola. Inicie sesión para continuar";
+"main-label-password" = "Introduce tu contraseña";
+"main-button-forgotpassword" = "Olvidé mi contraseña";
+"main-button-account" = "No tengo una cuenta";
+"main-label-error" = "Contraseña no válida";
+
+/* SCREEN - VALIDATE SMS */
+
+"main-title-smscod" = "Introduce el código de 5 dígitos que te enviamos a ";
+"main-label-codRight" = "¿Introdujiste  el numero de teléfono móvil correcto?";
+"main-title-receivecode" = "No he recibido el código";
+"main-title-editnumber" = "Editar número de mi celular";
+
+"error-label-smscode1" = "Code SMS 1 está vacío";
+"error-label-smscode2" = "Code SMS 2 está vacío";
+"error-label-smscode3" = "Code SMS 3 está vacío";
+"error-label-smscode4" = "Code SMS 4 está vacío";
+"error-label-smsinvalid" = "Código SMS no válido";
+"error-title-failconnection" = "Error de Conexión";
+"error-msg-failconnection" = "Se produjo un error al intentar conectarse al servidor PackSendMeApp. Pruebe una nueva conexión más tarde";
+
+/* SCREEN - USER DATA - REGISTER */
+
+"main-title-email" = "¿Cuál es tu dirección de correo electrónico?";
+"main-msg-email" = "El formato del e-mail no es válido";
+"main-text-email" = "Introduzca su e-mail";
+
+"main-title-password" = "Defina una contraseña para su cuenta";
+"main-text-password" = "Mínimo de 6 caracteres ";
+
+"main-title-name" = "¿Cual es tu nombre y apellido?";
+"main-text-name" = "Nombre";
+"main-text-lastname" = "Apellido";
+
+/* SCREEN - ACCOUNT */
