@@ -467,14 +467,22 @@
 
 "main-title-smscod" = "Digite o código de 4 dígitos que enviamos para";
 "main-label-codRight" = "Você inseriu o número correto de celular?";
-"main-title-receivecode" = "Não recebi o código";
+"main-title-receivecode" = "Enviarme novo código SMS";
 "main-title-editnumber" = "Editar número do meu celular?";
+/* Resend SMS */
+"main-title-codeforward" = "Reenviar Código SMS";
+"main-label-codeforward" = "O número do celular está correto?";
+"main-button-codeforward" = "Enviar Novo Código SMS";
+"main-button-cancelcode" = "Alterar Número do Celular";
+
 
 "error-label-smscode1" = "Code SMS 1 está vazio";
 "error-label-smscode2" = "Code SMS 2 está vazio";
 "error-label-smscode3" = "Code SMS 3 está vazio";
 "error-label-smscode4" = "Code SMS 4 está vazio";
 "error-label-smsinvalid" = "Código SMS Invalido";
+"error-title-smsexpired" = "SMS Expirado";
+"error-label-smsexpired" = "Tempo para validaçao do SMS Code foi expirado. Favor solicitar outro codigo.";
 "error-title-failconnection" = "Falha Conexão";
 "error-msg-failconnection" = "Ocorreu alguma falha ao tentar conectar com o servidor PackSendMeApp. Tente uma nova conexao mais tarde";
 

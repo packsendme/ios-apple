@@ -22,6 +22,7 @@ class UserModel {
         
     }
   
+
     init(json: [String: Any]) {
         self.username = json["username"] as? String ?? ""
         self.id = json["id"] as? String ?? ""

@@ -43,6 +43,8 @@ class CountryViewController: UIViewController{
         countryselectLabel.text = GlobalVariables.sharedManager.countryNameInstance
         countryselectImage.image = GlobalVariables.sharedManager.countryImageInstance
     }
+    
+    
 }
 
 extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{

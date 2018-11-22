@@ -451,14 +451,22 @@
 
 "main-title-smscod" = "Introduce el código de 5 dígitos que te enviamos a ";
 "main-label-codRight" = "¿Introdujiste  el numero de teléfono móvil correcto?";
-"main-title-receivecode" = "No he recibido el código";
+"main-title-receivecode" = "Enviar nuevo código SMS";
 "main-title-editnumber" = "Editar número de mi celular";
+/* Resend SMS */
+"main-title-codeforward" = "Reenviar Código SMS";
+"main-label-codeforward" = "¿El número de teléfono móvil es correcto?";
+"main-button-codeforward" = "Enviar Nuevo Código SMS";
+"main-button-cancelcode" = "Cambiar el Número de Teléfono Móvil";
+
 
 "error-label-smscode1" = "Code SMS 1 está vacío";
 "error-label-smscode2" = "Code SMS 2 está vacío";
 "error-label-smscode3" = "Code SMS 3 está vacío";
 "error-label-smscode4" = "Code SMS 4 está vacío";
 "error-label-smsinvalid" = "Código SMS no válido";
+"error-title-smsexpired" = "SMS Caducado";
+"error-label-smsexpired" = "El tiempo de validación de SMS Code ha caducado. Por favor, solicite otro código.";
 "error-title-failconnection" = "Error de Conexión";
 "error-msg-failconnection" = "Se produjo un error al intentar conectarse al servidor PackSendMeApp. Pruebe una nueva conexión más tarde";
 

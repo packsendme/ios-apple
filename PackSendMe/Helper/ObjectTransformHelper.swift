@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AccountHelper: NSObject {
+class ObjectTransformHelper: NSObject {
     
-    func transformObject(username:String, email:String, password:String, name:String, lastname:String, address:[AddressModel], dtAction:String) -> Dictionary<String, Any> {
+    func accountTransformObject(username:String, email:String, password:String, name:String, lastname:String, address:[AddressModel], dtAction:String) -> Dictionary<String, Any> {
         
         var paramsDictionary = [String:Any]()
         
@@ -21,6 +21,15 @@ class AccountHelper: NSObject {
         paramsDictionary["lastname"] = lastname
         paramsDictionary["address"] = address
         paramsDictionary["dtAction"] = dtAction
+        return paramsDictionary
+    }
+    
+    func userTransformObject(username:String, password:String) -> Dictionary<String, Any> {
+        
+        var paramsDictionary = [String:Any]()
+        
+        paramsDictionary["username"] = username
+        paramsDictionary["password"] = password
         return paramsDictionary
     }
     

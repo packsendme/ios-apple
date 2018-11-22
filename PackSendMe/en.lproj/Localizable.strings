@@ -444,13 +444,21 @@
 /* SCREEN - VALIDATE SMS */
 "main-title-smscod" = "Enter the 4-digit code we sent to";
 "main-label-codRight" = "Did you enter the correct mobile number?";
-"main-title-receivecode" = "I did not receive the code";
+"main-title-receivecode" = "Send me new SMS code";
 "main-title-editnumber" = "Edit my cell phone number?";
+/* Resend SMS */
+"main-title-codeforward" = "Resend SMS Code";
+"main-label-codeforward" = "Is the cell number correct?";
+"main-button-codeforward" = "Send New SMS Code";
+"main-button-cancelcode" = "Change Phone Number";
 
 "error-label-smscode1" = "Code SMS 1 is empty";
 "error-label-smscode2" = "Code SMS 2 is empty";
 "error-label-smscode3" = "Code SMS 3 is empty";
 "error-label-smscode4" = "Code SMS 4 is empty";
+"error-label-smsinvalid" = "Invalid SMS code";
+"error-title-smsexpired" = "SMS Expired";
+"error-label-smsexpired" = "Time for SMS Code validation has expired. Please request another code.";
 "error-title-failconnection" = "Connection Failure";
 "error-msg-failconnection" = "A failure occurred while attempting to connect to the PackSendMeApp server. Try a new connection later";
 

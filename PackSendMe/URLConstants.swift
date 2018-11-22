@@ -16,9 +16,13 @@ struct URLConstants{
         static let iamAccess_http = "http://192.241.133.13:9093/iam/access/"
         static let iamManager_http = "http://192.241.133.13:9093/iam/manager/"
 
+        static let smscode_register = "SMSCodeRegister"
+        static let smscode_new = "SMSCodeNew"
         static let email_register = "EmailRegisterUI"
         static let password_register = "PasswordRegisterUI"
         static let name_register = "NameRegisterUI"
+        static let country_identity = "countryIdentity"
+        
 
     }
     
@@ -37,6 +41,7 @@ struct URLConstants{
     }
     
     struct HTTP_STATUS_CODE{
+        static let OK = 200
         static let ACCEPT = 202
         static let NOTFOUND = 404
         static let FOUND = 302

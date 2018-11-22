@@ -67,24 +67,22 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func registerAccount(_ sender: Any) {
-        let accountHelper = AccountHelper()
+        let accountHelper = ObjectTransformHelper()
         let utilityHelper = UtilityHelper()
         let dtNowS = utilityHelper.dateConvertToString()
         
         var paramsDictionary = [String:Any]()
-        paramsDictionary = accountHelper.transformObject(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastname:lastnameTextField.text!, address:[], dtAction:dtNowS)
+        paramsDictionary = accountHelper.accountTransformObject(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastname:lastnameTextField.text!, address:[], dtAction:dtNowS)
         
         let account = URLConstants.ACCOUNT.account_http
         
-        let  jsonData = try? JSONSerialization.data(withJSONObject: paramsDictionary, options: .prettyPrinted)
-            print ("jsonData = \(jsonData)")
-        
-        HttpClientApi.instance().makeAPICall(url: account, params:paramsDictionary, method: .POST, success: { (data, response, error) in
+        HttpClientApi.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .POST, success: { (data, response, error) in
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.ACCEPT{
                 DispatchQueue.main.async {
-                    let viewController:UIViewController = UIStoryboard(name: "ACCOUNT", bundle: nil).instantiateViewController(withIdentifier: "AccountView") as UIViewController
-                    self.present(viewController, animated: false, completion: nil)
+                    let storyboard: UIStoryboard = UIStoryboard(name: "ACCOUNT", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "AccountView") as! AccountViewController
+                    self.show(vc, sender: self)
                 }
             }
         }, failure: { (data, response, error) in

@@ -29,7 +29,7 @@
 		81F3ECD5219480F6000F4D8C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD4219480F6000F4D8C /* AccountModel.swift */; };
 		81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD621948A75000F4D8C /* AddressModel.swift */; };
 		81F3ECD921958A19000F4D8C /* HttpClientApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD821958A19000F4D8C /* HttpClientApi.swift */; };
-		81F3ECDB2195AFDD000F4D8C /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */; };
+		81F3ECDB2195AFDD000F4D8C /* ObjectTransformHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDA2195AFDD000F4D8C /* ObjectTransformHelper.swift */; };
 		81F3ECDE2196145C000F4D8C /* UtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */; };
 		81F3ECE0219C79A1000F4D8C /* ACCOUNT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */; };
 		81F3ECE3219C7A34000F4D8C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */; };
@@ -67,7 +67,7 @@
 		81F3ECD4219480F6000F4D8C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountModel.swift; path = PackSendMe/IAM/AccountModel.swift; sourceTree = SOURCE_ROOT; };
 		81F3ECD621948A75000F4D8C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddressModel.swift; path = PackSendMe/IAM/AddressModel.swift; sourceTree = SOURCE_ROOT; };
 		81F3ECD821958A19000F4D8C /* HttpClientApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientApi.swift; sourceTree = "<group>"; };
-		81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHelper.swift; sourceTree = "<group>"; };
+		81F3ECDA2195AFDD000F4D8C /* ObjectTransformHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTransformHelper.swift; sourceTree = "<group>"; };
 		81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityHelper.swift; sourceTree = "<group>"; };
 		81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ACCOUNT.storyboard; sourceTree = "<group>"; };
 		81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 			children = (
 				819CC0EE21737472004AD1CA /* CountryHelper.swift */,
 				81F3ECD821958A19000F4D8C /* HttpClientApi.swift */,
-				81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */,
+				81F3ECDA2195AFDD000F4D8C /* ObjectTransformHelper.swift */,
 				81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */,
 			);
 			path = Helper;
@@ -292,7 +292,7 @@
 				819CC0EF21737472004AD1CA /* CountryHelper.swift in Sources */,
 				817D0661217D2D0C007B22EB /* CheckSMSCodeViewController.swift in Sources */,
 				819CC0ED217131DD004AD1CA /* GlobalVariables.swift in Sources */,
-				81F3ECDB2195AFDD000F4D8C /* AccountHelper.swift in Sources */,
+				81F3ECDB2195AFDD000F4D8C /* ObjectTransformHelper.swift in Sources */,
 				8184D8E6214C20AF00FF0E08 /* AppDelegate.swift in Sources */,
 				81F3ECD921958A19000F4D8C /* HttpClientApi.swift in Sources */,
 				819CC0E4215D62C7004AD1CA /* CountryViewController.swift in Sources */,
