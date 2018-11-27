@@ -7,8 +7,8 @@
 */
 
 /* SCREEN - MAIN */
-"main-title-welcome" = " Bem-vindo ao PackSendMe";
-"main-title-mobile" = "Digite seu celular";
+"main-title-welcome" = " Bem-vindo à PackSendMe";
+"main-title-mobile" = "Insira seu nº de celular";
 
 
 /* SCREEN - COUNTRY */
@@ -382,7 +382,7 @@
 "romania-cod" = "+40";
 
 "country-russia" = "Rússia (+7)";
-"russia-format" = "(912) 345 67 89";
+"russia-format" = "(07911) 123456";
 "russia-cod" = "+7";
 
 // (S)
@@ -471,7 +471,7 @@
 "main-title-editnumber" = "Editar número do meu celular?";
 /* Resend SMS */
 "main-title-codeforward" = "Reenviar Código SMS";
-"main-label-codeforward" = "O número do celular está correto?";
+"main-label-codeforward" = "O nº do celular está correto?";
 "main-button-codeforward" = "Enviar Novo Código SMS";
 "main-button-cancelcode" = "Alterar Número do Celular";
 

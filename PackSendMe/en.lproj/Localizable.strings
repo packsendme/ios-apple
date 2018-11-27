@@ -8,7 +8,7 @@
 
 /* SCREEN - MAIN */
 "main-title-welcome" = "Welcome to PackSendMe";
-"main-title-mobile" = "Enter your mobile";
+"main-title-mobile" = "Enter your mobile number";
 
 /* SCREEN - COUNTRY */
 
@@ -74,7 +74,7 @@
 "bolivia-cod" = "+591";
 
 "country-brazil" = "Brazil (+55)";
-"brazil-format" = "(11) 96123-4567";
+"brazil-format" = "(11)96123-4567";
 "brazil-cod" = "+55";
 
 "country-bulgaria" = "Bulgaria (+359)";
@@ -343,7 +343,7 @@
 "romania-cod" = "+40";
 
 "country-russia" = "Russia (+7)";
-"russia-format" = "(912) 345 67 89";
+"russia-format" = "(07911) 123456";
 "russia-cod" = "+7";
 
 // (S)

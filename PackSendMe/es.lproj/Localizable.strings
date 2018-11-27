@@ -370,7 +370,7 @@
 "romania-cod" = "+40";
 
 "country-russia" = "Rusia (+7)";
-"russia-format" = "(912) 345 67 89";
+"russia-format" = "(07911) 123456";
 "russia-cod" = "+7";
 
 
@@ -455,7 +455,7 @@
 "main-title-editnumber" = "Editar número de mi celular";
 /* Resend SMS */
 "main-title-codeforward" = "Reenviar Código SMS";
-"main-label-codeforward" = "¿El número de teléfono móvil es correcto?";
+"main-label-codeforward" = "¿El n.º de móvil es correcto?";
 "main-button-codeforward" = "Enviar Nuevo Código SMS";
 "main-button-cancelcode" = "Cambiar el Número de Teléfono Móvil";
 

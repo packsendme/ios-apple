@@ -17,5 +17,15 @@ class UtilityHelper: NSObject {
         print(stringDate)
         return stringDate
     }
+    
+    func setPlaceholder(nameholder : String) -> NSMutableAttributedString{
+        var placeHolder = NSMutableAttributedString()
+        // Set the Font
+        placeHolder = NSMutableAttributedString(string:nameholder, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 20.0)!])
+        // Set the color
+        placeHolder.addAttribute(NSForegroundColorAttributeName, value: UIColor.darkGray, range:NSRange(location:0,length:nameholder.characters.count))
+        
+        return placeHolder
+    }
 
 }

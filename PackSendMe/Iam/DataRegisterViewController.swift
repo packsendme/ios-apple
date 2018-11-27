@@ -26,11 +26,15 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
 
     var metadadosView : String = ""
     var account : AccountModel? = nil
+    var formatPlaceHoldName = UtilityHelper()
     
     var emailP : String = ""
     var passwordP : String = ""
+    var nameFirstP : String = ""
+    var nameLastP : String = ""
     
-    
+
+   
     enum RegisterType:String {
         case email = "EmailRegisterUI"
         case password = "PasswordRegisterUI"
@@ -40,6 +44,7 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         if metadadosView == RegisterType.email.rawValue{
             setupEmail()
         }
@@ -50,6 +55,7 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
             setupNameUser()
         }
     }
+
     
     @IBAction func nextEmailBtn(_ sender: Any) {
         if isValidEmail(testStr: emailTextField.text!) == false{
@@ -104,35 +110,57 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
         if (segue.identifier == URLConstants.IAM.email_register) {
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
-            something.emailP = emailTextField.text!
+            something.emailP = emailP
+            something.passwordP = passwordP
+            something.nameFirstP = nameFirstP
+            something.nameLastP = nameLastP
             print("email_register")
-            
+
         } else if (segue.identifier == URLConstants.IAM.password_register) {
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
-            something.emailP = emailTextField.text!
+            something.emailP = emailP //emailTextField.text!
+            something.nameFirstP = nameFirstP
+            something.nameLastP = nameLastP
+
             print("password_register")
         }
         else if (segue.identifier == URLConstants.IAM.name_register) {
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
-            something.passwordP = passwordTextField.text!
+            print("password_register =\(passwordP)")
+            something.passwordP = passwordP
             something.emailP = emailP
+            something.nameFirstP = nameFirstP
+            something.nameLastP = nameLastP
             print("name_register")
         }
+        else if (segue.identifier == URLConstants.IAM.smscode_register) {
+            let something = segue.destination as! CheckSMSCodeViewController
+            something.metadadosView = URLConstants.IAM.smscode_register
+        }
+
     }
     
     
     
     func setupEmail(){
         emailTitleLabel.text = NSLocalizedString("main-title-email", comment:"")
-        nextEmailBtn.isEnabled = false
         emailTextField.delegate = self
         emailTextField.becomeFirstResponder()
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         emailValidateErrorLabel.text = NSLocalizedString("main-msg-email", comment:"")
         emailValidateErrorLabel.isHidden = true
-        emailTextField.placeholder = NSLocalizedString("main-text-email", comment:"")
+        var emailNameHolder : String = NSLocalizedString("main-text-email", comment:"")
+        emailTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : emailNameHolder)
+        emailTextField.text = emailP
+
+        if((emailTextField.text?.count)!) > 1{
+            nextEmailBtn.isEnabled = true
+        }
+        else{
+            nextEmailBtn.isEnabled = false
+        }
 
     }
     
@@ -142,7 +170,9 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         passwordTextField.becomeFirstResponder()
         passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
-         passwordTextField.placeholder = NSLocalizedString("main-text-password", comment:"")
+        var passwordNameHolder : String = NSLocalizedString("main-text-password", comment:"")
+        passwordTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : passwordNameHolder)
+            passwordTextField.text = passwordP
     }
     
     func setupNameUser(){
@@ -153,28 +183,73 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
         nameTextField.becomeFirstResponder()
         nameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         lastnameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
-        nameTextField.placeholder = NSLocalizedString("main-text-name", comment:"")
-        lastnameTextField.placeholder = NSLocalizedString("main-text-lastname", comment:"")
+        
+        var nameHolder : String = NSLocalizedString("main-text-name", comment:"")
+        nameTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : nameHolder)
+        var lastnameHolder : String = NSLocalizedString("main-text-lastname", comment:"")
+        lastnameTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : lastnameHolder)
+        nameTextField.text = nameFirstP
+        lastnameTextField.text = nameLastP
+        
+        if((nameTextField.text?.count)!) > 1 && ((lastnameTextField.text?.count)!) > 1 {
+            nextNameBtn.isEnabled = true
+        }
+        else{
+            nextNameBtn.isEnabled = false
+        }
+
     }
+    
+    
     
     func textFieldDidChange(textField: UITextField){
         let text = textField.text
             switch textField{
+                
             case nameTextField:
-                if (text?.utf16.count)! >= 3{
+                if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (lastnameTextField.text?.count)! >= 3{
                     nextNameBtn.isEnabled = true
+                    nameFirstP = nameTextField.text!
                 }
-            case lastnameTextField:
-                if (text?.utf16.count)! >= 4{
+                else if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13  {
+                    nameFirstP = nameTextField.text!
+                }
+                else  if (text?.utf16.count)! < 3 {
+                    nextNameBtn.isEnabled = false
+                    nameFirstP = nameTextField.text!
+                }
+                else if (text?.utf16.count)! >= 14  {
+                    nameTextField.deleteBackward()
+                }
+                
+           case lastnameTextField:
+                if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (nameTextField.text?.count)! >= 3{
                     nextNameBtn.isEnabled = true
+                    nameLastP = lastnameTextField.text!
+                }
+                else if (text?.utf16.count)! >= 14  {
+                    lastnameTextField.deleteBackward()
+                }
+                else  if (text?.utf16.count)! < 3 {
+                    nextNameBtn.isEnabled = false
+                    nameLastP = lastnameTextField.text!
                 }
             case passwordTextField:
                 if (text?.utf16.count)! >= 6{
                    nextPasswordBtn.isEnabled = true
                 }
+                else{
+                   nextPasswordBtn.isEnabled = false
+                }
             case emailTextField:
-                if (text?.utf16.count)! >= 10{
-                    nextEmailBtn.isEnabled = true
+                if (text?.utf16.count)! >= 10 && (text?.utf16.count)! <= 254  {
+                   nextEmailBtn.isEnabled = true
+                }
+                else if (text?.utf16.count)! >= 254  {
+                    emailTextField.deleteBackward()
+                }
+                if (text?.utf16.count)! < 10 {
+                    nextEmailBtn.isEnabled = false
                 }
             default:
                 break
@@ -189,7 +264,24 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func returnSMSNewValidate(_ sender: Any) {
+        let code: Int = SMSCodeGeneratorHttp().generatorSMSCode()
+        
+        if  code == URLConstants.HTTP_STATUS_CODE.OK{
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier:URLConstants.IAM.smscode_register, sender: nil)
+            }
+        } else{
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated:  true)
+            }
+        }
+    }
     
     
 
+    
+    
 }

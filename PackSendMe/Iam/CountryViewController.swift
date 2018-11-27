@@ -33,8 +33,6 @@ class CountryViewController: UIViewController{
         countriesTableView.dataSource = self
         searchBar.delegate = self
         
- 
-        
         countrytitleLabel.text = NSLocalizedString("country-label-title", comment:"")
         searchBar.placeholder = NSLocalizedString("country-label-searchcountry", comment:"")
 
@@ -108,3 +106,4 @@ extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UIS
     }
     
 }
+	

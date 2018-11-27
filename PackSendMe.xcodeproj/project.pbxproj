@@ -25,6 +25,7 @@
 		819CC0EF21737472004AD1CA /* CountryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0EE21737472004AD1CA /* CountryHelper.swift */; };
 		819CC0F121739C34004AD1CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0F021739C34004AD1CA /* MainViewController.swift */; };
 		81DAE04E218F505A002A19D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DAE04D218F505A002A19D9 /* LoginViewController.swift */; };
+		81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */; };
 		81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD221935A5D000F4D8C /* DataRegisterViewController.swift */; };
 		81F3ECD5219480F6000F4D8C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD4219480F6000F4D8C /* AccountModel.swift */; };
 		81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD621948A75000F4D8C /* AddressModel.swift */; };
@@ -63,6 +64,7 @@
 		819CC0EE21737472004AD1CA /* CountryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHelper.swift; sourceTree = "<group>"; };
 		819CC0F021739C34004AD1CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		81DAE04D218F505A002A19D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeGeneratorHttp.swift; sourceTree = "<group>"; };
 		81F3ECD221935A5D000F4D8C /* DataRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRegisterViewController.swift; sourceTree = "<group>"; };
 		81F3ECD4219480F6000F4D8C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountModel.swift; path = PackSendMe/IAM/AccountModel.swift; sourceTree = SOURCE_ROOT; };
 		81F3ECD621948A75000F4D8C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddressModel.swift; path = PackSendMe/IAM/AddressModel.swift; sourceTree = SOURCE_ROOT; };
@@ -91,6 +93,7 @@
 				81F3ECD821958A19000F4D8C /* HttpClientApi.swift */,
 				81F3ECDA2195AFDD000F4D8C /* ObjectTransformHelper.swift */,
 				81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */,
+				81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				819CC0E2215D5F50004AD1CA /* CountryViewCell.swift in Sources */,
 				81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */,
 				81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */,
+				81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */,
 				817D065E217A080E007B22EB /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
