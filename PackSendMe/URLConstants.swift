@@ -27,8 +27,9 @@ struct URLConstants{
     }
     
     struct ACCOUNT{
-        static let account_http = "http://192.241.133.13:9094/account"
-
+        static let account_http = "http://192.241.133.13:9094/account/"
+        static let account_load = "/load"
+        static let account_setting = "MenuAccountSetting"
     }
     
     struct HTTP_STATUS{

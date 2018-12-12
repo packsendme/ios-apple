@@ -24,6 +24,7 @@ class UserModel {
   
 
     init(json: [String: Any]) {
+        self.id = json["id"] as? String ?? ""
         self.username = json["username"] as? String ?? ""
         self.id = json["id"] as? String ?? ""
         self.activationKey = json["activationKey"] as? String ?? ""

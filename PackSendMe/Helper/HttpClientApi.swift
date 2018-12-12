@@ -46,6 +46,7 @@ class HttpClientApi: NSObject{
         
         session?.dataTask(with: request! as URLRequest) { (data, response, error) -> Void in
             if let data = data {
+                
                 if let response = response as? HTTPURLResponse, 200...399 ~= response.statusCode {
                     success(data , response , error as NSError?)
                 } else {

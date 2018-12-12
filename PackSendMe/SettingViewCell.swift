@@ -8,11 +8,13 @@
 
 import UIKit
 
-class SettingTableViewCell: UITableViewCell {
+class SettingViewCell: UITableViewCell {
 
-    @IBOutlet weak var accountImg: UIImageView!
+    
+    @IBOutlet weak var titleCellLabel: UILabel!
+    @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var identificador1Label: UILabel!
     @IBOutlet weak var identificador2Label: UILabel!
     @IBOutlet weak var identificador3Label: UILabel!
-    
+    @IBOutlet weak var creditcardImage: UIImageView!
 }

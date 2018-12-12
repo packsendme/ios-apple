@@ -13,18 +13,31 @@ import GoogleMaps
 
 class AccountViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
+    var menu_vc : MenuViewController!
     
+    @IBOutlet weak var menuView: UIView!
     //@IBOutlet weak var mapView: GMSMapView!
     let locationManager:CLLocationManager = CLLocationManager()
-    
+    //var menuBtn : UIButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+       // self.mapView.addSubview(button)
+        menuBtn.setTitle("Button", for: .normal)
+        menuBtn.setTitleColor(.red, for: .normal)
+        menuBtn.addTarget(self, action: #selector(menuActionView), for: .touchUpInside)
+        self.view.addSubview(menuBtn)
+        
+        mapView.reloadInputViews()
+        
+        menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -50,18 +63,31 @@ class AccountViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
-    
-    @IBAction func menuAction(_ sender: Any) {
-        
+    @IBAction func menuActionView(_ sender: UIButton) {
+         showMenu()
     }
     
     func showMenu(){
+        let transition:CATransition = CATransition()
+        transition.duration = 0.7
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromTop
+        self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        //view.window!.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.present(menu_vc, animated: true, completion: nil)
+        //menu_vc.modalPresentationStyle = .overCurrentContext
+        //present(menu_vc!, animated: true)
         
+        
+        //AppDelegate.menu_bool = false
     }
     
-    func closeMenu(){
-        
+
+    @IBAction func actionMenu(_ sender: Any) {
+        showMenu()
     }
+    
     
 }
 

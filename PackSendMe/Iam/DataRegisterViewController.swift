@@ -73,12 +73,12 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func registerAccount(_ sender: Any) {
-        let accountHelper = ObjectTransformHelper()
+        let accountHelper = AccountHelper()
         let utilityHelper = UtilityHelper()
         let dtNowS = utilityHelper.dateConvertToString()
         
         var paramsDictionary = [String:Any]()
-        paramsDictionary = accountHelper.accountTransformObject(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastname:lastnameTextField.text!, address:[], dtAction:dtNowS)
+        paramsDictionary = accountHelper.transformObjectToArray(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastname:lastnameTextField.text!, address:[], dtAction:dtNowS)
         
         let account = URLConstants.ACCOUNT.account_http
         

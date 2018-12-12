@@ -10,4 +10,14 @@ import UIKit
 
 class UserHelper: NSObject {
 
+    func userTransformObject(username:String, password:String) -> Dictionary<String, Any> {
+        
+        var paramsDictionary = [String:Any]()
+        
+        paramsDictionary["username"] = username
+        paramsDictionary["password"] = password
+        return paramsDictionary
+    }
+    
+    
 }

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		811F820A21B473E1000238E9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820921B473E1000238E9 /* MenuViewController.swift */; };
+		811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820D21B49623000238E9 /* MenuViewCell.swift */; };
+		811F821021B82FE2000238E9 /* MenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820F21B82FE2000238E9 /* MenuSegue.swift */; };
+		811F821621BDCCC8000238E9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821521BDCCC8000238E9 /* SettingViewController.swift */; };
+		811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821721BDD25A000238E9 /* SettingViewCell.swift */; };
+		811F821A21BE7D94000238E9 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821921BE7D94000238E9 /* PaymentModel.swift */; };
+		811F821C21BEB212000238E9 /* SettingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821B21BEB212000238E9 /* SettingDataViewController.swift */; };
 		812EB6772159462400DE540A /* IdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812EB6762159462400DE540A /* IdentityViewController.swift */; };
 		817D065A2179CE40007B22EB /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D06592179CE40007B22EB /* URLConstants.swift */; };
 		817D065E217A080E007B22EB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D065D217A080E007B22EB /* UserModel.swift */; };
@@ -26,22 +33,32 @@
 		819CC0F121739C34004AD1CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0F021739C34004AD1CA /* MainViewController.swift */; };
 		81DAE04E218F505A002A19D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DAE04D218F505A002A19D9 /* LoginViewController.swift */; };
 		81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */; };
+		81DC728F21AEF2C400B6ECF8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 81DC728E21AEF2C400B6ECF8 /* Podfile */; };
 		81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD221935A5D000F4D8C /* DataRegisterViewController.swift */; };
 		81F3ECD5219480F6000F4D8C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD4219480F6000F4D8C /* AccountModel.swift */; };
 		81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD621948A75000F4D8C /* AddressModel.swift */; };
 		81F3ECD921958A19000F4D8C /* HttpClientApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD821958A19000F4D8C /* HttpClientApi.swift */; };
-		81F3ECDB2195AFDD000F4D8C /* ObjectTransformHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDA2195AFDD000F4D8C /* ObjectTransformHelper.swift */; };
+		81F3ECDB2195AFDD000F4D8C /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */; };
 		81F3ECDE2196145C000F4D8C /* UtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */; };
 		81F3ECE0219C79A1000F4D8C /* ACCOUNT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */; };
 		81F3ECE3219C7A34000F4D8C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */; };
+		81FD189321C00FB000A00082 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FD189221C00FB000A00082 /* UserHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24D681A587B5DDC1981FDC14 /* Pods-PackSendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.debug.xcconfig"; sourceTree = "<group>"; };
+		811F820921B473E1000238E9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		811F820D21B49623000238E9 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = PackSendMe/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
+		811F820F21B82FE2000238E9 /* MenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSegue.swift; sourceTree = "<group>"; };
+		811F821521BDCCC8000238E9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		811F821721BDD25A000238E9 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewCell.swift; path = PackSendMe/SettingViewCell.swift; sourceTree = SOURCE_ROOT; };
+		811F821921BE7D94000238E9 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		811F821B21BEB212000238E9 /* SettingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataViewController.swift; sourceTree = "<group>"; };
 		812EB6762159462400DE540A /* IdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
 		817D06592179CE40007B22EB /* URLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
-		817D065D217A080E007B22EB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = PackSendMe/UserModel.swift; sourceTree = SOURCE_ROOT; };
+		817D065D217A080E007B22EB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = PackSendMe/Model/UserModel.swift; sourceTree = SOURCE_ROOT; };
 		817D0660217D2D0C007B22EB /* CheckSMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSMSCodeViewController.swift; sourceTree = "<group>"; };
-		817D06692181213A007B22EB /* HttpResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HttpResponseModel.swift; path = PackSendMe/Helper/HttpResponseModel.swift; sourceTree = SOURCE_ROOT; };
+		817D06692181213A007B22EB /* HttpResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HttpResponseModel.swift; path = PackSendMe/Model/HttpResponseModel.swift; sourceTree = SOURCE_ROOT; };
 		8184D8E2214C20AF00FF0E08 /* PackSendMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackSendMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8184D8E5214C20AF00FF0E08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8184D8E7214C20AF00FF0E08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,20 +76,23 @@
 		8184D903214D0F4A00FF0E08 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryViewCell.swift; path = PackSendMe/Helper/CountryViewCell.swift; sourceTree = SOURCE_ROOT; };
 		819CC0E3215D62C7004AD1CA /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
-		819CC0E8216E614D004AD1CA /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryModel.swift; path = PackSendMe/CountryModel.swift; sourceTree = SOURCE_ROOT; };
+		819CC0E8216E614D004AD1CA /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryModel.swift; path = PackSendMe/Model/CountryModel.swift; sourceTree = SOURCE_ROOT; };
 		819CC0EC217131DD004AD1CA /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		819CC0EE21737472004AD1CA /* CountryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHelper.swift; sourceTree = "<group>"; };
 		819CC0F021739C34004AD1CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		81DAE04D218F505A002A19D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeGeneratorHttp.swift; sourceTree = "<group>"; };
+		81DC728E21AEF2C400B6ECF8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		81F3ECD221935A5D000F4D8C /* DataRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRegisterViewController.swift; sourceTree = "<group>"; };
-		81F3ECD4219480F6000F4D8C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountModel.swift; path = PackSendMe/IAM/AccountModel.swift; sourceTree = SOURCE_ROOT; };
-		81F3ECD621948A75000F4D8C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddressModel.swift; path = PackSendMe/IAM/AddressModel.swift; sourceTree = SOURCE_ROOT; };
+		81F3ECD4219480F6000F4D8C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountModel.swift; path = PackSendMe/Model/AccountModel.swift; sourceTree = SOURCE_ROOT; };
+		81F3ECD621948A75000F4D8C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddressModel.swift; path = PackSendMe/Model/AddressModel.swift; sourceTree = SOURCE_ROOT; };
 		81F3ECD821958A19000F4D8C /* HttpClientApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientApi.swift; sourceTree = "<group>"; };
-		81F3ECDA2195AFDD000F4D8C /* ObjectTransformHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTransformHelper.swift; sourceTree = "<group>"; };
+		81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHelper.swift; sourceTree = "<group>"; };
 		81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityHelper.swift; sourceTree = "<group>"; };
 		81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ACCOUNT.storyboard; sourceTree = "<group>"; };
 		81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		81FD189221C00FB000A00082 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		B51E64FBDAC0B88AB4325285 /* Pods-PackSendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,14 +106,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E70CA371AFD3D18192578D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		812EB67A21595FE200DE540A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				819CC0EE21737472004AD1CA /* CountryHelper.swift */,
 				81F3ECD821958A19000F4D8C /* HttpClientApi.swift */,
-				81F3ECDA2195AFDD000F4D8C /* ObjectTransformHelper.swift */,
+				81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */,
 				81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */,
 				81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */,
+				81FD189221C00FB000A00082 /* UserHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -110,9 +138,9 @@
 		81527DFD214EBCE000C9C357 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				81F3ECE1219C79D9000F4D8C /* Account */,
-				817D065F217D2CD9007B22EB /* Iam */,
 				819CC0F021739C34004AD1CA /* MainViewController.swift */,
+				817D065F217D2CD9007B22EB /* Iam */,
+				81F3ECE1219C79D9000F4D8C /* Account */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -125,6 +153,7 @@
 				817D06692181213A007B22EB /* HttpResponseModel.swift */,
 				81F3ECD4219480F6000F4D8C /* AccountModel.swift */,
 				81F3ECD621948A75000F4D8C /* AddressModel.swift */,
+				811F821921BE7D94000238E9 /* PaymentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */,
+				811F820D21B49623000238E9 /* MenuViewCell.swift */,
+				811F821721BDD25A000238E9 /* SettingViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,8 +190,11 @@
 		8184D8D9214C20AF00FF0E08 = {
 			isa = PBXGroup;
 			children = (
+				81DC728E21AEF2C400B6ECF8 /* Podfile */,
 				8184D8E4214C20AF00FF0E08 /* PackSendMe */,
 				8184D8E3214C20AF00FF0E08 /* Products */,
+				F926172B8C861889A15AEDEC /* Pods */,
+				0E70CA371AFD3D18192578D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,8 +239,21 @@
 			isa = PBXGroup;
 			children = (
 				81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */,
+				811F820921B473E1000238E9 /* MenuViewController.swift */,
+				811F820F21B82FE2000238E9 /* MenuSegue.swift */,
+				811F821521BDCCC8000238E9 /* SettingViewController.swift */,
+				811F821B21BEB212000238E9 /* SettingDataViewController.swift */,
 			);
 			name = Account;
+			sourceTree = "<group>";
+		};
+		F926172B8C861889A15AEDEC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24D681A587B5DDC1981FDC14 /* Pods-PackSendMe.debug.xcconfig */,
+				B51E64FBDAC0B88AB4325285 /* Pods-PackSendMe.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,9 +263,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8184D8F4214C20AF00FF0E08 /* Build configuration list for PBXNativeTarget "PackSendMe" */;
 			buildPhases = (
+				EE2DE4E570D6E9E25C07E9E4 /* [CP] Check Pods Manifest.lock */,
 				8184D8DE214C20AF00FF0E08 /* Sources */,
 				8184D8DF214C20AF00FF0E08 /* Frameworks */,
 				8184D8E0214C20AF00FF0E08 /* Resources */,
+				178A07F380657EADE721D3E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81DC728F21AEF2C400B6ECF8 /* Podfile in Resources */,
 				8184D8F0214C20AF00FF0E08 /* LaunchScreen.storyboard in Resources */,
 				81F3ECE0219C79A1000F4D8C /* ACCOUNT.storyboard in Resources */,
 				8184D8FF214D0F4300FF0E08 /* Localizable.strings in Resources */,
@@ -281,6 +331,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		178A07F380657EADE721D3E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE2DE4E570D6E9E25C07E9E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PackSendMe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8184D8DE214C20AF00FF0E08 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -290,24 +379,32 @@
 				817D066A2181213A007B22EB /* HttpResponseModel.swift in Sources */,
 				81F3ECE3219C7A34000F4D8C /* AccountViewController.swift in Sources */,
 				819CC0E9216E614D004AD1CA /* CountryModel.swift in Sources */,
+				811F821A21BE7D94000238E9 /* PaymentModel.swift in Sources */,
 				8184D8E8214C20AF00FF0E08 /* ViewController.swift in Sources */,
+				811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */,
 				817D065A2179CE40007B22EB /* URLConstants.swift in Sources */,
 				819CC0EF21737472004AD1CA /* CountryHelper.swift in Sources */,
 				817D0661217D2D0C007B22EB /* CheckSMSCodeViewController.swift in Sources */,
 				819CC0ED217131DD004AD1CA /* GlobalVariables.swift in Sources */,
-				81F3ECDB2195AFDD000F4D8C /* ObjectTransformHelper.swift in Sources */,
+				81F3ECDB2195AFDD000F4D8C /* AccountHelper.swift in Sources */,
 				8184D8E6214C20AF00FF0E08 /* AppDelegate.swift in Sources */,
+				811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */,
+				81FD189321C00FB000A00082 /* UserHelper.swift in Sources */,
 				81F3ECD921958A19000F4D8C /* HttpClientApi.swift in Sources */,
 				819CC0E4215D62C7004AD1CA /* CountryViewController.swift in Sources */,
+				811F821621BDCCC8000238E9 /* SettingViewController.swift in Sources */,
 				819CC0F121739C34004AD1CA /* MainViewController.swift in Sources */,
 				81F3ECD5219480F6000F4D8C /* AccountModel.swift in Sources */,
 				81F3ECDE2196145C000F4D8C /* UtilityHelper.swift in Sources */,
+				811F821C21BEB212000238E9 /* SettingDataViewController.swift in Sources */,
 				812EB6772159462400DE540A /* IdentityViewController.swift in Sources */,
 				819CC0E2215D5F50004AD1CA /* CountryViewCell.swift in Sources */,
+				811F821021B82FE2000238E9 /* MenuSegue.swift in Sources */,
 				81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */,
 				81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */,
 				81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */,
 				817D065E217A080E007B22EB /* UserModel.swift in Sources */,
+				811F820A21B473E1000238E9 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +560,7 @@
 		};
 		8184D8F5214C20AF00FF0E08 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24D681A587B5DDC1981FDC14 /* Pods-PackSendMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -479,6 +577,7 @@
 		};
 		8184D8F6214C20AF00FF0E08 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B51E64FBDAC0B88AB4325285 /* Pods-PackSendMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;

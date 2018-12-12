@@ -476,4 +476,22 @@
 
 /* SCREEN - ACCOUNT */
 
+/* MENU  */
+"menu-title-shipping" = "Your Shipping";
+"menu-title-payment" = "Payment";
+"menu-title-voucherfree" = "Voucher Free";
+"menu-title-help" = "Help";
+"menu-title-settings" = "Settings";
+"menu-title-legal" = "Legal";
+"menu-btn-makemoney" = "Make money delivery";
+"menu-btn-learnmore" = "Learn more about PackSendMe";
+
+/* SETTING  */
+"setting-title-personalinf" = "Data Identification";
+"setting-title-addresshome" = "Home Address";
+"setting-title-addresswork" = "Work Address";
+"setting-title-paymentinf" = "Data Payment:";
+"setting-title-addwork" = "Add Address Work";
+"setting-title-addhome" = "Add Address Home";
+
 

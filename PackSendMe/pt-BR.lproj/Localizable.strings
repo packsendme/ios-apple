@@ -500,3 +500,20 @@
 "main-text-lastname" = "Sobrenome";
 
 /* SCREEN - ACCOUNT */
+/* MENU  */
+"menu-title-shipping" = "Seu envio";
+"menu-title-payment" = "Pagamento";
+"menu-title-voucherfree" = "Voucher Grátis";
+"menu-title-help" = "Ajuda";
+"menu-title-settings" = "Configuração";
+"menu-title-legal" = "Legal";
+"menu-btn-makemoney" = "Ganhe dinheiro com entregas";
+"menu-btn-learnmore" = "Conheça mais sobre PackSendMe";
+
+/* SETTING  */
+"setting-title-personalinf" = "Dados Informação";
+"setting-title-addresshome" = "Endereço Residencial";
+"setting-title-addresswork" = "Endereço Trabalho";
+"setting-title-paymentinf" = "Dados Pagamento";
+"setting-title-addwork" = "Adicionar Endereço Trabalho";
+"setting-title-addhome" = "Adicionar Endereço Residencial";

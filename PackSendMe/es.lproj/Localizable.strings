@@ -484,3 +484,20 @@
 "main-text-lastname" = "Apellido";
 
 /* SCREEN - ACCOUNT */
+/* MENU  */
+"menu-title-shipping" = "Seu envio";
+"menu-title-payment" = "Pagamento";
+"menu-title-voucherfree" = "Cupón Gratis";
+"menu-title-help" = "Ajuda";
+"menu-title-settings" = "Configuração";
+"menu-title-legal" = "Legal";
+"menu-btn-makemoney" = "Gana dinero con entregas";
+"menu-btn-learnmore" = "Más información sobre PackSendMe";
+
+/* SETTING  */
+"setting-title-personalinf" = "Datos de identificación";
+"setting-title-addresshome" = "Dirección Casa";
+"setting-title-addresswork" = "Dirección Trabajo";
+"setting-title-paymentinf" = "Datos de Pago:";
+"setting-title-addwork" = "Añadir Dirección Trabajo";
+"setting-title-addhome" = "Añadir Dirección Casa";
