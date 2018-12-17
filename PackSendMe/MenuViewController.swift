@@ -10,6 +10,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    @IBOutlet weak var menuToolBtn: UIBarButtonItem!
     let cellSpacingHeight: CGFloat = 200
     @IBOutlet weak var nameprofileLabel: UILabel!
     @IBOutlet weak var menuTable: UITableView!
@@ -23,7 +24,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        menuToolBtn.isEnabled = false
         view.isOpaque = false
         view.backgroundColor = .clear
         
@@ -56,16 +57,13 @@ class MenuViewController: UIViewController {
         
     }
     
-    
-    @IBAction func menuAction(_ sender: Any) {
+    @IBAction func homeToolBtnAction(_ sender: Any) {
         let transition = CATransition()
         transition.duration = 0.1
         transition.type = kCATransition
         transition.subtype = kCATransitionFromBottom
         dismiss(animated: false, completion: nil)
-
     }
-    
     
 }
 
@@ -113,23 +111,12 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate, UISear
         return cell
     }
     
-
-    
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         if(indexPath.row == 4){
-            // Setting
-          //  let menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingDataViewController
-          //  self.navigationController?.present(menu_vc, animated: true, completion: nil)
             self.performSegue(withIdentifier:URLConstants.ACCOUNT.account_setting, sender: nil)
         }
-        
     }
-    
-    
-
     
     
 }

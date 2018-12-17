@@ -23,6 +23,18 @@ struct URLConstants{
         static let name_register = "NameRegisterUI"
         static let country_identity = "countryIdentity"
         
+        
+        // Manager Access User (firstName / LastName / email / password / username)
+        static let managerAccessViewToFirstNameView = "firstNameView"
+        static let managerAccessViewToLastNameView = "lastNameView"
+        static let managerAccessViewToEmailView = "emailView"
+        static let managerAccessViewToPasswordView = "passwordView"
+        static let managerAccessViewToUsernameView = "usernameView"
+        
+        // Manager Address User (address home / address work)
+        
+        // Manager Payment User (payment master / payment secund)
+        
 
     }
     
@@ -30,6 +42,12 @@ struct URLConstants{
         static let account_http = "http://192.241.133.13:9094/account/"
         static let account_load = "/load"
         static let account_setting = "MenuAccountSetting"
+        static let settingToAccountHome = "SettingToAccountHome"
+        static let settingViewToManagerAccessView = "SettingViewToManagerAccessView"
+        static let settingViewToManagerAddressView = "SettingViewToManagerAddressView"
+        static let settingViewToManagerPaymentView = "SettingViewToManagerPaymentView"
+
+
     }
     
     struct HTTP_STATUS{

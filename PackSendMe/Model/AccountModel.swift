@@ -9,7 +9,7 @@
 import UIKit
 
 class AccountModel {
-    
+    var id: String?
     var username: String?
     var password: String?
     var email: String?
@@ -26,6 +26,7 @@ class AccountModel {
     
     
     init(json: [String: Any]) {
+        self.id = json["id"] as? String ?? ""
         self.username = json["username"] as? String ?? ""
         self.email = json["email"] as? String ?? ""
         self.password = json["password"] as? String ?? ""

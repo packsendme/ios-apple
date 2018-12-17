@@ -13,6 +13,9 @@ import GoogleMaps
 
 class AccountViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var homeToolBtn: UIBarButtonItem!
+    
+    
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
     var menu_vc : MenuViewController!
@@ -24,7 +27,8 @@ class AccountViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        homeToolBtn.isEnabled = false
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -73,11 +77,11 @@ class AccountViewController: UIViewController, CLLocationManagerDelegate {
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromTop
-        self.navigationController!.view.layer.add(transition, forKey: kCATransition)
+        //self.navigationController!.view.layer.add(transition, forKey: kCATransition)
         //view.window!.layer.add(transition, forKey: kCATransition)
-        self.navigationController?.present(menu_vc, animated: true, completion: nil)
+        //self.navigationController?.present(menu_vc, animated: true, completion: nil)
         //menu_vc.modalPresentationStyle = .overCurrentContext
-        //present(menu_vc!, animated: true)
+        present(menu_vc!, animated: true)
         
         
         //AppDelegate.menu_bool = false

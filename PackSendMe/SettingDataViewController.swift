@@ -10,6 +10,7 @@ import UIKit
 
 class SettingDataViewController: UIViewController {
     
+    @IBOutlet weak var settingTitleLabel: UILabel!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -19,11 +20,12 @@ class SettingDataViewController: UIViewController {
     var accountObj = AccountModel()
     var itens : [[String]] = []
     var jsonAccountFinal : [String: Any]? = nil
+ 
     
     override func viewDidLoad() {
        
         //startLoading()
-        
+        settingTitleLabel.text = NSLocalizedString("setting-title", comment:"")
         activityIndicator.hidesWhenStopped = true;
         activityIndicator.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.gray;
         activityIndicator.center = view.center;
@@ -95,6 +97,22 @@ class SettingDataViewController: UIViewController {
         let addressArray = accountArray["address"] as! [[String:Any]]
         let jsonAccountFinal = [[accountArray],[addressArray],[paymentArray]]
         return jsonAccountFinal
+    }
+    
+    @IBAction func homeToolBtnAction(_ sender: Any) {
+        self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingToAccountHome, sender: nil)
+    }
+    
+    @IBAction func menuToolBtnAction(_ sender: Any) {
+        let transition = CATransition()
+        transition.duration = 0.1
+        transition.type = kCATransition
+        transition.subtype = kCATransitionFromBottom
+        dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func closeAction(_ sender: Any) {
+    self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingToAccountHome, sender: nil)
     }
     
     
@@ -249,9 +267,10 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
                     cell.identificador1Label.text = ""
                 }
             }
-            // PAYMENT ACCOUNT
+            
+            // PAYMENT ACCOUNT MASTER
             if(indexPath.row == 3){
-                cell.titleCellLabel.text = NSLocalizedString("setting-title-paymentinf", comment:"")
+                cell.titleCellLabel.text = NSLocalizedString("setting-title-paymentmaster", comment:"")
                 cell.cellImage.image = UIImage(named: "icon-card.png")
                 let paymentArray = jsonAccountFinal!["payment"] as? [[String:Any]]
                 cell.creditcardImage.isHidden = false
@@ -288,27 +307,25 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
                             break
                         }
                         else{
-                            cell.creditcardImage.image = UIImage(named: "icon-cards.png")
-                            cell.identificador2Label.font = UIFont(name:"Avenir", size:18)
+                            cell.identificador2Label.font = UIFont(name:"Avenir", size:17)
                             cell.identificador2Label.textColor = UIColor.blue
-                            cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
+                            cell.identificador2Label.text = NSLocalizedString("setting-title-addcard", comment:"")
                             cell.identificador3Label.text = ""
                             cell.identificador1Label.text = ""
                         }
                     }
                 }
                 else{
-                    cell.creditcardImage.image = UIImage(named: "icon-cards.png")
-                    cell.identificador2Label.font = UIFont(name:"Avenir", size:18)
+                    cell.identificador2Label.font = UIFont(name:"Avenir", size:17)
                     cell.identificador2Label.textColor = UIColor.blue
-                    cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
+                    cell.identificador2Label.text = NSLocalizedString("setting-title-addcard", comment:"")
                     cell.identificador3Label.text = ""
                     cell.identificador1Label.text = ""
                 }
             }
-            // PAYMENT ACCOUNT
+            // PAYMENT ACCOUNT OPTIONAL
             if(indexPath.row == 4){
-                cell.titleCellLabel.text = NSLocalizedString("setting-title-paymentinf", comment:"")
+                cell.titleCellLabel.text = NSLocalizedString("setting-title-paymentoptional", comment:"")
                 cell.cellImage.image = UIImage(named: "icon-card.png")
                 let paymentArray = jsonAccountFinal!["payment"] as? [[String:Any]]
                 cell.creditcardImage.isHidden = false
@@ -346,22 +363,21 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
                             break
                         }
                         else{
-                            cell.creditcardImage.image = UIImage(named: "icon-cards.png")
-                            cell.identificador2Label.font = UIFont(name:"Avenir", size:18)
+                            cell.identificador2Label.font = UIFont(name:"Avenir", size:17)
                             cell.identificador2Label.textColor = UIColor.blue
-                            cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
+                            cell.identificador2Label.text = NSLocalizedString("setting-title-addcard", comment:"")
                             cell.identificador3Label.text = ""
                             cell.identificador1Label.text = ""
                         }
                     }
                 }
                 else{
-                    cell.creditcardImage.image = UIImage(named: "icon-cards.png")
-                    cell.identificador2Label.font = UIFont(name:"Avenir", size:18)
+                    cell.identificador2Label.font = UIFont(name:"Avenir", size:17)
                     cell.identificador2Label.textColor = UIColor.blue
-                    cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
+                    cell.identificador2Label.text = NSLocalizedString("setting-title-addcard", comment:"")
                     cell.identificador3Label.text = ""
                     cell.identificador1Label.text = ""
+                    //0F49B3
                 }
             }
         }
@@ -377,7 +393,24 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
         return 100.0;//Choose your custom row height
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if(indexPath.row == 0){
+            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingViewToManagerAccessView, sender: nil)
+        }
+        else if(indexPath.row == 1){
+            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingViewToManagerAddressView, sender: nil)
+        }
+        else if(indexPath.row == 2){
+            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingViewToManagerAddressView, sender: nil)
+        }
+        else if(indexPath.row == 3){
+            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingViewToManagerPaymentView, sender: nil)
+        }
+        else if(indexPath.row == 4){
+            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingViewToManagerPaymentView, sender: nil)
+        }
+    }
  
 
 }

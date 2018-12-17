@@ -15,6 +15,8 @@ class PaymentModel: NSObject {
     var cardExpiry: String?
     var cardCVV: String?
     var cardCountry: String?
+    var cardOrder: Int?
+    var cardType: String?
     
     override init() {
     }
@@ -26,5 +28,7 @@ class PaymentModel: NSObject {
         self.cardExpiry = json["cardExpiry"] as? String ?? ""
         self.cardCVV = json["cardCVV"] as? String ?? ""
         self.cardCountry = json["cardCountry"] as? String ?? ""
+        self.cardOrder = json["cardOrder"] as? Int ?? 0
+        self.cardType = json["cardType"] as? String ?? ""
     }
 }

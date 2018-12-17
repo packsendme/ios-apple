@@ -511,9 +511,39 @@
 "menu-btn-learnmore" = "Conheça mais sobre PackSendMe";
 
 /* SETTING  */
-"setting-title-personalinf" = "Dados Informação";
+"setting-title" = "Configuração do Usuario";
+"setting-title-personalinf" = "Identificação de Acesso";
 "setting-title-addresshome" = "Endereço Residencial";
 "setting-title-addresswork" = "Endereço Trabalho";
-"setting-title-paymentinf" = "Dados Pagamento";
+"setting-title-paymentmaster" = "Pagamento Master ";
+"setting-title-paymentoptional" = "Pagamento Opcional";
 "setting-title-addwork" = "Adicionar Endereço Trabalho";
 "setting-title-addhome" = "Adicionar Endereço Residencial";
+"setting-title-addcard" = "Adicionar Cartão";
+
+/* MANAGE - FirstName  */
+"editfirstname-label-title" = "Editar Nome";
+"editfirstname-title-btn" = "ALTERAR NOME";
+"editfirstname-text-firstname" = "Nome";
+
+
+/* MANAGE - LastName  */
+"editlastname-label-title" = "Editar Sobrenome";
+"editlastname-title-btn" = "ALTERAR SOBRENOME";
+"editlastname-text-lastname" = "Sobrenome";
+
+/* MANAGE - EMail  */
+"editemail-label-title" = "Editar E-Mail";
+"editemail-title-btn" = "ALTERAR E-MAIL";
+"editemail-text-email" = "E-Mail";
+
+
+/* MANAGE - Password  */
+"editpassword-label-title" = "Editar Senha";
+"editpassword-title-btn" = "ALTERAR Senha";
+"editpassword-text-password" = "Senha";
+
+/* MANAGE - PhoneNumber  */
+"editusername-label-title" = "Editar Telefone";
+"editusername-title-btn" = "ALTERAR TELEFONE";
+"editusername-text-username" = "Telefone"

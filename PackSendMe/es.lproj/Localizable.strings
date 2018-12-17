@@ -489,15 +489,44 @@
 "menu-title-payment" = "Pagamento";
 "menu-title-voucherfree" = "Cupón Gratis";
 "menu-title-help" = "Ajuda";
-"menu-title-settings" = "Configuração";
+"menu-title-settings" = "Configuración";
 "menu-title-legal" = "Legal";
 "menu-btn-makemoney" = "Gana dinero con entregas";
 "menu-btn-learnmore" = "Más información sobre PackSendMe";
 
 /* SETTING  */
-"setting-title-personalinf" = "Datos de identificación";
+"setting-title" = "Configuración del Usuario";
+"setting-title-personalinf" = "Identificación de Acceso";
 "setting-title-addresshome" = "Dirección Casa";
 "setting-title-addresswork" = "Dirección Trabajo";
-"setting-title-paymentinf" = "Datos de Pago:";
+"setting-title-paymentmaster" = "Pago Maestro";
+"setting-title-paymentoptional" = "Pago Opcional";
 "setting-title-addwork" = "Añadir Dirección Trabajo";
 "setting-title-addhome" = "Añadir Dirección Casa";
+"setting-title-addcard" = "Adicionar Tarjeta";
+
+/* MANAGE - FirstName  */
+"editfirstname-label-title" = "Editar Nombre";
+"editfirstname-title-btn" = "ACTUALIZAR NOMBRE";
+"editfirstname-text-firstname" = "Nombre";
+
+/* MANAGE - LastName  */
+"editlastname-label-title" = "Editar Apelidos";
+"editlastname-title-btn" = "ACTUALIZAR APELIDOS";
+"editfirstname-text-lastname" = "Apelidos";
+
+/* MANAGE - EMail  */
+"editemail-label-title" = "Editar Correo Electrónico";
+"editemail-title-btn" = "ACTUALIZAR CORREO ELECTRÓNICO";
+"editfirstname-text-email" = "Correo Electrónico";
+
+
+/* MANAGE - Password  */
+"editpassword-label-title" = "Editar Contraseña";
+"editpassword-title-btn" = "ACTUALIZAR CONTRASEÑA";
+"editfirstname-text-password" = "Contraseña";
+
+/* MANAGE - PhoneNumber  */
+"editusername-label-title" = "Editar Número Teléfono";
+"editusername-title-btn" = "ACTUALIZAR TELÉFONO";
+"editfirstname-text-username" = "Teléfono"

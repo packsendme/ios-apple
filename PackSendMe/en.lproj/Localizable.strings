@@ -487,11 +487,40 @@
 "menu-btn-learnmore" = "Learn more about PackSendMe";
 
 /* SETTING  */
-"setting-title-personalinf" = "Data Identification";
+"setting-title" = "Setting User";
+"setting-title-personalinf" = "Access Identification";
 "setting-title-addresshome" = "Home Address";
 "setting-title-addresswork" = "Work Address";
-"setting-title-paymentinf" = "Data Payment:";
+"setting-title-paymentmaster" = "Master Payment ";
+"setting-title-paymentoptional" = "Optional Payment";
 "setting-title-addwork" = "Add Address Work";
 "setting-title-addhome" = "Add Address Home";
+"setting-title-addcard" = "Add Card";
 
 
+
+/* MANAGE - FirstName  */
+"editfirstname-label-title" = "Edit First Name";
+"editfirstname-title-btn" = "UPDATE FIRST NAME";
+"editfirstname-text-firstname" = "First Name";
+
+
+/* MANAGE - LastName  */
+"editlastname-label-title" = "Edit Last Name";
+"editlastname-title-btn" = "UPDATE LAST NAME";
+"editlastname-text-lastname" = "Last Name";
+
+/* MANAGE - EMail  */
+"editemail-label-title" = "Edit E-Mail";
+"editemail-title-btn" = "UPDATE E-MAIL";
+"editemail-text-email" = "E-Mail";
+
+/* MANAGE - Password  */
+"editpassword-label-title" = "Edit Password";
+"editpassword-title-btn" = "UPDATE PASSWORD";
+"editpassword-text-password" = "Password";
+
+/* MANAGE - PhoneNumber  */
+"editusername-label-title" = "Edit Phone Number";
+"editusername-title-btn" = "UPDATE PHONE";
+"editusername-text-username" = "Phone Number";
