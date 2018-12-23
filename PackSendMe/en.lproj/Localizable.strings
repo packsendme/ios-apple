@@ -487,7 +487,7 @@
 "menu-btn-learnmore" = "Learn more about PackSendMe";
 
 /* SETTING  */
-"setting-title" = "Setting User";
+"setting-title-home" = "Edit User Profile";
 "setting-title-personalinf" = "Access Identification";
 "setting-title-addresshome" = "Home Address";
 "setting-title-addresswork" = "Work Address";
@@ -497,6 +497,12 @@
 "setting-title-addhome" = "Add Address Home";
 "setting-title-addcard" = "Add Card";
 
+/* SETTING - ManagerProfileUserViewController */
+"profileuser-title-name" = "Name";
+"profileuser-title-lastname"  = "Last Name";
+"profileuser-title-email" = "Email";
+"profileuser-title-password" = "Password";
+"profileuser-title-numberphone" = "Phone Number";
 
 
 /* MANAGE - FirstName  */
@@ -524,3 +530,11 @@
 "editusername-label-title" = "Edit Phone Number";
 "editusername-title-btn" = "UPDATE PHONE";
 "editusername-text-username" = "Phone Number";
+
+/* PhotoProfileViewController */
+"photoprofile-title-home" = "Profile Photo";
+"photoprofile-buttontop-edit" = "Edit";
+"photoprofile-buttontool-deletephoto" = "Delete Photo";
+"photoprofile-buttontool-takephoto" = "Take Photo";
+"photoprofile-buttontool-choosephoto" = "Choose Photo";
+"photoprofile-buttontool-cancelphoto" = "Cancel";

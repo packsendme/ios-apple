@@ -10,7 +10,6 @@
 		811F820A21B473E1000238E9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820921B473E1000238E9 /* MenuViewController.swift */; };
 		811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820D21B49623000238E9 /* MenuViewCell.swift */; };
 		811F821021B82FE2000238E9 /* MenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820F21B82FE2000238E9 /* MenuSegue.swift */; };
-		811F821621BDCCC8000238E9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821521BDCCC8000238E9 /* SettingViewController.swift */; };
 		811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821721BDD25A000238E9 /* SettingViewCell.swift */; };
 		811F821A21BE7D94000238E9 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821921BE7D94000238E9 /* PaymentModel.swift */; };
 		811F821C21BEB212000238E9 /* SettingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821B21BEB212000238E9 /* SettingDataViewController.swift */; };
@@ -41,15 +40,11 @@
 		81F3ECDE2196145C000F4D8C /* UtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */; };
 		81F3ECE0219C79A1000F4D8C /* ACCOUNT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */; };
 		81F3ECE3219C7A34000F4D8C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */; };
-		81FBEC3421C674FE00CBDBC8 /* ManagerAccessUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3321C674FE00CBDBC8 /* ManagerAccessUserViewController.swift */; };
+		81FBEC3421C674FE00CBDBC8 /* ManagerProfileUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3321C674FE00CBDBC8 /* ManagerProfileUserViewController.swift */; };
 		81FBEC3621C6766900CBDBC8 /* ManagerAddressUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3521C6766900CBDBC8 /* ManagerAddressUserViewController.swift */; };
 		81FBEC3821C6768100CBDBC8 /* ManagerPaymentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3721C6768100CBDBC8 /* ManagerPaymentUserViewController.swift */; };
-		81FBEC3B21C6DCAD00CBDBC8 /* EditFirstNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3A21C6DCAD00CBDBC8 /* EditFirstNameViewController.swift */; };
-		81FBEC3D21C6DCCC00CBDBC8 /* EditLastNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3C21C6DCCC00CBDBC8 /* EditLastNameViewController.swift */; };
-		81FBEC3F21C6DCDF00CBDBC8 /* EditEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3E21C6DCDF00CBDBC8 /* EditEmailViewController.swift */; };
-		81FBEC4121C6DD0100CBDBC8 /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4021C6DD0100CBDBC8 /* EditPasswordViewController.swift */; };
-		81FBEC4321C6DD1700CBDBC8 /* EditUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4221C6DD1700CBDBC8 /* EditUsernameViewController.swift */; };
-		81FBEC4521C70ADC00CBDBC8 /* AccessInfViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4421C70ADC00CBDBC8 /* AccessInfViewCell.swift */; };
+		81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */; };
+		81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */; };
 		81FD189321C00FB000A00082 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FD189221C00FB000A00082 /* UserHelper.swift */; };
 		81FD189521C2BEC200A00082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81FD189421C2BEC100A00082 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -59,7 +54,6 @@
 		811F820921B473E1000238E9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		811F820D21B49623000238E9 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = PackSendMe/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		811F820F21B82FE2000238E9 /* MenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSegue.swift; sourceTree = "<group>"; };
-		811F821521BDCCC8000238E9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		811F821721BDD25A000238E9 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewCell.swift; path = PackSendMe/SettingViewCell.swift; sourceTree = SOURCE_ROOT; };
 		811F821921BE7D94000238E9 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		811F821B21BEB212000238E9 /* SettingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataViewController.swift; sourceTree = "<group>"; };
@@ -99,15 +93,11 @@
 		81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityHelper.swift; sourceTree = "<group>"; };
 		81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ACCOUNT.storyboard; sourceTree = "<group>"; };
 		81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		81FBEC3321C674FE00CBDBC8 /* ManagerAccessUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerAccessUserViewController.swift; sourceTree = "<group>"; };
+		81FBEC3321C674FE00CBDBC8 /* ManagerProfileUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProfileUserViewController.swift; sourceTree = "<group>"; };
 		81FBEC3521C6766900CBDBC8 /* ManagerAddressUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerAddressUserViewController.swift; sourceTree = "<group>"; };
 		81FBEC3721C6768100CBDBC8 /* ManagerPaymentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerPaymentUserViewController.swift; sourceTree = "<group>"; };
-		81FBEC3A21C6DCAD00CBDBC8 /* EditFirstNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFirstNameViewController.swift; sourceTree = "<group>"; };
-		81FBEC3C21C6DCCC00CBDBC8 /* EditLastNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLastNameViewController.swift; sourceTree = "<group>"; };
-		81FBEC3E21C6DCDF00CBDBC8 /* EditEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailViewController.swift; sourceTree = "<group>"; };
-		81FBEC4021C6DD0100CBDBC8 /* EditPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
-		81FBEC4221C6DD1700CBDBC8 /* EditUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUsernameViewController.swift; sourceTree = "<group>"; };
-		81FBEC4421C70ADC00CBDBC8 /* AccessInfViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessInfViewCell.swift; path = PackSendMe/Iam/manager/AccessInfViewCell.swift; sourceTree = SOURCE_ROOT; };
+		81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileUserViewCell.swift; path = PackSendMe/Iam/manager/ProfileUserViewCell.swift; sourceTree = SOURCE_ROOT; };
+		81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileViewController.swift; sourceTree = "<group>"; };
 		81FD189221C00FB000A00082 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		81FD189421C2BEC100A00082 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trashes/501/Assets.xcassets; sourceTree = "<group>"; };
 		B51E64FBDAC0B88AB4325285 /* Pods-PackSendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.release.xcconfig"; sourceTree = "<group>"; };
@@ -189,7 +179,7 @@
 				819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */,
 				811F820D21B49623000238E9 /* MenuViewCell.swift */,
 				811F821721BDD25A000238E9 /* SettingViewCell.swift */,
-				81FBEC4421C70ADC00CBDBC8 /* AccessInfViewCell.swift */,
+				81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,8 +251,8 @@
 				81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */,
 				811F820921B473E1000238E9 /* MenuViewController.swift */,
 				811F820F21B82FE2000238E9 /* MenuSegue.swift */,
-				811F821521BDCCC8000238E9 /* SettingViewController.swift */,
 				811F821B21BEB212000238E9 /* SettingDataViewController.swift */,
+				81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -270,14 +260,9 @@
 		81FBEC3921C6DC3F00CBDBC8 /* manager */ = {
 			isa = PBXGroup;
 			children = (
-				81FBEC3321C674FE00CBDBC8 /* ManagerAccessUserViewController.swift */,
+				81FBEC3321C674FE00CBDBC8 /* ManagerProfileUserViewController.swift */,
 				81FBEC3521C6766900CBDBC8 /* ManagerAddressUserViewController.swift */,
 				81FBEC3721C6768100CBDBC8 /* ManagerPaymentUserViewController.swift */,
-				81FBEC3A21C6DCAD00CBDBC8 /* EditFirstNameViewController.swift */,
-				81FBEC3C21C6DCCC00CBDBC8 /* EditLastNameViewController.swift */,
-				81FBEC3E21C6DCDF00CBDBC8 /* EditEmailViewController.swift */,
-				81FBEC4021C6DD0100CBDBC8 /* EditPasswordViewController.swift */,
-				81FBEC4221C6DD1700CBDBC8 /* EditUsernameViewController.swift */,
 			);
 			path = manager;
 			sourceTree = "<group>";
@@ -413,8 +398,8 @@
 				81DAE04E218F505A002A19D9 /* LoginViewController.swift in Sources */,
 				817D066A2181213A007B22EB /* HttpResponseModel.swift in Sources */,
 				81F3ECE3219C7A34000F4D8C /* AccountViewController.swift in Sources */,
+				81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */,
 				819CC0E9216E614D004AD1CA /* CountryModel.swift in Sources */,
-				81FBEC4121C6DD0100CBDBC8 /* EditPasswordViewController.swift in Sources */,
 				811F821A21BE7D94000238E9 /* PaymentModel.swift in Sources */,
 				8184D8E8214C20AF00FF0E08 /* ViewController.swift in Sources */,
 				811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */,
@@ -423,16 +408,13 @@
 				819CC0EF21737472004AD1CA /* CountryHelper.swift in Sources */,
 				817D0661217D2D0C007B22EB /* CheckSMSCodeViewController.swift in Sources */,
 				819CC0ED217131DD004AD1CA /* GlobalVariables.swift in Sources */,
-				81FBEC3421C674FE00CBDBC8 /* ManagerAccessUserViewController.swift in Sources */,
+				81FBEC3421C674FE00CBDBC8 /* ManagerProfileUserViewController.swift in Sources */,
 				81F3ECDB2195AFDD000F4D8C /* AccountHelper.swift in Sources */,
-				81FBEC3B21C6DCAD00CBDBC8 /* EditFirstNameViewController.swift in Sources */,
 				8184D8E6214C20AF00FF0E08 /* AppDelegate.swift in Sources */,
 				811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */,
-				81FBEC3F21C6DCDF00CBDBC8 /* EditEmailViewController.swift in Sources */,
 				81FD189321C00FB000A00082 /* UserHelper.swift in Sources */,
 				81F3ECD921958A19000F4D8C /* HttpClientApi.swift in Sources */,
 				819CC0E4215D62C7004AD1CA /* CountryViewController.swift in Sources */,
-				811F821621BDCCC8000238E9 /* SettingViewController.swift in Sources */,
 				819CC0F121739C34004AD1CA /* MainViewController.swift in Sources */,
 				81F3ECD5219480F6000F4D8C /* AccountModel.swift in Sources */,
 				81F3ECDE2196145C000F4D8C /* UtilityHelper.swift in Sources */,
@@ -440,12 +422,10 @@
 				81FBEC3821C6768100CBDBC8 /* ManagerPaymentUserViewController.swift in Sources */,
 				812EB6772159462400DE540A /* IdentityViewController.swift in Sources */,
 				819CC0E2215D5F50004AD1CA /* CountryViewCell.swift in Sources */,
-				81FBEC4521C70ADC00CBDBC8 /* AccessInfViewCell.swift in Sources */,
-				81FBEC3D21C6DCCC00CBDBC8 /* EditLastNameViewController.swift in Sources */,
+				81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */,
 				811F821021B82FE2000238E9 /* MenuSegue.swift in Sources */,
 				81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */,
 				81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */,
-				81FBEC4321C6DD1700CBDBC8 /* EditUsernameViewController.swift in Sources */,
 				81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */,
 				817D065E217A080E007B22EB /* UserModel.swift in Sources */,
 				811F820A21B473E1000238E9 /* MenuViewController.swift in Sources */,

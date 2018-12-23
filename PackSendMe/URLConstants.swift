@@ -43,7 +43,7 @@ struct URLConstants{
         static let account_load = "/load"
         static let account_setting = "MenuAccountSetting"
         static let settingToAccountHome = "SettingToAccountHome"
-        static let settingViewToManagerAccessView = "SettingViewToManagerAccessView"
+        static let settingViewToManagerAccessView = "SettingViewToManagerProfileUserView"
         static let settingViewToManagerAddressView = "SettingViewToManagerAddressView"
         static let settingViewToManagerPaymentView = "SettingViewToManagerPaymentView"
 

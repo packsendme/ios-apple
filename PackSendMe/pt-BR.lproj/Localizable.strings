@@ -511,7 +511,7 @@
 "menu-btn-learnmore" = "Conheça mais sobre PackSendMe";
 
 /* SETTING  */
-"setting-title" = "Configuração do Usuario";
+"setting-title-home" = "Editar Perfil Usuario";
 "setting-title-personalinf" = "Identificação de Acesso";
 "setting-title-addresshome" = "Endereço Residencial";
 "setting-title-addresswork" = "Endereço Trabalho";
@@ -520,6 +520,14 @@
 "setting-title-addwork" = "Adicionar Endereço Trabalho";
 "setting-title-addhome" = "Adicionar Endereço Residencial";
 "setting-title-addcard" = "Adicionar Cartão";
+
+/* SETTING - ManagerProfileUserViewController */
+"profileuser-title-name" = "Nome";
+"profileuser-title-lastname"  = "Sobrenome";
+"profileuser-title-email" = "Email";
+"profileuser-title-password" = "Senha";
+"profileuser-title-numberphone" = "Telefone";
+
 
 /* MANAGE - FirstName  */
 "editfirstname-label-title" = "Editar Nome";
@@ -546,4 +554,12 @@
 /* MANAGE - PhoneNumber  */
 "editusername-label-title" = "Editar Telefone";
 "editusername-title-btn" = "ALTERAR TELEFONE";
-"editusername-text-username" = "Telefone"
+"editusername-text-username" = "Telefone";
+
+/* PhotoProfileViewController */
+"photoprofile-title-home" = "Foto do Perfil";
+"photoprofile-buttontop-edit" = "Editar";
+"photoprofile-buttontool-deletephoto" = "Apagar Foto";
+"photoprofile-buttontool-takephoto" = "Tirar Foto";
+"photoprofile-buttontool-choosephoto" = "Escolher Foto";
+"photoprofile-buttontool-cancelphoto" = "Cancelar";

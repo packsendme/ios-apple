@@ -8,11 +8,10 @@
 
 import UIKit
 
-class AccessInfViewCell: UITableViewCell {
+class ProfileUserViewCell: UITableViewCell {
 
  
-    @IBOutlet weak var titleFieldCell: UILabel!
+    @IBOutlet weak var nameFieldUserLabel: UILabel!
     
-    
-    @IBOutlet weak var nameFieldCell: UILabel!
+    @IBOutlet weak var itemFieldUserLabel: UILabel!
 }

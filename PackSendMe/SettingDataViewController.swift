@@ -17,7 +17,7 @@ class SettingDataViewController: UIViewController {
     @IBOutlet weak var settingTable: UITableView!
     
     var accountHelper = AccountHelper()
-    var accountObj = AccountModel()
+    var accountModel = AccountModel()
     var itens : [[String]] = []
     var jsonAccountFinal : [String: Any]? = nil
  
@@ -56,10 +56,13 @@ class SettingDataViewController: UIViewController {
                 do{
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                         let jsonAccount = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
-                        self.jsonAccountFinal = jsonAccount!["body"] as! [String:Any]
-                        //jsonAccountFinal = parseHTTPDataToAccountModel(json:jsonResponse!)
-                        self.refreshTable()
-                                                }
+                        if(jsonAccount != nil){
+                            self.jsonAccountFinal = jsonAccount!["body"] as! [String:Any]
+                            //jsonAccountFinal = parseHTTPDataToAccountModel(json:jsonResponse!)
+                            self.refreshTable()
+                            self.accountModel = self.accountHelper.transformArrayToAccountModel(account: jsonAccount!)
+                        }
+                    }
                     else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
                         let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
                         ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -113,6 +116,15 @@ class SettingDataViewController: UIViewController {
     
     @IBAction func closeAction(_ sender: Any) {
     self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingToAccountHome, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is ManagerProfileUserViewController
+        {
+            let setupAccessUser = segue.destination as? ManagerProfileUserViewController
+            setupAccessUser?.accountModel = accountModel
+        }
     }
     
     
