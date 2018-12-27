@@ -42,8 +42,20 @@ struct URLConstants{
         static let account_http = "http://192.241.133.13:9094/account/"
         static let account_load = "/load"
         static let account_setting = "MenuAccountSetting"
-        static let settingToAccountHome = "SettingToAccountHome"
-        static let settingViewToManagerAccessView = "SettingViewToManagerProfileUserView"
+        
+        
+        // All View To AccounthoME
+        static let allViewToAccountHomeView = "AllViewToAccountHomeView"
+        
+        // SettingProfileUser = PhotoUser
+        static let settingProfileUserViewToPhotoUserView = "SettingProfileUserViewToPhotoUserView"
+        static let photoUserViewToSettingProfileUserView = "PhotoUserViewToSettingProfileUserView"
+        
+        
+        // SettingProfileUser - SettingDataAccount | SettingDataAccount - SettingProfileUser
+        static let settingProfileUserViewToSettingDataAccountView = "SettingProfileUserViewToSettingDataAccountView"
+        static let settingDataAccountViewToSettingProfileUserView = "SettingDataAccountViewToSettingProfileUserView"
+
         static let settingViewToManagerAddressView = "SettingViewToManagerAddressView"
         static let settingViewToManagerPaymentView = "SettingViewToManagerPaymentView"
 

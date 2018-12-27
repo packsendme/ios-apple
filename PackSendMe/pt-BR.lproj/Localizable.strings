@@ -510,8 +510,9 @@
 "menu-btn-makemoney" = "Ganhe dinheiro com entregas";
 "menu-btn-learnmore" = "Conheça mais sobre PackSendMe";
 
-/* SETTING  */
-"setting-title-home" = "Editar Perfil Usuario";
+/* SettingDataViewController  */
+"setting-activity-load" = "Carregando dados do usuário";
+"setting-title-home" = "Configuração da Conta";
 "setting-title-personalinf" = "Identificação de Acesso";
 "setting-title-addresshome" = "Endereço Residencial";
 "setting-title-addresswork" = "Endereço Trabalho";
@@ -557,6 +558,10 @@
 "editusername-text-username" = "Telefone";
 
 /* PhotoProfileViewController */
+"photoprofile-activity-save" = "Salvando Foto";
+"photoprofile-activity-deleting" = "Excluindo Foto";
+"photoprofile-activity-load" = "Carregando Foto";
+"photoprofile-title-changephoto" = "Por favor selecione uma opção";
 "photoprofile-title-home" = "Foto do Perfil";
 "photoprofile-buttontop-edit" = "Editar";
 "photoprofile-buttontool-deletephoto" = "Apagar Foto";

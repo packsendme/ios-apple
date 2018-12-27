@@ -61,6 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func loginPackSendMe(_ sender: Any) {
         let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+passwordTextField.text!
+        GlobalVariables.sharedManager.profileImage = "imageProfile_"+GlobalVariables.sharedManager.username
         
         let account = URLConstants.IAM.iamAccess_http
         HttpClientApi.instance().makeAPICall(url: account, params:paramsDictionary, method: .GET, success: { (data, response, error) in

@@ -28,6 +28,26 @@ class MenuViewController: UIViewController {
         view.isOpaque = false
         view.backgroundColor = .clear
         
+        
+        var imagePersonalView : UIImageView
+        imagePersonalView  = UIImageView(frame:CGRect(x: 0, y: 0,width:1, height:1));
+        
+        if UserDefaults.standard.object(forKey: GlobalVariables.sharedManager.profileImage) as? NSData != nil{
+            let data = UserDefaults.standard.object(forKey: GlobalVariables.sharedManager.profileImage) as! NSData
+            imagePersonalView.image = UIImage(data: data as Data)
+            useraccountImg?.image = imagePersonalView.image
+            let radius = useraccountImg.frame.width / 2
+            useraccountImg.layer.cornerRadius = radius
+            useraccountImg.layer.masksToBounds = true
+        }
+        else{
+            imagePersonalView.image = UIImage(named: GlobalVariables.sharedManager.profileImageDefault)
+            useraccountImg?.image = imagePersonalView.image
+            let radius = useraccountImg.frame.width / 2
+            useraccountImg.layer.cornerRadius = radius
+            useraccountImg.layer.masksToBounds = true
+        }
+
         menuTable.rowHeight = UITableViewAutomaticDimension
         menuTable.isScrollEnabled = true
         menuTable.translatesAutoresizingMaskIntoConstraints = false

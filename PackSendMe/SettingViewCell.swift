@@ -17,4 +17,7 @@ class SettingViewCell: UITableViewCell {
     @IBOutlet weak var identificador2Label: UILabel!
     @IBOutlet weak var identificador3Label: UILabel!
     @IBOutlet weak var creditcardImage: UIImageView!
+    
+    
+    
 }

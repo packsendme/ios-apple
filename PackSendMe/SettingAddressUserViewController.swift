@@ -1,5 +1,5 @@
 //
-//  EditPaymentUserViewController.swift
+//  EditAddressUserViewController.swift
 //  PackSendMe
 //
 //  Created by Ricardo Marzochi on 16/12/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManagerPaymentUserViewController: UIViewController {
+class SettingAddressUserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,5 +16,6 @@ class ManagerPaymentUserViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-      
+
+
 }

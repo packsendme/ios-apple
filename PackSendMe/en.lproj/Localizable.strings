@@ -486,8 +486,9 @@
 "menu-btn-makemoney" = "Make money delivery";
 "menu-btn-learnmore" = "Learn more about PackSendMe";
 
-/* SETTING  */
-"setting-title-home" = "Edit User Profile";
+/* SettingDataViewController  */
+"setting-activity-load" = "Loading User Data";
+"setting-title-home" = "Setting Account";
 "setting-title-personalinf" = "Access Identification";
 "setting-title-addresshome" = "Home Address";
 "setting-title-addresswork" = "Work Address";
@@ -532,6 +533,10 @@
 "editusername-text-username" = "Phone Number";
 
 /* PhotoProfileViewController */
+"photoprofile-activity-save" = "Saving Photo";
+"photoprofile-activity-deleting" = "Deleting Photo";
+"photoprofile-activity-load" = "Load Photo";
+"photoprofile-title-changephoto" = "Please select an option";
 "photoprofile-title-home" = "Profile Photo";
 "photoprofile-buttontop-edit" = "Edit";
 "photoprofile-buttontool-deletephoto" = "Delete Photo";

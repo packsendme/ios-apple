@@ -11,26 +11,19 @@ import UIKit
 class SettingDataViewController: UIViewController {
     
     @IBOutlet weak var settingTitleLabel: UILabel!
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var settingTable: UITableView!
     
     var accountHelper = AccountHelper()
     var accountModel = AccountModel()
     var itens : [[String]] = []
     var jsonAccountFinal : [String: Any]? = nil
- 
+    var boxActivityView = UIView()
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     override func viewDidLoad() {
        
-        //startLoading()
-        settingTitleLabel.text = NSLocalizedString("setting-title", comment:"")
-        activityIndicator.hidesWhenStopped = true;
-        activityIndicator.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.gray;
-        activityIndicator.center = view.center;
-        activityIndicator.startAnimating();
-        
+        activityActionStart()
+        settingTitleLabel.text = NSLocalizedString("setting-title-home", comment:"")
         loadAccount()
         settingTable.rowHeight = UITableViewAutomaticDimension
         settingTable.isScrollEnabled = true
@@ -40,6 +33,41 @@ class SettingDataViewController: UIViewController {
         settingTable.dataSource = self
          super.viewDidLoad()
      }
+    
+    func startAnimating(title : String)
+    {
+        self.activityView.startAnimating()
+       // UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+
+    
+    func activityActionStart() {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25, width: 180, height: 50))
+
+        boxActivityView.backgroundColor = UIColor.white
+        boxActivityView.alpha = 0.8
+        boxActivityView.layer.cornerRadius = 10
+        
+        //Here the spinnier is initialized
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.startAnimating()
+        
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 250, height: 150))
+        textLabel.textColor = UIColor.black
+        textLabel.text = "Load Data User"
+        
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        view.addSubview(boxActivityView)
+    }
+    
+    func activityActionStop() {
+        //When button is pressed it removes the boxView from screen
+        self.boxActivityView.removeFromSuperview()
+        self.activityView.stopAnimating()
+    }
 
     
     
@@ -59,8 +87,14 @@ class SettingDataViewController: UIViewController {
                         if(jsonAccount != nil){
                             self.jsonAccountFinal = jsonAccount!["body"] as! [String:Any]
                             //jsonAccountFinal = parseHTTPDataToAccountModel(json:jsonResponse!)
+                            
+                            
+                            self.startAnimating(title:NSLocalizedString("photoprofile-activity-load", comment:""))
+                            
                             self.refreshTable()
                             self.accountModel = self.accountHelper.transformArrayToAccountModel(account: jsonAccount!)
+                            self.activityActionStop()
+                            
                         }
                     }
                     else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
@@ -103,7 +137,7 @@ class SettingDataViewController: UIViewController {
     }
     
     @IBAction func homeToolBtnAction(_ sender: Any) {
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingToAccountHome, sender: nil)
+        self.performSegue(withIdentifier:URLConstants.ACCOUNT.allViewToAccountHomeView, sender: nil)
     }
     
     @IBAction func menuToolBtnAction(_ sender: Any) {
@@ -115,18 +149,17 @@ class SettingDataViewController: UIViewController {
     }
     
     @IBAction func closeAction(_ sender: Any) {
-    self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingToAccountHome, sender: nil)
+    self.performSegue(withIdentifier:URLConstants.ACCOUNT.allViewToAccountHomeView, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is ManagerProfileUserViewController
         {
-            let setupAccessUser = segue.destination as? ManagerProfileUserViewController
+            let setupAccessUser = segue.destination as? SettingProfileUserViewController
             setupAccessUser?.accountModel = accountModel
         }
     }
-    
     
 }
 
@@ -158,14 +191,25 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
             if(indexPath.row == 0){
                 cell.titleCellLabel.text = NSLocalizedString("setting-title-personalinf", comment:"")
                 cell.creditcardImage.isHidden = true
-                var imagePersonalView : UIImageView
-                imagePersonalView  = UIImageView(frame:CGRect(x: 0, y: 0,width:1, height:1));
-                imagePersonalView.image = UIImage(named:"icon-user.png")
-                imagePersonalView.contentMode = .scaleToFill
-                
-                cell.cellImage?.image = imagePersonalView.image
-                //imageWithImage(image: UIImage(named:"icon-user")!, scaledToSize: CGSize(width: 30, height: 30))
 
+                var imagePersonalView : UIImageView
+                 imagePersonalView  = UIImageView(frame:CGRect(x: 0, y: 0,width:1, height:1));
+
+                if UserDefaults.standard.object(forKey: GlobalVariables.sharedManager.profileImage) as? NSData != nil{
+                    let data = UserDefaults.standard.object(forKey: GlobalVariables.sharedManager.profileImage) as! NSData
+                    imagePersonalView.image = UIImage(data: data as Data)
+                    cell.cellImage?.image = imagePersonalView.image
+                    let radius = cell.cellImage.frame.width / 2
+                    cell.cellImage.layer.cornerRadius = radius
+                    cell.cellImage.layer.masksToBounds = true
+                }
+                else{
+                    imagePersonalView.image = UIImage(named: GlobalVariables.sharedManager.profileImageDefault)
+                    cell.cellImage?.image = imagePersonalView.image
+                    let radius = cell.cellImage.frame.width / 2
+                    cell.cellImage.layer.cornerRadius = radius
+                    cell.cellImage.layer.masksToBounds = true
+                }
                 
                 if let name = jsonAccountFinal!["name"] as? String {
                     cell.identificador1Label.text = name
@@ -408,7 +452,7 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if(indexPath.row == 0){
-            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingViewToManagerAccessView, sender: nil)
+            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingDataAccountViewToSettingProfileUserView, sender: nil)
         }
         else if(indexPath.row == 1){
             self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingViewToManagerAddressView, sender: nil)
@@ -426,7 +470,7 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
  
 
 }
-    
+
     
     
 

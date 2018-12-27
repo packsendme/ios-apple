@@ -7,52 +7,212 @@
 //
 
 import UIKit
+import AVFoundation
 
-class PhotoProfileViewController: UIViewController {
+class PhotoProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var titleProfilePhotoLabel: UILabel!
-    @IBOutlet weak var gobackBtn: UIBarButtonItem!
+
     @IBOutlet weak var editBtn: UIBarButtonItem!
     @IBOutlet weak var profileimageImg: UIImageView!
+    let imagePicker = UIImagePickerController()
+    var accountModel : AccountModel? = nil
+    var boxActivityView = UIView()
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        imagePicker.delegate = self
+        
+        // Load Image
+        if UserDefaults.standard.object(forKey: GlobalVariables.sharedManager.profileImage) as? NSData != nil{
+            let dataImage = UserDefaults.standard.object(forKey: GlobalVariables.sharedManager.profileImage) as! NSData
+            profileimageImg.image = UIImage(data: dataImage as Data)
+        }
+        else{
+            profileimageImg.image = UIImage(named: GlobalVariables.sharedManager.profileImageDefault)
+        }
         editBtn.title = NSLocalizedString("photoprofile-buttontop-edit", comment:"")
         titleProfilePhotoLabel.text = NSLocalizedString("photoprofile-title-home", comment:"")
-   
+    }
+    
+    
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25, width: 180, height: 50))
+        boxActivityView.backgroundColor = UIColor.white
+        boxActivityView.alpha = 0.8
+        boxActivityView.layer.cornerRadius = 10
+        
+        //Here the spinnier is initialized
+        
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.startAnimating()
+        
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.gray
+        textLabel.text = title
+        
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        
+        view.addSubview(boxActivityView)
+    }
+    
+    func activityActionStop() {
+        //When button is pressed it removes the boxView from screen
+        self.boxActivityView.removeFromSuperview()
+        self.activityView.stopAnimating()
     }
 
-    @IBAction func editPhotoAction(_ sender: Any) {
+    @IBAction func photoProfileAction(_ sender: Any) {
         showScrollOptions()
     }
     
+    
     func showScrollOptions() {
-        let sheet = UIAlertController(title: "Where to", message: "Where would you like to scroll to?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: NSLocalizedString("photoprofile-title-changephoto", comment:""), preferredStyle: .actionSheet)
         
+        alert.addAction(UIAlertAction(title: NSLocalizedString("photoprofile-buttontool-takephoto", comment:""), style: .default , handler:{ (UIAlertAction)in
+            self.activityActionStart(title:NSLocalizedString("photoprofile-activity-save", comment:""))
+            
+                DispatchQueue.main.async {
+                    self.takePhotoCam()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.activityActionStop()
+                }
+        }))
         
-        let deleteAction = UIAlertAction(title: NSLocalizedString("photoprofile-buttontool-deletephoto", comment:""), style: UIAlertActionStyle.cancel, handler:{ (alert: UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        });
+        alert.addAction(UIAlertAction(title: NSLocalizedString("photoprofile-buttontool-choosephoto", comment:""), style: .default , handler:{ (UIAlertAction)in
+            self.activityActionStart(title:NSLocalizedString("setting-activity-load", comment:""))
+
+            DispatchQueue.main.async {
+                   self.photoFromLibrary()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.activityActionStop()
+            }
+            
+        }))
         
-        let takeAction = UIAlertAction(title: NSLocalizedString("photoprofile-buttontool-takephoto", comment:""), style: UIAlertActionStyle.cancel, handler:{ (alert: UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        });
+        alert.addAction(UIAlertAction(title: NSLocalizedString("photoprofile-buttontool-deletephoto", comment:""), style: .destructive , handler:{ (UIAlertAction)in
+            DispatchQueue.main.async {
+                self.photoDeleteLibrary()
+                
+            }
+        }))
         
-        let chooseAction = UIAlertAction(title: NSLocalizedString("photoprofile-buttontool-choosephoto", comment:""), style: UIAlertActionStyle.cancel, handler:{ (alert: UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        });
+        alert.addAction(UIAlertAction(title: NSLocalizedString("photoprofile-buttontool-cancelphoto", comment:""), style: .cancel , handler:{ (UIAlertAction)in
+           
+        }))
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("photoprofile-buttontool-cancelphoto", comment:""), style: UIAlertActionStyle.cancel, handler:{ (alert: UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        });
-        
-      
-        sheet.addAction(deleteAction)
-        sheet.addAction(takeAction)
-        sheet.addAction(chooseAction)
-        sheet.addAction(cancelAction)
-        
-        self.present(sheet, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
     }
+    
+    func takePhotoCam() {
+        let cameraMediaType = AVMediaTypeVideo
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: cameraMediaType)
+        switch cameraAuthorizationStatus {
+            
+        case .authorized:
+            print(" AVAuthorizationStatus ACCEPT ")
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.sourceType = .camera
+            self.imagePicker.cameraCaptureMode = .photo
+            self.imagePicker.cameraCaptureMode = .video
+            self.imagePicker.modalPresentationStyle = .fullScreen
+            self.present(self.imagePicker,animated: true,completion: nil)
+            break
+            
+        case .notDetermined:
+             print(" AVAuthorizationStatus notDetermined ")
+             AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) { granted in
+                if granted {
+                    print("Granted access to \(cameraMediaType)")
+                    self.imagePicker.allowsEditing = false
+                    self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+                    self.imagePicker.cameraCaptureMode = .photo
+                    self.imagePicker.modalPresentationStyle = .fullScreen
+                    self.present(self.imagePicker,animated: true,completion: nil)
+                } else {
+                    print("Denied access to \(cameraMediaType)")
+                    self.noCamera()
+                }
+             }
+            break
+        case .restricted:
+            print(" AVAuthorizationStatus restricted ")
+            break
+            
+        case .denied:
+            print(" AVAuthorizationStatus denied ")
+            break
+        }
+    }
+    
+    func saveImageToDocuments(image: UIImage){
+        let profileImage = "imageProfile_"+GlobalVariables.sharedManager.username
+        GlobalVariables.sharedManager.profileImage = profileImage
+        let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+        UserDefaults.standard.set(imageData, forKey:profileImage)
+    }
+    
+    func photoDeleteLibrary() {
+        let idForUserDefaults = GlobalVariables.sharedManager.profileImage
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: idForUserDefaults)
+        //userDefaults.synchronize()
+        self.profileimageImg.image = UIImage(named: GlobalVariables.sharedManager.profileImageDefault)
+
+    }
+    
+
+    
+    func photoFromLibrary() {
+        self.imagePicker.allowsEditing = false
+        self.imagePicker.sourceType = .photoLibrary
+        self.imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        self.present(self.imagePicker, animated: true, completion: nil)
+    }
+    
+    func noCamera(){
+        let alertVC = UIAlertController(
+            title: "No Camera",
+            message: "Sorry, this device has no camera",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style:.default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        present(
+            alertVC,
+            animated: true,
+            completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let setupPhotoProfile = segue.destination as? ManagerProfileUserViewController
+        setupPhotoProfile!.accountModel = accountModel
+    }
+    
+    //MARK: - Done image capture here
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        profileimageImg.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        saveImageToDocuments(image: profileimageImg.image!)
+    }
+    
+    
+    @IBAction func goBackManagerProfile(_ sender: Any) {
+        self.performSegue(withIdentifier:URLConstants.ACCOUNT.photoUserViewToManagerProfileView, sender: nil)
+    }
+    
+    
+    
+
 }
