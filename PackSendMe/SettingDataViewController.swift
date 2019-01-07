@@ -12,19 +12,25 @@ class SettingDataViewController: UIViewController {
     
     @IBOutlet weak var settingTitleLabel: UILabel!
     @IBOutlet weak var settingTable: UITableView!
-    
+    let loadingView = UIView()
     var accountHelper = AccountHelper()
     var accountModel = AccountModel()
     var itens : [[String]] = []
     var jsonAccountFinal : [String: Any]? = nil
     var boxActivityView = UIView()
-    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
+    /// Spinner shown during load the TableView
+    let activityIndicator = UIActivityIndicatorView()
+     let loadingLabel = UILabel()
     
     override func viewDidLoad() {
-       
-        activityActionStart()
+       //self.activityIndicator.startAnimating()
+        //activityActionStart()
+     //   loadingScreen()
+        //activityActionStart()
         settingTitleLabel.text = NSLocalizedString("setting-title-home", comment:"")
         loadAccount()
+        
         settingTable.rowHeight = UITableViewAutomaticDimension
         settingTable.isScrollEnabled = true
         settingTable.translatesAutoresizingMaskIntoConstraints = false
@@ -33,40 +39,51 @@ class SettingDataViewController: UIViewController {
         settingTable.dataSource = self
          super.viewDidLoad()
      }
-    
-    func startAnimating(title : String)
-    {
-        self.activityView.startAnimating()
-       // UIApplication.shared.beginIgnoringInteractionEvents()
-    }
-    
 
-    
-    func activityActionStart() {
-        // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25, width: 180, height: 50))
-
-        boxActivityView.backgroundColor = UIColor.white
-        boxActivityView.alpha = 0.8
-        boxActivityView.layer.cornerRadius = 10
-        
-        //Here the spinnier is initialized
-        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        activityView.startAnimating()
-        
-        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 250, height: 150))
-        textLabel.textColor = UIColor.black
-        textLabel.text = "Load Data User"
-        
-        boxActivityView.addSubview(activityView)
-        boxActivityView.addSubview(textLabel)
-        view.addSubview(boxActivityView)
-    }
     
     func activityActionStop() {
         //When button is pressed it removes the boxView from screen
-        self.boxActivityView.removeFromSuperview()
-        self.activityView.stopAnimating()
+        self.loadingView.removeFromSuperview()
+       // self.activityView.stopAnimating()
+    }
+    
+   
+    // Set the activity indicator into the main view
+    private func loadingScreen() {
+        
+        // Sets the view which contains the loading text and the spinner
+       
+        let width: CGFloat = 120
+        let height: CGFloat = 30
+        let x = (settingTable.frame.width / 2) - (width / 2)
+        let y = (settingTable.frame.height / 2) - (height / 2)
+        loadingView.frame = CGRect(x: x, y: y, width: width, height: height)
+        
+        // Sets loading text
+        loadingLabel.textColor = .gray
+        loadingLabel.textAlignment = .center
+        loadingLabel.text = "Loading..."
+        loadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
+        
+        // Sets spinner
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        activityIndicator.startAnimating()
+        
+        // Adds text and spinner to the view
+        loadingView.addSubview(activityIndicator)
+        loadingView.addSubview(loadingLabel)
+        
+        settingTable.addSubview(loadingView)
+        
+    }
+    
+    // Remove the activity indicator from the main view
+    private func removeLoadingScreen() {
+        
+        // Hides and stops the text and the spinner
+        activityIndicator.isHidden = true
+        loadingLabel.isHidden = true
     }
 
     
@@ -86,14 +103,18 @@ class SettingDataViewController: UIViewController {
                         let jsonAccount = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
                         if(jsonAccount != nil){
                             self.jsonAccountFinal = jsonAccount!["body"] as! [String:Any]
+                            
                             //jsonAccountFinal = parseHTTPDataToAccountModel(json:jsonResponse!)
                             
-                            
-                            self.startAnimating(title:NSLocalizedString("photoprofile-activity-load", comment:""))
-                            
+                            //self.activityActionStart()
+                            //self.startAnimating(title:NSLocalizedString("photoprofile-activity-load", comment:""))
                             self.refreshTable()
-                            self.accountModel = self.accountHelper.transformArrayToAccountModel(account: jsonAccount!)
+                        //    self.removeLoadingScreen()
+                            
                             self.activityActionStop()
+                            //self.activityIndicator.stopAnimating()
+                            self.accountModel = self.accountHelper.transformArrayToAccountModel(account: jsonAccount!)
+                            
                             
                         }
                     }
@@ -154,7 +175,7 @@ class SettingDataViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.destination is ManagerProfileUserViewController
+        if segue.destination is SettingProfileUserViewController
         {
             let setupAccessUser = segue.destination as? SettingProfileUserViewController
             setupAccessUser?.accountModel = accountModel
@@ -227,7 +248,7 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
             if(indexPath.row == 1){
                 var imageAddressView : UIImageView
                 imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
-                imageAddressView.image = UIImage(named: "icon-house.png")
+                imageAddressView.image = UIImage(named: "icon-user-house.png")
                 cell.titleCellLabel.text = NSLocalizedString("setting-title-addresshome", comment:"")
                 cell.creditcardImage.isHidden = true
                 cell.cellImage.image = imageAddressView.image
@@ -277,7 +298,7 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
             if(indexPath.row == 2){
                 var imageAddressView : UIImageView
                 imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
-                imageAddressView.image = UIImage(named: "icon-work.png")
+                imageAddressView.image = UIImage(named: "icon-user-work.png")
                 cell.titleCellLabel.text = NSLocalizedString("setting-title-addresswork", comment:"")
                 cell.creditcardImage.isHidden = true
                 cell.cellImage.image = imageAddressView.image
@@ -327,7 +348,7 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
             // PAYMENT ACCOUNT MASTER
             if(indexPath.row == 3){
                 cell.titleCellLabel.text = NSLocalizedString("setting-title-paymentmaster", comment:"")
-                cell.cellImage.image = UIImage(named: "icon-card.png")
+                cell.cellImage.image = UIImage(named: "icon-user-card.png")
                 let paymentArray = jsonAccountFinal!["payment"] as? [[String:Any]]
                 cell.creditcardImage.isHidden = false
 
@@ -338,15 +359,15 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
                             let cardType = payment["cardType"] as? String
                             switch cardType {
                                 case "Visa":
-                                    cell.creditcardImage.image = UIImage(named: "icon-visa.png")
+                                    cell.creditcardImage.image = UIImage(named: "icon-card-visa.png")
                                 case "Mastercard":
-                                    cell.creditcardImage.image = UIImage(named: "icon-mastercard.png")
+                                    cell.creditcardImage.image = UIImage(named: "icon-card-master.png")
                                 case "Discovercard":
-                                    cell.creditcardImage.image = UIImage(named: "icon-discovercard.png")
+                                    cell.creditcardImage.image = UIImage(named: "icon-card-discover.png")
                                 case "Dinerscard":
-                                    cell.creditcardImage.image = UIImage(named: "icon-dinerscard.png")
+                                    cell.creditcardImage.image = UIImage(named: "icon-card-diners.png")
                                 case "Americancard":
-                                    cell.creditcardImage.image = UIImage(named: "icon-americancard.png")
+                                    cell.creditcardImage.image = UIImage(named: "icon-card-american.png")
                                 default:
                                     print("F. You failed")//Any number less than 0 or greater than 99
                             }
@@ -382,7 +403,7 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
             // PAYMENT ACCOUNT OPTIONAL
             if(indexPath.row == 4){
                 cell.titleCellLabel.text = NSLocalizedString("setting-title-paymentoptional", comment:"")
-                cell.cellImage.image = UIImage(named: "icon-card.png")
+                cell.cellImage.image = UIImage(named: "icon-user-card.png")
                 let paymentArray = jsonAccountFinal!["payment"] as? [[String:Any]]
                 cell.creditcardImage.isHidden = false
                 
@@ -394,15 +415,15 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
                             let cardType = payment["cardType"] as? String
                             switch cardType {
                             case "Visa":
-                                cell.creditcardImage.image = UIImage(named: "icon-visa.png")
+                                cell.creditcardImage.image = UIImage(named: "icon-card-visa.png")
                             case "Mastercard":
-                                cell.creditcardImage.image = UIImage(named: "icon-mastercard.png")
+                                cell.creditcardImage.image = UIImage(named: "icon-card-master.png")
                             case "Discovercard":
-                                cell.creditcardImage.image = UIImage(named: "icon-discovercard.png")
+                                cell.creditcardImage.image = UIImage(named: "icon-card-discover.png")
                             case "Dinerscard":
-                                cell.creditcardImage.image = UIImage(named: "icon-dinerscard.png")
+                                cell.creditcardImage.image = UIImage(named: "icon-card-diners.png")
                             case "Americancard":
-                                cell.creditcardImage.image = UIImage(named: "icon-americancard.png")
+                                cell.creditcardImage.image = UIImage(named: "icon-card-american.png")
                             default:
                                 print("F. You failed")//Any number less than 0 or greater than 99
                             }

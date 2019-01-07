@@ -22,11 +22,11 @@
                                 <rect key="frame" x="13" y="121" width="349" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-down-24" translatesAutoresizingMaskIntoConstraints="NO" id="W48-zj-RMU">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-btn-down" translatesAutoresizingMaskIntoConstraints="NO" id="W48-zj-RMU">
                                         <rect key="frame" x="62" y="78" width="18" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="ziN-qv-NOZ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="ziN-qv-NOZ">
                                         <rect key="frame" x="8" y="100" width="341" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -66,7 +66,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOj-9G-waC">
                                 <rect key="frame" x="0.0" y="20" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="iconBack"/>
+                                <state key="normal" title="Button" image="icon-tool-back"/>
                                 <connections>
                                     <segue destination="Do7-Jh-EsA" kind="popoverPresentation" popoverAnchorView="TOj-9G-waC" id="Umo-df-Z09">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -76,7 +76,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="275" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isc-cT-6Y6">
                                 <rect key="frame" x="292" y="298" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
-                                <state key="normal" title="Button" image="iconNext"/>
+                                <state key="normal" title="Button" image="icon-btn-next"/>
                                 <connections>
                                     <action selector="validateFirstUserAccess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Bw-57-1xV"/>
                                 </connections>
@@ -150,7 +150,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="ReS-Hf-y8V">
+                            <imageView userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="ReS-Hf-y8V">
                                 <rect key="frame" x="18" y="607" width="339" height="7"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -178,29 +178,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HQD-JW-6gj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfj-WC-gEr">
-                                        <rect key="frame" x="8" y="8" width="35" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqy-aU-mFg">
+                                        <rect key="frame" x="72" y="25" width="295" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="iconClose-40"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfj-WC-gEr">
+                                        <rect key="frame" x="8" y="19" width="35" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="icon-tool-close"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="u77-sq-t3T"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqy-aU-mFg">
-                                        <rect key="frame" x="28" y="46" width="339" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for a country" translatesAutoresizingMaskIntoConstraints="NO" id="QSV-tU-rBI">
-                                <rect key="frame" x="0.0" y="87" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="79" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -208,7 +208,7 @@
                                 </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-Ru-V5d">
-                                <rect key="frame" x="0.0" y="142" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="135" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlK-Hz-k5G">
@@ -221,28 +221,23 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vj8-bW-Gdw">
-                                <rect key="frame" x="0.0" y="234" width="375" height="34"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="countryselectLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ1-dZ-Vuc">
-                                <rect key="frame" x="64" y="200" width="248" height="19"/>
+                                <rect key="frame" x="64" y="201" width="248" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxE-v4-ksJ">
-                                <rect key="frame" x="16" y="189" width="40" height="40"/>
+                                <rect key="frame" x="16" y="190" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconsCheck-40" translatesAutoresizingMaskIntoConstraints="NO" id="2zR-RR-WQY">
-                                <rect key="frame" x="320" y="193" width="35" height="35"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-btn-check" translatesAutoresizingMaskIntoConstraints="NO" id="2zR-RR-WQY">
+                                <rect key="frame" x="320" y="194" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="43" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g9L-8A-eJp">
-                                <rect key="frame" x="0.0" y="266" width="375" height="401"/>
+                                <rect key="frame" x="0.0" y="255" width="375" height="412"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -277,6 +272,11 @@
                                     <outlet property="delegate" destination="sLP-jZ-wCk" id="13U-9R-ErK"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vj8-bW-Gdw">
+                                <rect key="frame" x="0.0" y="238" width="375" height="22"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ngn-qf-fQQ"/>
@@ -292,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CwJ-Af-F0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-793" y="893"/>
+            <point key="canvasLocation" x="-794.39999999999998" y="892.80359820089961"/>
         </scene>
         <!--CheckSMS Code View Controller-->
         <scene sceneID="QLl-MP-5GW">
@@ -337,19 +337,19 @@
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" textContentType="tel"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="Zs0-dT-5cP">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="Zs0-dT-5cP">
                                         <rect key="frame" x="43" y="73" width="40" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="R8d-pk-iag">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="R8d-pk-iag">
                                         <rect key="frame" x="111" y="73" width="40" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="dZL-l2-VMm">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="dZL-l2-VMm">
                                         <rect key="frame" x="181" y="73" width="40" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="8XV-pN-RcR">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="8XV-pN-RcR">
                                         <rect key="frame" x="249" y="73" width="40" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -366,7 +366,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4t-eb-qIW">
                                 <rect key="frame" x="290" y="310" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="iconNext"/>
+                                <state key="normal" image="icon-btn-next"/>
                                 <connections>
                                     <action selector="validateSMSCodeFirstUserAccess:" destination="5tg-1r-Syo" eventType="touchUpInside" id="pM6-gn-UlE"/>
                                 </connections>
@@ -412,7 +412,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-95-AXP">
                                 <rect key="frame" x="0.0" y="20" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="iconBack"/>
+                                <state key="normal" image="icon-tool-back"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="popoverPresentation" popoverAnchorView="YYw-95-AXP" id="Ztd-v1-DkZ">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -434,7 +434,7 @@
                         <outlet property="nextBtn" destination="x4t-eb-qIW" id="ZQX-Pe-Wlg"/>
                         <outlet property="timerLabel" destination="K1D-3b-Fco" id="Vn6-pR-she"/>
                         <outlet property="titleCheckSMSLabel" destination="7fe-Nq-Rud" id="zQa-p0-W97"/>
-                        <segue destination="fIk-E9-Yxe" kind="show" identifier="EmailRegisterUI" id="fUt-1S-bhP"/>
+                        <segue destination="fIk-E9-Yxe" kind="show" identifier="EmailUI" id="fUt-1S-bhP"/>
                         <segue destination="bV8-cs-SqY" kind="show" identifier="SMSCodeNew" id="75x-kt-bEi"/>
                     </connections>
                 </viewController>
@@ -451,24 +451,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sut-gz-ga7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resend SMS Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXP-El-mdw">
-                                        <rect key="frame" x="22" y="48" width="339" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="23"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RF6-KN-WdM">
-                                        <rect key="frame" x="3" y="7" width="35" height="35"/>
+                                        <rect key="frame" x="9" y="18" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="iconClose-40"/>
+                                        <state key="normal" image="icon-tool-close"/>
                                         <connections>
                                             <action selector="closeGeneratorSMSCode:" destination="bV8-cs-SqY" eventType="touchUpInside" id="QJt-f2-diW"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resend SMS Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXP-El-mdw">
+                                        <rect key="frame" x="68" y="15" width="307" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                             </view>
@@ -476,7 +476,7 @@
                                 <rect key="frame" x="14" y="191" width="348" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="qlD-Du-Vng">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="qlD-Du-Vng">
                                         <rect key="frame" x="10" y="61" width="330" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -569,7 +569,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3E-ZB-F4i">
                                 <rect key="frame" x="0.0" y="20" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="iconBack"/>
+                                <state key="normal" image="icon-tool-back"/>
                                 <connections>
                                     <action selector="returnSMSNewValidate:" destination="fIk-E9-Yxe" eventType="touchUpInside" id="Jmo-6Y-aMv"/>
                                 </connections>
@@ -585,7 +585,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="186"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="Sfh-te-JO8">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="Sfh-te-JO8">
                                         <rect key="frame" x="18" y="127" width="341" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -616,7 +616,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3d-oG-NbF">
                                 <rect key="frame" x="290" y="310" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="iconNext"/>
+                                <state key="normal" image="icon-btn-next"/>
                                 <connections>
                                     <action selector="nextEmailBtn:" destination="fIk-E9-Yxe" eventType="touchUpInside" id="Gkp-Xf-dXt"/>
                                 </connections>
@@ -630,7 +630,7 @@
                         <outlet property="emailTitleLabel" destination="nSc-tg-9FW" id="tCE-DZ-OOh"/>
                         <outlet property="emailValidateErrorLabel" destination="Obw-75-OWn" id="6hm-Fm-XeW"/>
                         <outlet property="nextEmailBtn" destination="T3d-oG-NbF" id="bN4-X2-cHN"/>
-                        <segue destination="xM1-2Y-Rp8" kind="show" identifier="PasswordRegisterUI" id="cfp-Pv-7pV"/>
+                        <segue destination="xM1-2Y-Rp8" kind="show" identifier="PasswordUI" id="cfp-Pv-7pV"/>
                         <segue destination="5tg-1r-Syo" kind="showDetail" identifier="SMSCodeRegister" id="3mc-Pm-Pc1"/>
                     </connections>
                 </viewController>
@@ -649,7 +649,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2L-CJ-umK">
                                 <rect key="frame" x="0.0" y="20" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="iconBack"/>
+                                <state key="normal" title="Button" image="icon-tool-back"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="popoverPresentation" popoverAnchorView="Y2L-CJ-umK" id="cBa-ia-DTe">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -668,7 +668,7 @@
                                 <rect key="frame" x="16" y="185" width="349" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="4vD-i9-9bJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="4vD-i9-9bJ">
                                         <rect key="frame" x="8" y="36" width="341" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -692,7 +692,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="275" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVx-K4-SQW">
                                 <rect key="frame" x="295" y="298" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
-                                <state key="normal" title="Button" image="iconNext"/>
+                                <state key="normal" title="Button" image="icon-btn-next"/>
                                 <connections>
                                     <action selector="loginPackSendMe:" destination="DuS-k8-BcD" eventType="touchUpInside" id="na2-ZH-1fQ"/>
                                     <action selector="validateFirstUserAccess:" destination="cwD-oF-333" eventType="touchUpInside" id="iaT-Xk-21Q"/>
@@ -743,9 +743,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQT-pF-uJg">
                                 <rect key="frame" x="0.0" y="20" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="iconBack"/>
+                                <state key="normal" image="icon-tool-back"/>
                                 <connections>
-                                    <segue destination="fIk-E9-Yxe" kind="show" identifier="EmailRegisterUI" id="6ws-Sh-QWl"/>
+                                    <segue destination="fIk-E9-Yxe" kind="show" identifier="EmailUI" id="6ws-Sh-QWl"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rtE-gH-H7j">
@@ -759,7 +759,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="188"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="uQJ-ak-2Xg">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="uQJ-ak-2Xg">
                                         <rect key="frame" x="18" y="127" width="341" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -783,7 +783,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zd9-yR-3dC">
                                 <rect key="frame" x="290" y="310" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <state key="normal" image="iconNext"/>
+                                <state key="normal" image="icon-btn-next"/>
                                 <connections>
                                     <action selector="nextPasswordBtn:" destination="xM1-2Y-Rp8" eventType="touchUpInside" id="dhT-m5-8ZF"/>
                                 </connections>
@@ -796,7 +796,7 @@
                         <outlet property="nextPasswordBtn" destination="Zd9-yR-3dC" id="o8e-zP-CK3"/>
                         <outlet property="passwordTextField" destination="ccj-te-pRS" id="bj3-bh-BCK"/>
                         <outlet property="passwordTitleLabel" destination="JEq-Kf-l0U" id="K2Y-3s-BYB"/>
-                        <segue destination="6QV-qj-L0P" kind="show" identifier="NameRegisterUI" id="KTF-4C-U6b"/>
+                        <segue destination="6QV-qj-L0P" kind="show" identifier="NameUI" id="KTF-4C-U6b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8g-jv-Tfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -814,9 +814,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiF-v1-DGa">
                                 <rect key="frame" x="0.0" y="20" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="iconBack"/>
+                                <state key="normal" image="icon-tool-back"/>
                                 <connections>
-                                    <segue destination="xM1-2Y-Rp8" kind="show" identifier="PasswordRegisterUI" id="LyF-xb-Myi"/>
+                                    <segue destination="xM1-2Y-Rp8" kind="show" identifier="PasswordUI" id="LyF-xb-Myi"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hED-Xf-ysq">
@@ -829,7 +829,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvB-YH-f4l">
                                 <rect key="frame" x="290" y="310" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="iconNext"/>
+                                <state key="normal" image="icon-btn-next"/>
                                 <connections>
                                     <action selector="registerAccount:" destination="6QV-qj-L0P" eventType="touchUpInside" id="d3V-EJ-rkr"/>
                                 </connections>
@@ -838,7 +838,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="188"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="zNW-rZ-vL3">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="zNW-rZ-vL3">
                                         <rect key="frame" x="18" y="127" width="163" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -863,7 +863,7 @@
                                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="Tvt-qk-iAM">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="Tvt-qk-iAM">
                                         <rect key="frame" x="194" y="127" width="168" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -887,18 +887,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iconBack" width="90" height="90"/>
-        <image name="iconClose-40" width="40" height="40"/>
-        <image name="iconNext" width="80" height="80"/>
+        <image name="icon-btn-check" width="48" height="48"/>
+        <image name="icon-btn-down" width="24" height="24"/>
+        <image name="icon-btn-next" width="80" height="80"/>
+        <image name="icon-text-line" width="32" height="32"/>
+        <image name="icon-tool-back" width="60" height="60"/>
+        <image name="icon-tool-close" width="32" height="32"/>
         <image name="iconUSA" width="96" height="96"/>
         <image name="icons-down-24" width="24" height="24"/>
-        <image name="icons-line-32" width="32" height="32"/>
-        <image name="iconsCheck-40" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LyF-xb-Myi"/>
         <segue reference="6ws-Sh-QWl"/>
-        <segue reference="3mc-Pm-Pc1"/>
-        <segue reference="sgy-GS-g5N"/>
+        <segue reference="srw-H9-5xj"/>
+        <segue reference="2bw-VR-7Ct"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,9 +18,11 @@ struct URLConstants{
 
         static let smscode_register = "SMSCodeRegister"
         static let smscode_new = "SMSCodeNew"
-        static let email_register = "EmailRegisterUI"
-        static let password_register = "PasswordRegisterUI"
-        static let name_register = "NameRegisterUI"
+        static let emailUI = "EmailUI"
+        static let passwordUI = "PasswordUI"
+        static let nameUI = "NameUI"
+        static let photoUI = "PhotoUI"
+        static let usernameUI = "UsernameUI"
         static let country_identity = "countryIdentity"
         
         
@@ -58,8 +60,12 @@ struct URLConstants{
 
         static let settingViewToManagerAddressView = "SettingViewToManagerAddressView"
         static let settingViewToManagerPaymentView = "SettingViewToManagerPaymentView"
-
-
+        
+        // SettingProfileUser - ManagerProfile
+        static let settingProfileUserViewControllerToManagerProfileNameView = "SettingProfileUserViewControllerToManagerProfileName"
+        static let settingProfileUserViewControllerToManagerProfileEmailView = "SettingProfileUserViewControllerToManagerProfileEmailView"
+        static let settingProfileUserViewControllerToManagerProfilePasswordView = "SettingProfileUserViewControllerToManagerProfilePasswordView"
+        static let settingProfileUserViewControllerToManagerProfileUsernameView = "SettingProfileUserViewControllerToManagerProfileUsernameView"
     }
     
     struct HTTP_STATUS{

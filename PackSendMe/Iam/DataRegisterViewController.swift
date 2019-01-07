@@ -36,9 +36,9 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
 
    
     enum RegisterType:String {
-        case email = "EmailRegisterUI"
-        case password = "PasswordRegisterUI"
-        case name = "NameRegisterUI"
+        case email = "EmailUI"
+        case password = "PasswordUI"
+        case name = "NameUI"
     }
     
     override func viewDidLoad() {
@@ -62,13 +62,13 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
             emailValidateErrorLabel.isHidden = false
         }else{
             emailP = emailTextField.text!
-            self.performSegue(withIdentifier:URLConstants.IAM.password_register, sender: nil)
+            self.performSegue(withIdentifier:URLConstants.IAM.passwordUI, sender: nil)
         }
     }
     
     @IBAction func nextPasswordBtn(_ sender: Any) {
         passwordP = passwordTextField.text!
-        self.performSegue(withIdentifier:URLConstants.IAM.name_register, sender: nil)
+        self.performSegue(withIdentifier:URLConstants.IAM.nameUI, sender: nil)
     }
     
     
@@ -78,7 +78,7 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
         let dtNowS = utilityHelper.dateConvertToString()
         
         var paramsDictionary = [String:Any]()
-        paramsDictionary = accountHelper.transformObjectToArray(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastname:lastnameTextField.text!, address:[], dtAction:dtNowS)
+        paramsDictionary = accountHelper.transformObjectToArray(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastname:lastnameTextField.text!, address:[], dtCreation:dtNowS, dtChange:"")
         
         let account = URLConstants.ACCOUNT.account_http
         
@@ -107,7 +107,7 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == URLConstants.IAM.email_register) {
+        if (segue.identifier == URLConstants.IAM.emailUI) {
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
             something.emailP = emailP
@@ -116,7 +116,7 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
             something.nameLastP = nameLastP
             print("email_register")
 
-        } else if (segue.identifier == URLConstants.IAM.password_register) {
+        } else if (segue.identifier == URLConstants.IAM.passwordUI) {
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
             something.emailP = emailP //emailTextField.text!
@@ -125,7 +125,7 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
 
             print("password_register")
         }
-        else if (segue.identifier == URLConstants.IAM.name_register) {
+        else if (segue.identifier == URLConstants.IAM.nameUI) {
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
             print("password_register =\(passwordP)")

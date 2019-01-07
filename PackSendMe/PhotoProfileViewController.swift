@@ -209,7 +209,7 @@ class PhotoProfileViewController: UIViewController, UIImagePickerControllerDeleg
     
     
     @IBAction func goBackManagerProfile(_ sender: Any) {
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.photoUserViewToManagerProfileView, sender: nil)
+        self.performSegue(withIdentifier:URLConstants.ACCOUNT.photoUserViewToSettingProfileUserView, sender: nil)
     }
     
     

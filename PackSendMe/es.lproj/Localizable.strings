@@ -506,7 +506,7 @@
 "setting-title-addhome" = "Añadir Dirección Casa";
 "setting-title-addcard" = "Adicionar Tarjeta";
 
-/* SETTING - ManagerProfileUserViewController */
+/*  SettingProfileUserViewController */
 "profileuser-title-name" = "Nombre";
 "profileuser-title-lastname"  = "Apelido";
 "profileuser-title-email" = "Email";
@@ -514,28 +514,27 @@
 "profileuser-title-numberphone" = "Teléfono";
 
 
-/* MANAGE - FirstName  */
+/* ManagerProfileUserViewController - Name  */
 "editfirstname-label-title" = "Editar Nombre";
 "editfirstname-title-btn" = "ACTUALIZAR NOMBRE";
 "editfirstname-text-firstname" = "Nombre";
-
-/* MANAGE - LastName  */
-"editlastname-label-title" = "Editar Apelidos";
-"editlastname-title-btn" = "ACTUALIZAR APELIDOS";
 "editfirstname-text-lastname" = "Apelidos";
 
-/* MANAGE - EMail  */
+/* ManagerProfileUserViewController - EMail  */
 "editemail-label-title" = "Editar Correo Electrónico";
 "editemail-title-btn" = "ACTUALIZAR CORREO ELECTRÓNICO";
 "editfirstname-text-email" = "Correo Electrónico";
 
 
-/* MANAGE - Password  */
-"editpassword-label-title" = "Editar Contraseña";
+/* ManagerProfileUserViewController - Password  */
+"editpassword-label-title" = "Cambiar Contraseña";
 "editpassword-title-btn" = "ACTUALIZAR CONTRASEÑA";
 "editfirstname-text-password" = "Contraseña";
+"editpasswordcurrent-title-btn" = "COMPROBAR CONTRASEÑA";
+"editpasswordcurrent-text-password" = "Comprobar la Contraseña Actual";
+"editpasswordcurrent-text-detail" = "Para su seguridad, por favor informe su contraseña actual";
 
-/* MANAGE - PhoneNumber  */
+/* ManagerProfileUserViewController - PhoneNumber  */
 "editusername-label-title" = "Editar Número Teléfono";
 "editusername-title-btn" = "ACTUALIZAR TELÉFONO";
 "editfirstname-text-username" = "Teléfono";

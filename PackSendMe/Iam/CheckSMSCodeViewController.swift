@@ -150,17 +150,17 @@ class CheckSMSCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == URLConstants.IAM.email_register) {
+        if (segue.identifier == URLConstants.IAM.emailUI) {
             print("EMAIL")
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
             
-        } else if (segue.identifier == URLConstants.IAM.password_register) {
+        } else if (segue.identifier == URLConstants.IAM.passwordUI) {
             print("PasswordRegisterUI")
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
         }
-        else if (segue.identifier == URLConstants.IAM.name_register) {
+        else if (segue.identifier == URLConstants.IAM.nameUI) {
             print("NameRegisterUI")
             let something = segue.destination as! DataRegisterViewController
             something.metadadosView = segue.identifier!
@@ -185,7 +185,7 @@ class CheckSMSCodeViewController: UIViewController, UITextFieldDelegate {
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:URLConstants.IAM.email_register, sender: nil)
+                    self.performSegue(withIdentifier:URLConstants.IAM.emailUI, sender: nil)
                 }
             }
         }, failure: { (data, response, error) in

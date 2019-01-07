@@ -10,7 +10,7 @@ import UIKit
 
 class AccountHelper: NSObject {
     
-    func transformObjectToArray(username:String, email:String, password:String, name:String, lastname:String, address:[AddressModel], dtAction:String) -> Dictionary<String, Any> {
+    func transformObjectToArray(username:String, email:String, password:String, name:String, lastname:String, address:[AddressModel], dtCreation:String,dtChange:String) -> Dictionary<String, Any> {
         
         var paramsDictionary = [String:Any]()
         
@@ -20,7 +20,8 @@ class AccountHelper: NSObject {
         paramsDictionary["name"] = name
         paramsDictionary["lastname"] = lastname
         paramsDictionary["address"] = address
-        paramsDictionary["dtAction"] = dtAction
+        paramsDictionary["dateCreation"] = dtCreation
+        paramsDictionary["dateChange"] = dtChange
         return paramsDictionary
     }
     

@@ -19,6 +19,7 @@
 		817D065E217A080E007B22EB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D065D217A080E007B22EB /* UserModel.swift */; };
 		817D0661217D2D0C007B22EB /* CheckSMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D0660217D2D0C007B22EB /* CheckSMSCodeViewController.swift */; };
 		817D066A2181213A007B22EB /* HttpResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D06692181213A007B22EB /* HttpResponseModel.swift */; };
+		817F532821E34D410066F9C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817F532721E34D400066F9C5 /* Assets.xcassets */; };
 		8184D8E6214C20AF00FF0E08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8184D8E5214C20AF00FF0E08 /* AppDelegate.swift */; };
 		8184D8E8214C20AF00FF0E08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8184D8E7214C20AF00FF0E08 /* ViewController.swift */; };
 		8184D8EB214C20AF00FF0E08 /* IAM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8184D8E9214C20AF00FF0E08 /* IAM.storyboard */; };
@@ -47,7 +48,6 @@
 		81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */; };
 		81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */; };
 		81FD189321C00FB000A00082 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FD189221C00FB000A00082 /* UserHelper.swift */; };
-		81FD189521C2BEC200A00082 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81FD189421C2BEC100A00082 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +64,7 @@
 		817D065D217A080E007B22EB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = PackSendMe/Model/UserModel.swift; sourceTree = SOURCE_ROOT; };
 		817D0660217D2D0C007B22EB /* CheckSMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSMSCodeViewController.swift; sourceTree = "<group>"; };
 		817D06692181213A007B22EB /* HttpResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HttpResponseModel.swift; path = PackSendMe/Model/HttpResponseModel.swift; sourceTree = SOURCE_ROOT; };
+		817F532721E34D400066F9C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8184D8E2214C20AF00FF0E08 /* PackSendMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PackSendMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8184D8E5214C20AF00FF0E08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8184D8E7214C20AF00FF0E08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 		81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileUserViewCell.swift; path = PackSendMe/Iam/manager/ProfileUserViewCell.swift; sourceTree = SOURCE_ROOT; };
 		81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileViewController.swift; sourceTree = "<group>"; };
 		81FD189221C00FB000A00082 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
-		81FD189421C2BEC100A00082 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../.Trashes/501/Assets.xcassets; sourceTree = "<group>"; };
 		B51E64FBDAC0B88AB4325285 /* Pods-PackSendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,7 +221,7 @@
 		8184D8E4214C20AF00FF0E08 /* PackSendMe */ = {
 			isa = PBXGroup;
 			children = (
-				81FD189421C2BEC100A00082 /* Assets.xcassets */,
+				817F532721E34D400066F9C5 /* Assets.xcassets */,
 				819CC0E521600735004AD1CA /* BusinessObject */,
 				812EB67A21595FE200DE540A /* Helper */,
 				813B3B582155739A00A86B20 /* Storyboard */,
@@ -347,7 +347,7 @@
 				8184D8F0214C20AF00FF0E08 /* LaunchScreen.storyboard in Resources */,
 				81F3ECE0219C79A1000F4D8C /* ACCOUNT.storyboard in Resources */,
 				8184D8FF214D0F4300FF0E08 /* Localizable.strings in Resources */,
-				81FD189521C2BEC200A00082 /* Assets.xcassets in Resources */,
+				817F532821E34D410066F9C5 /* Assets.xcassets in Resources */,
 				8184D8EB214C20AF00FF0E08 /* IAM.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

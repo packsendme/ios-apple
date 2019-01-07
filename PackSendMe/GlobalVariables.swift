@@ -22,7 +22,7 @@ class GlobalVariables {
     public var activationKey: String = ""
     public var status: String = ""
     public var profileImage: String = ""
-    public var profileImageDefault: String = "icon-user"
+    public var profileImageDefault: String = "icon-user-photo"
     
     class var sharedManager: GlobalVariables {
         struct Static {
