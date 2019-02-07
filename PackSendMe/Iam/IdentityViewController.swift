@@ -46,10 +46,7 @@ class IdentityViewController: UIViewController, UITextFieldDelegate{
         let usernameP = usernamecodeLabel.text!+usernameTexField.text!
         let url = URLConstants.IAM.iamIdentity_http
         
-        print (" URL NOW = \(url)")
-        
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
-           //print (" URL statusCode = \(response?.statusCode)")
             if let data = data {
                 do{
                     GlobalVariables.sharedManager.username = usernameP

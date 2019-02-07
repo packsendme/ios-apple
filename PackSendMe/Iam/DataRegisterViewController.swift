@@ -75,13 +75,12 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
     @IBAction func registerAccount(_ sender: Any) {
         let accountHelper = AccountHelper()
         let utilityHelper = UtilityHelper()
-        let dtNowS = utilityHelper.dateConvertToString()
+        let dateCreationS = utilityHelper.dateConvertToString()
         
         var paramsDictionary = [String:Any]()
-        paramsDictionary = accountHelper.transformObjectToArray(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastname:lastnameTextField.text!, address:[], dtCreation:dtNowS, dtChange:"")
+        paramsDictionary = accountHelper.transformObjectToArray(id:"",username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastName:lastnameTextField.text!, addressArray:[],dateCreation:dateCreationS, dateUpdate:dateCreationS)
         
         let account = URLConstants.ACCOUNT.account_http
-        
         HttpClientApi.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .POST, success: { (data, response, error) in
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.ACCEPT{
@@ -151,7 +150,7 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         emailValidateErrorLabel.text = NSLocalizedString("main-msg-email", comment:"")
         emailValidateErrorLabel.isHidden = true
-        var emailNameHolder : String = NSLocalizedString("main-text-email", comment:"")
+        let emailNameHolder : String = NSLocalizedString("main-text-email", comment:"")
         emailTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : emailNameHolder)
         emailTextField.text = emailP
 
@@ -204,56 +203,56 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidChange(textField: UITextField){
         let text = textField.text
-            switch textField{
+        switch textField{
                 
             case nameTextField:
-                if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (lastnameTextField.text?.count)! >= 3{
+            if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (lastnameTextField.text?.count)! >= 3{
                     nextNameBtn.isEnabled = true
                     nameFirstP = nameTextField.text!
-                }
-                else if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13  {
-                    nameFirstP = nameTextField.text!
-                }
-                else  if (text?.utf16.count)! < 3 {
-                    nextNameBtn.isEnabled = false
-                    nameFirstP = nameTextField.text!
-                }
-                else if (text?.utf16.count)! >= 14  {
-                    nameTextField.deleteBackward()
-                }
+            }
+            else if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13  {
+                nameFirstP = nameTextField.text!
+            }
+            else  if (text?.utf16.count)! < 3 {
+                nextNameBtn.isEnabled = false
+                nameFirstP = nameTextField.text!
+            }
+            else if (text?.utf16.count)! >= 14  {
+                nameTextField.deleteBackward()
+            }
                 
            case lastnameTextField:
-                if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (nameTextField.text?.count)! >= 3{
-                    nextNameBtn.isEnabled = true
-                    nameLastP = lastnameTextField.text!
-                }
-                else if (text?.utf16.count)! >= 14  {
-                    lastnameTextField.deleteBackward()
-                }
-                else  if (text?.utf16.count)! < 3 {
-                    nextNameBtn.isEnabled = false
-                    nameLastP = lastnameTextField.text!
-                }
-            case passwordTextField:
-                if (text?.utf16.count)! >= 6{
-                   nextPasswordBtn.isEnabled = true
-                }
-                else{
-                   nextPasswordBtn.isEnabled = false
-                }
-            case emailTextField:
-                if (text?.utf16.count)! >= 10 && (text?.utf16.count)! <= 254  {
-                   nextEmailBtn.isEnabled = true
-                }
-                else if (text?.utf16.count)! >= 254  {
-                    emailTextField.deleteBackward()
-                }
-                if (text?.utf16.count)! < 10 {
-                    nextEmailBtn.isEnabled = false
-                }
-            default:
-                break
+            if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (nameTextField.text?.count)! >= 3{
+                nextNameBtn.isEnabled = true
+                nameLastP = lastnameTextField.text!
             }
+            else if (text?.utf16.count)! >= 14  {
+                lastnameTextField.deleteBackward()
+            }
+            else  if (text?.utf16.count)! < 3 {
+                nextNameBtn.isEnabled = false
+                nameLastP = lastnameTextField.text!
+            }
+            case passwordTextField:
+            if (text?.utf16.count)! >= 6{
+                nextPasswordBtn.isEnabled = true
+            }
+            else{
+                nextPasswordBtn.isEnabled = false
+            }
+            case emailTextField:
+            if (text?.utf16.count)! >= 10 && (text?.utf16.count)! <= 254  {
+                nextEmailBtn.isEnabled = true
+            }
+            else if (text?.utf16.count)! >= 254  {
+                emailTextField.deleteBackward()
+            }
+            if (text?.utf16.count)! < 10 {
+                nextEmailBtn.isEnabled = false
+            }
+            default:
+            break
+        }
     }
     
     func isValidEmail(testStr:String) -> Bool {

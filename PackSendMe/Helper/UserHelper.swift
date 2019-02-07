@@ -10,14 +10,18 @@ import UIKit
 
 class UserHelper: NSObject {
 
-    func userTransformObject(username:String, password:String) -> Dictionary<String, Any> {
-        
+    func transformObjectToArray(username:String, password:String, dtAction:String) -> Dictionary<String, Any> {
         var paramsDictionary = [String:Any]()
-        
         paramsDictionary["username"] = username
         paramsDictionary["password"] = password
+        paramsDictionary["dtAction"] = dtAction
         return paramsDictionary
     }
-    
-    
+ 
+    func transformArrayToUserModel(user:[String:Any]) -> UserModel {
+        let userArray = user["body"] as! [String:Any]
+        let user = UserModel(json: userArray)
+        return user
+    }
+
 }

@@ -25,6 +25,8 @@
 		8184D8EB214C20AF00FF0E08 /* IAM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8184D8E9214C20AF00FF0E08 /* IAM.storyboard */; };
 		8184D8F0214C20AF00FF0E08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8184D8EE214C20AF00FF0E08 /* LaunchScreen.storyboard */; };
 		8184D8FF214D0F4300FF0E08 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8184D901214D0F4300FF0E08 /* Localizable.strings */; };
+		8193755F21FF7B96002E4923 /* CountryAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193755E21FF7B96002E4923 /* CountryAccountViewController.swift */; };
+		8193756221FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193756121FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift */; };
 		819CC0E2215D5F50004AD1CA /* CountryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */; };
 		819CC0E4215D62C7004AD1CA /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0E3215D62C7004AD1CA /* CountryViewController.swift */; };
 		819CC0E9216E614D004AD1CA /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0E8216E614D004AD1CA /* CountryModel.swift */; };
@@ -79,6 +81,8 @@
 		8184D900214D0F4300FF0E08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8184D902214D0F4900FF0E08 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8184D903214D0F4A00FF0E08 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8193755E21FF7B96002E4923 /* CountryAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAccountViewController.swift; sourceTree = "<group>"; };
+		8193756121FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSMSCodeAccountViewController.swift; sourceTree = "<group>"; };
 		819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryViewCell.swift; path = PackSendMe/Helper/CountryViewCell.swift; sourceTree = SOURCE_ROOT; };
 		819CC0E3215D62C7004AD1CA /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		819CC0E8216E614D004AD1CA /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryModel.swift; path = PackSendMe/Model/CountryModel.swift; sourceTree = SOURCE_ROOT; };
@@ -258,6 +262,8 @@
 				811F820F21B82FE2000238E9 /* MenuSegue.swift */,
 				811F821B21BEB212000238E9 /* SettingDataViewController.swift */,
 				81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */,
+				8193755E21FF7B96002E4923 /* CountryAccountViewController.swift */,
+				8193756121FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -428,9 +434,11 @@
 				819CC0E2215D5F50004AD1CA /* CountryViewCell.swift in Sources */,
 				81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */,
 				811F821021B82FE2000238E9 /* MenuSegue.swift in Sources */,
+				8193756221FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift in Sources */,
 				81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */,
 				81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */,
 				81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */,
+				8193755F21FF7B96002E4923 /* CountryAccountViewController.swift in Sources */,
 				817D065E217A080E007B22EB /* UserModel.swift in Sources */,
 				811F820A21B473E1000238E9 /* MenuViewController.swift in Sources */,
 			);

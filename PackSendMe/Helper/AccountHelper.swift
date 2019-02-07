@@ -10,20 +10,82 @@ import UIKit
 
 class AccountHelper: NSObject {
     
-    func transformObjectToArray(username:String, email:String, password:String, name:String, lastname:String, address:[AddressModel], dtCreation:String,dtChange:String) -> Dictionary<String, Any> {
+    func transformObjectToArray(id:String, username:String, email:String, password:String, name:String, lastName:String, addressArray:[AddressModel], dateCreation:String,dateUpdate:String) -> Dictionary<String, Any> {
         
         var paramsDictionary = [String:Any]()
+        var dicAddress = [String:Any]()
+        var addressCollection = [Any]()
         
+        paramsDictionary["id"] = id
         paramsDictionary["username"] = username
         paramsDictionary["email"] = email
         paramsDictionary["password"] = password
         paramsDictionary["name"] = name
-        paramsDictionary["lastname"] = lastname
-        paramsDictionary["address"] = address
-        paramsDictionary["dateCreation"] = dtCreation
-        paramsDictionary["dateChange"] = dtChange
+        paramsDictionary["lastName"] = lastName
+        paramsDictionary["dateCreation"] = dateCreation
+       // paramsDictionary["payment"] = []
+        paramsDictionary["dateUpdate"] = dateUpdate
+        
+        print(" +++++++++++++++++++++++++++++++++++++++ ")
+       
+        if(addressArray != nil){
+            for address in addressArray {
+                
+                dicAddress["id"] = address.id
+                print(" id =\(address.id)")
+                dicAddress["address"] = address.address
+                dicAddress["city"] = address.city
+                dicAddress["composite"] = address.composite
+                dicAddress["country"] = address.country
+                dicAddress["latitude"] = address.latitude
+                dicAddress["longitude"] = address.longitude
+                dicAddress["number"] = address.number
+                dicAddress["postalcode"] = address.postalcode
+                dicAddress["stateorprovince"] = address.stateorprovince
+                dicAddress["type"] = address.type
+                addressCollection.append(dicAddress)
+            }
+        }
+        paramsDictionary["address"] = addressCollection
+
+          // print(" +++++++++++++++++++++++++++++++++++++++ \(dicAddress)")
+         //paramsDictionary["address"] = []
+                
+                /*
+                if let address = address[a] as? String {
+                    dicAddress["dicAddress"] = address
+                }
+                if let number = address["number"] as? String {
+                   
+                }
+                if let stateorprovince = address["stateorprovince"] as? String {
+                   
+                }
+                if let postalcode = address["postalcode"] as? String {
+                    
+                }
+                if let city = address["city"] as? String {
+                    
+                }
+                if let country = address["country"] as? String {
+                    
+                }
+                if let type = address["type"] as? String {
+                    
+                }
+                if let composite = address["composite"] as? String {
+                    
+                }
+                if let latitude = address["latitude"] as? String {
+                    
+                }
+                if let longitude = address["longitude"] as? String {
+                    
+                } */
+
         return paramsDictionary
     }
+  
     
     func transformArrayToAccountModel(account:[String:Any]) -> AccountModel {
         let accountArray = account["body"] as! [String:Any]
@@ -38,6 +100,11 @@ class AccountHelper: NSObject {
 
         if(addressArray != nil){
             for address in addressArray! {
+                
+                if let id = address["id"] as? String {
+                    print(" ID ID ID ID =\(id)")
+                    addressObj.id = id
+                }
                 if let address = address["address"] as? String {
                     addressObj.address = address
                 }

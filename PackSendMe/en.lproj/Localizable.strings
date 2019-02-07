@@ -12,7 +12,8 @@
 
 /* SCREEN - COUNTRY */
 
-"country-label-title" = "Select country of registration";
+"country-label-title" = "Select Country";
+"countryAccount-label-title" = "Change Phone Code";
 "country-label-searchcontry" = "Search for a country";
 "country-label-currentcountry" = "Current location";
 "country-label-selectcontry" = "United States";
@@ -511,25 +512,37 @@
 "editfirstname-title-btn" = "UPDATE NAME";
 "editfirstname-text-firstname" = "First Name";
 "editlastname-text-lastname" = "Last Name";
+"editfirstname-label-firstnamevalidate" = "First Name invalid";
+"editlastname-label-lastnamevalidate" = "Last Name invalid";
+
 
 /* ManagerProfileUserViewController - EMail  */
 "editemail-label-title" = "Edit E-Mail";
 "editemail-title-btn" = "UPDATE E-MAIL";
 "editemail-text-email" = "E-Mail";
+"editemail-label-emailvalidate" = "E-mail invalid";
+
 
 /* ManagerProfileUserViewController - Password  */
 "editpassword-label-title" = "Change Password";
 "editpassword-title-btn" = "UPDATE PASSWORD";
+"editpassword-text-passwordCurrent" = "Current Password";
+"editpassword-text-passwordNew" = "New Password";
 "editpassword-text-password" = "Password";
 "editpasswordcurrent-title-btn" = "VERIFY PASSWORD";
-"editpasswordcurrent-text-password" = "Verify Current Password";
+"editpasswordcurrent-text-passwordVerifiy" = "Verify Current Password";
 "editpasswordcurrent-text-detail" = "For your security, please enter your current password";
+"editpassword-label-passwordvalidate" = "Password invalid, must be at least 6 characters";
 
 
 /* ManagerProfileUserViewController - PhoneNumber  */
+"editusername-label-newphone" = "New Phone Number";
 "editusername-label-title" = "Edit Phone Number";
 "editusername-title-btn" = "UPDATE PHONE";
-"editusername-text-username" = "Phone Number";
+"editusername-text-username" = "000 000 000";
+"editusername-label-usernamevalidate" = "Phone number invalid";
+"editusername-label-usernameregistered" = "Phone number is already registered";
+
 
 /* PhotoProfileViewController */
 "photoprofile-activity-save" = "Saving Photo";

@@ -1,23 +1,23 @@
 //
-//  CountryViewController.swift
+//  CountryAccountViewController.swift
 //  PackSendMe
 //
-//  Created by Ricardo Marzochi on 27/09/2018.
-//  Copyright © 2018 Ricardo Marzochi. All rights reserved.
+//  Created by Ricardo Marzochi on 28/01/2019.
+//  Copyright © 2019 Ricardo Marzochi. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-
-class CountryViewController: UIViewController{
-
+class CountryAccountViewController: UIViewController{
     
     var countries: [CountryModel] = []
     var countryHelperOb = CountryHelper()
     var countriesData: [CountryModel] = []
     var optionViewController: String = ""
+    var accountModel : AccountModel? = nil
 
+    
     @IBOutlet weak var countrycurrent: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var countriesTableView: UITableView!
@@ -34,31 +34,37 @@ class CountryViewController: UIViewController{
         countriesTableView.dataSource = self
         searchBar.delegate = self
         
-        countrytitleLabel.text = NSLocalizedString("country-label-title", comment:"")
+        countrytitleLabel.text = NSLocalizedString("countryAccount-label-title", comment:"")
         searchBar.placeholder = NSLocalizedString("country-label-searchcountry", comment:"")
-
+        
         // Current Location (title + countryLabel + image)
         countrycurrent.text = NSLocalizedString("country-label-currentcountry", comment:"")
         countryselectLabel.text = GlobalVariables.sharedManager.countryNameInstance
         countryselectImage.image = GlobalVariables.sharedManager.countryImageInstance
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let something = segue.destination as! ManagerProfileUserViewController
+        something.accountModel = self.accountModel
+        something.metadadosView = URLConstants.IAM.usernameUI
+    }
+    
 }
 
-extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+extension CountryAccountViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countriesData.count
-   }
-
-
+    }
+    
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return countriesData.count
-    } 
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       //var country = countriesData[indexPath.section][indexPath.row]
+        //var country = countriesData[indexPath.section][indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier:"CountryCell") as? CountryViewCell
             else{
@@ -70,9 +76,9 @@ extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UIS
         cell.countryImageView.image = country.countryImage
         
         return cell
-     }
-
- 
+    }
+    
+    
     
     
     // Search Bar
@@ -87,7 +93,7 @@ extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UIS
         
         countriesData = countries.filter({(country : CountryModel ) -> Bool in
             return country.name.lowercased().contains(searchText.lowercased())
-            })
+        })
         self.countriesTableView.reloadData()
     }
     
@@ -102,8 +108,8 @@ extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UIS
         GlobalVariables.sharedManager.countryImageInstance = countrySelect.countryImage
         GlobalVariables.sharedManager.countryCodInstance = countrySelect.cod
         GlobalVariables.sharedManager.countryFormatInstance = countrySelect.format
-   
+        
     }
     
+
 }
-	

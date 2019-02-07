@@ -13,7 +13,8 @@
 
 /* SCREEN - COUNTRY */
 
-"country-label-title" = "Seleciona o país de registro";
+"country-label-title" = "Seleciona o país";
+"countryAccount-label-title" = "Alterar Código Telefone";
 "country-label-searchcountry" = "Buscar um país";
 "country-label-currentcountry" = "Localização atual";
 "country-label-selectcontry" = "Brasil";
@@ -535,26 +536,35 @@
 "editfirstname-title-btn" = "ALTERAR NOME";
 "editfirstname-text-firstname" = "Nome";
 "editlastname-text-lastname" = "Sobrenome";
+"editfirstname-label-firstnamevalidate" = "Nome invalido";
+"editlastname-label-lastnamevalidate" = "Sobrenome invalido";
 
 /* ManagerProfileUserViewController - EMail  */
 "editemail-label-title" = "Editar E-Mail";
 "editemail-title-btn" = "ALTERAR E-MAIL";
 "editemail-text-email" = "E-Mail";
+"editemail-label-emailvalidate" = "E-mail invalido";
 
 
 /* ManagerProfileUserViewController - Password  */
 "editpassword-label-title" = "Alterar Senha";
-"editpassword-title-btn" = "Atualizar Senha";
+"editpassword-title-btn" = "ATUALIZAR SENHA";
+"editpassword-text-passwordCurrent" = "Password Atual";
+"editpassword-text-passwordNew" = "Nova Senha";
 "editpassword-text-password" = "Senha";
 "editpasswordcurrent-title-btn" = "VALIDAR SENHA";
-"editpasswordcurrent-text-password" = "Validar Senha Atual";
+"editpasswordcurrent-text-passwordVerifiy" = "Validar Senha Atual";
 "editpasswordcurrent-text-detail" = "Para sua segurança, por favor informe sua senha atual";
+"editpassword-label-passwordvalidate" = "Senha invalida, deve ter pelo menos 6 caracteres";
 
 
 /* ManagerProfileUserViewController - PhoneNumber  */
+"editusername-label-newphone" = "Novo Número Telefone";
 "editusername-label-title" = "Editar Telefone";
 "editusername-title-btn" = "ALTERAR TELEFONE";
-"editusername-text-username" = "Telefone";
+"editusername-text-username" = "000 000 000";
+"editusername-label-usernamevalidate" = "Telefone invalido";
+"editusername-label-usernameregistered" = "Numero Telefone ja está cadastrado";
 
 /* PhotoProfileViewController */
 "photoprofile-activity-save" = "Salvando Foto";

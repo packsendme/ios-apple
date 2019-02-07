@@ -42,8 +42,6 @@ class SettingProfileUserViewController: UIViewController {
         }
         userprofileTable.delegate = self
         userprofileTable.dataSource = self
-        
-        
     }
     
     
@@ -91,10 +89,6 @@ class SettingProfileUserViewController: UIViewController {
     @IBAction func goBackSettingProfileAction(_ sender: Any) {
         self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingProfileUserViewToSettingDataAccountView, sender: nil)
     }
-    
-    
-    
-    
 }
 
 extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDelegate{
@@ -138,7 +132,7 @@ extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDe
        else if indexPath.row == 1{
             //cell.nameFieldUserLabel.font = UIFont(name:"Avenir", size:19)
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-lastname", comment:"")
-            cell.itemFieldUserLabel.text = accountModel?.lastname
+            cell.itemFieldUserLabel.text = accountModel?.lastName
        }
        else if indexPath.row == 2{
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-email", comment:"")
@@ -146,7 +140,10 @@ extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDe
        }
        else if indexPath.row == 3{
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-password", comment:"")
-            cell.itemFieldUserLabel.text = accountModel?.password
+            var password = accountModel?.password!
+        cell.itemFieldUserLabel.text = String(password!.characters.map { _ in return "•" })
+            //cell.itemFieldUserLabel.text = accountModel?.password
+        
        }
        else if indexPath.row == 4{
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-numberphone", comment:"")

@@ -89,7 +89,7 @@ class SettingDataViewController: UIViewController {
     
     
     func loadAccount(){
-        GlobalVariables.sharedManager.username = "+5596064241"
+        //GlobalVariables.sharedManager.username = "+5596064241"
         let paramsDictionary : String = GlobalVariables.sharedManager.username+URLConstants.ACCOUNT.account_load
         let url = URLConstants.ACCOUNT.account_http
         
@@ -111,7 +111,7 @@ class SettingDataViewController: UIViewController {
                             self.refreshTable()
                         //    self.removeLoadingScreen()
                             
-                            self.activityActionStop()
+                           // self.activityActionStop()
                             //self.activityIndicator.stopAnimating()
                             self.accountModel = self.accountHelper.transformArrayToAccountModel(account: jsonAccount!)
                             

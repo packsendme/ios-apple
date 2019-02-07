@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManagerProfileUserViewController: UIViewController {
+class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     
     // Edit Name
     @IBOutlet weak var nameTitleLabel: UILabel!
@@ -17,13 +17,15 @@ class ManagerProfileUserViewController: UIViewController {
     @IBOutlet weak var firstnameTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!
     @IBOutlet weak var updatenameBtn: UIButton!
-  
+    @IBOutlet weak var firstnameValidateLabel: UILabel!
+    @IBOutlet weak var lastnameValidateLabel: UILabel!
+    
     // Edit EMAIL
     @IBOutlet weak var emailTitleLabel: UILabel!
     @IBOutlet weak var emailFieldLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var updateemailBtn: UIButton!
-    @IBOutlet weak var emailValidateErrorLabel: UILabel!
+    @IBOutlet weak var emailErrorDescriptionLabel: UILabel!
     
     // Edit Password
     @IBOutlet weak var passwordTitleLabel: UILabel!
@@ -32,22 +34,29 @@ class ManagerProfileUserViewController: UIViewController {
     @IBOutlet weak var passwordnewTextField: UITextField!
     @IBOutlet weak var passwordnewBtn: UIButton!
     @IBOutlet weak var passwordcurrentView: UIView!
-
-    
     @IBOutlet weak var passwordcurrentLabel: UILabel!
     @IBOutlet weak var passwordcurrentTextField: UITextField!
     @IBOutlet weak var passwordverifyBtn: UIButton!
     @IBOutlet weak var passwordcurrentdetailLabel: UILabel!
+    @IBOutlet weak var passwordValidateLabel: UILabel!
     
     // Edit PhoneNumber
+    @IBOutlet weak var newphoneLabel: UILabel!
     @IBOutlet weak var phonenumberTitleLabel: UILabel!
     @IBOutlet weak var codenumberLabel: UILabel!
     @IBOutlet weak var countrycodeBtn: UIButton!
     @IBOutlet weak var phonenumberTextField: UITextField!
     @IBOutlet weak var updatephoneBtn: UIButton!
+    @IBOutlet weak var phoneValidateLabel: UILabel!
     
     var metadadosView : String = ""
     var accountModel : AccountModel? = nil
+    var formatPlaceHoldName = UtilityHelper()
+    var refreshControl = UIRefreshControl()
+    var userModel = UserModel()
+    var userHelper = UserHelper()
+    var dateFormat = UtilityHelper()
+    var usernameNumber: String = ""
     
     enum RegisterType:String {
         case name = "NameUI"
@@ -74,21 +83,57 @@ class ManagerProfileUserViewController: UIViewController {
         
     }
     
+    func textFieldDidChange(textField: UITextField){
+        let text = textField.text
+        switch textField{
+            
+        case firstnameTextField:
+            if (text?.utf16.count)! >= 10  {
+                 lastnameTextField.deleteBackward()
+            }
+            
+        case lastnameTextField:
+            if (text?.utf16.count)! >= 10  {
+                lastnameTextField.deleteBackward()
+            }
+
+        case passwordnewTextField:
+            if (text?.utf16.count)! >= 10{
+                passwordnewTextField.deleteBackward()
+            }
+        case emailTextField:
+            if (text?.utf16.count)! >= 254  {
+                emailTextField.deleteBackward()
+            }
+        case phonenumberTextField:
+            if (text?.utf16.count)! >= 11  {
+                phonenumberTextField.deleteBackward()
+            }
+        default:
+            break
+        }
+    }
+    
     func setupName(){
         self.nameTitleLabel.text  = NSLocalizedString("editfirstname-label-title", comment:"")
         self.firstnameFieldLabel.text  = NSLocalizedString("editfirstname-text-firstname", comment:"")
         self.lastnameFieldLabel.text  = NSLocalizedString("editlastname-text-lastname", comment:"")
         self.firstnameTextField.text  = accountModel?.name
-        self.lastnameTextField.text  = accountModel?.lastname
+        self.lastnameTextField.text  = accountModel?.lastName
+        
+        firstnameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        lastnameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+
         self.updatenameBtn.setTitle(NSLocalizedString("editfirstname-title-btn", comment:"") , for: .normal)
     }
     
     func setupEmail(){
-        emailValidateErrorLabel.text = NSLocalizedString("main-msg-email", comment:"")
-        emailValidateErrorLabel.isHidden = true
+        emailErrorDescriptionLabel.text = NSLocalizedString("main-msg-email", comment:"")
+        emailErrorDescriptionLabel.isHidden = true
         self.emailTitleLabel.text  = NSLocalizedString("editemail-label-title", comment:"")
         self.emailFieldLabel.text  = NSLocalizedString("editemail-text-email", comment:"")
         self.emailTextField.text  = accountModel?.email
+        emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         self.updateemailBtn.setTitle(NSLocalizedString("editemail-title-btn", comment:"") , for: .normal)
     }
     
@@ -96,79 +141,60 @@ class ManagerProfileUserViewController: UIViewController {
         self.passwordTitleLabel.text = NSLocalizedString("editpassword-label-title", comment:"")
         // Current Password
         self.passwordcurrentView.isHidden = false
-        self.passwordcurrentLabel.text = NSLocalizedString("editpasswordcurrent-text-password", comment:"")
+        self.passwordcurrentLabel.text = NSLocalizedString("editpasswordcurrent-text-passwordVerifiy", comment:"")
         self.passwordcurrentdetailLabel.text = NSLocalizedString("editpasswordcurrent-text-detail", comment:"")
         self.passwordverifyBtn.setTitle(NSLocalizedString("editpasswordcurrent-title-btn", comment:"") , for: .normal)
+        passwordcurrentTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+       
         // New Password
         self.passwordnewView.isHidden = true
-        self.passwordFieldLabel.text = NSLocalizedString("editpassword-text-password", comment:"")
+        self.passwordFieldLabel.text = NSLocalizedString("editpassword-text-passwordNew", comment:"")
         self.passwordnewBtn.setTitle(NSLocalizedString("editpassword-title-btn", comment:"") , for: .normal)
-
+        passwordnewTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        self.passwordValidateLabel.text = NSLocalizedString("editpassword-label-passwordvalidate", comment:"")
+        
+        /*
+        let passwordNameHolder : String = NSLocalizedString("editpassword-text-password", comment:"")
+        self.passwordcurrentTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : passwordNameHolder)
+ 
+        let passwordNewHolder : String = NSLocalizedString("editpassword-text-password", comment:"")
+        self.passwordnewTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : passwordNewHolder)
+       */
     }
 
     func setupPhoneNumber(){
+        
+        let number: String = (accountModel?.username)!
+        let codnumber: String = (number as NSString).substring(to: 3)
+        self.codenumberLabel.text = codnumber
+        
+        self.newphoneLabel.text = NSLocalizedString("editusername-label-newphone", comment:"")
         self.phonenumberTitleLabel.text = NSLocalizedString("editusername-label-title", comment:"")
-        self.codenumberLabel.text = accountModel?.username
-        self.phonenumberTextField.text = accountModel?.username
+        
         self.updatephoneBtn.setTitle(NSLocalizedString("editusername-title-btn", comment:"") , for: .normal)
+        phonenumberTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        self.phoneValidateLabel.text = NSLocalizedString("editusername-label-usernamevalidate", comment:"")
+        
+        let phonenumberdNewHolder : String = NSLocalizedString("editusername-text-username", comment:"")
+        self.phonenumberTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : phonenumberdNewHolder)
+        countrycodeBtn.setImage(GlobalVariables.sharedManager.countryImageInstance, for: .normal)
+        phonenumberTextField.becomeFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ManagerProfileUserToSettingProfileUser") {
             let something = segue.destination as! SettingProfileUserViewController
             something.accountModel = self.accountModel
-    }
-    
-    //Validad Field
-    func textFieldDidChange(textField: UITextField){
-        let text = textField.text
-        switch textField{
-            
-        case firstnameTextField:
-            if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (lastnameTextField.text?.count)! >= 3{
-                updatenameBtn.isEnabled = true
-            }
-            else if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13  {
-                accountModel?.name = firstnameTextField.text!
-            }
-            else  if (text?.utf16.count)! < 3 {
-                updatenameBtn.isEnabled = false
-                accountModel?.name = firstnameTextField.text
-            }
-            else if (text?.utf16.count)! >= 14  {
-                firstnameTextField.deleteBackward()
-            }
-            
-        case lastnameTextField:
-            if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (lastnameTextField.text?.count)! >= 3{
-                updatenameBtn.isEnabled = true
-                accountModel?.lastname = lastnameTextField.text!
-            }
-            else if (text?.utf16.count)! >= 14  {
-                lastnameTextField.deleteBackward()
-            }
-            else  if (text?.utf16.count)! < 3 {
-                updatenameBtn.isEnabled = false
-                accountModel?.lastname = lastnameTextField.text!
-            }
-        case passwordnewTextField:
-            if (text?.utf16.count)! >= 6{
-                passwordnewBtn.isEnabled = true
-            }
-            else{
-                passwordnewBtn.isEnabled = false
-            }
-        case emailTextField:
-            if (text?.utf16.count)! >= 10 && (text?.utf16.count)! <= 254  {
-                updateemailBtn.isEnabled = true
-            }
-            else if (text?.utf16.count)! >= 254  {
-                emailTextField.deleteBackward()
-            }
-            if (text?.utf16.count)! < 10 {
-                updateemailBtn.isEnabled = false
-            }
-        default:
-            break
+        }
+        else if (segue.identifier == "ManagerProfileUserToCountryAccountChooseView") {
+            let something = segue.destination as! CountryAccountViewController
+            something.accountModel = self.accountModel
+        }
+        else if (segue.identifier == "ManagerProfileUserToCheckSMSCodeAccountView") {
+            let something = segue.destination as! CheckSMSCodeAccountViewController
+            something.newNumberPhone = codenumberLabel.text!+phonenumberTextField.text!
+            something.accountModel = self.accountModel
+            something.metadadosView = URLConstants.IAM.smscode_register
         }
     }
     
@@ -179,52 +205,83 @@ class ManagerProfileUserViewController: UIViewController {
         return emailTest.evaluate(with: testStr)
     }
     
-
     
+    // OPERATION - UPDATE
     @IBAction func updateNameAction(_ sender: Any) {
-        updateAccount()
+        accountModel?.name = firstnameTextField.text!
+        accountModel?.lastName = lastnameTextField.text!
+        
+        if (firstnameTextField.text!.count) >= 3 && (firstnameTextField.text!.count) <= 13 && (lastnameTextField.text!.count) >= 3{
+            updateNamesAndEmail()
+        }
+        else if firstnameTextField.text!.count < 3 && lastnameTextField.text!.count < 3{
+            self.firstnameValidateLabel.text = NSLocalizedString("editfirstname-label-firstnamevalidate", comment:"")
+            self.firstnameValidateLabel.isHidden = false
+            self.lastnameValidateLabel.text = NSLocalizedString("editlastname-label-lastnamevalidate", comment:"")
+            self.lastnameValidateLabel.isHidden = false
+
+        }
+        else if firstnameTextField.text!.count < 3{
+            self.firstnameValidateLabel.text = NSLocalizedString("editfirstname-label-firstnamevalidate", comment:"")
+            self.lastnameValidateLabel.isHidden = true
+            self.firstnameValidateLabel.isHidden = false
+        }
+        else if lastnameTextField.text!.count < 3{
+            self.lastnameValidateLabel.text = NSLocalizedString("editlastname-label-lastnamevalidate", comment:"")
+            self.firstnameValidateLabel.isHidden = true
+            self.lastnameValidateLabel.isHidden = false
+        }
     }
     
     @IBAction func updateEmailAction(_ sender: Any) {
         if isValidEmail(testStr: emailTextField.text!) == false{
-            emailValidateErrorLabel.isHidden = false
+            emailErrorDescriptionLabel.isHidden = false
         }else{
-
-
+            accountModel?.email = emailTextField.text!
+            updateNamesAndEmail()
         }
     }
     
-    // OPERATION - UPDATE
+
     @IBAction func updatePasswordAction(_ sender: Any) {
+        updatePasswordAccount()
     }
     
     @IBAction func passwordVerify(_ sender: Any) {
+        if passwordcurrentTextField.text!.count >= 6{
+            checkPasswordCurrent()
+        }
+        else{
+            self.passwordcurrentdetailLabel.text = NSLocalizedString("editpassword-label-passwordvalidate", comment:"")
+            self.passwordcurrentdetailLabel.font = UIFont(name:"Helvetica", size:15)
+            self.passwordcurrentdetailLabel.textColor = UIColor.red
+        }
     }
     
     @IBAction func updatePhoneNumberAction(_ sender: Any) {
+        if phonenumberTextField.text!.count >= 5{
+            checkPhoneNumber()
+        }
+        else{
+            self.phoneValidateLabel.isHidden = false
+        }
     }
     
-    // Call Country View
-    @IBAction func changeCountryNumberAction(_ sender: Any) {
-    }
     
-    func updateAccount() {
-        let accountHelper = AccountHelper()
+    func updatePasswordAccount() {
         let utilityHelper = UtilityHelper()
-        let dtNowS = utilityHelper.dateConvertToString()
+        let dateUpdate = utilityHelper.dateConvertToString()
         
-        var paramsDictionary = [String:Any]()
-        paramsDictionary = accountHelper.transformObjectToArray(username:(accountModel?.username)!, email:(accountModel?.email)!, password:(accountModel?.password)!, name:(accountModel?.name)!, lastname:(accountModel?.lastname)!, address:(accountModel?.address!)!, dtCreation:(accountModel?.dateCreation)!, dtChange: dtNowS)
+        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+passwordnewTextField.text!+"/"+dateUpdate
+        let iamURL = URLConstants.IAM.iamManager_http
+
         
-        let account = URLConstants.ACCOUNT.account_http
-        
-        HttpClientApi.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
+        HttpClientApi.instance().makeAPICall(url: iamURL, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
             
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.ACCEPT{
+            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "ACCOUNT", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "SettingProfileUserView") as! SettingProfileUserViewController
-                    self.show(vc, sender: self)
+                    self.accountModel?.password = self.passwordnewTextField.text!
+                    self.performSegue(withIdentifier:"ManagerProfileUserToSettingProfileUser", sender: nil)
                 }
             }
         }, failure: { (data, response, error) in
@@ -233,9 +290,102 @@ class ManagerProfileUserViewController: UIViewController {
                 ac.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(ac, animated:  true)
             }
-            
         })
-        
     }
+
+    
+    func updateNamesAndEmail() {
+        let accountHelper = AccountHelper()
+        let utilityHelper = UtilityHelper()
+        let dateUpdate = utilityHelper.dateConvertToString()
+        
+        var paramsDictionary = [String:Any]()
+        paramsDictionary = accountHelper.transformObjectToArray(id:(accountModel?.id)!,username:(accountModel?.username)!, email:(accountModel?.email)!, password:(accountModel?.password)!, name:(accountModel?.name)!, lastName:(accountModel?.lastName)!,addressArray:accountModel!.address!, dateCreation:(accountModel?.dateCreation)!, dateUpdate: dateUpdate)
+        
+        let account = URLConstants.ACCOUNT.account_http
+        
+        HttpClientApi.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
+            
+            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier:"ManagerProfileUserToSettingProfileUser", sender: nil)
+                }
+            }
+        }, failure: { (data, response, error) in
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated:  true)
+            }
+        })
+    }
+    
+    func checkPasswordCurrent() {
+        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+passwordcurrentTextField.text!
+        let account = URLConstants.IAM.iamAccess_http
+        HttpClientApi.instance().makeAPICall(url: account, params:paramsDictionary, method: .GET, success: { (data, response, error) in
+            
+            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.5) { [unowned self] in
+                        self.passwordnewView.isHidden = false
+                        self.passwordcurrentView.alpha = 0
+                    }
+                }
+            }
+        }, failure: { (data, response, error) in
+            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
+                DispatchQueue.main.async {
+                    self.passwordcurrentdetailLabel.text = NSLocalizedString("main-label-error", comment:"")
+                    self.passwordcurrentdetailLabel.font = UIFont(name:"Avenir", size:20)
+                    self.passwordcurrentdetailLabel.textColor = UIColor.red
+
+                }
+            }
+            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FAIL{
+                DispatchQueue.main.async {
+                    let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated:  true)
+                }
+            }
+        })
+    }
+    
+    @IBAction func checkPhoneNumber() {
+        let dateNow = dateFormat.dateConvertToString()
+        let paramsDictionary : String = codenumberLabel.text!+phonenumberTextField.text!+"/"+dateNow
+        let usernameP = codenumberLabel.text!+phonenumberTextField.text!
+        let url = URLConstants.IAM.iamIdentity_http
+        
+        HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
+            if let data = data {
+                do{
+                    if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier:"ManagerProfileUserToCheckSMSCodeAccountView", sender: nil)
+                        }
+                    }
+                    else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
+                        self.phoneValidateLabel.text = NSLocalizedString("editusername-label-usernameregistered", comment:"")
+                        self.phoneValidateLabel.isHidden = false
+                    }
+                } catch _ {
+                    DispatchQueue.main.async {
+                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(ac, animated:  true)
+                    }
+                }
+            }
+        }, failure: { (data, response, error) in
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated:  true)
+            }
+        })
+    }
+
 
 }

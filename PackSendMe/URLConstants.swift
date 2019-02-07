@@ -25,7 +25,6 @@ struct URLConstants{
         static let usernameUI = "UsernameUI"
         static let country_identity = "countryIdentity"
         
-        
         // Manager Access User (firstName / LastName / email / password / username)
         static let managerAccessViewToFirstNameView = "firstNameView"
         static let managerAccessViewToLastNameView = "lastNameView"

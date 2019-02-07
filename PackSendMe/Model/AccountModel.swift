@@ -14,7 +14,7 @@ class AccountModel {
     var password: String?
     var email: String?
     var name: String?
-    var lastname: String?
+    var lastName: String?
     var address: [AddressModel]?
     var payment: [PaymentModel]?
     var dateCreation: String?
@@ -31,7 +31,7 @@ class AccountModel {
         self.email = json["email"] as? String ?? ""
         self.password = json["password"] as? String ?? ""
         self.name = json["name"] as? String ?? ""
-        self.lastname = json["lastname"] as? String ?? ""
+        self.lastName = json["lastName"] as? String ?? ""
         self.address = json["address"] as? [AddressModel] ?? nil
         self.dateCreation = json["dateCreation"] as? String ?? ""
         self.dateUpdate = json["dateUpdate"] as? String ?? ""
