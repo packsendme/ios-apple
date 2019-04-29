@@ -44,6 +44,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupSMSRegister(){
+         print("CheckSMSCodeAccountViewController: OIIII")
         //self.smscodeContainer.alpha = 0.0
         timerLabel.text = "01:00"
         codeSMS1TextField.delegate = self
@@ -58,7 +59,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
         runTimer()
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 13.4
-        let titleLabel = NSLocalizedString("main-title-smscod", comment:"")+"  "+GlobalVariables.sharedManager.username
+        let titleLabel = NSLocalizedString("main-title-smscod", comment:"")+"  "+GlobalVariables.sharedManager.usernameChange
         let attrString = NSMutableAttributedString(string: titleLabel)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         titleSMSCodeLabel.attributedText = attrString
@@ -88,7 +89,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
         
         //  timerLabel.text = "\(minutesLeft):\(secondsLeft)"
         timerLabel.text = "\(00):\(secondsLeft)"
-        
+        timerLabel.isHidden = false
         // if minutesLeft == 00 && secondsLeft == 00{
         if secondsLeft == 00{
             timer.invalidate()
@@ -108,7 +109,6 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func openScreenSMSCode(_ sender: Any) {
         self.performSegue(withIdentifier:URLConstants.IAM.smscode_new, sender: nil)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -125,7 +125,13 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
         let dateNow = dateFormat.dateConvertToString()
         let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+newNumberPhone+"/"+smsCode+"/"+dateNow
         
+        print("PARAMETERS: \(paramsDictionary)")
+        
         let url = URLConstants.IAM.iamManager_http+"sms/"
+        
+        print("PARAMETERS: \(url)")
+
+        
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
@@ -133,14 +139,13 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
                     self.performSegue(withIdentifier:"CheckSMSCodeToSettingProfileUserView", sender: nil)
                 }
             }
-            else  if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
-                self.errorValidateLabel.text = NSLocalizedString("error-label-smsinvalid", comment:"")
-            }
-            
         }, failure: { (data, response, error) in
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
-                self.errorValidateLabel.text = NSLocalizedString("error-label-smsinvalid", comment:"")
+                DispatchQueue.main.async {
+                    self.errorValidateLabel.isHidden = false
+                    self.errorValidateLabel.text = NSLocalizedString("error-label-smsinvalid", comment:"")
+                }
             }
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FAIL{
                 DispatchQueue.main.async {
@@ -263,5 +268,47 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    
+
+    @IBAction func newSMSCode(_ sender: Any) {
+        checkPhoneNumber()
+    }
+    
+    @IBAction func checkPhoneNumber() {
+        let dateNow = dateFormat.dateConvertToString()
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameChange+"/"+dateNow
+        let url = URLConstants.IAM.iamIdentity_http
+        
+        print(" : : : : : : : : : : : : \(paramsDictionary)")
+        print("checkPhoneNumber : checkPhoneNumber: \(paramsDictionary)")
+        print(" : : : : : : : : : : : : \(paramsDictionary)")
+
+        HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
+            if let data = data {
+                do{
+                    if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                        DispatchQueue.main.async {
+                            self.timeRemaining = 120
+                            self.runTimer()
+                        }
+                    }
+                } catch _ {
+                    DispatchQueue.main.async {
+                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(ac, animated:  true)
+                    }
+                }
+            }
+        }, failure: { (data, response, error) in
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated:  true)
+            }
+        })
+    }
+    
     
 }

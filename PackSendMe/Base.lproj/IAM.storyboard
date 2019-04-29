@@ -897,9 +897,10 @@
         <image name="icons-down-24" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="KTF-4C-U6b"/>
         <segue reference="LyF-xb-Myi"/>
-        <segue reference="fUt-1S-bhP"/>
-        <segue reference="HZr-kO-nnP"/>
-        <segue reference="Ztd-v1-DkZ"/>
+        <segue reference="6ws-Sh-QWl"/>
+        <segue reference="srw-H9-5xj"/>
+        <segue reference="2bw-VR-7Ct"/>
     </inferredMetricsTieBreakers>
 </document>

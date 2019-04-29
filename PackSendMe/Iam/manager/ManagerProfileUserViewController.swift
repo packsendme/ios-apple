@@ -206,6 +206,11 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func changeNumberCodPhone(_ sender: Any) {
+        self.performSegue(withIdentifier:"ManagerProfileUserToCountryAccountChooseView", sender: nil)
+    }
+    
+    
     // OPERATION - UPDATE
     @IBAction func updateNameAction(_ sender: Any) {
         accountModel?.name = firstnameTextField.text!
@@ -363,7 +368,10 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
                 do{
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                         DispatchQueue.main.async {
-                            self.performSegue(withIdentifier:"ManagerProfileUserToCheckSMSCodeAccountView", sender: nil)
+                            
+                        GlobalVariables.sharedManager.usernameChange = usernameP
+
+                        self.performSegue(withIdentifier:"ManagerProfileUserToCheckSMSCodeAccountView", sender: nil)
                         }
                     }
                     else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{

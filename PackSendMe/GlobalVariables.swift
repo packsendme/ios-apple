@@ -17,6 +17,7 @@ class GlobalVariables {
     public var countryCodInstance: String = ""
     public var countryFormatInstance: String = ""
     public var username: String = ""
+    public var usernameChange: String = ""
     public var nameFirst: String = ""
     public var nameLast: String = ""
     public var activationKey: String = ""

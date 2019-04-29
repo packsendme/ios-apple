@@ -60,6 +60,7 @@ class CheckSMSCodeViewController: UIViewController, UITextFieldDelegate {
     func setupSMSRegister(){
         //self.smscodeContainer.alpha = 0.0
         timerLabel.text = "01:00"
+        newSMSCodeBtn.isHidden = true
         codeSMS1TextField.delegate = self
         codeSMS2TextField.delegate = self
         codeSMS3TextField.delegate = self

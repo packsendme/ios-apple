@@ -1155,6 +1155,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="40" height="45"/>
                                         <state key="normal" image="iconUSA"/>
+                                        <connections>
+                                            <action selector="changeNumberCodPhone:" destination="rhv-ek-hyp" eventType="touchUpInside" id="fei-lr-agT"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="P8V-TB-ST3">
                                         <rect key="frame" x="8" y="127" width="341" height="17"/>
@@ -1313,7 +1316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kyp-jf-x5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5204" y="1424"/>
+            <point key="canvasLocation" x="4764" y="1369"/>
         </scene>
         <!--CheckSMS Code Account View Controller-->
         <scene sceneID="P87-Q9-xsN">
@@ -1416,13 +1419,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hq-S5-L0j">
-                                <rect key="frame" x="14" y="319" width="343" height="23"/>
+                                <rect key="frame" x="13" y="308" width="343" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.1268728595890411" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <state key="normal" title="UPDATE PHONE">
+                                <state key="normal" title="Send me new code">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="newSMSCode:" destination="I50-Dp-LGc" eventType="touchUpInside" id="c9q-ZF-3p2"/>
                                     <action selector="updatePhoneNumberAction:" destination="rhv-ek-hyp" eventType="touchUpInside" id="gtj-bP-Ih4"/>
                                 </connections>
                             </button>
@@ -1446,7 +1451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oId-LF-8fm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6573.6000000000004" y="1368.6656671664168"/>
+            <point key="canvasLocation" x="6044" y="1409"/>
         </scene>
     </scenes>
     <resources>
@@ -1472,6 +1477,6 @@
         <segue reference="FYM-dO-T7a"/>
         <segue reference="lcY-ze-8XA"/>
         <segue reference="Rrf-qj-TBH"/>
-        <segue reference="Z9E-2M-P2r"/>
+        <segue reference="fEv-aN-TSr"/>
     </inferredMetricsTieBreakers>
 </document>
