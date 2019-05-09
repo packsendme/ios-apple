@@ -577,3 +577,10 @@
 "photoprofile-buttontool-takephoto" = "Tirar Foto";
 "photoprofile-buttontool-choosephoto" = "Escolher Foto";
 "photoprofile-buttontool-cancelphoto" = "Cancelar";
+
+/* SettingAddressUserViewController */
+"address-label-title" = "Editar Localizaçao";
+"addressCurrent-label-title" = "Localizaçao Actual";
+"streetAddress-label-title" = "Endereço";
+"cityAddress-label-title" = "Cidade";
+"postalcodeAddress-label-title" = "CEP";

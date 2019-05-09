@@ -561,3 +561,11 @@
 "photoprofile-buttontool-takephoto" = "Sacar Foto";
 "photoprofile-buttontool-choosephoto" = "Seleccionar Foto";
 "photoprofile-buttontool-cancelphoto" = "Cancelar";
+
+/* SettingAddressUserViewController */
+"address-label-title" = "Editar Ubicación";
+"addressCurrent-label-title" = "Dirección Actual";
+"streetAddress-label-title" = "Dirección";
+"cityAddress-label-title" = "Ciudad";
+"postalcodeAddress-label-title" = "Código Postal";
+

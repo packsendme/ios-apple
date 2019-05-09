@@ -22,7 +22,8 @@ import GoogleMaps
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
        // let locale = NSLocale.current.languageCode
-        GMSServices.provideAPIKey("AIzaSyDt5pgW0boE_KhyVZHpNAh-o7Z0dQWt2IA")
+        let trackingID = URLConstants.googleMaps.trackingID
+        GMSServices.provideAPIKey(trackingID)
         
         
       //  hasCellularCoverage()

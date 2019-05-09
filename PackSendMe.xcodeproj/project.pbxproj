@@ -50,6 +50,7 @@
 		81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */; };
 		81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */; };
 		81FD189321C00FB000A00082 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FD189221C00FB000A00082 /* UserHelper.swift */; };
+		D06E9719FA46413D3838EF2C /* Pods_PackSendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAE74B73BC389E599805B33 /* Pods_PackSendMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileViewController.swift; sourceTree = "<group>"; };
 		81FD189221C00FB000A00082 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		B51E64FBDAC0B88AB4325285 /* Pods-PackSendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.release.xcconfig"; sourceTree = "<group>"; };
+		BCAE74B73BC389E599805B33 /* Pods_PackSendMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PackSendMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D06E9719FA46413D3838EF2C /* Pods_PackSendMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +126,7 @@
 		0E70CA371AFD3D18192578D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCAE74B73BC389E599805B33 /* Pods_PackSendMe.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -297,6 +301,7 @@
 				8184D8DF214C20AF00FF0E08 /* Frameworks */,
 				8184D8E0214C20AF00FF0E08 /* Resources */,
 				178A07F380657EADE721D3E8 /* [CP] Copy Pods Resources */,
+				1A12D321BC722B37171BB4D0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,7 +372,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -376,7 +381,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1A12D321BC722B37171BB4D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GooglePlacesAutocomplete/GooglePlacesAutocomplete.framework",
+				"${BUILT_PRODUCTS_DIR}/GooglePlacesSearchController/GooglePlacesSearchController.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesAutocomplete.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesSearchController.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE2DE4E570D6E9E25C07E9E4 /* [CP] Check Pods Manifest.lock */ = {

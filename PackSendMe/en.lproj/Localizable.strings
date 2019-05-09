@@ -555,3 +555,10 @@
 "photoprofile-buttontool-takephoto" = "Take Photo";
 "photoprofile-buttontool-choosephoto" = "Choose Photo";
 "photoprofile-buttontool-cancelphoto" = "Cancel";
+
+/* SettingAddressUserViewController */
+"address-label-title" = "Edit Location";
+"addressCurrent-label-title" = "Current Address";
+"streetAddress-label-title" = "Address";
+"cityAddress-label-title" = "City";
+"postalcodeAddress-label-title" = "Postal Code";

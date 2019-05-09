@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 
 struct URLConstants{
+    
+    struct googleMaps{
+        static let trackingID = "AIzaSyDt5pgW0boE_KhyVZHpNAh-o7Z0dQWt2IA"
+        static let APIPlaces_TrackingID = "AIzaSyDzY6sOIX6kU_jOD4KSrkmGx1MweNFoYnc"
+    }
 
     struct IAM{
         static let iamIdentity_http = "http://192.241.133.13:9093/iam/identity/"
