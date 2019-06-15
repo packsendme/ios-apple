@@ -9,7 +9,7 @@
 import UIKit
 import CoreTelephony
 import GoogleMaps
-
+import GooglePlaces
 
 
 @UIApplicationMain
@@ -23,8 +23,10 @@ import GoogleMaps
         // Override point for customization after application launch.
        // let locale = NSLocale.current.languageCode
         let trackingID = URLConstants.googleMaps.trackingID
-        GMSServices.provideAPIKey(trackingID)
+        let trackingPlaceID = URLConstants.googleMaps.APIPlaces_TrackingID
         
+        GMSServices.provideAPIKey(trackingID)
+        GMSPlacesClient.provideAPIKey(trackingPlaceID)
         
       //  hasCellularCoverage()
         

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8104ED5121D57E070046A853 /* ManagerProfileUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8104ED5021D57E070046A853 /* ManagerProfileUserViewController.swift */; };
+		8105A90322847F5D00C711BB /* StreetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105A90222847F5D00C711BB /* StreetViewCell.swift */; };
 		811F820A21B473E1000238E9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820921B473E1000238E9 /* MenuViewController.swift */; };
 		811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820D21B49623000238E9 /* MenuViewCell.swift */; };
 		811F821021B82FE2000238E9 /* MenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820F21B82FE2000238E9 /* MenuSegue.swift */; };
@@ -34,6 +35,8 @@
 		819CC0EF21737472004AD1CA /* CountryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0EE21737472004AD1CA /* CountryHelper.swift */; };
 		819CC0F121739C34004AD1CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0F021739C34004AD1CA /* MainViewController.swift */; };
 		81DAE04E218F505A002A19D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DAE04D218F505A002A19D9 /* LoginViewController.swift */; };
+		81DB208722B2724C006F43FB /* AddressAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB208622B2724C006F43FB /* AddressAccountDto.swift */; };
+		81DB208922B2A5B5006F43FB /* ParserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB208822B2A5B5006F43FB /* ParserHelper.swift */; };
 		81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */; };
 		81DC728F21AEF2C400B6ECF8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 81DC728E21AEF2C400B6ECF8 /* Podfile */; };
 		81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD221935A5D000F4D8C /* DataRegisterViewController.swift */; };
@@ -50,16 +53,16 @@
 		81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */; };
 		81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */; };
 		81FD189321C00FB000A00082 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FD189221C00FB000A00082 /* UserHelper.swift */; };
-		D06E9719FA46413D3838EF2C /* Pods_PackSendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAE74B73BC389E599805B33 /* Pods_PackSendMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		24D681A587B5DDC1981FDC14 /* Pods-PackSendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		8104ED5021D57E070046A853 /* ManagerProfileUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProfileUserViewController.swift; sourceTree = "<group>"; };
+		8105A90222847F5D00C711BB /* StreetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetViewCell.swift; sourceTree = "<group>"; };
 		811F820921B473E1000238E9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		811F820D21B49623000238E9 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = PackSendMe/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
+		811F820D21B49623000238E9 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = PackSendMe/View/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		811F820F21B82FE2000238E9 /* MenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSegue.swift; sourceTree = "<group>"; };
-		811F821721BDD25A000238E9 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewCell.swift; path = PackSendMe/SettingViewCell.swift; sourceTree = SOURCE_ROOT; };
+		811F821721BDD25A000238E9 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewCell.swift; path = PackSendMe/View/SettingViewCell.swift; sourceTree = SOURCE_ROOT; };
 		811F821921BE7D94000238E9 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		811F821B21BEB212000238E9 /* SettingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataViewController.swift; sourceTree = "<group>"; };
 		812EB6762159462400DE540A /* IdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
@@ -84,13 +87,15 @@
 		8184D903214D0F4A00FF0E08 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8193755E21FF7B96002E4923 /* CountryAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAccountViewController.swift; sourceTree = "<group>"; };
 		8193756121FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSMSCodeAccountViewController.swift; sourceTree = "<group>"; };
-		819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryViewCell.swift; path = PackSendMe/Helper/CountryViewCell.swift; sourceTree = SOURCE_ROOT; };
+		819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryViewCell.swift; path = PackSendMe/View/CountryViewCell.swift; sourceTree = SOURCE_ROOT; };
 		819CC0E3215D62C7004AD1CA /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		819CC0E8216E614D004AD1CA /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryModel.swift; path = PackSendMe/Model/CountryModel.swift; sourceTree = SOURCE_ROOT; };
 		819CC0EC217131DD004AD1CA /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		819CC0EE21737472004AD1CA /* CountryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHelper.swift; sourceTree = "<group>"; };
 		819CC0F021739C34004AD1CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		81DAE04D218F505A002A19D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		81DB208622B2724C006F43FB /* AddressAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAccountDto.swift; sourceTree = "<group>"; };
+		81DB208822B2A5B5006F43FB /* ParserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserHelper.swift; sourceTree = "<group>"; };
 		81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeGeneratorHttp.swift; sourceTree = "<group>"; };
 		81DC728E21AEF2C400B6ECF8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		81F3ECD221935A5D000F4D8C /* DataRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRegisterViewController.swift; sourceTree = "<group>"; };
@@ -104,11 +109,10 @@
 		81FBEC3321C674FE00CBDBC8 /* SettingProfileUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileUserViewController.swift; sourceTree = "<group>"; };
 		81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAddressUserViewController.swift; sourceTree = "<group>"; };
 		81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPaymentUserViewController.swift; sourceTree = "<group>"; };
-		81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileUserViewCell.swift; path = PackSendMe/Iam/manager/ProfileUserViewCell.swift; sourceTree = SOURCE_ROOT; };
+		81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileUserViewCell.swift; path = PackSendMe/View/ProfileUserViewCell.swift; sourceTree = SOURCE_ROOT; };
 		81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileViewController.swift; sourceTree = "<group>"; };
 		81FD189221C00FB000A00082 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		B51E64FBDAC0B88AB4325285 /* Pods-PackSendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.release.xcconfig"; sourceTree = "<group>"; };
-		BCAE74B73BC389E599805B33 /* Pods_PackSendMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PackSendMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +120,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D06E9719FA46413D3838EF2C /* Pods_PackSendMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,9 +129,65 @@
 		0E70CA371AFD3D18192578D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BCAE74B73BC389E599805B33 /* Pods_PackSendMe.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8105A8F722847C1500C711BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */,
+				811F820D21B49623000238E9 /* MenuViewCell.swift */,
+				811F821721BDD25A000238E9 /* SettingViewCell.swift */,
+				81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */,
+				8105A90222847F5D00C711BB /* StreetViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8105A8F922847DDB00C711BB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				819CC0F021739C34004AD1CA /* MainViewController.swift */,
+				8105A8FA22847DF000C711BB /* Account */,
+				817D065F217D2CD9007B22EB /* Iam */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8105A8FA22847DF000C711BB /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				81FBEC3321C674FE00CBDBC8 /* SettingProfileUserViewController.swift */,
+				81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */,
+				81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */,
+				81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */,
+				811F820921B473E1000238E9 /* MenuViewController.swift */,
+				811F820F21B82FE2000238E9 /* MenuSegue.swift */,
+				811F821B21BEB212000238E9 /* SettingDataViewController.swift */,
+				81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */,
+				8193755E21FF7B96002E4923 /* CountryAccountViewController.swift */,
+				8193756121FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		8105A8FE22847E6C00C711BB /* BO */ = {
+			isa = PBXGroup;
+			children = (
+				819CC0EC217131DD004AD1CA /* GlobalVariables.swift */,
+				817D06592179CE40007B22EB /* URLConstants.swift */,
+			);
+			path = BO;
+			sourceTree = "<group>";
+		};
+		8105A8FF22847E9E00C711BB /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8184D8E9214C20AF00FF0E08 /* IAM.storyboard */,
+				81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		812EB67A21595FE200DE540A /* Helper */ = {
@@ -140,27 +199,9 @@
 				81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */,
 				81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */,
 				81FD189221C00FB000A00082 /* UserHelper.swift */,
+				81DB208822B2A5B5006F43FB /* ParserHelper.swift */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		813B3B582155739A00A86B20 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				8184D8E9214C20AF00FF0E08 /* IAM.storyboard */,
-				81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */,
-			);
-			name = Storyboard;
-			sourceTree = "<group>";
-		};
-		81527DFD214EBCE000C9C357 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				819CC0F021739C34004AD1CA /* MainViewController.swift */,
-				817D065F217D2CD9007B22EB /* Iam */,
-				81F3ECE1219C79D9000F4D8C /* Account */,
-			);
-			name = Controller;
 			sourceTree = "<group>";
 		};
 		81527DFE214EBCF400C9C357 /* Model */ = {
@@ -172,26 +213,9 @@
 				81F3ECD4219480F6000F4D8C /* AccountModel.swift */,
 				81F3ECD621948A75000F4D8C /* AddressModel.swift */,
 				811F821921BE7D94000238E9 /* PaymentModel.swift */,
+				81DB208622B2724C006F43FB /* AddressAccountDto.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		81527DFF214EBD0500C9C357 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resource;
-			sourceTree = "<group>";
-		};
-		81527E00214EBD0A00C9C357 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */,
-				811F820D21B49623000238E9 /* MenuViewCell.swift */,
-				811F821721BDD25A000238E9 /* SettingViewCell.swift */,
-				81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		817D065F217D2CD9007B22EB /* Iam */ = {
@@ -229,14 +253,13 @@
 		8184D8E4214C20AF00FF0E08 /* PackSendMe */ = {
 			isa = PBXGroup;
 			children = (
+				8105A8FF22847E9E00C711BB /* Storyboard */,
+				8105A8FE22847E6C00C711BB /* BO */,
+				8105A8F922847DDB00C711BB /* Controller */,
+				8105A8F722847C1500C711BB /* View */,
 				817F532721E34D400066F9C5 /* Assets.xcassets */,
-				819CC0E521600735004AD1CA /* BusinessObject */,
 				812EB67A21595FE200DE540A /* Helper */,
-				813B3B582155739A00A86B20 /* Storyboard */,
-				81527E00214EBD0A00C9C357 /* View */,
-				81527DFF214EBD0500C9C357 /* Resource */,
 				81527DFE214EBCF400C9C357 /* Model */,
-				81527DFD214EBCE000C9C357 /* Controller */,
 				8184D8E5214C20AF00FF0E08 /* AppDelegate.swift */,
 				8184D8E7214C20AF00FF0E08 /* ViewController.swift */,
 				8184D901214D0F4300FF0E08 /* Localizable.strings */,
@@ -244,32 +267,6 @@
 				8184D8F1214C20AF00FF0E08 /* Info.plist */,
 			);
 			path = PackSendMe;
-			sourceTree = "<group>";
-		};
-		819CC0E521600735004AD1CA /* BusinessObject */ = {
-			isa = PBXGroup;
-			children = (
-				819CC0EC217131DD004AD1CA /* GlobalVariables.swift */,
-				817D06592179CE40007B22EB /* URLConstants.swift */,
-			);
-			name = BusinessObject;
-			sourceTree = "<group>";
-		};
-		81F3ECE1219C79D9000F4D8C /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				81FBEC3321C674FE00CBDBC8 /* SettingProfileUserViewController.swift */,
-				81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */,
-				81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */,
-				81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */,
-				811F820921B473E1000238E9 /* MenuViewController.swift */,
-				811F820F21B82FE2000238E9 /* MenuSegue.swift */,
-				811F821B21BEB212000238E9 /* SettingDataViewController.swift */,
-				81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */,
-				8193755E21FF7B96002E4923 /* CountryAccountViewController.swift */,
-				8193756121FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift */,
-			);
-			name = Account;
 			sourceTree = "<group>";
 		};
 		81FBEC3921C6DC3F00CBDBC8 /* manager */ = {
@@ -301,7 +298,6 @@
 				8184D8DF214C20AF00FF0E08 /* Frameworks */,
 				8184D8E0214C20AF00FF0E08 /* Resources */,
 				178A07F380657EADE721D3E8 /* [CP] Copy Pods Resources */,
-				1A12D321BC722B37171BB4D0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,34 +370,18 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1A12D321BC722B37171BB4D0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GooglePlacesAutocomplete/GooglePlacesAutocomplete.framework",
-				"${BUILT_PRODUCTS_DIR}/GooglePlacesSearchController/GooglePlacesSearchController.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesAutocomplete.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesSearchController.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PackSendMe/Pods-PackSendMe-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE2DE4E570D6E9E25C07E9E4 /* [CP] Check Pods Manifest.lock */ = {
@@ -430,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81DAE04E218F505A002A19D9 /* LoginViewController.swift in Sources */,
+				81DB208722B2724C006F43FB /* AddressAccountDto.swift in Sources */,
 				817D066A2181213A007B22EB /* HttpResponseModel.swift in Sources */,
 				81F3ECE3219C7A34000F4D8C /* AccountViewController.swift in Sources */,
 				81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */,
@@ -448,11 +429,13 @@
 				811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */,
 				81FD189321C00FB000A00082 /* UserHelper.swift in Sources */,
 				8104ED5121D57E070046A853 /* ManagerProfileUserViewController.swift in Sources */,
+				8105A90322847F5D00C711BB /* StreetViewCell.swift in Sources */,
 				81F3ECD921958A19000F4D8C /* HttpClientApi.swift in Sources */,
 				819CC0E4215D62C7004AD1CA /* CountryViewController.swift in Sources */,
 				819CC0F121739C34004AD1CA /* MainViewController.swift in Sources */,
 				81F3ECD5219480F6000F4D8C /* AccountModel.swift in Sources */,
 				81F3ECDE2196145C000F4D8C /* UtilityHelper.swift in Sources */,
+				81DB208922B2A5B5006F43FB /* ParserHelper.swift in Sources */,
 				811F821C21BEB212000238E9 /* SettingDataViewController.swift in Sources */,
 				81FBEC3821C6768100CBDBC8 /* SettingPaymentUserViewController.swift in Sources */,
 				812EB6772159462400DE540A /* IdentityViewController.swift in Sources */,

@@ -30,59 +30,26 @@ class AccountHelper: NSObject {
        
         if(addressArray != nil){
             for address in addressArray {
-                
                 dicAddress["id"] = address.id
-                print(" id =\(address.id)")
                 dicAddress["address"] = address.address
-                dicAddress["city"] = address.city
-                dicAddress["composite"] = address.composite
-                dicAddress["country"] = address.country
-                dicAddress["latitude"] = address.latitude
-                dicAddress["longitude"] = address.longitude
-                dicAddress["number"] = address.number
-                dicAddress["postalcode"] = address.postalcode
-                dicAddress["stateorprovince"] = address.stateorprovince
                 dicAddress["type"] = address.type
+                dicAddress["main"] = address.main
                 addressCollection.append(dicAddress)
             }
         }
         paramsDictionary["address"] = addressCollection
-
-          // print(" +++++++++++++++++++++++++++++++++++++++ \(dicAddress)")
-         //paramsDictionary["address"] = []
-                
-                /*
-                if let address = address[a] as? String {
-                    dicAddress["dicAddress"] = address
-                }
-                if let number = address["number"] as? String {
-                   
-                }
-                if let stateorprovince = address["stateorprovince"] as? String {
-                   
-                }
-                if let postalcode = address["postalcode"] as? String {
-                    
-                }
-                if let city = address["city"] as? String {
-                    
-                }
-                if let country = address["country"] as? String {
-                    
-                }
-                if let type = address["type"] as? String {
-                    
-                }
-                if let composite = address["composite"] as? String {
-                    
-                }
-                if let latitude = address["latitude"] as? String {
-                    
-                }
-                if let longitude = address["longitude"] as? String {
-                    
-                } */
-
+        return paramsDictionary
+    }
+    
+    
+    func addressObjectToArray(username:String, address:String, type:String, main:String, dateUpdate:String) -> Dictionary<String, Any> {
+        
+        var paramsDictionary = [String:Any]()
+        paramsDictionary["username"] = username
+        paramsDictionary["dateUpdate"] = dateUpdate
+        paramsDictionary["address"] = address
+        paramsDictionary["type"] = type
+        paramsDictionary["main"] = main
         return paramsDictionary
     }
   
@@ -100,40 +67,19 @@ class AccountHelper: NSObject {
 
         if(addressArray != nil){
             for address in addressArray! {
-                
                 if let id = address["id"] as? String {
-                    print(" ID ID ID ID =\(id)")
                     addressObj.id = id
                 }
                 if let address = address["address"] as? String {
                     addressObj.address = address
-                }
-                if let number = address["number"] as? String {
-                    addressObj.number = number
-                }
-                if let stateorprovince = address["stateorprovince"] as? String {
-                    addressObj.stateorprovince = stateorprovince
-                }
-                if let postalcode = address["postalcode"] as? String {
-                    addressObj.postalcode = postalcode
-                }
-                if let city = address["city"] as? String {
-                    addressObj.city = city
-                }
-                if let country = address["country"] as? String {
-                    addressObj.country = country
+                    print(" - ADDRESS - : ",addressObj.address)
+
                 }
                 if let type = address["type"] as? String {
                     addressObj.type = type
                 }
-                if let composite = address["composite"] as? String {
-                    addressObj.composite = composite
-                }
-                if let latitude = address["latitude"] as? String {
-                    addressObj.latitude = latitude
-                }
-                if let longitude = address["longitude"] as? String {
-                    addressObj.longitude = longitude
+                if let main = address["main"] as? String {
+                    addressObj.main = main
                 }
                 addressCollection.append(addressObj)
             }

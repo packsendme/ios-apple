@@ -24,7 +24,11 @@ class GlobalVariables {
     public var status: String = ""
     public var profileImage: String = ""
     public var profileImageDefault: String = "icon-user-photo"
-    
+    public var addressTypeJob: String = "addressJob"
+    public var addressTypeHome: String = "addressHome"
+    public var addressMain: String = "main"
+    public var addressSecond: String = "second"
+
     class var sharedManager: GlobalVariables {
         struct Static {
             static let instance = GlobalVariables()

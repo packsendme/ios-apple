@@ -493,6 +493,8 @@
 "setting-title-personalinf" = "Access Identification";
 "setting-title-addresshome" = "Home Address";
 "setting-title-addresswork" = "Work Address";
+"setting-title-payment" = "Payment";
+"setting-title-exit" = "Exit";
 "setting-title-paymentmaster" = "Master Payment ";
 "setting-title-paymentoptional" = "Optional Payment";
 "setting-title-addwork" = "Add Address Work";

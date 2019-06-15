@@ -517,6 +517,8 @@
 "setting-title-personalinf" = "Identificação de Acesso";
 "setting-title-addresshome" = "Endereço Residencial";
 "setting-title-addresswork" = "Endereço Trabalho";
+"setting-title-payment" = "Pagamento";
+"setting-title-exit" = "Sair";
 "setting-title-paymentmaster" = "Pagamento Master ";
 "setting-title-paymentoptional" = "Pagamento Opcional";
 "setting-title-addwork" = "Adicionar Endereço Trabalho";

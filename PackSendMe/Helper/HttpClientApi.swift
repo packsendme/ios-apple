@@ -32,7 +32,7 @@ class HttpClientApi: NSObject{
     func makeAPICall(url: String,params: String, method: HttpMethod, success:@escaping ( Data? ,HTTPURLResponse?  , NSError? ) -> Void, failure: @escaping ( Data? ,HTTPURLResponse?  , NSError? )-> Void) {
         
         let url_service : String = url+params
-        print (" URL NOW = \(url_service)")
+       //print (" URL NOW = \(url_service)")
         request?.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         request = URLRequest(url: URL(string: url_service)!)
@@ -62,14 +62,14 @@ class HttpClientApi: NSObject{
     func makeAPIBodyCall(url: String,params: Dictionary<String, Any>?, method: HttpMethod, success:@escaping ( Data? ,HTTPURLResponse?  , NSError? ) -> Void, failure: @escaping ( Data? ,HTTPURLResponse?  , NSError? )-> Void) {
         
         request = URLRequest(url: URL(string: url)!)
-        print("URL = \(url)")
+        //print("URL = \(url)")
         
         if let params = params {
             let  jsonData = try? JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
             //let  jsonData = try? JSONSerialization.data(withJSONObject: params, options: [])
             
             let jsonString = String(data: jsonData!, encoding: .utf8)!
-            print(" JSON =\(jsonString)")
+           // print(" JSON =\(jsonString)")
             
             request?.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request?.httpBody = jsonData

@@ -140,8 +140,8 @@ extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDe
        }
        else if indexPath.row == 3{
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-password", comment:"")
-            var password = accountModel?.password!
-        cell.itemFieldUserLabel.text = String(password!.characters.map { _ in return "•" })
+            let password = accountModel?.password!
+            cell.itemFieldUserLabel.text =  String(password!.characters.map { _ in return "•" })
             //cell.itemFieldUserLabel.text = accountModel?.password
         
        }

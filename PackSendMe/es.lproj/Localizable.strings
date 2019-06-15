@@ -486,10 +486,10 @@
 
 /* SCREEN - ACCOUNT */
 /* MENU  */
-"menu-title-shipping" = "Seu envio";
-"menu-title-payment" = "Pagamento";
+"menu-title-shipping" = "Su envío";
+"menu-title-payment" = "Pago";
 "menu-title-voucherfree" = "Cupón Gratis";
-"menu-title-help" = "Ajuda";
+"menu-title-help" = "Ayuda";
 "menu-title-settings" = "Configuración";
 "menu-title-legal" = "Legal";
 "menu-btn-makemoney" = "Gana dinero con entregas";
@@ -501,6 +501,8 @@
 "setting-title-personalinf" = "Identificación de Acceso";
 "setting-title-addresshome" = "Dirección Casa";
 "setting-title-addresswork" = "Dirección Trabajo";
+"setting-title-payment" = "Pago";
+"setting-title-exit" = "Salir";
 "setting-title-paymentmaster" = "Pago Maestro";
 "setting-title-paymentoptional" = "Pago Opcional";
 "setting-title-addwork" = "Añadir Dirección Trabajo";

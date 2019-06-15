@@ -13,7 +13,8 @@ struct URLConstants{
     
     struct googleMaps{
         static let trackingID = "AIzaSyDt5pgW0boE_KhyVZHpNAh-o7Z0dQWt2IA"
-        static let APIPlaces_TrackingID = "AIzaSyDzY6sOIX6kU_jOD4KSrkmGx1MweNFoYnc"
+        static let APIPlaces_TrackingID = "AIzaSyBYAqvauHBJyWYokwSb-sXrHD7HUAqVsq8"
+   
     }
 
     struct IAM{
@@ -60,9 +61,8 @@ struct URLConstants{
         
         // SettingProfileUser - SettingDataAccount | SettingDataAccount - SettingProfileUser
         static let settingProfileUserViewToSettingDataAccountView = "SettingProfileUserViewToSettingDataAccountView"
-        static let settingDataAccountViewToSettingProfileUserView = "SettingDataAccountViewToSettingProfileUserView"
 
-        static let settingViewToManagerAddressView = "SettingViewToManagerAddressView"
+
         static let settingViewToManagerPaymentView = "SettingViewToManagerPaymentView"
         
         // SettingProfileUser - ManagerProfile
