@@ -491,10 +491,12 @@
 "setting-activity-load" = "Loading User Data";
 "setting-title-home" = "Setting Account";
 "setting-title-personalinf" = "Access Identification";
-"setting-title-addresshome" = "Home Address";
-"setting-title-addresswork" = "Work Address";
+"setting-title-addresshome" = "Home";
+"setting-title-addresswork" = "Work";
+"setting-title-security" = "Security";
+"setting-title-exit" = "Sign out";
 "setting-title-payment" = "Payment";
-"setting-title-exit" = "Exit";
+"setting-title-paymentmethods" = "Payment Methods";
 "setting-title-paymentmaster" = "Master Payment ";
 "setting-title-paymentoptional" = "Optional Payment";
 "setting-title-addwork" = "Add Address Work";
@@ -507,7 +509,6 @@
 "profileuser-title-email" = "Email";
 "profileuser-title-password" = "Password";
 "profileuser-title-numberphone" = "Phone Number";
-
 
 /* ManagerProfileUserViewController - Name  */
 "editfirstname-label-title" = "Edit Name";
@@ -564,3 +565,32 @@
 "streetAddress-label-title" = "Address";
 "cityAddress-label-title" = "City";
 "postalcodeAddress-label-title" = "Postal Code";
+
+/* SettingPaymentUserViewController */
+"payment-title-sectionpayment" = "Payment Methods";
+"payment-title-sectionvouchers" = "Vouchers";
+"payment-title-addpaymentpromotions" = "Promotions";
+"payment-title-addpayment" = "Add Payment";
+
+/* PaymentCrudViewController */
+"paymentchoose-title-typepayment" = "Type Payment";
+"paymentadd-title-addpayment" = "Add Card";
+"paymentadd-field-cardname" = "Card Holder";
+"paymentadd-field-cardnumber" = "Number";
+"paymentadd-field-cardexpdate" = "Exp. Date";
+"paymentadd-field-cardcvv" = "CVV";
+"paymentadd-label-cardnamenot" = "Enter the card holder";
+"paymentadd-label-cardnamenot" = "Enter the card number";
+"paymentadd-label-cardnamenot" = "Enter the expiration date of the card";
+"paymentadd-label-cardnamenot" = "Enter the CVV number";
+"paymentadd-btn-editpayment" = "EDIT PAYMENT";
+"paymentadd-btn-deletepayment" = "DELETE PAYMENT";
+
+"payment-titlebtnscreen-paymentdelete" = "Delete";
+"payment-titlebtnscreen-paymentcancel" = "Cancel";
+"payment-titlescreen-paymentdelete" = "Delete Payment";
+"payment-msgscreen-paymentdelete" = "Do you want to delete the payment method?";
+
+
+
+

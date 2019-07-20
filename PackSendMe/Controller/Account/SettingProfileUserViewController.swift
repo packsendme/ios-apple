@@ -15,7 +15,7 @@ class SettingProfileUserViewController: UIViewController {
     @IBOutlet weak var editAccessInfTitleLabel: UILabel!
     @IBOutlet weak var useraccountLabel: UILabel!
 
-    var accountModel : AccountModel? = nil
+    var accountModel : AccountDto? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,42 +53,39 @@ class SettingProfileUserViewController: UIViewController {
     }
     
     @IBAction func photoProfileAction(_ sender: Any){
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingProfileUserViewToPhotoUserView, sender: nil)
+        self.performSegue(withIdentifier:"PhotoProfileViewControllerGo", sender: nil)
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.identifier	== URLConstants.IAM.photoUI{
+        
+        if segue.identifier	== "PhotoProfileViewControllerGo"{
             let setupPhotoProfile = segue.destination as? PhotoProfileViewController
             setupPhotoProfile?.accountModel = accountModel
         }
-        if segue.identifier == URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfileNameView{
+        if segue.identifier == "ManagerProfileUserViewControllerGoName"{
             let setupUserProfile = segue.destination as? ManagerProfileUserViewController
             setupUserProfile?.accountModel = accountModel
             setupUserProfile?.metadadosView = URLConstants.IAM.nameUI
         }
-        if segue.identifier == URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfileEmailView{
+        if segue.identifier == "ManagerProfileUserViewControllerGoEmail"{
             let setupUserProfile = segue.destination as? ManagerProfileUserViewController
             setupUserProfile?.accountModel = accountModel
             setupUserProfile?.metadadosView = URLConstants.IAM.emailUI
         }
-        if segue.identifier == URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfilePasswordView{
+        if segue.identifier == "ManagerProfileUserViewControllerGoPassword"{
             let setupUserProfile = segue.destination as? ManagerProfileUserViewController
             setupUserProfile?.accountModel = accountModel
             setupUserProfile?.metadadosView = URLConstants.IAM.passwordUI
         }
-        if segue.identifier == URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfileUsernameView{
+        if segue.identifier == "ManagerProfileUserViewControllerGoUsername"{
             let setupUserProfile = segue.destination as? ManagerProfileUserViewController
             setupUserProfile?.accountModel = accountModel
             setupUserProfile?.metadadosView = URLConstants.IAM.usernameUI
         }
     }
-    
-    
-    @IBAction func goBackSettingProfileAction(_ sender: Any) {
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingProfileUserViewToSettingDataAccountView, sender: nil)
-    }
+
 }
 
 extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDelegate{
@@ -97,13 +94,7 @@ extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDe
         return 5
     }
     
-    /*
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let rect = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 180)
-        let footerView = UIView(frame:rect)
-        footerView.backgroundColor = UIColor.clear
-        return footerView
-    }*/
+ 
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 15;
@@ -140,8 +131,7 @@ extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDe
        }
        else if indexPath.row == 3{
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-password", comment:"")
-            let password = accountModel?.password!
-            cell.itemFieldUserLabel.text =  String(password!.characters.map { _ in return "•" })
+            cell.itemFieldUserLabel.text =  String("123456781234567812345678".characters.map { _ in return "•" })
             //cell.itemFieldUserLabel.text = accountModel?.password
         
        }
@@ -154,19 +144,19 @@ extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if indexPath.row == 0{
-            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfileNameView, sender: nil)
+           self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoName", sender: nil)
        }
        else if indexPath.row == 1{
-            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfileNameView, sender: nil)
+           self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoName", sender: nil)
        }
        else if indexPath.row == 2{
-            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfileEmailView, sender: nil)
+            self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoEmail", sender: nil)
        }
        else if indexPath.row == 3{
-            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfilePasswordView, sender: nil)
+            self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoPassword", sender: nil)
        }
        else if indexPath.row == 4{
-            self.performSegue(withIdentifier:URLConstants.ACCOUNT.settingProfileUserViewControllerToManagerProfileUsernameView, sender: nil)
+            self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoUsername", sender: nil)
        }
     }
 }

@@ -16,7 +16,7 @@ class PhotoProfileViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var editBtn: UIBarButtonItem!
     @IBOutlet weak var profileimageImg: UIImageView!
     let imagePicker = UIImagePickerController()
-    var accountModel : AccountModel? = nil
+    var accountModel : AccountDto? = nil
     var boxActivityView = UIView()
     var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -196,8 +196,8 @@ class PhotoProfileViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let setupPhotoProfile = segue.destination as? ManagerProfileUserViewController
-        setupPhotoProfile!.accountModel = accountModel
+        let settingProfile = segue.destination as? SettingProfileUserViewController
+        settingProfile!.accountModel = accountModel
     }
     
     //MARK: - Done image capture here
@@ -207,11 +207,10 @@ class PhotoProfileViewController: UIViewController, UIImagePickerControllerDeleg
         saveImageToDocuments(image: profileimageImg.image!)
     }
     
-    
-    @IBAction func goBackManagerProfile(_ sender: Any) {
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.photoUserViewToSettingProfileUserView, sender: nil)
+
+    @IBAction func backAction(_ sender: Any) {
+        self.performSegue(withIdentifier:"PhotoProfileViewControllerBk", sender: nil)
     }
-    
     
     
 

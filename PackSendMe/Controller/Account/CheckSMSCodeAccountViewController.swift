@@ -25,7 +25,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var newSMSCodeBtn: UIButton!
     
     var dateFormat = UtilityHelper()
-    var accountModel : AccountModel? = nil
+    var accountModel : AccountDto? = nil
     var timer = Timer()
     var isTimerRunning = false
     var timeRemaining = 120

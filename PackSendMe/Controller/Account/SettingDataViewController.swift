@@ -5,7 +5,6 @@
 //  Created by Ricardo Marzochi on 10/12/2018.
 //  Copyright © 2018 Ricardo Marzochi. All rights reserved.
 //
-
 import UIKit
 import GooglePlaces
 
@@ -14,9 +13,11 @@ class SettingDataViewController: UIViewController {
     
     @IBOutlet weak var settingTitleLabel: UILabel!
     @IBOutlet weak var settingTable: UITableView!
+    
+    var headerHeightConstraint:NSLayoutConstraint!
+    
     let loadingView = UIView()
     var accountHelper = AccountHelper()
-    var accountModel = AccountModel()
     var addressParser = ParserHelper()
     var itens : [[String]] = []
     var jsonAccountFinal : [String: Any]? = nil
@@ -24,82 +25,32 @@ class SettingDataViewController: UIViewController {
     var typeAddressChange : String? = nil
     var addressUserArray : [String:Any]? = nil
     
-    /// Spinner shown during load the TableView
-    let activityIndicator = UIActivityIndicatorView()
-     let loadingLabel = UILabel()
+    var menuconfigAccount = AccountDto()
+
+    var lastContentOffset: CGFloat = 0
+
+    var oldContentOffset = CGPoint()
+    let topConstraintRange = (CGFloat(120)..<CGFloat(300))
+    var tableRowNumber : Int = 10
     
     override func viewDidLoad() {
-       //self.activityIndicator.startAnimating()
+        //self.activityIndicator.startAnimating()
         //activityActionStart()
-     //   loadingScreen()
+        //   loadingScreen()
         //activityActionStart()
         settingTitleLabel.text = NSLocalizedString("setting-title-home", comment:"")
         loadAccount()
         
-        settingTable.rowHeight = UITableViewAutomaticDimension
-        settingTable.isScrollEnabled = true
-        settingTable.translatesAutoresizingMaskIntoConstraints = false
-        
         settingTable.delegate = self
         settingTable.dataSource = self
-         super.viewDidLoad()
-     }
-
-    
-    func activityActionStop() {
-        //When button is pressed it removes the boxView from screen
-        self.loadingView.removeFromSuperview()
-       // self.activityView.stopAnimating()
+        settingTable.decelerationRate = UIScrollViewDecelerationRateFast
+        super.viewDidLoad()
     }
-    
-   
-    // Set the activity indicator into the main view
-    private func loadingScreen() {
-        
-        // Sets the view which contains the loading text and the spinner
-       
-        let width: CGFloat = 120
-        let height: CGFloat = 30
-        let x = (settingTable.frame.width / 2) - (width / 2)
-        let y = (settingTable.frame.height / 2) - (height / 2)
-        loadingView.frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        // Sets loading text
-        loadingLabel.textColor = .gray
-        loadingLabel.textAlignment = .center
-        loadingLabel.text = "Loading..."
-        loadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
-        
-        // Sets spinner
-        activityIndicator.activityIndicatorViewStyle = .gray
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        activityIndicator.startAnimating()
-        
-        // Adds text and spinner to the view
-        loadingView.addSubview(activityIndicator)
-        loadingView.addSubview(loadingLabel)
-        
-        settingTable.addSubview(loadingView)
-        
-    }
-    
-    // Remove the activity indicator from the main view
-    private func removeLoadingScreen() {
-        
-        // Hides and stops the text and the spinner
-        activityIndicator.isHidden = true
-        loadingLabel.isHidden = true
-    }
-
-    
     
     func loadAccount(){
         //GlobalVariables.sharedManager.username = "+5596064241"
         let paramsDictionary : String = GlobalVariables.sharedManager.username+URLConstants.ACCOUNT.account_load
         let url = URLConstants.ACCOUNT.account_http
-        
-        print (" URL NOW = \(url)")
-        
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
             //print (" URL statusCode = \(response?.statusCode)")
             if let data = data {
@@ -107,18 +58,9 @@ class SettingDataViewController: UIViewController {
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                         let jsonAccount = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
                         if(jsonAccount != nil){
-                            self.jsonAccountFinal = jsonAccount!["body"] as! [String:Any]
-                            
-                            //jsonAccountFinal = parseHTTPDataToAccountModel(json:jsonResponse!)
-                            
-                            //self.activityActionStart()
-                            //self.startAnimating(title:NSLocalizedString("photoprofile-activity-load", comment:""))
+                            self.jsonAccountFinal = jsonAccount!["body"] as? [String:Any]
+                            self.menuconfigAccount = AccountHelper().getMenuConfiguration(jsonAccount: self.jsonAccountFinal!)
                             self.refreshTable()
-                        //    self.removeLoadingScreen()
-                            
-                           // self.activityActionStop()
-                            //self.activityIndicator.stopAnimating()
-                            self.accountModel = self.accountHelper.transformArrayToAccountModel(account: jsonAccount!)
                         }
                     }
                     else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
@@ -151,14 +93,7 @@ class SettingDataViewController: UIViewController {
             }
         }
     }
-    /*
-    func parseHTTPDataToAccountModel(json : [String: Any]) -> [[Any]]{
-        let accountArray = json["body"] as! [String:Any]
-        let paymentArray = accountArray["payment"] as! [[String:Any]]
-        let addressArray = accountArray["address"] as! [[String:Any]]
-        let jsonAccountFinal = [[accountArray],[addressArray],[paymentArray]]
-        return jsonAccountFinal
-    }*/
+
     
     @IBAction func homeToolBtnAction(_ sender: Any) {
         self.performSegue(withIdentifier:URLConstants.ACCOUNT.allViewToAccountHomeView, sender: nil)
@@ -173,7 +108,7 @@ class SettingDataViewController: UIViewController {
     }
     
     @IBAction func closeAction(_ sender: Any) {
-    self.performSegue(withIdentifier:URLConstants.ACCOUNT.allViewToAccountHomeView, sender: nil)
+        self.performSegue(withIdentifier:URLConstants.ACCOUNT.allViewToAccountHomeView, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -181,7 +116,7 @@ class SettingDataViewController: UIViewController {
         if segue.destination is SettingProfileUserViewController
         {
             let setupAccessUser = segue.destination as? SettingProfileUserViewController
-            setupAccessUser?.accountModel = accountModel
+            setupAccessUser?.accountModel = menuconfigAccount
         }
         else if segue.destination is SettingAddressUserViewController
         {
@@ -190,14 +125,20 @@ class SettingDataViewController: UIViewController {
             //addressUserArray = jsonAccountFinal!["address"] as? [String:Any]
             //setupAccessUser?.addressUserArray = addressUserArray
         }
+        
     }
-    
 }
+
 
 extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate{
     
+    // this delegate is called when the scrollView (i.e your UITableView) will start scrolling
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 9
     }
     
     func imageWithImage(image:UIImage,scaledToSize newSize:CGSize)->UIImage{
@@ -207,25 +148,31 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
         UIGraphicsEndImageContext()
         return newImage!.withRenderingMode(.alwaysTemplate)
     }
+ 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
     
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var addressL = [String]()
-        guard let cell = tableView.dequeueReusableCell(withIdentifier:"SettingCell") as? SettingViewCell
+        guard var cell = tableView.dequeueReusableCell(withIdentifier:"SettingInformationCell") as? SettingViewCell
             else{
                 return UITableViewCell()
         }
-  
-        if(jsonAccountFinal != nil){
+ 
+        if(menuconfigAccount != nil){
+            
+            // ADDRESS-HOME ACCOUNT
+            if(indexPath.row == 0){
+                cell.selectionStyle = .none
+                cell.backgroundColor = UIColor.groupTableViewBackground
+                cell.accessoryType = .none
+            }
             
             // USER ACCOUNT
-            if(indexPath.row == 0){
-                cell.titleCellLabel.text = NSLocalizedString("setting-title-personalinf", comment:"")
-                cell.creditcardImage.isHidden = true
-
+            if(indexPath.row == 1){
+                //cell.titleCellLabel.text = NSLocalizedString("setting-title-personalinf", comment:"")
+                //cell.creditcardImage.isHidden = true
+                
                 var imagePersonalView : UIImageView
-                 imagePersonalView  = UIImageView(frame:CGRect(x: 0, y: 0,width:1, height:1));
-
+                imagePersonalView  = UIImageView(frame:CGRect(x: 0, y: 0,width:1, height:1));
+                
                 if UserDefaults.standard.object(forKey: GlobalVariables.sharedManager.profileImage) as? NSData != nil{
                     let data = UserDefaults.standard.object(forKey: GlobalVariables.sharedManager.profileImage) as! NSData
                     imagePersonalView.image = UIImage(data: data as Data)
@@ -242,168 +189,90 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
                     cell.cellImage.layer.masksToBounds = true
                 }
                 
-                if let name = jsonAccountFinal!["name"] as? String {
-                    cell.identificador1Label.text = name
-                }
-                if let username = jsonAccountFinal!["username"] as? String {
-                    print(" username =\(username)")
-                   cell.identificador2Label.text = username
-                }
-                if let email = jsonAccountFinal!["email"] as? String {
-                    print(" email =\(email)")
-                    cell.identificador3Label.text = email
-                }
+                cell.identificador1Label.text = menuconfigAccount.name
+                cell.identificador2Label.text = menuconfigAccount.username
+                cell.identificador3Label.text = menuconfigAccount.email
+            }
+            // NULL BLANCK CELL
+            if(indexPath.row == 2){
+                cell.selectionStyle = .none
+                cell.backgroundColor = UIColor.groupTableViewBackground
+                cell.accessoryType = .none
             }
             // ADDRESS-HOME ACCOUNT
-            if(indexPath.row == 1){
+            if(indexPath.row == 3){
+                cell.selectionStyle = .none
                 var imageAddressView : UIImageView
                 imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
                 imageAddressView.image = UIImage(named: "icon-user-house.png")
-                cell.titleCellLabel.text = NSLocalizedString("setting-title-addresshome", comment:"")
-                cell.creditcardImage.isHidden = true
                 cell.cellImage.image = imageAddressView.image
-                let addressArray = jsonAccountFinal!["address"] as? [[String:Any]]
-               
-                if addressArray != nil {
-                    for address in addressArray! {
-
-                        if (address["type"] as! String == GlobalVariables.sharedManager.addressTypeHome) && (address["main"] as! String == GlobalVariables.sharedManager.addressMain) {
-                            
-                            if let address = address["address"] as? String {
-                                addressL = addressParser.addressParser(addressParser: address)
-                                cell.identificador1Label.text = addressL[0]
-                                cell.identificador2Label.text = addressL[1]
-                                cell.identificador3Label.text = addressL[2]
-                                cell.identificador1Label.textColor = UIColor.black
-                                break
-                            }
-                            break
-                        }
-                        else{
-                            cell.identificador2Label.font = UIFont(name:"Avenir", size:18)
-                            cell.identificador2Label.textColor = UIColor.blue
-                            cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
-                            cell.identificador3Label.text = ""
-                            cell.identificador1Label.text = ""
+                
+                if menuconfigAccount.address != nil {
+                    for address in menuconfigAccount.address! {
+                        if (address.type as! String == GlobalVariables.sharedManager.addressTypeHome) {
+                            cell.identificador1Label.text = address.address
+                            cell.identificador2Label.text = address.city
+                            cell.identificador3Label.text = address.country
+                            cell.identificador1Label.textColor = UIColor.black
                         }
                     }
                 }
                 else{
-                    cell.identificador2Label.font = UIFont(name:"Avenir", size:18)
-                    cell.identificador2Label.textColor = UIColor.blue
                     cell.identificador2Label.text = NSLocalizedString("setting-title-addhome", comment:"")
-                    cell.identificador3Label.text = ""
-                    cell.identificador1Label.text = ""
                 }
             }
             // ADDRESS-JOB ACCOUNT
-            if(indexPath.row == 2){
+            if(indexPath.row == 4){
                 var imageAddressView : UIImageView
                 imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
                 imageAddressView.image = UIImage(named: "icon-user-work.png")
-                cell.titleCellLabel.text = NSLocalizedString("setting-title-addresswork", comment:"")
-                cell.creditcardImage.isHidden = true
                 cell.cellImage.image = imageAddressView.image
-                let addressArray = jsonAccountFinal!["address"] as? [[String:Any]]
                 
-                if addressArray != nil {
-                    for address in addressArray! {
-                        
-                        if (address["type"] as! String == GlobalVariables.sharedManager.addressTypeJob) &&
-                           (address["main"] as! String == GlobalVariables.sharedManager.addressMain) {
-                            
-                            if let address = address["address"] as? String {
-                                addressL = addressParser.addressParser(addressParser: address)
-                                cell.identificador1Label.text = addressL[0]
-                                cell.identificador2Label.text = addressL[1]
-                                cell.identificador3Label.text = addressL[2]
-                                cell.identificador1Label.textColor = UIColor.black
-                                break
-                            }
-                            break
-                        }
-                        else{
-                            print(" ADDRESS TYPE =\(address["type"] as! String) ")
-                            cell.identificador2Label.font = UIFont(name:"Avenir", size:18)
-                            cell.identificador2Label.textColor = UIColor.blue
-                            cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
-                            cell.identificador3Label.text = ""
-                            cell.identificador1Label.text = ""
+                if menuconfigAccount.address != nil {
+                    for address in menuconfigAccount.address! {
+                        if (address.type == GlobalVariables.sharedManager.addressTypeJob) {
+                            cell.identificador1Label.text = address.address
+                            cell.identificador2Label.text = address.city
+                            cell.identificador3Label.text = address.country
+                            cell.identificador1Label.textColor = UIColor.black
                         }
                     }
                 }
                 else{
-                    cell.identificador2Label.font = UIFont(name:"Avenir", size:18)
-                    cell.identificador2Label.textColor = UIColor.blue
                     cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
-                    cell.identificador3Label.text = ""
-                    cell.identificador1Label.text = ""
                 }
             }
             
-            // PAYMENT ACCOUNT MASTER
-            if(indexPath.row == 3){
-                cell.titleCellLabel.text = NSLocalizedString("setting-title-payment", comment:"")
-                cell.cellImage.image = UIImage(named: "icon-user-card.png")
-                let paymentArray = jsonAccountFinal!["payment"] as? [[String:Any]]
-                cell.creditcardImage.isHidden = false
-
-                if paymentArray != nil {
-                    for payment in paymentArray! {
-                        if payment["cardOrder"] as? Int == 1  {
-                            cell.identificador1Label.text = ""
-                            let cardType = payment["cardType"] as? String
-                            switch cardType {
-                                case "Visa":
-                                    cell.creditcardImage.image = UIImage(named: "icon-card-visa.png")
-                                case "Mastercard":
-                                    cell.creditcardImage.image = UIImage(named: "icon-card-master.png")
-                                case "Discovercard":
-                                    cell.creditcardImage.image = UIImage(named: "icon-card-discover.png")
-                                case "Dinerscard":
-                                    cell.creditcardImage.image = UIImage(named: "icon-card-diners.png")
-                                case "Americancard":
-                                    cell.creditcardImage.image = UIImage(named: "icon-card-american.png")
-                                default:
-                                    print("F. You failed")//Any number less than 0 or greater than 99
-                            }
-
-                            if let cardName = payment["cardName"] as? String {
-                                print(" country =\(cardName)")
-                                cell.identificador3Label.text = cardName
-                            }
-                            
-                            if let cardNumber = payment["cardNumber"] as? String {
-                                print(" city =\(cardNumber)")
-                                cell.identificador2Label.text = cardNumber
-                            }
-                            break
-                        }
-                        else{
-                            cell.identificador2Label.font = UIFont(name:"Avenir", size:17)
-                            cell.identificador2Label.textColor = UIColor.blue
-                            cell.identificador2Label.text = NSLocalizedString("setting-title-addcard", comment:"")
-                            cell.identificador3Label.text = ""
-                            cell.identificador1Label.text = ""
-                        }
-                    }
-                }
-                else{
-                    cell.identificador2Label.font = UIFont(name:"Avenir", size:17)
-                    cell.identificador2Label.textColor = UIColor.blue
-                    cell.identificador2Label.text = NSLocalizedString("setting-title-addcard", comment:"")
-                    cell.identificador3Label.text = ""
-                    cell.identificador1Label.text = ""
-                }
+            if(indexPath.row == 5){
+                cell.selectionStyle = .none
+                cell.backgroundColor = UIColor.groupTableViewBackground
+                cell.accessoryType = .none
             }
-            // Exit
-            if(indexPath.row == 4){
-                cell.titleCellLabel.text = NSLocalizedString("setting-title-exit", comment:"")
-                cell.cellImage.image = UIImage(named: "icon-user-card.png")
+            // SECURITY
+            if(indexPath.row == 6){
+                var imageAddressView : UIImageView
+                imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
+                imageAddressView.image = UIImage(named: "icon-user-security.png")
+                cell.cellImage.image = imageAddressView.image
+                cell.identificador2Label.text = NSLocalizedString("setting-title-security", comment:"")
+            }
+            
+            // EXIT
+            if(indexPath.row == 7){
+                cell.selectionStyle = .none
+                cell.backgroundColor = UIColor.groupTableViewBackground
+                cell.accessoryType = .none
+            }
+            // EXIT
+            if(indexPath.row == 8){
+                cell.identificador2Label.text = NSLocalizedString("setting-title-exit", comment:"")
+                cell.identificador2Label.textColor = UIColor.red
+                cell.backgroundColor = UIColor.white
             }
         }
-        return cell
+         return cell;
     }
+
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 15;
@@ -411,39 +280,64 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 100.0;//Choose your custom row height
+        if indexPath.row == 0 {
+            return 30.0
+        }
+        if indexPath.row == 1 {
+            return 85.0
+            
+        }
+        if indexPath.row == 2 {
+            return 50.0
+            
+        }
+        if indexPath.row == 3 || indexPath.row == 4 {
+            return 90.0
+            
+        }
+        if indexPath.row == 5 {
+            return 70.0
+            
+        }
+        if indexPath.row == 6 {
+            return 90.0
+        }
+        if indexPath.row == 7 {
+            return 70.0
+        }
+        if indexPath.row == 8 {
+            return 90.0
+        }
+        else{
+            return 90.0;
+        }
     }
     
+ 
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if(indexPath.row == 0){
-            self.performSegue(withIdentifier:"SettingDataAccountViewToSettingProfileUserView", sender: nil)
+        if(indexPath.row == 1){
+            self.performSegue(withIdentifier:"SettingProfileUserViewControllerGo", sender: nil)
         }
-        // AddressHome
-        else if(indexPath.row == 1){
+            // AddressHome
+        else if(indexPath.row == 3){
             typeAddressChange = GlobalVariables.sharedManager.addressTypeHome
             self.performSegue(withIdentifier:"SettingViewToManagerAddressView", sender: nil)
         }
-        // AddressJob
-        else if(indexPath.row == 2){
+            // AddressJob
+        else if(indexPath.row == 4){
             typeAddressChange = GlobalVariables.sharedManager.addressTypeJob
             self.performSegue(withIdentifier:"SettingViewToManagerAddressView", sender: nil)
         }
-        // Payment Main
-        else if(indexPath.row == 3){
-            self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
+            // Payment Main
+        else if(indexPath.row == 6){
+            //self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
         }
-        // Payment Second
-        else if(indexPath.row == 4){
-            self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
+            // Payment Second
+        else if(indexPath.row == 8){
+            //self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
         }
     }
- 
+    
 
 }
-
-    
-    
-
-
-

@@ -499,9 +499,11 @@
 "setting-activity-load" = "Cargando datos del usuario";
 "setting-title-home" = "Configuración de la Cuenta";
 "setting-title-personalinf" = "Identificación de Acceso";
-"setting-title-addresshome" = "Dirección Casa";
+"setting-title-addresshome" = "Casa";
 "setting-title-addresswork" = "Dirección Trabajo";
 "setting-title-payment" = "Pago";
+"setting-title-paymentmethods" = "Forma de Pago";
+"setting-title-security" = "Seguridad";
 "setting-title-exit" = "Salir";
 "setting-title-paymentmaster" = "Pago Maestro";
 "setting-title-paymentoptional" = "Pago Opcional";
@@ -571,3 +573,23 @@
 "cityAddress-label-title" = "Ciudad";
 "postalcodeAddress-label-title" = "Código Postal";
 
+/* SettingPaymentUserViewController */
+"payment-title-addpayment" = "Añadir Pago";
+"payment-title-sectionpayment" = "Método Pago";
+"payment-title-sectionvouchers" = "Vales";
+"payment-title-addpaymentpromotions" = "Promocion";
+
+
+/* PaymentCrudViewController */
+"paymentchoose-title-typepayment" = "Tipo Pago";
+"paymentadd-title-addpayment" = "Añadir Tarjeta";
+"paymentadd-field-cardname" = "Titular";
+"paymentadd-field-cardnumber" = "Numero";
+"paymentadd-field-cardexpdate" = "Fecha Caducidad";
+"paymentadd-field-cardcvv" = "CVV";
+"paymentadd-label-cardnamenot" = "Informe el nombre de identificación";
+"paymentadd-label-cardnamenot" = "Informe el numero de la tarjeta";
+"paymentadd-label-cardnamenot" = "Informe la fecha de caducidad de la tarjeta";
+"paymentadd-label-cardnamenot" = "Informe el numero CVV";
+"paymentadd-btn-editpayment" = "EDITAR PAGO";
+"paymentadd-btn-deletepayment" = "BORRAR PAGO";

@@ -15,7 +15,7 @@ class CountryAccountViewController: UIViewController{
     var countryHelperOb = CountryHelper()
     var countriesData: [CountryModel] = []
     var optionViewController: String = ""
-    var accountModel : AccountModel? = nil
+    var accountModel : AccountDto? = nil
 
     
     @IBOutlet weak var countrycurrent: UILabel!

@@ -28,6 +28,9 @@ class GlobalVariables {
     public var addressTypeHome: String = "addressHome"
     public var addressMain: String = "main"
     public var addressSecond: String = "second"
+    
+    public var personalInformation: String = "personalInformation"
+    public var addressInformation: String = "addressInformation"
 
     class var sharedManager: GlobalVariables {
         struct Static {

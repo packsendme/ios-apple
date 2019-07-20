@@ -50,7 +50,7 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneValidateLabel: UILabel!
     
     var metadadosView : String = ""
-    var accountModel : AccountModel? = nil
+    var accountModel : AccountDto? = nil
     var formatPlaceHoldName = UtilityHelper()
     var refreshControl = UIRefreshControl()
     var userModel = UserModel()
@@ -254,7 +254,9 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func passwordVerify(_ sender: Any) {
         if passwordcurrentTextField.text!.count >= 6{
-            checkPasswordCurrent()
+            let passwordTrim = passwordcurrentTextField.text
+            let formattedPassword = passwordTrim!.replacingOccurrences(of: " ", with: "")
+            checkPasswordCurrent(password: formattedPassword)
         }
         else{
             self.passwordcurrentdetailLabel.text = NSLocalizedString("editpassword-label-passwordvalidate", comment:"")
@@ -285,7 +287,6 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                 DispatchQueue.main.async {
-                    self.accountModel?.password = self.passwordnewTextField.text!
                     self.performSegue(withIdentifier:"ManagerProfileUserToSettingProfileUser", sender: nil)
                 }
             }
@@ -305,7 +306,7 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         let dateUpdate = utilityHelper.dateConvertToString()
         
         var paramsDictionary = [String:Any]()
-        paramsDictionary = accountHelper.transformObjectToArray(id:(accountModel?.id)!,username:(accountModel?.username)!, email:(accountModel?.email)!, password:(accountModel?.password)!, name:(accountModel?.name)!, lastName:(accountModel?.lastName)!,addressArray:accountModel!.address!, dateCreation:(accountModel?.dateCreation)!, dateUpdate: dateUpdate)
+        paramsDictionary = accountHelper.transformObjectToArray(username:(accountModel?.username)!, email:(accountModel?.email)!,name:(accountModel?.name)!, lastName:(accountModel?.lastName)!, dateCreation:(accountModel?.dateCreation)!, dateUpdate: dateUpdate)
         
         let account = URLConstants.ACCOUNT.account_http
         
@@ -325,8 +326,9 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func checkPasswordCurrent() {
-        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+passwordcurrentTextField.text!
+    func checkPasswordCurrent(password : String) {
+        
+        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+password
         let account = URLConstants.IAM.iamAccess_http
         HttpClientApi.instance().makeAPICall(url: account, params:paramsDictionary, method: .GET, success: { (data, response, error) in
             

@@ -515,10 +515,12 @@
 "setting-activity-load" = "Carregando dados do usuário";
 "setting-title-home" = "Configuração da Conta";
 "setting-title-personalinf" = "Identificação de Acesso";
-"setting-title-addresshome" = "Endereço Residencial";
-"setting-title-addresswork" = "Endereço Trabalho";
-"setting-title-payment" = "Pagamento";
+"setting-title-addresshome" = "Casa";
+"setting-title-addresswork" = "Trabalho";
+"setting-title-security" = "Segurança";
 "setting-title-exit" = "Sair";
+"setting-title-payment" = "Pagamento";
+"setting-title-paymentmethods" = "Forma de Pagamento";
 "setting-title-paymentmaster" = "Pagamento Master ";
 "setting-title-paymentoptional" = "Pagamento Opcional";
 "setting-title-addwork" = "Adicionar Endereço Trabalho";
@@ -586,3 +588,23 @@
 "streetAddress-label-title" = "Endereço";
 "cityAddress-label-title" = "Cidade";
 "postalcodeAddress-label-title" = "CEP";
+
+/* SettingPaymentUserViewController */
+"payment-title-addpayment" = "Adicionar Pagamento";
+"payment-title-sectionpayment" = "Método Pagamento";
+"payment-title-sectionvouchers" = "Vouchers";
+"payment-title-addpaymentpromotions" = "Promoção";
+
+/* PaymentCrudViewController */
+"paymentchoose-title-typepayment" = "Tipo Pagamento";
+"paymentadd-title-addpayment" = "Adicionar Cartão";
+"paymentadd-field-cardname" = "Titular";
+"paymentadd-field-cardnumber" = "Numero";
+"paymentadd-field-cardexpdate" = "Data Venc";
+"paymentadd-field-cardcvv" = "CVV";
+"paymentadd-label-cardnamenot" = "Informe o titular do cartão";
+"paymentadd-label-cardnamenot" = "Informe o numero do cartão";
+"paymentadd-label-cardnamenot" = "Informe a data de vencimento do cartão";
+"paymentadd-label-cardnamenot" = "Informe o numero CVV";
+"paymentadd-btn-editpayment" = "EDITAR PAGAMENTO";
+"paymentadd-btn-deletepayment" = "EXLUIR PAGAMENTO";

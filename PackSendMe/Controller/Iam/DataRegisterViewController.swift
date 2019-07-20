@@ -73,12 +73,13 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func registerAccount(_ sender: Any) {
-        let accountHelper = AccountHelper()
+        let accountVO = AccountDto()
         let utilityHelper = UtilityHelper()
         let dateCreationS = utilityHelper.dateConvertToString()
         
         var paramsDictionary = [String:Any]()
-        paramsDictionary = accountHelper.transformObjectToArray(id:"",username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastName:lastnameTextField.text!, addressArray:[],dateCreation:dateCreationS, dateUpdate:dateCreationS)
+        
+        paramsDictionary = accountVO.createAccountDictionary(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastName:lastnameTextField.text!,dateCreation:dateCreationS, dateUpdate:dateCreationS)
         
         let account = URLConstants.ACCOUNT.account_http
         HttpClientApi.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .POST, success: { (data, response, error) in

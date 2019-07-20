@@ -24,7 +24,7 @@ class SettingAddressUserViewController: UIViewController {
     var searchActive : Bool = false
     var filtered1 = [String]()
   
-    var accountModel : AccountModel? = nil
+  //  var accountModel : AccountModel? = nil
     var addressUserArray : [String:Any]? = nil
     var addressChangeModel = AddressModel()
     var typeAddressChange : String? = nil

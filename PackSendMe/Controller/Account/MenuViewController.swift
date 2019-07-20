@@ -132,9 +132,12 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate, UISear
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-        if(indexPath.row == 4){
-            self.performSegue(withIdentifier:URLConstants.ACCOUNT.account_setting, sender: nil)
+        
+        if(indexPath.row == 3){
+        self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
+        }
+        else if(indexPath.row == 4){
+        self.performSegue(withIdentifier:URLConstants.ACCOUNT.account_setting, sender: nil)
         }
     }
     

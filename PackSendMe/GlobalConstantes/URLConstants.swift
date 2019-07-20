@@ -27,7 +27,6 @@ struct URLConstants{
         static let emailUI = "EmailUI"
         static let passwordUI = "PasswordUI"
         static let nameUI = "NameUI"
-        static let photoUI = "PhotoUI"
         static let usernameUI = "UsernameUI"
         static let country_identity = "countryIdentity"
         
@@ -44,32 +43,20 @@ struct URLConstants{
         
 
     }
+    struct PAYMENT{
+        static let payment_http = "http://192.241.133.13:9095/payment/"
+        static let payment_method = "http://192.241.133.13:9095/payment/method/"
+     }
     
     struct ACCOUNT{
         static let account_http = "http://192.241.133.13:9094/account/"
         static let account_load = "/load"
         static let account_setting = "MenuAccountSetting"
-        
-        
         // All View To AccounthoME
         static let allViewToAccountHomeView = "AllViewToAccountHomeView"
-        
-        // SettingProfileUser = PhotoUser
-        static let settingProfileUserViewToPhotoUserView = "SettingProfileUserViewToPhotoUserView"
-        static let photoUserViewToSettingProfileUserView = "PhotoUserViewToSettingProfileUserView"
-        
-        
-        // SettingProfileUser - SettingDataAccount | SettingDataAccount - SettingProfileUser
-        static let settingProfileUserViewToSettingDataAccountView = "SettingProfileUserViewToSettingDataAccountView"
-
-
         static let settingViewToManagerPaymentView = "SettingViewToManagerPaymentView"
         
-        // SettingProfileUser - ManagerProfile
-        static let settingProfileUserViewControllerToManagerProfileNameView = "SettingProfileUserViewControllerToManagerProfileName"
-        static let settingProfileUserViewControllerToManagerProfileEmailView = "SettingProfileUserViewControllerToManagerProfileEmailView"
-        static let settingProfileUserViewControllerToManagerProfilePasswordView = "SettingProfileUserViewControllerToManagerProfilePasswordView"
-        static let settingProfileUserViewControllerToManagerProfileUsernameView = "SettingProfileUserViewControllerToManagerProfileUsernameView"
+      
     }
     
     struct HTTP_STATUS{

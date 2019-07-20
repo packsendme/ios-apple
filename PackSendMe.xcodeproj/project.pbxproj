@@ -13,7 +13,7 @@
 		811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820D21B49623000238E9 /* MenuViewCell.swift */; };
 		811F821021B82FE2000238E9 /* MenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820F21B82FE2000238E9 /* MenuSegue.swift */; };
 		811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821721BDD25A000238E9 /* SettingViewCell.swift */; };
-		811F821A21BE7D94000238E9 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821921BE7D94000238E9 /* PaymentModel.swift */; };
+		811F821A21BE7D94000238E9 /* CardPaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821921BE7D94000238E9 /* CardPaymentModel.swift */; };
 		811F821C21BEB212000238E9 /* SettingDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821B21BEB212000238E9 /* SettingDataViewController.swift */; };
 		812EB6772159462400DE540A /* IdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812EB6762159462400DE540A /* IdentityViewController.swift */; };
 		817D065A2179CE40007B22EB /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D06592179CE40007B22EB /* URLConstants.swift */; };
@@ -34,9 +34,13 @@
 		819CC0ED217131DD004AD1CA /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0EC217131DD004AD1CA /* GlobalVariables.swift */; };
 		819CC0EF21737472004AD1CA /* CountryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0EE21737472004AD1CA /* CountryHelper.swift */; };
 		819CC0F121739C34004AD1CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0F021739C34004AD1CA /* MainViewController.swift */; };
+		81D4EC3D22BD53840013A4C6 /* PaymentOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4EC3C22BD53840013A4C6 /* PaymentOperationViewController.swift */; };
+		81D4EC4322C0E9230013A4C6 /* PaymentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4EC4222C0E9230013A4C6 /* PaymentCardViewController.swift */; };
+		81D4EC4522C167860013A4C6 /* PaymentMethodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4EC4422C167860013A4C6 /* PaymentMethodModel.swift */; };
 		81DAE04E218F505A002A19D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DAE04D218F505A002A19D9 /* LoginViewController.swift */; };
 		81DB208722B2724C006F43FB /* AddressAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB208622B2724C006F43FB /* AddressAccountDto.swift */; };
 		81DB208922B2A5B5006F43FB /* ParserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB208822B2A5B5006F43FB /* ParserHelper.swift */; };
+		81DB208B22B65F7C006F43FB /* PaymentAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB208A22B65F7C006F43FB /* PaymentAccountDto.swift */; };
 		81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */; };
 		81DC728F21AEF2C400B6ECF8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 81DC728E21AEF2C400B6ECF8 /* Podfile */; };
 		81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD221935A5D000F4D8C /* DataRegisterViewController.swift */; };
@@ -47,6 +51,11 @@
 		81F3ECDE2196145C000F4D8C /* UtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */; };
 		81F3ECE0219C79A1000F4D8C /* ACCOUNT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */; };
 		81F3ECE3219C7A34000F4D8C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */; };
+		81F9686C22D12E5800A809A8 /* PaymentAllDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9686B22D12E5800A809A8 /* PaymentAllDto.swift */; };
+		81F9686E22D14E7100A809A8 /* PaymentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9686D22D14E7100A809A8 /* PaymentHelper.swift */; };
+		81F9687022D4B30000A809A8 /* MenuConfigSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9686F22D4B30000A809A8 /* MenuConfigSession.swift */; };
+		81F9687422D6884800A809A8 /* AddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9687322D6884800A809A8 /* AddressDto.swift */; };
+		81F9687622D689C500A809A8 /* AccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9687522D689C500A809A8 /* AccountDto.swift */; };
 		81FBEC3421C674FE00CBDBC8 /* SettingProfileUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3321C674FE00CBDBC8 /* SettingProfileUserViewController.swift */; };
 		81FBEC3621C6766900CBDBC8 /* SettingAddressUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */; };
 		81FBEC3821C6768100CBDBC8 /* SettingPaymentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */; };
@@ -63,7 +72,7 @@
 		811F820D21B49623000238E9 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = PackSendMe/View/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		811F820F21B82FE2000238E9 /* MenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSegue.swift; sourceTree = "<group>"; };
 		811F821721BDD25A000238E9 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewCell.swift; path = PackSendMe/View/SettingViewCell.swift; sourceTree = SOURCE_ROOT; };
-		811F821921BE7D94000238E9 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		811F821921BE7D94000238E9 /* CardPaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentModel.swift; sourceTree = "<group>"; };
 		811F821B21BEB212000238E9 /* SettingDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDataViewController.swift; sourceTree = "<group>"; };
 		812EB6762159462400DE540A /* IdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityViewController.swift; sourceTree = "<group>"; };
 		817D06592179CE40007B22EB /* URLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
@@ -93,9 +102,13 @@
 		819CC0EC217131DD004AD1CA /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		819CC0EE21737472004AD1CA /* CountryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHelper.swift; sourceTree = "<group>"; };
 		819CC0F021739C34004AD1CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		81D4EC3C22BD53840013A4C6 /* PaymentOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOperationViewController.swift; sourceTree = "<group>"; };
+		81D4EC4222C0E9230013A4C6 /* PaymentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCardViewController.swift; sourceTree = "<group>"; };
+		81D4EC4422C167860013A4C6 /* PaymentMethodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodModel.swift; sourceTree = "<group>"; };
 		81DAE04D218F505A002A19D9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		81DB208622B2724C006F43FB /* AddressAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAccountDto.swift; sourceTree = "<group>"; };
 		81DB208822B2A5B5006F43FB /* ParserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserHelper.swift; sourceTree = "<group>"; };
+		81DB208A22B65F7C006F43FB /* PaymentAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentAccountDto.swift; sourceTree = "<group>"; };
 		81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeGeneratorHttp.swift; sourceTree = "<group>"; };
 		81DC728E21AEF2C400B6ECF8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		81F3ECD221935A5D000F4D8C /* DataRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRegisterViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +119,11 @@
 		81F3ECDD2196145C000F4D8C /* UtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityHelper.swift; sourceTree = "<group>"; };
 		81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ACCOUNT.storyboard; sourceTree = "<group>"; };
 		81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		81F9686B22D12E5800A809A8 /* PaymentAllDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentAllDto.swift; sourceTree = "<group>"; };
+		81F9686D22D14E7100A809A8 /* PaymentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHelper.swift; sourceTree = "<group>"; };
+		81F9686F22D4B30000A809A8 /* MenuConfigSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConfigSession.swift; sourceTree = "<group>"; };
+		81F9687322D6884800A809A8 /* AddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDto.swift; sourceTree = "<group>"; };
+		81F9687522D689C500A809A8 /* AccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDto.swift; sourceTree = "<group>"; };
 		81FBEC3321C674FE00CBDBC8 /* SettingProfileUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileUserViewController.swift; sourceTree = "<group>"; };
 		81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAddressUserViewController.swift; sourceTree = "<group>"; };
 		81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPaymentUserViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +159,7 @@
 				811F821721BDD25A000238E9 /* SettingViewCell.swift */,
 				81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */,
 				8105A90222847F5D00C711BB /* StreetViewCell.swift */,
+				81F9686F22D4B30000A809A8 /* MenuConfigSession.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,6 +167,7 @@
 		8105A8F922847DDB00C711BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				81D4EC3F22BFFFA00013A4C6 /* Payment */,
 				819CC0F021739C34004AD1CA /* MainViewController.swift */,
 				8105A8FA22847DF000C711BB /* Account */,
 				817D065F217D2CD9007B22EB /* Iam */,
@@ -160,7 +180,6 @@
 			children = (
 				81FBEC3321C674FE00CBDBC8 /* SettingProfileUserViewController.swift */,
 				81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */,
-				81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */,
 				81F3ECE2219C7A34000F4D8C /* AccountViewController.swift */,
 				811F820921B473E1000238E9 /* MenuViewController.swift */,
 				811F820F21B82FE2000238E9 /* MenuSegue.swift */,
@@ -172,13 +191,13 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
-		8105A8FE22847E6C00C711BB /* BO */ = {
+		8105A8FE22847E6C00C711BB /* GlobalConstantes */ = {
 			isa = PBXGroup;
 			children = (
 				819CC0EC217131DD004AD1CA /* GlobalVariables.swift */,
 				817D06592179CE40007B22EB /* URLConstants.swift */,
 			);
-			path = BO;
+			path = GlobalConstantes;
 			sourceTree = "<group>";
 		};
 		8105A8FF22847E9E00C711BB /* Storyboard */ = {
@@ -200,6 +219,7 @@
 				81DC728821AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift */,
 				81FD189221C00FB000A00082 /* UserHelper.swift */,
 				81DB208822B2A5B5006F43FB /* ParserHelper.swift */,
+				81F9686D22D14E7100A809A8 /* PaymentHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -212,8 +232,11 @@
 				817D06692181213A007B22EB /* HttpResponseModel.swift */,
 				81F3ECD4219480F6000F4D8C /* AccountModel.swift */,
 				81F3ECD621948A75000F4D8C /* AddressModel.swift */,
-				811F821921BE7D94000238E9 /* PaymentModel.swift */,
+				811F821921BE7D94000238E9 /* CardPaymentModel.swift */,
 				81DB208622B2724C006F43FB /* AddressAccountDto.swift */,
+				81DB208A22B65F7C006F43FB /* PaymentAccountDto.swift */,
+				81D4EC4422C167860013A4C6 /* PaymentMethodModel.swift */,
+				81F9686B22D12E5800A809A8 /* PaymentAllDto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,8 +276,9 @@
 		8184D8E4214C20AF00FF0E08 /* PackSendMe */ = {
 			isa = PBXGroup;
 			children = (
+				81F9687222D6881800A809A8 /* Dto */,
 				8105A8FF22847E9E00C711BB /* Storyboard */,
-				8105A8FE22847E6C00C711BB /* BO */,
+				8105A8FE22847E6C00C711BB /* GlobalConstantes */,
 				8105A8F922847DDB00C711BB /* Controller */,
 				8105A8F722847C1500C711BB /* View */,
 				817F532721E34D400066F9C5 /* Assets.xcassets */,
@@ -267,6 +291,25 @@
 				8184D8F1214C20AF00FF0E08 /* Info.plist */,
 			);
 			path = PackSendMe;
+			sourceTree = "<group>";
+		};
+		81D4EC3F22BFFFA00013A4C6 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				81D4EC3C22BD53840013A4C6 /* PaymentOperationViewController.swift */,
+				81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */,
+				81D4EC4222C0E9230013A4C6 /* PaymentCardViewController.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		81F9687222D6881800A809A8 /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				81F9687322D6884800A809A8 /* AddressDto.swift */,
+				81F9687522D689C500A809A8 /* AccountDto.swift */,
+			);
+			path = Dto;
 			sourceTree = "<group>";
 		};
 		81FBEC3921C6DC3F00CBDBC8 /* manager */ = {
@@ -415,16 +458,19 @@
 				81F3ECE3219C7A34000F4D8C /* AccountViewController.swift in Sources */,
 				81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */,
 				819CC0E9216E614D004AD1CA /* CountryModel.swift in Sources */,
-				811F821A21BE7D94000238E9 /* PaymentModel.swift in Sources */,
+				81F9687022D4B30000A809A8 /* MenuConfigSession.swift in Sources */,
+				811F821A21BE7D94000238E9 /* CardPaymentModel.swift in Sources */,
 				8184D8E8214C20AF00FF0E08 /* ViewController.swift in Sources */,
 				811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */,
 				817D065A2179CE40007B22EB /* URLConstants.swift in Sources */,
 				81FBEC3621C6766900CBDBC8 /* SettingAddressUserViewController.swift in Sources */,
+				81DB208B22B65F7C006F43FB /* PaymentAccountDto.swift in Sources */,
 				819CC0EF21737472004AD1CA /* CountryHelper.swift in Sources */,
 				817D0661217D2D0C007B22EB /* CheckSMSCodeViewController.swift in Sources */,
 				819CC0ED217131DD004AD1CA /* GlobalVariables.swift in Sources */,
 				81FBEC3421C674FE00CBDBC8 /* SettingProfileUserViewController.swift in Sources */,
 				81F3ECDB2195AFDD000F4D8C /* AccountHelper.swift in Sources */,
+				81D4EC4322C0E9230013A4C6 /* PaymentCardViewController.swift in Sources */,
 				8184D8E6214C20AF00FF0E08 /* AppDelegate.swift in Sources */,
 				811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */,
 				81FD189321C00FB000A00082 /* UserHelper.swift in Sources */,
@@ -441,11 +487,17 @@
 				812EB6772159462400DE540A /* IdentityViewController.swift in Sources */,
 				819CC0E2215D5F50004AD1CA /* CountryViewCell.swift in Sources */,
 				81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */,
+				81F9686E22D14E7100A809A8 /* PaymentHelper.swift in Sources */,
 				811F821021B82FE2000238E9 /* MenuSegue.swift in Sources */,
 				8193756221FFB43B002E4923 /* CheckSMSCodeAccountViewController.swift in Sources */,
+				81F9687622D689C500A809A8 /* AccountDto.swift in Sources */,
 				81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */,
 				81F3ECD321935A5D000F4D8C /* DataRegisterViewController.swift in Sources */,
+				81F9687422D6884800A809A8 /* AddressDto.swift in Sources */,
+				81D4EC3D22BD53840013A4C6 /* PaymentOperationViewController.swift in Sources */,
+				81D4EC4522C167860013A4C6 /* PaymentMethodModel.swift in Sources */,
 				81DC728921AB578A00B6ECF8 /* SMSCodeGeneratorHttp.swift in Sources */,
+				81F9686C22D12E5800A809A8 /* PaymentAllDto.swift in Sources */,
 				8193755F21FF7B96002E4923 /* CountryAccountViewController.swift in Sources */,
 				817D065E217A080E007B22EB /* UserModel.swift in Sources */,
 				811F820A21B473E1000238E9 /* MenuViewController.swift in Sources */,

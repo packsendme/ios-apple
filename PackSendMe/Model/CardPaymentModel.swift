@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentModel: NSObject {
+class CardPaymentModel: NSObject {
     var id: String?
     var cardName: String?
     var cardNumber: String?

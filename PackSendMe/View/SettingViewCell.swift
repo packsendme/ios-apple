@@ -11,6 +11,7 @@ import UIKit
 class SettingViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var titleHeadLabel: UILabel!
     @IBOutlet weak var titleCellLabel: UILabel!
     @IBOutlet weak var cellImage: UIImageView!
     @IBOutlet weak var identificador1Label: UILabel!
