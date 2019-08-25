@@ -16,7 +16,8 @@ class CountryAccountViewController: UIViewController{
     var countriesData: [CountryModel] = []
     var optionViewController: String = ""
     var accountModel : AccountDto? = nil
-
+    
+    var countryModel : CountryModel? = nil
     
     @IBOutlet weak var countrycurrent: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -24,6 +25,7 @@ class CountryAccountViewController: UIViewController{
     @IBOutlet weak var countryselectImage: UIImageView!
     @IBOutlet weak var countryselectLabel: UILabel!
     @IBOutlet weak var countrytitleLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +46,23 @@ class CountryAccountViewController: UIViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let something = segue.destination as! ManagerProfileUserViewController
-        something.accountModel = self.accountModel
-        something.metadadosView = URLConstants.IAM.usernameUI
+        if optionViewController == "CardPayCountry"{
+            let something = segue.destination as! CardPaymentViewController
+            something.countryModel = self.countryModel
+        }
+            // ManagerProfileUserViewController
+        else if optionViewController == "PhoneNumberChangeCountry"{
+            let something = segue.destination as! ManagerUsernamePhoneViewController
+            something.countryModel = self.countryModel
+        }
     }
     
+    @IBAction func closeActionB(_ sender: Any) {
+        if optionViewController == "CardPayCountry"{
+            
+        }
+       
+    }
 }
 
 extension CountryAccountViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
@@ -56,9 +70,7 @@ extension CountryAccountViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countriesData.count
     }
-    
-    
-    
+  
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return countriesData.count
     }
@@ -101,15 +113,9 @@ extension CountryAccountViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.cellForRow(at: indexPath) as! CountryViewCell
         let countrySelect = countriesData[indexPath.row]
         
+        countryModel = CountryModel(countryImage: countrySelect.countryImage, name: countrySelect.name, cod: countrySelect.cod, format: countrySelect.format)
+        
         countryselectLabel.text = cell.namecountryLabel.text
         countryselectImage.image =  cell.countryImageView.image
-        
-        GlobalVariables.sharedManager.countryNameInstance = countrySelect.name
-        GlobalVariables.sharedManager.countryImageInstance = countrySelect.countryImage
-        GlobalVariables.sharedManager.countryCodInstance = countrySelect.cod
-        GlobalVariables.sharedManager.countryFormatInstance = countrySelect.format
-        
     }
-    
-
 }

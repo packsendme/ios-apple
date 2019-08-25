@@ -55,7 +55,7 @@ class SettingAddressUserViewController: UIViewController {
         
         var paramsDictionary = [String:Any]()
         
-        paramsDictionary = accountHelper.addressObjectToArray(username:(GlobalVariables.sharedManager.username), address:(addressDescription), type:(typeAddressChange)!, main:(GlobalVariables.sharedManager.addressMain), dateUpdate: (dateUpdate))
+        paramsDictionary = accountHelper.addressObjectToArray(username:(GlobalVariables.sharedManager.usernameNumberphone), address:(addressDescription), type:(typeAddressChange)!, main:(GlobalVariables.sharedManager.addressMain), dateUpdate: (dateUpdate))
         
         let account = URLConstants.ACCOUNT.account_http+"/address"
         
@@ -79,6 +79,12 @@ class SettingAddressUserViewController: UIViewController {
         let setupPhotoProfile = segue.destination as? SettingDataViewController
        // setupPhotoProfile?.accountModel = accountModel!
     }
+    
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.performSegue(withIdentifier:"SettingAddressUserViewToSettingDataAccountView", sender: nil)
+    }
+    
     
 }
 
@@ -137,6 +143,9 @@ UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, GMSAutocomplete
 
         updateAddressAccount(addressDescription: currentItem!)
     }
+    
+    
+    
 
 }
 

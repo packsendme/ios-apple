@@ -27,8 +27,8 @@ class PaymentOperationViewController: UIViewController {
     var operationPay : String? = nil
     
     var cardObj : CardPaymentModel? = (nil)
-    var paymentMethodObj = PaymentMethodModel()
-    var paymentMethodL = [PaymentMethodModel]()
+    var paymentMethodObj = PaymentMethodAccountDto()
+    var paymentMethodL = [PaymentMethodAccountDto]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,14 +70,14 @@ class PaymentOperationViewController: UIViewController {
 
                         for methodPay in payMethodL {
                             if let namePayMethod = methodPay["namePayMethod"] as? String {
-                                self.paymentMethodObj.namePayMethod = namePayMethod
+                       //         self.paymentMethodObj.namePayMethod = namePayMethod
                             }
                             if let typePayMethod = methodPay["typePayMethod"] as? String {
-                                self.paymentMethodObj.typePayMethod = typePayMethod
+                       //         self.paymentMethodObj.typePayMethod = typePayMethod
                             }
-                            print(" pament \(self.paymentMethodObj.namePayMethod)")
+                       //     print(" pament \(self.paymentMethodObj.namePayMethod)")
                             self.paymentMethodL.append(self.paymentMethodObj)
-                            self.paymentMethodObj = PaymentMethodModel()
+                      //      self.paymentMethodObj = PaymentMethodModel()
                         }
                         self.refreshTable()
                     }
@@ -142,7 +142,7 @@ class PaymentOperationViewController: UIViewController {
     
     func deletePaymentSelect() {
         let url = URLConstants.PAYMENT.payment_http
-        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+(cardObj!.cardNumber)!
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+(cardObj!.cardNumber)!
         
         print(" deletePaymentSelect paramsDictionary : \(paramsDictionary)")
         
@@ -223,7 +223,7 @@ extension PaymentOperationViewController : UITableViewDataSource, UITableViewDel
         //cell.layer.cornerRadius = 8
  
         if paymentMethodL.count >= 1 {
-            switch paymentMethodL[indexPath.row].typePayMethod {
+         /*   switch paymentMethodL[indexPath.row].typePayMethod {
                 case "Card":
                     cell.creditcardImage.image =  UIImage(named: "icon-card-visa")
                 case "Paypal":
@@ -234,6 +234,7 @@ extension PaymentOperationViewController : UITableViewDataSource, UITableViewDel
                 print("LINE pament \(indexPath)")
                 print("LINE pament \(paymentMethodL[indexPath.row].namePayMethod!)")
                 cell.identificador1Label.text = paymentMethodL[indexPath.row].namePayMethod!
+ */
             }
         return cell
     }

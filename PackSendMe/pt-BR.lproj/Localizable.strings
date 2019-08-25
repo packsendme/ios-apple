@@ -454,7 +454,9 @@
 "main-label-cod" = "Digite o código de 5 dígitos que enviamos para";
 "main-label-codRight" = "Você inseriu o número correto de celular?";
 
-
+/* SCREEN - GENERIC */
+"main-title-active" = "Ativo";
+"main-title-inactive" = "Inativo";
 
 /* SCREEN - LOGIN */
 
@@ -590,12 +592,20 @@
 "postalcodeAddress-label-title" = "CEP";
 
 /* SettingPaymentUserViewController */
-"payment-title-addpayment" = "Adicionar Pagamento";
-"payment-title-sectionpayment" = "Método Pagamento";
-"payment-title-sectionvouchers" = "Vouchers";
-"payment-title-addpaymentpromotions" = "Promoção";
+"payment-title-methodopay" = "Métodos de Pagamento";
+"payment-title-card" = "Cartão";
+"payment-title-vouchers" = "Vouchers";
+"payment-title-promotions" = "Promoção";
+"payment-title-addcard" = "Adicionar Cartão";
+"payment-title-addvouchers" = "Comprar Vouchers";
+"payment-title-addpromotions" = "Buscar Promoção";
 
-/* PaymentCrudViewController */
+/* CardPaymentViewController */
+"payment-title-card" = "Cartão de Crédito";
+"payment-title-changecard" = "Por favor selecione uma opção";
+"payment-title-editcard" = "Editar Cartão";
+"payment-title-deletecard" = "Excluir Cartão";
+
 "paymentchoose-title-typepayment" = "Tipo Pagamento";
 "paymentadd-title-addpayment" = "Adicionar Cartão";
 "paymentadd-field-cardname" = "Titular";

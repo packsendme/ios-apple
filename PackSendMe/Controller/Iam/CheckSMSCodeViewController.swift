@@ -43,8 +43,7 @@ class CheckSMSCodeViewController: UIViewController, UITextFieldDelegate {
         case smscode_register = "SMSCodeRegister"
         case smscode_new = "SMSCodeNew"
      }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,7 +72,7 @@ class CheckSMSCodeViewController: UIViewController, UITextFieldDelegate {
         runTimer()
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 13.4
-        let titleLabel = NSLocalizedString("main-title-smscod", comment:"")+"  "+GlobalVariables.sharedManager.username
+        let titleLabel = NSLocalizedString("main-title-smscod", comment:"")+"  "+GlobalVariables.sharedManager.usernameNumberphone
         let attrString = NSMutableAttributedString(string: titleLabel)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         titleCheckSMSLabel.attributedText = attrString
@@ -103,7 +102,7 @@ class CheckSMSCodeViewController: UIViewController, UITextFieldDelegate {
         resendSMSTitleLabel.attributedText = attrString
 
         
-        usernameLabel.text = GlobalVariables.sharedManager.username
+        usernameLabel.text = GlobalVariables.sharedManager.usernameNumberphone
         usernamecodLabel.text = GlobalVariables.sharedManager.countryCodInstance
         countryselectBtn.setImage(GlobalVariables.sharedManager.countryImageInstance, for: .normal)
         
@@ -177,7 +176,7 @@ class CheckSMSCodeViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func validateSMSCodeFirstUserAccess(_ sender: Any) {
-        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+codeSMS1TextField.text!+codeSMS2TextField.text!+codeSMS3TextField.text!+codeSMS4TextField.text!
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+codeSMS1TextField.text!+codeSMS2TextField.text!+codeSMS3TextField.text!+codeSMS4TextField.text!
                
         let url = URLConstants.IAM.iamIdentity_http+"sms/"
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in

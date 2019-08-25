@@ -29,7 +29,9 @@ class HttpClientApi: NSObject{
         return HttpClientApi()
     }
     
-    func makeAPICall(url: String,params: String? = nil, method: HttpMethod, success:@escaping ( Data? ,HTTPURLResponse?  , NSError? ) -> Void, failure: @escaping ( Data? ,HTTPURLResponse?  , NSError? )-> Void) {
+    func makeAPICall(url: String,params: String? = nil, method: HttpMethod,
+        success:@escaping ( Data? ,HTTPURLResponse?  , NSError? ) -> Void,
+        failure: @escaping ( Data? ,HTTPURLResponse?  , NSError? )-> Void) {
         
         var url_service : String = ""
         
@@ -40,7 +42,7 @@ class HttpClientApi: NSObject{
             url_service = url
         }
         
-        print (" URL NOW = \(url)")
+        print (" URL NOW = \(url_service)")
         request?.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         request = URLRequest(url: URL(string: url_service)!)

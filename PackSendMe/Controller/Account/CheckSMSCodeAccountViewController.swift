@@ -25,12 +25,15 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var newSMSCodeBtn: UIButton!
     
     var dateFormat = UtilityHelper()
-    var accountModel : AccountDto? = nil
+    var countryModel : CountryModel? = nil
+    var numberphoneNew = String()
+
     var timer = Timer()
     var isTimerRunning = false
     var timeRemaining = 120
     var metadadosView : String = ""
-    var newNumberPhone : String = ""
+    
+    
     
     enum RegisterType:String {
         case smscode_register = "SMSCodeRegister"
@@ -59,7 +62,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
         runTimer()
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 13.4
-        let titleLabel = NSLocalizedString("main-title-smscod", comment:"")+"  "+GlobalVariables.sharedManager.usernameChange
+        let titleLabel = NSLocalizedString("main-title-smscod", comment:"")+"  "+numberphoneNew
         let attrString = NSMutableAttributedString(string: titleLabel)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         titleSMSCodeLabel.attributedText = attrString
@@ -111,19 +114,10 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
         self.performSegue(withIdentifier:URLConstants.IAM.smscode_new, sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let something = segue.destination as! SettingProfileUserViewController
-        accountModel?.username = newNumberPhone
-        GlobalVariables.sharedManager.username = newNumberPhone
-        something.accountModel = self.accountModel
-    }
-    
-    
-    
-    func validateSMSCodeAccess(){
+    func validateSMSCodeAndChangeNumberPhone(){
         let smsCode = codeSMS1TextField.text!+codeSMS2TextField.text!+codeSMS3TextField.text!+codeSMS4TextField.text!
         let dateNow = dateFormat.dateConvertToString()
-        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+newNumberPhone+"/"+smsCode+"/"+dateNow
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+numberphoneNew+"/"+smsCode+"/"+dateNow
         
         print("PARAMETERS: \(paramsDictionary)")
         
@@ -135,12 +129,17 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                GlobalVariables.sharedManager.usernameNumberphone = self.numberphoneNew
+                GlobalVariables.sharedManager.countryCodInstance = (self.countryModel?.cod)!
+                GlobalVariables.sharedManager.countryImageInstance = self.countryModel?.countryImage
+                
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"CheckSMSCodeToSettingProfileUserView", sender: nil)
+                    self.performSegue(withIdentifier:"CheckSMSCodeToHomePackSend", sender: nil)
                 }
             }
         }, failure: { (data, response, error) in
             
+                    print("ERROR : \(paramsDictionary)")
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
                 DispatchQueue.main.async {
                     self.errorValidateLabel.isHidden = false
@@ -148,6 +147,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FAIL{
+                  print("ERROR : \(URLConstants.HTTP_STATUS_CODE.FAIL)")
                 DispatchQueue.main.async {
                     let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -170,7 +170,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
                     codeSMS4TextField.becomeFirstResponder()
                 case codeSMS4TextField:
                     confirmeSMSCodeBtn.isEnabled = true
-                    validateSMSCodeAccess()
+                    validateSMSCodeAndChangeNumberPhone()
                 default:
                     break
                 }
@@ -252,38 +252,15 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
         ViewController.present(alert, animated: true, completion:nil)
     }
     
-    
-    @IBAction func generatorNewSMSCode(_ sender: Any) {
-        let code: Int = SMSCodeGeneratorHttp().generatorSMSCode()
-        
-        if  code == URLConstants.HTTP_STATUS_CODE.OK{
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier:URLConstants.IAM.smscode_register, sender: nil)
-            }
-        } else{
-            DispatchQueue.main.async {
-                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated:  true)
-            }
-        }
-    }
-    
-    
-
     @IBAction func newSMSCode(_ sender: Any) {
-        checkPhoneNumber()
+        generatorNewSMSCode()
     }
     
-    @IBAction func checkPhoneNumber() {
+    func generatorNewSMSCode() {
         let dateNow = dateFormat.dateConvertToString()
-        let paramsDictionary : String = GlobalVariables.sharedManager.usernameChange+"/"+dateNow
+        let paramsDictionary : String = numberphoneNew+"/"+dateNow
         let url = URLConstants.IAM.iamIdentity_http
         
-        print(" : : : : : : : : : : : : \(paramsDictionary)")
-        print("checkPhoneNumber : checkPhoneNumber: \(paramsDictionary)")
-        print(" : : : : : : : : : : : : \(paramsDictionary)")
-
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
             if let data = data {
                 do{

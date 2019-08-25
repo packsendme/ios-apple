@@ -16,7 +16,7 @@ class SMSCodeGeneratorHttp {
     
     func generatorSMSCode() -> Int{
         let dateNow = dateFormat.dateConvertToString()
-        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+dateNow
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+dateNow
         let url = URLConstants.IAM.iamIdentity_http
         var code : Int = 0
         let semaphore = DispatchSemaphore(value: 0)

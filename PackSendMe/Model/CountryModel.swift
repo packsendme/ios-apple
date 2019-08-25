@@ -15,6 +15,10 @@ class CountryModel : NSObject {
     @objc var cod: String!
     @objc var format: String!
     
+    
+    override init() {
+    }
+
     init(countryImage:UIImage, name:String, cod:String, format:String) {
         self.countryImage = countryImage
         self.name = name

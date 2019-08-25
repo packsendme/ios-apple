@@ -79,7 +79,7 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
         
         var paramsDictionary = [String:Any]()
         
-        paramsDictionary = accountVO.createAccountDictionary(username:GlobalVariables.sharedManager.username, email:emailP, password:passwordP, name:nameTextField.text!, lastName:lastnameTextField.text!,dateCreation:dateCreationS, dateUpdate:dateCreationS)
+        paramsDictionary = accountVO.createAccountDictionary(username:GlobalVariables.sharedManager.usernameNumberphone, email:emailP, password:passwordP, name:nameTextField.text!, lastName:lastnameTextField.text!, codcountry: GlobalVariables.sharedManager.countryCodInstance,dateCreation:dateCreationS, dateUpdate:dateCreationS)
         
         let account = URLConstants.ACCOUNT.account_http
         HttpClientApi.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .POST, success: { (data, response, error) in
@@ -101,10 +101,6 @@ class DataRegisterViewController: UIViewController, UITextFieldDelegate {
         })
         
     }
-    
-    
-   
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == URLConstants.IAM.emailUI) {

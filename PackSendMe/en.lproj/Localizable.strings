@@ -40,9 +40,9 @@
 "angola-format" = "923 123 456";
 "angola-cod" = "+244";
 
-"country-anguilla" = "Anguilla (+1)";
+"country-anguilla" = "Anguilla (+1264)";
 "anguilla-format" = "235-1234";
-"anguilla-cod" = "+1";
+"anguilla-cod" = "+1264";
 
 "country-argentina" = "Argentina (+54)";
 "argentina-format" = "011 15-2345-6789";
@@ -62,9 +62,9 @@
 "austria-cod" = "+43";
 
 // (B)
-"country-bahamas" = "Bahamas (+1)";
+"country-bahamas" = "Bahamas (+1242)";
 "bahamas-format" = "(242) 359-1234";
-"bahamas-cod" = "+1";
+"bahamas-cod" = "+1242";
 
 "country-belgium" = "Belgium (+32)";
 "belgium-format" = "0470 12 34 56";
@@ -120,9 +120,9 @@
 "denmark-format" = "20 12 34 56";
 "denmark-cod" = "+45";
 
-"country-dominicanRepublic" = "Dominican Republic (+1)";
+"country-dominicanRepublic" = "Dominican Republic (+809)";
 "dominicanRepublic-format" = "(809) 234 5678";
-"dominicanRepublic-cod" = "+1";
+"dominicanRepublic-cod" = "+809";
 
 // (E)
 "country-ecuador" = "Ecuador (+593)";
@@ -317,10 +317,6 @@
 "philippines-format" = "0905 123 4567";
 "philippines-cod" = "+63";
 
-"country-philippines" = "Philippines (+63)";
-"philippines-format" = "0905 123 4567";
-"philippines-cod" = "+63";
-
 "country-poland" = "Poland (+48)";
 "poland-format" = "512 345 678";
 "poland-cod" = "+48";
@@ -441,6 +437,10 @@
 "main-button-forgotpassword" = "I forgot my password";
 "main-button-account" = "I do not have an account";
 "main-label-error" = "Invalid password";
+
+/* SCREEN - GENERIC */
+"main-title-active" = "Active";
+"main-title-inactive" = "Inactive";
 
 /* SCREEN - VALIDATE SMS */
 "main-title-smscod" = "Enter the 4-digit code we sent to";
@@ -567,14 +567,20 @@
 "postalcodeAddress-label-title" = "Postal Code";
 
 /* SettingPaymentUserViewController */
-"payment-title-sectionpayment" = "Payment Methods";
-"payment-title-sectionvouchers" = "Vouchers";
-"payment-title-addpaymentpromotions" = "Promotions";
-"payment-title-addpayment" = "Add Payment";
+"payment-title-methodopay" = "Payment Methods";
+"payment-title-card" = "Card";
+"payment-title-vouchers" = "Vouchers";
+"payment-title-promotions" = "Promotions";
+"payment-title-addcard" = "Add Card";
+"payment-title-addvouchers" = "Buy Vale";
+"payment-title-addpromotions" = "Search Promotions";
 
-/* PaymentCrudViewController */
-"paymentchoose-title-typepayment" = "Type Payment";
-"paymentadd-title-addpayment" = "Add Card";
+/* CardPaymentViewController */
+"payment-title-card" = "Credit Card";
+"payment-title-changecard" = "Please select an option";
+"payment-title-editcard" = "Edit Card";
+"payment-title-deletecard" = "Delete Card";
+
 "paymentadd-field-cardname" = "Card Holder";
 "paymentadd-field-cardnumber" = "Number";
 "paymentadd-field-cardexpdate" = "Exp. Date";

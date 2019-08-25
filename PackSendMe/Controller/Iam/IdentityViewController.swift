@@ -46,13 +46,13 @@ class IdentityViewController: UIViewController, UITextFieldDelegate{
         let usernameP = usernamecodeLabel.text!+usernameTexField.text!
         let url = URLConstants.IAM.iamIdentity_http
         
+        GlobalVariables.sharedManager.usernameNumberphone = usernameP
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
             if let data = data {
                 do{
-                    GlobalVariables.sharedManager.username = usernameP
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                         DispatchQueue.main.async {
-                           self.performSegue(withIdentifier:URLConstants.IAM.smscode_register, sender: nil)
+                            self.performSegue(withIdentifier:URLConstants.IAM.smscode_register, sender: nil)
                         }
                     }
                     else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{

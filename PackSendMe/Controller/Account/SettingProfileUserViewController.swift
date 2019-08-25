@@ -16,9 +16,16 @@ class SettingProfileUserViewController: UIViewController {
     @IBOutlet weak var useraccountLabel: UILabel!
 
     var accountModel : AccountDto? = nil
+    var countryModel : CountryModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        countryModel = CountryModel(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance)
+
+        
+        
         editAccessInfTitleLabel.text = NSLocalizedString("setting-title-home", comment:"")
         userprofileTable.rowHeight = UITableViewAutomaticDimension
         userprofileTable.isScrollEnabled = true
@@ -80,9 +87,9 @@ class SettingProfileUserViewController: UIViewController {
             setupUserProfile?.metadadosView = URLConstants.IAM.passwordUI
         }
         if segue.identifier == "ManagerProfileUserViewControllerGoUsername"{
-            let setupUserProfile = segue.destination as? ManagerProfileUserViewController
-            setupUserProfile?.accountModel = accountModel
-            setupUserProfile?.metadadosView = URLConstants.IAM.usernameUI
+            let setupUserProfile = segue.destination as? ManagerUsernamePhoneViewController
+            setupUserProfile?.countryModel = countryModel
+            //setupUserProfile?.metadadosView = URLConstants.IAM.usernameUI
         }
     }
 

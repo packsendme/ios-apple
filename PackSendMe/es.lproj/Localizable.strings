@@ -449,11 +449,15 @@
 "main-label-error" = "Contraseña no válida";
 
 /* SCREEN - VALIDATE SMS */
-
 "main-title-smscod" = "Introduce el código de 5 dígitos que te enviamos a ";
 "main-label-codRight" = "¿Introdujiste  el numero de teléfono móvil correcto?";
 "main-title-receivecode" = "Enviar nuevo código SMS";
 "main-title-editnumber" = "Editar número de mi celular";
+
+/* SCREEN - GENERIC */
+"main-title-active" = "Activo";
+"main-title-inactive" = "Inactivo";
+
 /* Resend SMS */
 "main-title-codeforward" = "Reenviar Código SMS";
 "main-label-codeforward" = "¿El n.º de móvil es correcto?";
@@ -574,13 +578,21 @@
 "postalcodeAddress-label-title" = "Código Postal";
 
 /* SettingPaymentUserViewController */
-"payment-title-addpayment" = "Añadir Pago";
-"payment-title-sectionpayment" = "Método Pago";
-"payment-title-sectionvouchers" = "Vales";
-"payment-title-addpaymentpromotions" = "Promocion";
+"payment-title-methodopay" = "Métodos de Pago";
+"payment-title-card" = "Tarjeta";
+"payment-title-vouchers" = "Vale";
+"payment-title-promotions" = "Promoción";
+"payment-title-addcard" = "Añadir Cartão";
+"payment-title-addvouchers" = "Comprar Vale";
+"payment-title-addpromotions" = "Buscar Promoción";
 
 
-/* PaymentCrudViewController */
+/* CardPaymentViewController */
+"payment-title-card" = "Tarjeta de Credito";
+"payment-title-changecard" = "Por favor seleccione una opción";
+"payment-title-editcard" = "Editar Tarjeta";
+"payment-title-deletecard" = "Eliminar Tarjeta";
+
 "paymentchoose-title-typepayment" = "Tipo Pago";
 "paymentadd-title-addpayment" = "Añadir Tarjeta";
 "paymentadd-field-cardname" = "Titular";

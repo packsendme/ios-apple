@@ -154,7 +154,7 @@ class PhotoProfileViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     func saveImageToDocuments(image: UIImage){
-        let profileImage = "imageProfile_"+GlobalVariables.sharedManager.username
+        let profileImage = "imageProfile_"+GlobalVariables.sharedManager.usernameNumberphone
         GlobalVariables.sharedManager.profileImage = profileImage
         let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
         UserDefaults.standard.set(imageData, forKey:profileImage)

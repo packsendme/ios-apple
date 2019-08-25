@@ -40,14 +40,6 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordcurrentdetailLabel: UILabel!
     @IBOutlet weak var passwordValidateLabel: UILabel!
     
-    // Edit PhoneNumber
-    @IBOutlet weak var newphoneLabel: UILabel!
-    @IBOutlet weak var phonenumberTitleLabel: UILabel!
-    @IBOutlet weak var codenumberLabel: UILabel!
-    @IBOutlet weak var countrycodeBtn: UIButton!
-    @IBOutlet weak var phonenumberTextField: UITextField!
-    @IBOutlet weak var updatephoneBtn: UIButton!
-    @IBOutlet weak var phoneValidateLabel: UILabel!
     
     var metadadosView : String = ""
     var accountModel : AccountDto? = nil
@@ -57,12 +49,12 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     var userHelper = UserHelper()
     var dateFormat = UtilityHelper()
     var usernameNumber: String = ""
+    var countryModel : CountryModel? = nil
     
     enum RegisterType:String {
         case name = "NameUI"
         case email = "EmailUI"
         case password = "PasswordUI"
-        case username = "UsernameUI"
     }
     
     override func viewDidLoad() {
@@ -76,9 +68,6 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         }
         else if metadadosView == RegisterType.password.rawValue{
             setupPassword()
-        }
-        else if metadadosView == RegisterType.username.rawValue{
-            setupPhoneNumber()
         }
         
     }
@@ -105,11 +94,7 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
             if (text?.utf16.count)! >= 254  {
                 emailTextField.deleteBackward()
             }
-        case phonenumberTextField:
-            if (text?.utf16.count)! >= 11  {
-                phonenumberTextField.deleteBackward()
-            }
-        default:
+         default:
             break
         }
     }
@@ -162,39 +147,15 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
        */
     }
 
-    func setupPhoneNumber(){
-        
-        let number: String = (accountModel?.username)!
-        let codnumber: String = (number as NSString).substring(to: 3)
-        self.codenumberLabel.text = codnumber
-        
-        self.newphoneLabel.text = NSLocalizedString("editusername-label-newphone", comment:"")
-        self.phonenumberTitleLabel.text = NSLocalizedString("editusername-label-title", comment:"")
-        
-        self.updatephoneBtn.setTitle(NSLocalizedString("editusername-title-btn", comment:"") , for: .normal)
-        phonenumberTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
-        self.phoneValidateLabel.text = NSLocalizedString("editusername-label-usernamevalidate", comment:"")
-        
-        let phonenumberdNewHolder : String = NSLocalizedString("editusername-text-username", comment:"")
-        self.phonenumberTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : phonenumberdNewHolder)
-        countrycodeBtn.setImage(GlobalVariables.sharedManager.countryImageInstance, for: .normal)
-        phonenumberTextField.becomeFirstResponder()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ManagerProfileUserToSettingProfileUser") {
             let something = segue.destination as! SettingProfileUserViewController
             something.accountModel = self.accountModel
         }
-        else if (segue.identifier == "ManagerProfileUserToCountryAccountChooseView") {
+        else if (segue.identifier == "PhoneNumberAccountChangeCountry") {
             let something = segue.destination as! CountryAccountViewController
             something.accountModel = self.accountModel
-        }
-        else if (segue.identifier == "ManagerProfileUserToCheckSMSCodeAccountView") {
-            let something = segue.destination as! CheckSMSCodeAccountViewController
-            something.newNumberPhone = codenumberLabel.text!+phonenumberTextField.text!
-            something.accountModel = self.accountModel
-            something.metadadosView = URLConstants.IAM.smscode_register
+            something.optionViewController = "PhoneNumberChangeCountry"
         }
     }
     
@@ -203,11 +164,6 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
-    }
-    
-    
-    @IBAction func changeNumberCodPhone(_ sender: Any) {
-        self.performSegue(withIdentifier:"ManagerProfileUserToCountryAccountChooseView", sender: nil)
     }
     
     
@@ -265,21 +221,11 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func updatePhoneNumberAction(_ sender: Any) {
-        if phonenumberTextField.text!.count >= 5{
-            checkPhoneNumber()
-        }
-        else{
-            self.phoneValidateLabel.isHidden = false
-        }
-    }
-    
-    
     func updatePasswordAccount() {
         let utilityHelper = UtilityHelper()
         let dateUpdate = utilityHelper.dateConvertToString()
         
-        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+passwordnewTextField.text!+"/"+dateUpdate
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+passwordnewTextField.text!+"/"+dateUpdate
         let iamURL = URLConstants.IAM.iamManager_http
 
         
@@ -328,7 +274,7 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     
     func checkPasswordCurrent(password : String) {
         
-        let paramsDictionary : String = GlobalVariables.sharedManager.username+"/"+password
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+password
         let account = URLConstants.IAM.iamAccess_http
         HttpClientApi.instance().makeAPICall(url: account, params:paramsDictionary, method: .GET, success: { (data, response, error) in
             
@@ -358,44 +304,4 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
-    
-    @IBAction func checkPhoneNumber() {
-        let dateNow = dateFormat.dateConvertToString()
-        let paramsDictionary : String = codenumberLabel.text!+phonenumberTextField.text!+"/"+dateNow
-        let usernameP = codenumberLabel.text!+phonenumberTextField.text!
-        let url = URLConstants.IAM.iamIdentity_http
-        
-        HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
-            if let data = data {
-                do{
-                    if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
-                        DispatchQueue.main.async {
-                            
-                        GlobalVariables.sharedManager.usernameChange = usernameP
-
-                        self.performSegue(withIdentifier:"ManagerProfileUserToCheckSMSCodeAccountView", sender: nil)
-                        }
-                    }
-                    else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
-                        self.phoneValidateLabel.text = NSLocalizedString("editusername-label-usernameregistered", comment:"")
-                        self.phoneValidateLabel.isHidden = false
-                    }
-                } catch _ {
-                    DispatchQueue.main.async {
-                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(ac, animated:  true)
-                    }
-                }
-            }
-        }, failure: { (data, response, error) in
-            DispatchQueue.main.async {
-                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated:  true)
-            }
-        })
-    }
-
-
 }

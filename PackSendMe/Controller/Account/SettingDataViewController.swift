@@ -49,13 +49,14 @@ class SettingDataViewController: UIViewController {
     
     func loadAccount(){
         //GlobalVariables.sharedManager.username = "+5596064241"
-        let paramsDictionary : String = GlobalVariables.sharedManager.username+URLConstants.ACCOUNT.account_load
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+URLConstants.ACCOUNT.account_load
         let url = URLConstants.ACCOUNT.account_http
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
             //print (" URL statusCode = \(response?.statusCode)")
             if let data = data {
                 do{
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                        
                         let jsonAccount = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
                         if(jsonAccount != nil){
                             self.jsonAccountFinal = jsonAccount!["body"] as? [String:Any]

@@ -60,10 +60,7 @@ class MenuViewController: UIViewController {
         useraccountImg.layer.cornerRadius = useraccountImg.frame.height/2
         useraccountImg.clipsToBounds = true
         
-        GlobalVariables.sharedManager.nameFirst = "Ricardo"
-        GlobalVariables.sharedManager.nameLast = "Marzochi"
-        nameprofileLabel.text = GlobalVariables.sharedManager.nameFirst+" "+GlobalVariables.sharedManager.nameLast
-        
+        nameprofileLabel.text = GlobalVariables.sharedManager.nameFirstMenu+" "+GlobalVariables.sharedManager.nameLastMenu
         learnmoreBtn.setTitle(NSLocalizedString("menu-btn-learnmore", comment:""), for: .normal)
         makemoneyBtn.setTitle(NSLocalizedString("menu-btn-makemoney", comment:""), for: .normal)
 
@@ -133,11 +130,11 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate, UISear
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if(indexPath.row == 3){
+        if(indexPath.row == 1){
         self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
         }
         else if(indexPath.row == 4){
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.account_setting, sender: nil)
+        self.performSegue(withIdentifier:"MenuAccountSetting", sender: nil)
         }
     }
     

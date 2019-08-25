@@ -10,95 +10,121 @@ import Foundation
 
 class PaymentHelper: NSObject {
 
-    func parseFromJSONToCardPayment(paymentAccountArray:[String:Any]) -> [PaymentAllDto] {
-        let accountArray = paymentAccountArray["body"] as! [String:Any]
-        let cardArray = accountArray["card"] as? [[String:Any]]
-        var payAll = PaymentAllDto()
-        var paymentCollection = [PaymentAllDto]()
+    func makePaymentAccount(paymentAccountArray:[String:Any]) -> [(String,Array<PaymentMethodAccountDto>)] {
+        let paymentArray = paymentAccountArray["payment"] as? [[String:Any]]
+        var paymentFullCollection = [PaymentMethodAccountDto]()
         
-        if(cardArray != nil){
-            for card in cardArray! {
-                if let cardName = card["cardName"] as? String {
-                    payAll.desc1 = cardName
+        if(paymentArray != nil){
+            for pay in paymentArray! {
+                let payType = pay["payType"] as? String
+               
+                if payType == GlobalVariables.sharedManager.voucherPay{
+                    let voucherPayTransaction = PaymentMethodAccountDto(
+                        titleHead: NSLocalizedString("payment-title-vouchers", comment:""),
+                        payName: pay["payName"] as? String,
+                        payCodenum: pay["payCodenum"] as? String,
+                        payCountry : pay["payCountry"] as? String,
+                        payEntity: pay["payEntity"] as? String,
+                        payType: pay["payType"] as? String,
+                        payExpiry: pay["payExpiry"] as? String,
+                        payStatus: pay["payStatus"] as? String,
+                        payValue: pay["payValue"] as? String,
+                        dateCreation: pay["dateCreation"] as? String,
+                        dateUpdate: pay["dateUpdate"] as? String)
+                    paymentFullCollection.append(voucherPayTransaction)
                 }
-                if let cardNumber = card["cardNumber"] as? String {
-                    payAll.desc2 = cardNumber
+                else if payType == GlobalVariables.sharedManager.cardPay{
+                    let cardPayTransaction = PaymentMethodAccountDto(
+                        titleHead: NSLocalizedString("payment-title-card", comment:""),
+                        payName: pay["payName"] as? String,
+                        payCodenum: pay["payCodenum"] as? String,
+                        payCountry : pay["payCountry"] as? String,
+                        payEntity: pay["payEntity"] as? String,
+                        payType: pay["payType"] as? String,
+                        payExpiry: pay["payExpiry"] as? String,
+                        payStatus: pay["payStatus"] as? String,
+                        payValue: pay["payValue"] as? String,
+                        dateCreation: pay["dateCreation"] as? String,
+                        dateUpdate: pay["dateUpdate"] as? String
+                    )
+                    paymentFullCollection.append(cardPayTransaction)
                 }
-                if let cardExpiry = card["cardExpiry"] as? String {
-                    payAll.desc3 = cardExpiry
+                else if payType == GlobalVariables.sharedManager.promotionPay{
+                    let promotionPayTransaction = PaymentMethodAccountDto(
+                        titleHead: NSLocalizedString("payment-title-promotions", comment:""),
+                        payName: pay["payName"] as? String,
+                        payCodenum: pay["payCodenum"] as? String,
+                        payCountry : pay["payCountry"] as? String,
+                        payEntity: pay["payEntity"] as? String,
+                        payType: pay["payType"] as? String,
+                        payExpiry: pay["payExpiry"] as? String,
+                        payStatus: pay["payStatus"] as? String,
+                        payValue: pay["payValue"] as? String,
+                        dateCreation: pay["dateCreation"] as? String,
+                        dateUpdate: pay["dateUpdate"] as? String
+                    )
+                    paymentFullCollection.append(promotionPayTransaction)
                 }
-                if let cardCVV = card["cardCVV"] as? String {
-                    payAll.desc4 = cardCVV
-                }
-                if let cardType = card["cardType"] as? String {
-                    payAll.desc5 = cardType
-                }
-                paymentCollection.append(payAll)
-                payAll = PaymentAllDto()
             }
         }
-        return paymentCollection
-    }
+        // ADD IN MENU THE ADD OPERATION (CARD/VOUCHER/PROMOTION)
+        
+        // VOUCHER
+        let voucherPayTransaction = PaymentMethodAccountDto(
+            titleHead: NSLocalizedString("payment-title-vouchers", comment:""),
+            payName: NSLocalizedString("payment-title-addvouchers", comment:""),
+            payCodenum: nil,
+            payCountry : nil,
+            payEntity: nil,
+            payType: "OperationMenu",
+            payExpiry: nil,
+            payStatus: nil,
+            payValue: nil,
+            dateCreation: nil,
+            dateUpdate: nil)
+        paymentFullCollection.append(voucherPayTransaction)
+        
+        // CARD
+        let cardPayTransaction = PaymentMethodAccountDto(
+            titleHead: NSLocalizedString("payment-title-card", comment:""),
+            payName: NSLocalizedString("payment-title-addcard", comment:""),
+            payCodenum: nil,
+            payCountry : nil,
+            payEntity: nil,
+            payType: "OperationMenu",
+            payExpiry: nil,
+            payStatus: nil,
+            payValue: nil,
+            dateCreation: nil,
+            dateUpdate: nil)
+        paymentFullCollection.append(cardPayTransaction)
+        
+        // PROMOTIONS
+        let promotionPayTransaction = PaymentMethodAccountDto(
+            titleHead: NSLocalizedString("payment-title-promotions", comment:""),
+            payName: NSLocalizedString("payment-title-addpromotions", comment:""),
+            payCodenum: nil,
+            payCountry : nil,
+            payEntity: nil,
+            payType: "OperationMenu",
+            payExpiry: nil,
+            payStatus: nil,
+            payValue: nil,
+            dateCreation: nil,
+            dateUpdate: nil)
+        paymentFullCollection.append(promotionPayTransaction)
+        return parseFromJSONToPayment(payTransactions:paymentFullCollection)
+     }
     
-    func parseFromJSONToVoucherPayment(paymentAccountArray:[String:Any]) -> [PaymentAllDto] {
-        let accountArray = paymentAccountArray["body"] as! [String:Any]
-        let voucherArray = accountArray["voucher"] as? [[String:Any]]
-        var payAll = PaymentAllDto()
-        var paymentCollection = [PaymentAllDto]()
-        
-        if(voucherArray != nil){
-            for voucher in voucherArray! {
-                if let voucherName = voucher["voucherName"] as? String {
-                    payAll.desc1 = voucherName
-                }
-                if let voucherCode = voucher["voucherCode"] as? String {
-                    payAll.desc2 = voucherCode
-                }
-                if let voucherBenefits = voucher["voucherBenefits"] as? String {
-                    payAll.desc3 = voucherBenefits
-                }
-                if let voucherValue = voucher["voucherValue"] as? String {
-                    payAll.desc4 = voucherValue
-                }
-                if let voucherStatus = voucher["voucherStatus"] as? String {
-                    payAll.desc5 = voucherStatus
-                }
-                paymentCollection.append(payAll)
-                payAll = PaymentAllDto()
+    private func parseFromJSONToPayment(payTransactions: [PaymentMethodAccountDto]) -> [(String,Array<PaymentMethodAccountDto>)] {
+       var paymentAccounttransactions = Dictionary<String,Array<PaymentMethodAccountDto>>()
+       for transaction in payTransactions {
+            let title = transaction.titleHead
+            if paymentAccounttransactions[title!] == nil {
+                paymentAccounttransactions[title!] = Array<PaymentMethodAccountDto>()
             }
+            paymentAccounttransactions[title!]?.append(transaction)
         }
-        return paymentCollection
+        return paymentAccounttransactions.sorted { $0.0 < $1.0 }
     }
-    
-    func parseFromJSONToPromotionPayment(paymentAccountArray:[String:Any]) -> [PaymentAllDto] {
-        let accountArray = paymentAccountArray["body"] as! [String:Any]
-        let promotionArray = accountArray["promotion"] as? [[String:Any]]
-        var payAll = PaymentAllDto()
-        var paymentCollection = [PaymentAllDto]()
-        
-        if(promotionArray != nil){
-            for promotion in promotionArray! {
-                if let promotionName = promotion["promotionName"] as? String {
-                    payAll.desc1 = promotionName
-                }
-                if let promotionCode = promotion["promotionCode"] as? String {
-                    payAll.desc2 = promotionCode
-                }
-                if let promotionBenefits = promotion["promotionBenefits"] as? String {
-                    payAll.desc3 = promotionBenefits
-                }
-                if let promotionValue = promotion["promotionValue"] as? String {
-                    payAll.desc4 = promotionValue
-                }
-                if let promotionStatus = promotion["promotionStatus"] as? String {
-                    payAll.desc5 = promotionStatus
-                }
-                paymentCollection.append(payAll)
-                payAll = PaymentAllDto()
-            }
-        }
-        return paymentCollection
-    }
-
-
 }

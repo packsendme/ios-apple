@@ -14,8 +14,6 @@ import GoogleMaps
 class AccountViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var homeToolBtn: UIBarButtonItem!
-    
-    
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var mapView: GMSMapView!
     var menu_vc : MenuViewController!
@@ -27,6 +25,11 @@ class AccountViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadNameAccount()
+        
+        print(" NAME \(GlobalVariables.sharedManager.nameLastMenu) ")
+        print(" NAME \(GlobalVariables.sharedManager.nameFirstMenu)")
         
         homeToolBtn.isEnabled = false
         locationManager.delegate = self
@@ -40,9 +43,48 @@ class AccountViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(menuBtn)
         
         mapView.reloadInputViews()
-        
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
     }
+    
+    /*
+     GlobalVariables.sharedManager.nameFirstMenu = ""
+     GlobalVariables.sharedManager.nameLastMenu = "Marzochi"
+
+     */
+    
+    func loadNameAccount() {
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone
+        GlobalVariables.sharedManager.profileImage = "imageProfile_"+GlobalVariables.sharedManager.usernameNumberphone
+        
+        let account = URLConstants.ACCOUNT.account_http+"personalname/"
+        HttpClientApi.instance().makeAPICall(url: account, params:paramsDictionary, method: .GET, success: { (data, response, error) in
+            
+            if let data = data {
+                do{
+                    if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
+                        let jsonAccount = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
+                        let jsonAccountFinal = jsonAccount!["body"] as? [String:Any]
+                        GlobalVariables.sharedManager.nameFirstMenu  = jsonAccountFinal!["name"] as! String
+                        GlobalVariables.sharedManager.nameLastMenu = jsonAccountFinal!["lastName"] as! String
+                    }
+                } catch _ {
+                    DispatchQueue.main.async {
+                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(ac, animated:  true)
+                    }
+                }
+            }
+        }, failure: { (data, response, error) in
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated:  true)
+            }
+        })
+        
+    }
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         mapView.settings.myLocationButton = true
@@ -50,8 +92,7 @@ class AccountViewController: UIViewController, CLLocationManagerDelegate {
         
         let lattitude = locationObj!.coordinate.latitude
         let longitude = locationObj!.coordinate.longitude
-        print(" lat in  updating \(lattitude) ")
-        print(" long in  updating \(longitude)")
+
          
         let center = CLLocationCoordinate2D(latitude: locationObj!.coordinate.latitude, longitude: locationObj!.coordinate.longitude)
         let marker = GMSMarker()

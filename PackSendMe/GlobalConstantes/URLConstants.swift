@@ -48,10 +48,15 @@ struct URLConstants{
         static let payment_method = "http://192.241.133.13:9095/payment/method/"
      }
     
+    struct COUNTRY{
+        static let country_http = "http://192.241.133.13:9096/country/"
+    }
+    
     struct ACCOUNT{
         static let account_http = "http://192.241.133.13:9094/account/"
+        static let accountpay_http = "http://192.241.133.13:9094/account/payment/"
+
         static let account_load = "/load"
-        static let account_setting = "MenuAccountSetting"
         // All View To AccounthoME
         static let allViewToAccountHomeView = "AllViewToAccountHomeView"
         static let settingViewToManagerPaymentView = "SettingViewToManagerPaymentView"

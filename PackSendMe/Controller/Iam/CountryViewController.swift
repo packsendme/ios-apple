@@ -64,17 +64,12 @@ extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UIS
             else{
                 return UITableViewCell()
         }
-        
         let country = countriesData[indexPath.row]
         cell.namecountryLabel.text = country.name
         cell.countryImageView.image = country.countryImage
-        
         return cell
      }
 
- 
-    
-    
     // Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else{
@@ -82,9 +77,6 @@ extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UIS
             self.countriesTableView.reloadData()
             return
         }
-        print("TESTE:  \(searchText.prefix(1))")
-        
-        
         countriesData = countries.filter({(country : CountryModel ) -> Bool in
             return country.name.lowercased().contains(searchText.lowercased())
             })
@@ -94,15 +86,12 @@ extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UIS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CountryViewCell
         let countrySelect = countriesData[indexPath.row]
-        
         countryselectLabel.text = cell.namecountryLabel.text
         countryselectImage.image =  cell.countryImageView.image
-        
         GlobalVariables.sharedManager.countryNameInstance = countrySelect.name
         GlobalVariables.sharedManager.countryImageInstance = countrySelect.countryImage
         GlobalVariables.sharedManager.countryCodInstance = countrySelect.cod
         GlobalVariables.sharedManager.countryFormatInstance = countrySelect.format
-   
     }
     
 }
