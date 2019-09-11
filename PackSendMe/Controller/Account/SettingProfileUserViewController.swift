@@ -16,13 +16,13 @@ class SettingProfileUserViewController: UIViewController {
     @IBOutlet weak var useraccountLabel: UILabel!
 
     var accountModel : AccountDto? = nil
-    var countryModel : CountryModel? = nil
+    var country : CountryVModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        countryModel = CountryModel(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance)
+        country = CountryVModel(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance,sigla:"" )
 
         
         
@@ -88,7 +88,7 @@ class SettingProfileUserViewController: UIViewController {
         }
         if segue.identifier == "ManagerProfileUserViewControllerGoUsername"{
             let setupUserProfile = segue.destination as? ManagerUsernamePhoneViewController
-            setupUserProfile?.countryModel = countryModel
+            setupUserProfile?.country = country
             //setupUserProfile?.metadadosView = URLConstants.IAM.usernameUI
         }
     }

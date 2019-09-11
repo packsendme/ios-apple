@@ -14,7 +14,8 @@
 /* SCREEN - COUNTRY */
 
 "country-label-title" = "Seleciona o país";
-"countryAccount-label-title" = "Alterar Código Telefone";
+"country-number-title" = "Alterar Código Telefone";
+"country-card-title" = "Alterar Pais Cartão";
 "country-label-searchcountry" = "Buscar um país";
 "country-label-currentcountry" = "Localização atual";
 "country-label-selectcontry" = "Brasil";
@@ -599,12 +600,17 @@
 "payment-title-addcard" = "Adicionar Cartão";
 "payment-title-addvouchers" = "Comprar Vouchers";
 "payment-title-addpromotions" = "Buscar Promoção";
+"payment-title-statusvalidated" = "Ativo";
+"payment-title-statusinvalid" = "Inválido";
 
 /* CardPaymentViewController */
 "payment-title-card" = "Cartão de Crédito";
 "payment-title-changecard" = "Por favor selecione uma opção";
 "payment-title-editcard" = "Editar Cartão";
 "payment-title-deletecard" = "Excluir Cartão";
+"carpay-msghead-validation" = "Validação Cartao Credito";
+"cardpay-msgbody-validation" = "Verifique os dados do cartão informado. Sua validação não foi bem sucedida";
+"card-title-countrycard" = "Selecione Pais Cartão";
 
 "paymentchoose-title-typepayment" = "Tipo Pagamento";
 "paymentadd-title-addpayment" = "Adicionar Cartão";

@@ -57,29 +57,28 @@ class HttpClientApi: NSObject{
         session?.dataTask(with: request! as URLRequest) { (data, response, error) -> Void in
             if let data = data {
 
-                if let response = response as? HTTPURLResponse, 200...399 ~= response.statusCode {
+                if let response = response as? HTTPURLResponse, 200...499 ~= response.statusCode {
                     success(data , response , error as NSError?)
-                } else {
+                } else{
                     failure(data , response as? HTTPURLResponse, error as NSError?)
                 }
             }else {
                 failure(data , response as? HTTPURLResponse, error as NSError?)
             }
-            }.resume()
-        
+        }.resume()
     }
 
     func makeAPIBodyCall(url: String,params: Dictionary<String, Any>?, method: HttpMethod, success:@escaping ( Data? ,HTTPURLResponse?  , NSError? ) -> Void, failure: @escaping ( Data? ,HTTPURLResponse?  , NSError? )-> Void) {
         
         request = URLRequest(url: URL(string: url)!)
-        //print("URL = \(url)")
+        print("URL = \(url)")
         
         if let params = params {
             let  jsonData = try? JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
             //let  jsonData = try? JSONSerialization.data(withJSONObject: params, options: [])
             
             let jsonString = String(data: jsonData!, encoding: .utf8)!
-           // print(" JSON =\(jsonString)")
+            print(" JSON =\(jsonString)")
             
             request?.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request?.httpBody = jsonData

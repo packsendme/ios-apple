@@ -28,6 +28,16 @@ class UtilityHelper: NSObject {
         return placeHolder
     }
     
+    func getFormattedDate(strDate: String , currentFomat:String, expectedFromat: String) -> String{
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = currentFomat
+        
+        let date : Date = dateFormatterGet.date(from: strDate)!
+        
+        dateFormatterGet.dateFormat = expectedFromat
+        return dateFormatterGet.string(from: date)
+    }
+    
 
 
 }

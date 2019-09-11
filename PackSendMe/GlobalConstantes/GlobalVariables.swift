@@ -16,10 +16,14 @@ class GlobalVariables {
     var countryImageInstance: UIImage? = nil
     public var countryCodInstance: String = ""
     public var countryFormatInstance: String = ""
-    
+    public var countrySingla: String = ""
     public var activationKey: String = ""
     public var status: String = ""
 
+    // Transaction CRUD
+    public var op_save : String = "SAVE-OP"
+    public var op_edit : String = "EDIT-OP"
+    
     
     // Address
     public var addressTypeJob: String = "addressJob"
@@ -41,7 +45,13 @@ class GlobalVariables {
     public var voucherPay: String = "VOUCHER_PAY"
     public var promotionPay: String = "PROMOTION_PAY"
     
-
+    public var validateCard: String = "Validation-Card"
+    public var InvalidCard: String = "Invalid-Card"
+    
+    // Operation
+    public var OP_CHANGE_COUNTRY_NUMBER: String = "ManagerUsernamePhoneViewController"
+    public var OP_CHANGE_COUNTRY_CARDPAY: String = "CardPaymentViewController"
+    
 
 
     class var sharedManager: GlobalVariables {

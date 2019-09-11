@@ -19,7 +19,7 @@ class ManagerUsernamePhoneViewController: UIViewController, UITextFieldDelegate 
     @IBOutlet weak var updatephoneBtn: UIButton!
     @IBOutlet weak var phoneValidateLabel: UILabel!
 
-    var countryModel : CountryModel? = nil
+    var country : CountryVModel? = nil
     var numberphoneOld = String()
     var dateFormat = UtilityHelper()
     var formatPlaceHoldName = UtilityHelper()
@@ -28,7 +28,7 @@ class ManagerUsernamePhoneViewController: UIViewController, UITextFieldDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        codenumberLabel.text = countryModel?.cod
+        codenumberLabel.text = country?.cod
         newphoneLabel.text = NSLocalizedString("editusername-label-newphone", comment:"")
         phonenumberTitleLabel.text = NSLocalizedString("editusername-label-title", comment:"")
         updatephoneBtn.setTitle(NSLocalizedString("editusername-title-btn", comment:"") , for: .normal)
@@ -37,7 +37,7 @@ class ManagerUsernamePhoneViewController: UIViewController, UITextFieldDelegate 
         
         let phonenumberdNewHolder : String = NSLocalizedString("editusername-text-username", comment:"")
         phonenumberTextField.attributedPlaceholder = formatPlaceHoldName.setPlaceholder(nameholder : phonenumberdNewHolder)
-        countrycodeBtn.setImage(countryModel?.countryImage, for: .normal)
+        countrycodeBtn.setImage(country?.countryImage, for: .normal)
         phonenumberTextField.becomeFirstResponder()
 
     }
@@ -48,11 +48,12 @@ class ManagerUsernamePhoneViewController: UIViewController, UITextFieldDelegate 
             let something = segue.destination as! CheckSMSCodeAccountViewController
             something.numberphoneNew = codenumberLabel.text!+phonenumberTextField.text!
             something.metadadosView = URLConstants.IAM.smscode_register
-            something.countryModel = countryModel!
+            something.country = country!
         }
-        else if (segue.identifier == "PhoneNumberAccountChangeCountry") {
+        else if (segue.identifier == "ManagerUsernamePhoneViewControllerGoCountryAccount") {
             let something = segue.destination as! CountryAccountViewController
-            something.optionViewController = "PhoneNumberChangeCountry"
+            something.countryDto = country!
+            something.operationTypeController = GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_NUMBER
         }
     }
 

@@ -10,71 +10,81 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    
+    @IBOutlet weak var logopacksendView: UIView!
     @IBOutlet weak var maintitleLabel: UILabel!
-    @IBOutlet weak var mobiletitleBtn: UIButton!
-    @IBOutlet weak var codenumberLabel: UILabel!
 
-    @IBOutlet weak var countrycurrentImage: UIImageView!
-    
-    var countryHelperOb = CountryHelper()
-    var countries: [CountryModel] = []
+    @IBOutlet weak var countryImage: UIImageView!
+    @IBOutlet weak var countrycodeLabel: UILabel!
+    @IBOutlet weak var accesscountryBtn: UIButton!
+
     var codeCountry: String = ""
+    var countries: [CountryModel] = []
+    var countryHelperOb = CountryHelper()
+    var countriesData: [CountryModel] = []
+    var countryService = CountryService()
     
-    var countryResult = CountryVModel()
-    var countryObj = CountryService()
-    
+
+    @IBOutlet weak var locationView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         maintitleLabel.text = NSLocalizedString("main-title-welcome", comment:"")
-        mobiletitleBtn.setTitle(NSLocalizedString("main-title-mobile", comment:""), for: .normal)
+        accesscountryBtn.setTitle(NSLocalizedString("main-title-mobile", comment:""), for: .normal)
         
+        self.countryImage.image = UIImage(named: "icon-contry-default")
+        self.countrycodeLabel.text = "+00"
+        
+        /*
         countries = countryHelperOb.createCountries()
         codeCountry = countryHelperOb.getCountryCallingCode()
-      //  print("country code is \(codeCountry)")
+        print("country code is \(codeCountry)")
         
-        var countryCurrentObj: CountryModel = countryHelperOb.findCountryCurrent(codeCountry: codeCountry, countriesFull: countries)
-        
-        GlobalVariables.sharedManager.countryNameInstance = countryCurrentObj.name
-        GlobalVariables.sharedManager.countryImageInstance = countryCurrentObj.countryImage
-        GlobalVariables.sharedManager.countryCodInstance = countryCurrentObj.cod
-        GlobalVariables.sharedManager.countryFormatInstance = countryCurrentObj.format
-        
-        countrycurrentImage.image = GlobalVariables.sharedManager.countryImageInstance
-        codenumberLabel.text = GlobalVariables.sharedManager.countryCodInstance
-        
-        
+        let countryCurrentObj: CountryModel = countryHelperOb.findCountryCurrent(codeCountry: codeCountry, countriesFull: countries)
         let currentLocale: NSLocale = NSLocale.current as NSLocale
         let countryRegionCode = currentLocale.object(forKey: NSLocale.Key.countryCode) as! String
-        self.getCountryDetails(codCountry : countryRegionCode)
+         */
+        let countryCode = (Locale.current as NSLocale).object(forKey: .countryCode) as? String
+        getCountryDetails(codCountry : countryCode!)
     }
     
-    
-    
+
+ 
     func getCountryDetails(codCountry : String){
-            CountryService.instance().findCountryByIDCode(idcountry:codCountry, resultOperation: { (data, response, error) in
-    
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
-                let countrySelect = self.countryResult.parseJsonToCountryModel(json: data!)
-                print("country countryRegionCode is \(countrySelect.name)")
+        countryService.findDetailCountryByID(idcountry: codCountry){(success, response, error) in
+            if success{
+                let country = response as! CountryVModel
+                print("country code is \(country.name!)")
+                print("country code is \(country.sigla!)")
+
+                GlobalVariables.sharedManager.countryNameInstance = country.name!
+                GlobalVariables.sharedManager.countryImageInstance = country.countryImage!
+                GlobalVariables.sharedManager.countryCodInstance = country.cod!
+                GlobalVariables.sharedManager.countryFormatInstance = country.format!
+                GlobalVariables.sharedManager.countrySingla = country.sigla!
+                
+                self.countryImage.image = GlobalVariables.sharedManager.countryImageInstance
+                self.countrycodeLabel.text = GlobalVariables.sharedManager.countryCodInstance
+                
+                UIView.transition(with: self.countryImage,
+                                  duration:0.5,
+                                  options: .transitionCrossDissolve,
+                                  animations: { self.countryImage.image = GlobalVariables.sharedManager.countryImageInstance },
+                                  completion: nil)
             }
-            else  if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
+            else if error != nil{
                 DispatchQueue.main.async {
                     let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)
                 }
             }
-            else  if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FAIL{
-                DispatchQueue.main.async {
-                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(ac, animated:  true)
-                }
-            }
-        })
+        }
+    }
+   
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?)
@@ -82,5 +92,4 @@ class MainViewController: UIViewController {
             return 0.3
     }
 
-
-}
+ }

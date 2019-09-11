@@ -45,6 +45,7 @@ struct URLConstants{
     }
     struct PAYMENT{
         static let payment_http = "http://192.241.133.13:9095/payment/"
+        static let pay_validatecard = "http://192.241.133.13:9095/payment/card/validate/"
         static let payment_method = "http://192.241.133.13:9095/payment/method/"
      }
     
@@ -54,7 +55,7 @@ struct URLConstants{
     
     struct ACCOUNT{
         static let account_http = "http://192.241.133.13:9094/account/"
-        static let accountpay_http = "http://192.241.133.13:9094/account/payment/"
+        static let accountpayment_http = "http://192.241.133.13:9094/account/payment/"
 
         static let account_load = "/load"
         // All View To AccounthoME

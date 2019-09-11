@@ -14,6 +14,7 @@ class CountryModel : NSObject {
     var countryImage: UIImage!
     @objc var cod: String!
     @objc var format: String!
+    @objc var sigla: String!
     
     
     override init() {
@@ -25,5 +26,4 @@ class CountryModel : NSObject {
         self.cod = cod
         self.format = format
     }
-
 }

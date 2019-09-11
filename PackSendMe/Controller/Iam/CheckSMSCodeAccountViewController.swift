@@ -25,7 +25,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var newSMSCodeBtn: UIButton!
     
     var dateFormat = UtilityHelper()
-    var countryModel : CountryModel? = nil
+    var country : CountryVModel? = nil
     var numberphoneNew = String()
 
     var timer = Timer()
@@ -130,8 +130,8 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                 GlobalVariables.sharedManager.usernameNumberphone = self.numberphoneNew
-                GlobalVariables.sharedManager.countryCodInstance = (self.countryModel?.cod)!
-                GlobalVariables.sharedManager.countryImageInstance = self.countryModel?.countryImage
+                GlobalVariables.sharedManager.countryCodInstance = (self.country?.cod)!
+                GlobalVariables.sharedManager.countryImageInstance = self.country?.countryImage
                 
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier:"CheckSMSCodeToHomePackSend", sender: nil)

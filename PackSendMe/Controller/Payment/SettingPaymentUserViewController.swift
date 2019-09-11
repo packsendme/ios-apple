@@ -13,10 +13,9 @@ class SettingPaymentUserViewController: UIViewController {
     @IBOutlet weak var labelTitleScreenPay: UILabel!
     @IBOutlet weak var tablePayment: UITableView!
     var jsonAccountFinal : [String: Any]? = nil
-    var paymentL = [(String,Array<PaymentMethodAccountDto>)]()
+    var paymentL = [(String,Array<PaymentAccountDto>)]()
     let paymentHelper = PaymentHelper()
-    var payTransactionSelect = PaymentMethodAccountDto()
-    let payOperationTransaction : String = ""
+    var payTransactionSelect = PaymentAccountDto()
 
     @IBOutlet weak var paymentTitle: UILabel!
     
@@ -28,7 +27,7 @@ class SettingPaymentUserViewController: UIViewController {
     }
     
     func loadPaymentMethodAccount(){
-        let url = URLConstants.ACCOUNT.accountpay_http
+        let url = URLConstants.ACCOUNT.accountpayment_http
         let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone
 
         HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
@@ -36,17 +35,15 @@ class SettingPaymentUserViewController: UIViewController {
             if let data = data {
                 do{
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
-                        print("111111 PAYMENTL 5555555555 : ")
                         let jsonAccount = try! (JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any])
                        self.jsonAccountFinal = jsonAccount!["body"] as? [String:Any]
-                        self.paymentL = self.paymentHelper.makePaymentAccount(paymentAccountArray: self.jsonAccountFinal!)
+                        self.paymentL = self.paymentHelper.generateObjJsonPayAccount(paymentAccountArray: self.jsonAccountFinal!)
                        print("PAYMENTL 10000: \(self.paymentL.count)")
                         self.refreshTable()
                     }
                     else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
-                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(ac, animated:  true)
+                        self.paymentL = self.paymentHelper.generateObjJsonPayAccountNull()
+                         self.refreshTable()
                     }
                 } catch _ {
                     DispatchQueue.main.async {
@@ -79,24 +76,26 @@ class SettingPaymentUserViewController: UIViewController {
 
         }
         if segue.identifier == "CardPayOperationView"{
-            print (" URL prepare = \(payTransactionSelect.payType)")
             let cardpayVC = segue.destination as? CardPaymentViewController
             cardpayVC?.cardpaySelect = payTransactionSelect
         }
         if segue.identifier == "PromotionPayOperationView"{
+        
         }
     }
-   
+    
 }
 
 extension SettingPaymentUserViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print (" TOTAL numberOfRowsInSection  = \(self.paymentL[section].1.count)")
         return self.paymentL[section].1.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-         return paymentL.count
+       //print (" TOTAL LINHA  = \(paymentL.count)")
+        return paymentL.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -116,45 +115,56 @@ extension SettingPaymentUserViewController : UITableViewDataSource, UITableViewD
         tableView.rowHeight = 60
         let payTransaction = paymentL[indexPath.section].1[indexPath.row]
         
-        if payTransaction.payType != "OperationMenu"{
-            let mySubstring = "•••• "+payTransaction.payCodenum!.suffix(3)
-            cell.identificador1Label.text = String(mySubstring) as String
-            
-            if payTransaction.payStatus == "Inactive" {
-                cell.identificador1Label.textColor = UIColor.red
-            }
-        
-            switch payTransaction.payEntity {
-                case "VisaCard":
-                    cell.cellImage.image =  UIImage(named: "icon-card-visa")
-                case "MasterCard":
-                    cell.cellImage.image = UIImage(named: "icon-card-master")
-                case "DiscoverCard":
-                    cell.cellImage.image = UIImage(named: "icon-card-discover")
-                case "DinersCard":
-                    cell.cellImage.image = UIImage(named: "icon-card-diners")
-                case "AmericanCard":
-                    cell.cellImage.image = UIImage(named: "icon-card-american")
-                case "Aura":
-                    cell.cellImage.image = UIImage(named: "icon-card-aura")
-                case "Elo":
-                    cell.cellImage.image = UIImage(named: "icon-card-elo")
-                case "Hipercard":
-                    cell.cellImage.image = UIImage(named: "icon-card-hipercard")
-                case "TicketVoucher":
-                    cell.cellImage.image = UIImage(named: "icon-voucher")
-                case "TicketPromotion":
-                    cell.cellImage.image = UIImage(named: "icon-promotion")
-                default:
-                    cell.cellImage.image = UIImage(named: "icon-card-standar")
-            }
-        }
-        else if payTransaction.payType == "OperationMenu"{
+        // Add choose to Add Card or Voucher pay or find promotion
+        if payTransaction.payName != nil {
             cell.identificador1Label.text = payTransaction.payName
             cell.identificador1Label.textColor = UIColor.blue
-                //cell.backgroundColor = UIColor.groupTableViewBackground
-            cell.identificador1Label.frame.origin = CGPoint(x: 10, y: 20)
+            cell.identificador3Label.isHidden = true
             cell.accessoryType = .none
+        }
+   
+        if payTransaction.payCodenum != nil {
+            let mySubstring = "•••• "+payTransaction.payCodenum!.suffix(3)
+            cell.identificador1Label.text = String(mySubstring) as String
+            cell.identificador3Label.isHidden = false
+        }
+        
+        
+        if payTransaction.payStatus == GlobalVariables.sharedManager.validateCard {
+            cell.identificador3Label.textColor = UIColor.blue
+            cell.identificador3Label.font = UIFont(name:"Avenir", size:16)
+            cell.identificador3Label.text = NSLocalizedString("payment-title-statusvalidated", comment:"")
+        }
+        else if payTransaction.payStatus == GlobalVariables.sharedManager.InvalidCard {
+            cell.identificador3Label.textColor = UIColor.red
+            cell.identificador3Label.font = UIFont(name:"Avenir", size:16)
+            cell.identificador3Label.text = NSLocalizedString("payment-title-statusinvalid", comment:"")
+        }
+
+        
+        switch payTransaction.payEntity {
+            case "VisaCard":
+                cell.cellImage.image =  UIImage(named: "icon-card-visa")
+            case "MasterCard":
+                cell.cellImage.image = UIImage(named: "icon-card-master")
+            case "DiscoverCard":
+                cell.cellImage.image = UIImage(named: "icon-card-discover")
+            case "DinersCard":
+                cell.cellImage.image = UIImage(named: "icon-card-diners")
+            case "AmericanCard":
+                cell.cellImage.image = UIImage(named: "icon-card-american")
+            case "Aura":
+                cell.cellImage.image = UIImage(named: "icon-card-aura")
+            case "Elo":
+                cell.cellImage.image = UIImage(named: "icon-card-elo")
+            case "Hipercard":
+                cell.cellImage.image = UIImage(named: "icon-card-hipercard")
+            case "TicketVoucher":
+                cell.cellImage.image = UIImage(named: "icon-voucher")
+            case "TicketPromotion":
+                cell.cellImage.image = UIImage(named: "icon-promotion")
+            default:
+                cell.cellImage.image = UIImage(named: "icon-card-standard")
         }
         return cell
     }
@@ -168,18 +178,8 @@ extension SettingPaymentUserViewController : UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         payTransactionSelect = paymentL[indexPath.section].1[indexPath.row]
         
-        if payTransactionSelect.payType == "OperationMenuVoucher"{
-            self.performSegue(withIdentifier:"VoucherPayOperationView", sender: nil)
-        }
-        else if payTransactionSelect.payType == "OperationMenuCard"{
+        if payTransactionSelect.payType == "CARD_PAY"{
             self.performSegue(withIdentifier:"CardPayOperationView", sender: nil)
-        }
-        else if payTransactionSelect.payType == "OperationMenuPromotion"{
-            self.performSegue(withIdentifier:"PromotionPayOperationView", sender: nil)
-        }
-        else if payTransactionSelect.payType == "CARD_PAY"{
-            self.performSegue(withIdentifier:"CardPayOperationView", sender: nil)
-            print (" URL didSelectRowAt = \(payTransactionSelect.payType)")
         }
         else if payTransactionSelect.payType == "VOUCHER_PAY"{
             self.performSegue(withIdentifier:"VoucherPayOperationView", sender: nil)

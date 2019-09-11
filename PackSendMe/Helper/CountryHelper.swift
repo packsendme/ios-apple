@@ -62,15 +62,15 @@ class CountryHelper {
 
             let czechia = CountryModel(countryImage:#imageLiteral(resourceName: "iconCzechrepublic"), name:NSLocalizedString("country-czechia", comment:""),cod:NSLocalizedString("czechia-cod", comment:""), format:NSLocalizedString("czechia-format", comment:""))
             
-            let denmark = CountryModel(countryImage:#imageLiteral(resourceName: "iconsDenmark"), name:NSLocalizedString("country-denmark", comment:""),cod:NSLocalizedString("denmark-cod", comment:""), format:NSLocalizedString("denmark-format", comment:""))
+            let denmark = CountryModel(countryImage:#imageLiteral(resourceName: "iconDenmark"), name:NSLocalizedString("country-denmark", comment:""),cod:NSLocalizedString("denmark-cod", comment:""), format:NSLocalizedString("denmark-format", comment:""))
             
             let dominicanRepublic = CountryModel(countryImage:#imageLiteral(resourceName: "iconDominicanrepublic"), name:NSLocalizedString("country-dominicanRepublic", comment:""),cod:NSLocalizedString("dominicanRepublic-cod", comment:""), format:NSLocalizedString("dominicanRepublic-format", comment:""))
 
-            let ecuador = CountryModel(countryImage:#imageLiteral(resourceName: "iconsEcuador"), name:NSLocalizedString("country-ecuador", comment:""),cod:NSLocalizedString("ecuador-cod", comment:""), format:NSLocalizedString("ecuador-format", comment:""))
+            let ecuador = CountryModel(countryImage:#imageLiteral(resourceName: "iconEcuador"), name:NSLocalizedString("country-ecuador", comment:""),cod:NSLocalizedString("ecuador-cod", comment:""), format:NSLocalizedString("ecuador-format", comment:""))
 
-            let egypt = CountryModel(countryImage:#imageLiteral(resourceName: "iconsEgypt"), name:NSLocalizedString("country-egypt", comment:""),cod:NSLocalizedString("egypt-cod", comment:""), format:NSLocalizedString("egypt-format", comment:""))
+            let egypt = CountryModel(countryImage:#imageLiteral(resourceName: "iconEgypt"), name:NSLocalizedString("country-egypt", comment:""),cod:NSLocalizedString("egypt-cod", comment:""), format:NSLocalizedString("egypt-format", comment:""))
             
-            let estonia = CountryModel(countryImage:#imageLiteral(resourceName: "iconsEstonia"), name:NSLocalizedString("country-estonia", comment:""),cod:NSLocalizedString("estonia-cod", comment:""), format:NSLocalizedString("estonia-format", comment:""))
+            let estonia = CountryModel(countryImage:#imageLiteral(resourceName: "iconEstonia"), name:NSLocalizedString("country-estonia", comment:""),cod:NSLocalizedString("estonia-cod", comment:""), format:NSLocalizedString("estonia-format", comment:""))
   
             let finland = CountryModel(countryImage:#imageLiteral(resourceName: "iconFinland"), name:NSLocalizedString("country-finland", comment:""),cod:NSLocalizedString("finland-cod", comment:""), format:NSLocalizedString("finland-format", comment:""))
             
@@ -109,7 +109,7 @@ class CountryHelper {
             
             let israel = CountryModel(countryImage:#imageLiteral(resourceName: "iconIsrael"), name:NSLocalizedString("country-israel", comment:""),cod:NSLocalizedString("israel-cod", comment:""), format:NSLocalizedString("israel-format", comment:""))
             
-            let italy = CountryModel(countryImage:#imageLiteral(resourceName: "iconItalia"), name:NSLocalizedString("country-italy", comment:""),cod:NSLocalizedString("italy-cod", comment:""), format:NSLocalizedString("italy-format", comment:""))
+            let italy = CountryModel(countryImage:#imageLiteral(resourceName: "iconItaly"), name:NSLocalizedString("country-italy", comment:""),cod:NSLocalizedString("italy-cod", comment:""), format:NSLocalizedString("italy-format", comment:""))
             
             let jamaica = CountryModel(countryImage:#imageLiteral(resourceName: "iconJamaica"), name:NSLocalizedString("country-jamaica", comment:""),cod:NSLocalizedString("jamaica-cod", comment:""), format:NSLocalizedString("jamaica-format", comment:""))
             
@@ -131,7 +131,7 @@ class CountryHelper {
 
             let monaco = CountryModel(countryImage:#imageLiteral(resourceName: "iconIndonesia"), name:NSLocalizedString("country-monaco", comment:""),cod:NSLocalizedString("monaco-cod", comment:""), format:NSLocalizedString("monaco-format", comment:""))
 
-            let marocco = CountryModel(countryImage:#imageLiteral(resourceName: "iconMorocco"), name:NSLocalizedString("country-marocco", comment:""),cod:NSLocalizedString("marocco-cod", comment:""), format:NSLocalizedString("marocco-format", comment:""))
+            let marocco = CountryModel(countryImage:#imageLiteral(resourceName: "iconMarocco"), name:NSLocalizedString("country-marocco", comment:""),cod:NSLocalizedString("marocco-cod", comment:""), format:NSLocalizedString("marocco-format", comment:""))
 
             let mozambique = CountryModel(countryImage:#imageLiteral(resourceName: "iconMozambique"), name:NSLocalizedString("country-mozambique", comment:""),cod:NSLocalizedString("mozambique-cod", comment:""), format:NSLocalizedString("mozambique-format", comment:""))
 
@@ -177,7 +177,7 @@ class CountryHelper {
 
             let southkorea = CountryModel(countryImage:#imageLiteral(resourceName: "iconSouthkorea"), name:NSLocalizedString("country-southkorea", comment:""),cod:NSLocalizedString("southkorea-cod", comment:""), format:NSLocalizedString("southkorea-format", comment:""))
 
-            let spain = CountryModel(countryImage:#imageLiteral(resourceName: "imgSpain"), name:NSLocalizedString("country-spain", comment:""),cod:NSLocalizedString("spain-cod", comment:""), format:NSLocalizedString("spain-format", comment:""))
+            let spain = CountryModel(countryImage:#imageLiteral(resourceName: "iconSpain"), name:NSLocalizedString("country-spain", comment:""),cod:NSLocalizedString("spain-cod", comment:""), format:NSLocalizedString("spain-format", comment:""))
 
             let swaziland = CountryModel(countryImage:#imageLiteral(resourceName: "iconSwaziland"), name:NSLocalizedString("country-swaziland", comment:""),cod:NSLocalizedString("swaziland-cod", comment:""), format:NSLocalizedString("swaziland-format", comment:""))
             
@@ -191,11 +191,11 @@ class CountryHelper {
 
             let taiwan = CountryModel(countryImage:#imageLiteral(resourceName: "iconTaiwan"), name:NSLocalizedString("country-taiwan", comment:""),cod:NSLocalizedString("taiwan-cod", comment:""), format:NSLocalizedString("taiwan-format", comment:""))
 
-            let thailand = CountryModel(countryImage:#imageLiteral(resourceName: "iconTailandia"), name:NSLocalizedString("country-thailand", comment:""),cod:NSLocalizedString("thailand-cod", comment:""), format:NSLocalizedString("thailand-format", comment:""))
+            let thailand = CountryModel(countryImage:#imageLiteral(resourceName: "iconThailand"), name:NSLocalizedString("country-thailand", comment:""),cod:NSLocalizedString("thailand-cod", comment:""), format:NSLocalizedString("thailand-format", comment:""))
 
             let tunisia = CountryModel(countryImage:#imageLiteral(resourceName: "iconTunisia"), name:NSLocalizedString("country-tunisia", comment:""),cod:NSLocalizedString("tunisia-cod", comment:""), format:NSLocalizedString("tunisia-format", comment:""))
             
-            let uruguay = CountryModel(countryImage:#imageLiteral(resourceName: "iconUruguai"), name:NSLocalizedString("country-uruguay", comment:""),cod:NSLocalizedString("uruguay-cod", comment:""), format:NSLocalizedString("uruguay-format", comment:""))
+            let uruguay = CountryModel(countryImage:#imageLiteral(resourceName: "iconUruguay"), name:NSLocalizedString("country-uruguay", comment:""),cod:NSLocalizedString("uruguay-cod", comment:""), format:NSLocalizedString("uruguay-format", comment:""))
 
             let ukraine = CountryModel(countryImage:#imageLiteral(resourceName: "iconUcrania"), name:NSLocalizedString("country-ukraine", comment:""),cod:NSLocalizedString("ukraine-cod", comment:""), format:NSLocalizedString("ukraine-format", comment:""))
             

@@ -49,7 +49,7 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     var userHelper = UserHelper()
     var dateFormat = UtilityHelper()
     var usernameNumber: String = ""
-    var countryModel : CountryModel? = nil
+    var country : CountryVModel? = nil
     
     enum RegisterType:String {
         case name = "NameUI"
@@ -155,7 +155,6 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         else if (segue.identifier == "PhoneNumberAccountChangeCountry") {
             let something = segue.destination as! CountryAccountViewController
             something.accountModel = self.accountModel
-            something.optionViewController = "PhoneNumberChangeCountry"
         }
     }
     

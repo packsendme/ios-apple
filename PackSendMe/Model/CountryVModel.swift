@@ -7,42 +7,61 @@
 //
 
 import UIKit
+import Foundation
 
-struct CountryVModel {
+public struct CountryVModel {
 
     var name: String?
     var countryImage: UIImage?
     var cod: String?
     var format: String?
+    var sigla: String?
     
     init() {
 
     }
     
     
-    init(countryImage:UIImage, name:String, cod:String, format:String) {
+    init(countryImage:UIImage, name:String, cod:String, format:String, sigla:String) {
         self.countryImage = countryImage
         self.name = name
         self.cod = cod
         self.format = format
+        self.sigla = sigla
     }
     
-    func parseJsonToCountryModel(json : [String:  Any]) -> CountryVModel{
+    func getCountryFromJson(json : [String:  Any]) -> CountryVModel{
         let countryJson = json["body"] as! [String:Any]
-        
+   
         let countryS = countryJson["nameimagecountry"] as! String
         let countryImage = UIImage(named:countryS)
-        
-        let country = CountryVModel (countryImage: countryImage!, name: countryJson["namecountry"] as! String, cod: countryJson["codcountry"] as! String, format: countryJson["formatnumbercountry"] as! String)
+ 
+        let country = CountryVModel (countryImage: countryImage!, name: countryJson["namecountry"] as! String, cod: countryJson["codcountry"] as! String, format: countryJson["formatnumbercountry"] as! String,
+            sigla: countryJson["idcountry"] as! String)
         return country
     }
-}
+    
+    func getCountriesFromJson(countriesJson:[String:  Any]) -> [CountryVModel]{
+        var countries = [CountryVModel]()
+        
+        let countryJson = countriesJson["body"] as! [String:Any]
+        let countriesArray = countryJson["countries"] as? [[String:Any]]
+        
+        for country in countriesArray! {
+            
+            let countryS = country["nameimagecountry"] as! String
 
-extension String {
-    func toImage() -> UIImage? {
-        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
-            return UIImage(data: data)
+            let countryImg = UIImage(named:countryS)
+            print(" IMAGE ES \(countryS)")
+            
+            let countryCurrent = CountryVModel(
+                countryImage: countryImg!,
+                name: (country["namecountry"] as? String)!,
+                cod: (country["codcountry"] as? String)!,
+                format: (country["formatnumbercountry"] as? String)!,
+                sigla: (country["idcountry"] as? String)!)
+            countries.append(countryCurrent)
         }
-        return nil
+        return countries
     }
 }

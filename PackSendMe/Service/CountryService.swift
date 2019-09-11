@@ -11,40 +11,71 @@ import UIKit
 
 class CountryService: NSObject {
     
+    var countriesData: [CountryModel] = []
+    var countryObj = CountryVModel()
+    
     static func instance() ->  CountryService{
         return CountryService()
     }
     
-    func findCountryByIDCode(idcountry : String,
-        resultOperation:@escaping ( [String:  Any]?,HTTPURLResponse?, NSError? ) -> Void) {
-        
+    func findDetailCountryByID(idcountry : String, completion: @escaping (Bool, Any?, Error?) -> Void){
         let country_url = URLConstants.COUNTRY.country_http
         let paramsDictionary : String = idcountry
         
-        HttpClientApi.instance().makeAPICall(url: country_url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
-            
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
-                let jsonAccount = try! JSONSerialization.jsonObject(with: data!, options: []) as? [String:  Any]
-                let data = jsonAccount
-                resultOperation(data , response , error as NSError?)
-            }
-        }, failure: { (data, response, error) in
-            resultOperation(nil , response , error as NSError?)
-        })
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1){
+            HttpClientApi.instance().makeAPICall(url: country_url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
+                if let data = data {
+                    do{
+                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                            let jsonCountry = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
+                            let countriesData = self.countryObj.getCountryFromJson(json: jsonCountry!)
+                            DispatchQueue.main.async {
+                                completion(true,countriesData,nil)
+                            }
+                        }
+                    } catch _ {
+                        DispatchQueue.main.async {
+                            completion(false,nil,error)
+                        }
+                    }
+                }
+            }, failure: {  (data, response, error) in
+                DispatchQueue.main.async {
+                    completion(false,nil,error)
+                }
+            })
+        }
     }
-            
-            /*
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
-                resultOperation(data , response , error as NSError?)
-            }
-            else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
-                resultOperation(data , response , error as NSError?)
-            }
-            else{
-                resultOperation(data , response , error as NSError?)
-            }
-        }, failure: <#(Data?, HTTPURLResponse?, NSError?) -> Void#>); in
-            resultOperation(data , response as? HTTPURLResponse, error as NSError?)
+    
+    func findCountryAll(completion: @escaping (Bool, Any?, Error?) -> Void){
+         DispatchQueue.global().asyncAfter(deadline: .now() + 2	){
+               print(" Dispatch Finalizado")
+            var countriesData: [CountryVModel] = []
+            let country_url = URLConstants.COUNTRY.country_http
+        
+            HttpClientApi.instance().makeAPICall(url: country_url, params:nil, method: .GET, success: { (data, response, error) in
+                if let data = data {
+                    do{
+                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                            let jsonCountry = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
+                            countriesData = self.countryObj.getCountriesFromJson(countriesJson: jsonCountry!)
+                            print("CODE before \(countriesData.count)")
+                            
+                            DispatchQueue.main.async {
+                                completion(true,countriesData,nil)
+                            }
+                        }
+                    } catch _ {
+                        DispatchQueue.main.async {
+                            completion(false,nil,error)
+                        }
+                    }
+                }
+            }, failure: {  (data, response, error) in
+                DispatchQueue.main.async {
+                    completion(false,nil,error)
+                }
+            })
+        }
     }
-  */
 }

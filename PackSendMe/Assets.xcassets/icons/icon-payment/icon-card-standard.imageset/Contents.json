@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "icon-card-standard.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "imgSpain.png",
       "scale" : "2x"
     },
     {
