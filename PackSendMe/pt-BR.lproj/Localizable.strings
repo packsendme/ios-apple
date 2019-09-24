@@ -6,6 +6,10 @@
   Copyright © 2018 Ricardo Marzochi. All rights reserved.
 */
 
+/* SCREEN - GENERIC */
+"main-title-loading" = "Carregando";
+
+
 /* SCREEN - MAIN */
 "main-title-welcome" = " Bem-vindo à PackSendMe";
 "main-title-mobile" = "Insira seu nº de celular";
@@ -608,7 +612,10 @@
 "payment-title-changecard" = "Por favor selecione uma opção";
 "payment-title-editcard" = "Editar Cartão";
 "payment-title-deletecard" = "Excluir Cartão";
-"carpay-msghead-validation" = "Validação Cartao Credito";
+"carpay-msghead-validation" = "Validação Cartão Crédito";
+"carpay-validation-error" = "Numero do cartão inválido, verifique o número";
+"carpay-body-foundcard" = "O cartão informado ja esta cadastrado. Verifique os dados do cartao.";
+
 "cardpay-msgbody-validation" = "Verifique os dados do cartão informado. Sua validação não foi bem sucedida";
 "card-title-countrycard" = "Selecione Pais Cartão";
 

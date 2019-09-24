@@ -19,6 +19,7 @@ public struct PaymentAccountDto: Codable {
     var payStatus: String?
     var payValue: String?
     var dateOperation: String?
+    var operationTransaction: String?
 
 
     /*

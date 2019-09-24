@@ -47,9 +47,7 @@ class CountryAccountViewController: UIViewController{
         refreshControl.backgroundColor = UIColor.lightGray
         refreshControl.tintColor = UIColor.red
         refreshControl.attributedTitle = NSAttributedString(string: title)
-        refreshControl.addTarget(self,
-                                 action: #selector(handleRefresh(sender:)),
-                                 for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(handleRefresh(sender:)),for: .valueChanged)
         
         //refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
         countriesTableView.refreshControl = refreshControl

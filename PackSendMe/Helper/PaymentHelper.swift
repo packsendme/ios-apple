@@ -28,7 +28,8 @@ class PaymentHelper: NSObject {
                             payExpiry: pay["payExpiry"] as? String,
                             payStatus: pay["payStatus"] as? String,
                             payValue: pay["payValue"] as? String,
-                            dateOperation: pay["dateOperation"] as? String)
+                            dateOperation: pay["dateOperation"] as? String,
+                            operationTransaction: GlobalVariables.sharedManager.op_edit)
                         paymentFullCollection.append(voucherPayTransaction)
                     }
                     else if payType == GlobalVariables.sharedManager.cardPay{
@@ -42,8 +43,8 @@ class PaymentHelper: NSObject {
                             payExpiry: pay["payExpiry"] as? String,
                             payStatus: pay["payStatus"] as? String,
                             payValue: pay["payValue"] as? String,
-                            dateOperation: pay["dateOperation"] as? String
-                        )
+                            dateOperation: pay["dateOperation"] as? String,
+                            operationTransaction: GlobalVariables.sharedManager.op_edit)
                         paymentFullCollection.append(cardPayTransaction)
                     }
                     else if payType == GlobalVariables.sharedManager.promotionPay{
@@ -57,8 +58,8 @@ class PaymentHelper: NSObject {
                             payExpiry: pay["payExpiry"] as? String,
                             payStatus: pay["payStatus"] as? String,
                             payValue: pay["payValue"] as? String,
-                            dateOperation: pay["dateUpdate"] as? String
-                        )
+                            dateOperation: pay["dateUpdate"] as? String,
+                            operationTransaction: GlobalVariables.sharedManager.op_edit)
                         paymentFullCollection.append(promotionPayTransaction)
                     }
                 }
@@ -77,7 +78,8 @@ class PaymentHelper: NSObject {
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
-            dateOperation: nil)
+            dateOperation: nil,
+            operationTransaction: GlobalVariables.sharedManager.op_save)
         paymentFullCollection.append(voucherPayTransaction)
         
         // CARD
@@ -91,7 +93,8 @@ class PaymentHelper: NSObject {
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
-            dateOperation: nil)
+            dateOperation: nil,
+            operationTransaction: GlobalVariables.sharedManager.op_save)
         paymentFullCollection.append(cardPayTransaction)
         
         // PROMOTIONS
@@ -105,7 +108,8 @@ class PaymentHelper: NSObject {
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
-            dateOperation: nil)
+            dateOperation: nil,
+            operationTransaction: GlobalVariables.sharedManager.op_save)
         paymentFullCollection.append(promotionPayTransaction)
         return parseFromJSONToPayment(payTransactions:paymentFullCollection)
      }
@@ -127,7 +131,8 @@ class PaymentHelper: NSObject {
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
-            dateOperation: nil)
+            dateOperation: nil,
+            operationTransaction: GlobalVariables.sharedManager.op_save)
         paymentFullCollection.append(voucherPayTransaction)
         
         // CARD
@@ -141,7 +146,8 @@ class PaymentHelper: NSObject {
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
-            dateOperation: nil)
+            dateOperation: nil,
+            operationTransaction: GlobalVariables.sharedManager.op_save)
         paymentFullCollection.append(cardPayTransaction)
         
         // PROMOTIONS
@@ -155,7 +161,8 @@ class PaymentHelper: NSObject {
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
-            dateOperation: nil)
+            dateOperation: nil,
+            operationTransaction: GlobalVariables.sharedManager.op_save)
         paymentFullCollection.append(promotionPayTransaction)
         return parseFromJSONToPayment(payTransactions:paymentFullCollection)
     }

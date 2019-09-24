@@ -24,6 +24,11 @@ class GlobalVariables {
     public var op_save : String = "SAVE-OP"
     public var op_edit : String = "EDIT-OP"
     
+    // ValidationCard
+    public var VALIDATE_CARD_SUCCESS : Int = 305
+    public var VALIDATE_CARD_ERROR : Int = 409
+    
+
     
     // Address
     public var addressTypeJob: String = "addressJob"

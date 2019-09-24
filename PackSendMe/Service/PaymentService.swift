@@ -63,14 +63,14 @@ class PaymentService: NSObject {
         
         
     func postPaymentMethod(paymentDto : PaymentAccountDto, completion: @escaping (Bool, Any?, Error?) -> Void){
-       // print(" DATE CURRENT \(cardPaymentDto.dateOperation!)")
         var paramsDictionary = [String:Any]()
         paramsDictionary = paymentAccountObj.createPaymentDictionary(
         payName:"", payCodenum:paymentDto.payCodenum!,payCountry:paymentDto.payCountry!, payEntity:paymentDto.payEntity!,
         payType:paymentDto.payType!, payExpiry:paymentDto.payExpiry!, payStatus:paymentDto.payStatus!,
         payValue:paymentDto.payValue!, dateOperation:paymentDto.dateOperation!)
 
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http+"/"+GlobalVariables.sharedManager.usernameNumberphone
+        let payment_url = URLConstants.ACCOUNT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone
+         print(" RESULT postPaymentMethod \(payment_url)")
 
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
            
@@ -111,9 +111,26 @@ class PaymentService: NSObject {
                 do{
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                         let jsonCountry = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
-                        DispatchQueue.main.async {
-                            completion(true,jsonCountry,nil)
+                        let responseCode = jsonCountry!["responseCode"] as? Int
+                        
+                        print(" RESULT getValidateCreditCard \(responseCode) ")
+
+                        
+                        if responseCode == GlobalVariables.sharedManager.VALIDATE_CARD_SUCCESS{
+                            print(" RESULT responseCode OK \(responseCode) ")
+
+                            DispatchQueue.main.async {
+                                completion(true,jsonCountry,nil)
+                            }
                         }
+                        else if responseCode == GlobalVariables.sharedManager.VALIDATE_CARD_ERROR{
+                            print(" RESULT responseCode NOK \(responseCode) ")
+
+                            DispatchQueue.main.async {
+                                completion(false,nil,error)
+                            }
+                        }
+                        
                     }
                 } catch _ {
                     DispatchQueue.main.async {
@@ -126,6 +143,116 @@ class PaymentService: NSObject {
                 completion(false,nil,error)
             }
         })
+        }
+    }
+    
+    
+    func putPaymentMethod(paymentDto : PaymentAccountDto, completion: @escaping (Bool, Any?, Error?) -> Void){
+        var paramsDictionary = [String:Any]()
+        paramsDictionary = paymentAccountObj.createPaymentDictionary(
+            payName:"", payCodenum:paymentDto.payCodenum!,payCountry:paymentDto.payCountry!, payEntity:paymentDto.payEntity!,
+            payType:paymentDto.payType!, payExpiry:paymentDto.payExpiry!, payStatus:paymentDto.payStatus!,
+            payValue:paymentDto.payValue!, dateOperation:paymentDto.dateOperation!)
+        
+        let payment_url = URLConstants.ACCOUNT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone+"/"+paymentDto.payCodenum!
+        
+        print(" RESULT updatePaymentMethod \(payment_url)")
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
+            
+            HttpClientApi.instance().makeAPIBodyCall(url: payment_url, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
+                
+                if let data = data {
+                    do{
+                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                            let jsonCountry = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
+                            DispatchQueue.main.async {
+                                completion(true,jsonCountry,nil)
+                            }
+                        }
+                    } catch _ {
+                        DispatchQueue.main.async {
+                            completion(false,nil,error)
+                        }
+                    }
+                }
+            }, failure: {  (data, response, error) in
+                DispatchQueue.main.async {
+                    completion(false,nil,error)
+                }
+            })
+        }
+    }
+    
+    
+    func removePaymentMethod(paymentDto : PaymentAccountDto, completion: @escaping (Bool, Any?, Error?) -> Void){
+        
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+paymentDto.payCodenum!+"/"+paymentDto.payType!
+        
+        let payment_url = URLConstants.ACCOUNT.accountpayment_http
+        
+        print(" RESULT removePaymentMethod \(payment_url)")
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
+            
+            HttpClientApi.instance().makeAPICall(url: payment_url, params:paramsDictionary, method: .DELETE, success: { (data, response, error) in
+                
+                if let data = data {
+                    do{
+                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                            let jsonCountry = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
+                            DispatchQueue.main.async {
+                                completion(true,jsonCountry,nil)
+                            }
+                        }
+                    } catch _ {
+                        DispatchQueue.main.async {
+                            completion(false,nil,error)
+                        }
+                    }
+                }
+            }, failure: {  (data, response, error) in
+                DispatchQueue.main.async {
+                    completion(false,nil,error)
+                }
+            })
+        }
+    }
+    
+    func getPaymentByNumcod(codnum : String, completion: @escaping (Bool, Any?, Error?) -> Void){
+        
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+codnum
+        let payment_url = URLConstants.ACCOUNT.accountpayment_http
+        print(" RESULT getPaymentByNumcod \(payment_url)")
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
+            HttpClientApi.instance().makeAPICall(url: payment_url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
+                if let data = data {
+                    do{
+                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
+                            print(" RESULT CODE getPaymentByNumcod \(response?.statusCode)")
+
+                            DispatchQueue.main.async {
+                                completion(false,nil,nil)
+                            }
+                        }
+                        else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
+                            DispatchQueue.main.async {
+                                print(" RESULT CODE getPaymentByNumcod \(response?.statusCode)")
+                                completion(true,nil,nil)
+                            }
+                        }
+                    } catch _ {
+                        DispatchQueue.main.async {
+                            completion(false,nil,error)
+                        }
+                    }
+                }
+            }, failure: {  (data, response, error) in
+                DispatchQueue.main.async {
+                    completion(false,nil,error)
+                }
+            })
         }
     }
 }

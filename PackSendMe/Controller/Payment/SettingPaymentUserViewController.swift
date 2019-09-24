@@ -76,6 +76,7 @@ class SettingPaymentUserViewController: UIViewController {
 
         }
         if segue.identifier == "CardPayOperationView"{
+            print(" ----**************-------")
             let cardpayVC = segue.destination as? CardPaymentViewController
             cardpayVC?.cardpaySelect = payTransactionSelect
         }
