@@ -22,14 +22,6 @@ struct URLConstants{
         static let iamAccess_http = "http://192.241.133.13:9093/iam/access/"
         static let iamManager_http = "http://192.241.133.13:9093/iam/manager/"
 
-        static let smscode_register = "SMSCodeRegister"
-        static let smscode_new = "SMSCodeNew"
-        static let emailUI = "EmailUI"
-        static let passwordUI = "PasswordUI"
-        static let nameUI = "NameUI"
-        static let usernameUI = "UsernameUI"
-        static let country_identity = "countryIdentity"
-        
         // Manager Access User (firstName / LastName / email / password / username)
         static let managerAccessViewToFirstNameView = "firstNameView"
         static let managerAccessViewToLastNameView = "lastNameView"
@@ -55,6 +47,7 @@ struct URLConstants{
     
     struct ACCOUNT{
         static let account_http = "http://192.241.133.13:9094/account/"
+        static let accountpersonal_http = "http://192.241.133.13:9094/account/personalname/"
         static let accountpayment_http = "http://192.241.133.13:9094/account/payment/"
 
         static let account_load = "/load"

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class AHMenuViewController: UIViewController {
     
     @IBOutlet weak var menuToolBtn: UIBarButtonItem!
     let cellSpacingHeight: CGFloat = 200
@@ -20,7 +20,6 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var learnmoreBtn: UIButton!
     @IBOutlet weak var makemoneyBtn: UIButton!
     @IBOutlet weak var menuTitleLabel: UILabel!
-    var account_vc = AccountViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +83,7 @@ class MenuViewController: UIViewController {
     
 }
 
-extension MenuViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+extension AHMenuViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuData.count
@@ -131,10 +130,11 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate, UISear
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if(indexPath.row == 1){
-        self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
+            self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
+            dismiss(animated: false, completion: nil)
         }
         else if(indexPath.row == 4){
-        self.performSegue(withIdentifier:"MenuAccountSetting", sender: nil)
+            self.performSegue(withIdentifier:"AUSettingViewController", sender: nil)
         }
     }
     

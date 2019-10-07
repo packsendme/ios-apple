@@ -13,7 +13,7 @@
         <!--AccountViewController-->
         <scene sceneID="k3d-l4-Zwb">
             <objects>
-                <viewController storyboardIdentifier="AccountView" title="AccountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a6r-v2-u3x" customClass="AccountViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountView" title="AccountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a6r-v2-u3x" customClass="AHMainViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="me6-R8-xUa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,13 +21,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8N-Xa-7Pd" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="605"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-SX-eUg">
-                                        <rect key="frame" x="8" y="28" width="94" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vmE-XF-7jG">
@@ -69,18 +62,17 @@
                     <connections>
                         <outlet property="homeToolBtn" destination="WcR-h9-YtT" id="hbL-Ng-zSM"/>
                         <outlet property="mapView" destination="p8N-Xa-7Pd" id="9jn-BL-ZOB"/>
-                        <outlet property="menuBtn" destination="2fd-SX-eUg" id="5CD-XV-Ue8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTF-Va-u6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="QFR-Kq-ecx"/>
             </objects>
-            <point key="canvasLocation" x="1889" y="-978"/>
+            <point key="canvasLocation" x="1888.8" y="-978.26086956521749"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="jIx-WC-QTD">
             <objects>
-                <viewController storyboardIdentifier="MenuViewController" id="hsD-Yd-yyP" customClass="MenuViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" id="hsD-Yd-yyP" customClass="AHMenuViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uYH-Kp-OZ3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,7 +136,7 @@
                                         <rect key="frame" x="211" y="56" width="27" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons-line-32" translatesAutoresizingMaskIntoConstraints="NO" id="V0j-UB-SyM">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="V0j-UB-SyM">
                                         <rect key="frame" x="0.0" y="113" width="375" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -167,7 +159,7 @@
                                             <color key="titleShadowColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-photo-user" translatesAutoresizingMaskIntoConstraints="NO" id="bMN-j8-nmP">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-user-photo" translatesAutoresizingMaskIntoConstraints="NO" id="bMN-j8-nmP">
                                         <rect key="frame" x="9" y="11" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -213,19 +205,19 @@
                         <outlet property="menuToolBtn" destination="V8L-ik-a8B" id="bbD-DM-WQL"/>
                         <outlet property="nameprofileLabel" destination="fBl-3Y-JxU" id="hah-hm-AXP"/>
                         <outlet property="useraccountImg" destination="bMN-j8-nmP" id="Uwn-tO-dH8"/>
-                        <segue destination="iVR-D9-ADh" kind="show" identifier="MenuAccountSetting" id="Rrf-qj-TBH"/>
+                        <segue destination="iVR-D9-ADh" kind="show" identifier="AUSettingViewController" id="Rrf-qj-TBH"/>
                         <segue destination="a6r-v2-u3x" kind="show" identifier="AllViewToAccountHomeView" id="Z9E-2M-P2r"/>
                         <segue destination="LWX-5W-YzS" kind="show" identifier="SettingViewToManagerPaymentView" id="piG-6i-804"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvb-3y-XUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1476" y="-206"/>
+            <point key="canvasLocation" x="625" y="-181"/>
         </scene>
-        <!--Setting Data View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="XxJ-Qn-zTC">
             <objects>
-                <viewController storyboardIdentifier="SettingViewController" id="iVR-D9-ADh" customClass="SettingDataViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AUSetting" id="iVR-D9-ADh" customClass="AUSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dsk-An-LuU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,7 +231,7 @@
                                             <inset key="imageInsets" minX="-23" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <action selector="closeAction:" destination="iVR-D9-ADh" id="fbX-CJ-IGR"/>
+                                                <segue destination="pE7-SQ-PeX" kind="unwind" unwindAction="unwindToOne:" id="JFh-36-Zqr"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -313,19 +305,19 @@
                     <connections>
                         <outlet property="settingTable" destination="uaG-dr-QJJ" id="CUw-Xm-FeY"/>
                         <outlet property="settingTitleLabel" destination="kTL-X0-zPp" id="WEM-va-BbM"/>
-                        <segue destination="a6r-v2-u3x" kind="show" identifier="AllViewToAccountHomeView" id="fEv-aN-TSr"/>
-                        <segue destination="t7q-qE-bfJ" kind="show" identifier="SettingProfileUserViewControllerGo" id="r5c-OB-67t"/>
+                        <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="r5c-OB-67t"/>
                         <segue destination="7tK-AD-SWU" kind="show" identifier="SettingViewToManagerAddressView" id="dbA-sj-a6m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aam-Yx-Zi8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pE7-SQ-PeX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2333.5999999999999" y="-181.25937031484258"/>
+            <point key="canvasLocation" x="1781.5999999999999" y="-181.25937031484258"/>
         </scene>
-        <!--Setting Profile User View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="nbo-Of-PHI">
             <objects>
-                <viewController storyboardIdentifier="SettingProfileUserView" id="t7q-qE-bfJ" customClass="SettingProfileUserViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AUPSetting" id="t7q-qE-bfJ" customClass="AUPSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d0l-F8-F7b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -433,7 +425,7 @@
                                             <inset key="imageInsets" minX="-15" minY="-14" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="iVR-D9-ADh" kind="show" id="BJB-el-p6g"/>
+                                                <segue destination="iVR-D9-ADh" kind="show" id="dQ1-dt-qkQ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -457,15 +449,15 @@
                         <outlet property="userprofileTable" destination="foT-3S-a8a" id="CXn-pV-qJn"/>
                         <segue destination="KZQ-6M-msm" kind="show" identifier="PhotoProfileViewControllerGo" id="Mga-PC-14E"/>
                         <segue destination="a6r-v2-u3x" kind="show" identifier="AllViewToAccountHomeView" id="GwH-oh-IYd"/>
-                        <segue destination="Qt7-5b-43p" kind="show" identifier="ManagerProfileUserViewControllerGoName" id="MXB-iH-Ejh"/>
-                        <segue destination="9uw-hV-A47" kind="show" identifier="ManagerProfileUserViewControllerGoEmail" id="61E-Kx-uTR"/>
-                        <segue destination="dgf-TW-xU3" kind="show" identifier="ManagerProfileUserViewControllerGoPassword" id="iQc-bm-VxI"/>
+                        <segue destination="Qt7-5b-43p" kind="show" identifier="AUPManagerNames" id="MXB-iH-Ejh"/>
+                        <segue destination="9uw-hV-A47" kind="show" identifier="AUPManagerEmail" id="61E-Kx-uTR"/>
+                        <segue destination="dgf-TW-xU3" kind="show" identifier="AUPManagerPassword" id="iQc-bm-VxI"/>
                         <segue destination="rhv-ek-hyp" kind="show" identifier="ManagerProfileUserViewControllerGoUsername" id="C4T-SA-DPB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6d-n1-cbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3240.8000000000002" y="-181.25937031484258"/>
+            <point key="canvasLocation" x="3241" y="-602"/>
         </scene>
         <!--Photo Profile View Controller-->
         <scene sceneID="k8M-nV-ixv">
@@ -659,7 +651,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gww-UI-AED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2334" y="671"/>
+            <point key="canvasLocation" x="1782" y="627"/>
         </scene>
         <!--Setting Payment User View Controller-->
         <scene sceneID="fcJ-i3-jom">
@@ -769,12 +761,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wNX-9a-1r5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1476" y="608.54572713643188"/>
+            <point key="canvasLocation" x="625" y="609"/>
         </scene>
-        <!--Manager Profile User View Controller-->
+        <!--Manager View Controller-->
         <scene sceneID="Bqn-mZ-LAm">
             <objects>
-                <viewController id="Qt7-5b-43p" customClass="ManagerProfileUserViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qt7-5b-43p" customClass="AUPManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x2Z-hN-oBU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -801,7 +793,7 @@
                                             <inset key="imageInsets" minX="-26" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="ManagerProfileUserToSettingProfileUser" id="qkf-uj-ze6"/>
+                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="qkf-uj-ze6"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -888,12 +880,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCk-Ml-OYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3241" y="671"/>
+            <point key="canvasLocation" x="3241" y="609"/>
         </scene>
-        <!--Manager Profile User View Controller-->
+        <!--Manager View Controller-->
         <scene sceneID="LmD-Ut-aKo">
             <objects>
-                <viewController id="9uw-hV-A47" customClass="ManagerProfileUserViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9uw-hV-A47" customClass="AUPManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Mf-e0-7UD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -951,7 +943,7 @@
                                             <inset key="imageInsets" minX="-26" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="ManagerProfileUserToSettingProfileUser" id="Wal-Zp-xhr"/>
+                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="Wal-Zp-xhr"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -980,10 +972,10 @@
             </objects>
             <point key="canvasLocation" x="4069.5999999999999" y="608.54572713643188"/>
         </scene>
-        <!--Manager Profile User View Controller-->
+        <!--Manager View Controller-->
         <scene sceneID="GK7-6J-swc">
             <objects>
-                <viewController id="dgf-TW-xU3" customClass="ManagerProfileUserViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dgf-TW-xU3" customClass="AUPManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zd0-Rn-wSg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1085,7 +1077,7 @@
                                             <inset key="imageInsets" minX="-26" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="ManagerProfileUserToSettingProfileUser" id="ePO-fd-Ze9"/>
+                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="ePO-fd-Ze9"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1149,7 +1141,7 @@
                                             <inset key="imageInsets" minX="-26" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="ManagerProfileUserToSettingProfileUser" id="swt-fy-lLQ"/>
+                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="swt-fy-lLQ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1690,7 +1682,6 @@
     <resources>
         <image name="icon-btn-check" width="48" height="48"/>
         <image name="icon-btn-down" width="24" height="24"/>
-        <image name="icon-photo-user" width="128" height="128"/>
         <image name="icon-text-line" width="32" height="32"/>
         <image name="icon-tool-back" width="60" height="60"/>
         <image name="icon-tool-close" width="32" height="32"/>
@@ -1704,16 +1695,15 @@
         <image name="icon-user-star01" width="48" height="48"/>
         <image name="iconBahamas" width="96" height="96"/>
         <image name="iconUSA" width="96" height="96"/>
-        <image name="icons-line-32" width="32" height="32"/>
         <image name="icons-menu-ballH" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xYK-71-VQ8"/>
-        <segue reference="P0R-99-2bR"/>
-        <segue reference="FYM-dO-T7a"/>
-        <segue reference="DFl-L3-21E"/>
+        <segue reference="6xS-Cw-Fab"/>
+        <segue reference="C4T-SA-DPB"/>
+        <segue reference="piG-6i-804"/>
         <segue reference="swt-fy-lLQ"/>
-        <segue reference="iCB-uD-sce"/>
-        <segue reference="Z9E-2M-P2r"/>
+        <segue reference="dQ1-dt-qkQ"/>
+        <segue reference="GwH-oh-IYd"/>
     </inferredMetricsTieBreakers>
 </document>

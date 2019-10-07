@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
+class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     
     // Edit Name
     @IBOutlet weak var nameTitleLabel: UILabel!
@@ -42,31 +42,32 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     
     
     var metadadosView : String = ""
-    var accountModel : AccountDto? = nil
+    var profileObj : ProfileBO? = nil
     var formatPlaceHoldName = UtilityHelper()
     var refreshControl = UIRefreshControl()
-    var userModel = UserModel()
-    var userHelper = UserHelper()
-    var dateFormat = UtilityHelper()
     var usernameNumber: String = ""
     var country : CountryVModel? = nil
     
-    enum RegisterType:String {
-        case name = "NameUI"
-        case email = "EmailUI"
-        case password = "PasswordUI"
+    var amService = AccountService()
+    var iamService = IAService()
+    
+    
+    enum ViewType:String {
+        case name = "names"
+        case email = "email"
+        case password = "password"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if metadadosView == RegisterType.name.rawValue{
+        if metadadosView == ViewType.name.rawValue{
             setupName()
         }
-        else if metadadosView == RegisterType.email.rawValue{
+        else if metadadosView == ViewType.email.rawValue{
             setupEmail()
         }
-        else if metadadosView == RegisterType.password.rawValue{
+        else if metadadosView == ViewType.password.rawValue{
             setupPassword()
         }
         
@@ -103,8 +104,8 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         self.nameTitleLabel.text  = NSLocalizedString("editfirstname-label-title", comment:"")
         self.firstnameFieldLabel.text  = NSLocalizedString("editfirstname-text-firstname", comment:"")
         self.lastnameFieldLabel.text  = NSLocalizedString("editlastname-text-lastname", comment:"")
-        self.firstnameTextField.text  = accountModel?.name
-        self.lastnameTextField.text  = accountModel?.lastName
+        self.firstnameTextField.text  = profileObj?.name
+        self.lastnameTextField.text  = profileObj?.lastName
         
         firstnameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         lastnameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
@@ -117,7 +118,7 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         emailErrorDescriptionLabel.isHidden = true
         self.emailTitleLabel.text  = NSLocalizedString("editemail-label-title", comment:"")
         self.emailFieldLabel.text  = NSLocalizedString("editemail-text-email", comment:"")
-        self.emailTextField.text  = accountModel?.email
+        self.emailTextField.text  = profileObj?.email
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         self.updateemailBtn.setTitle(NSLocalizedString("editemail-title-btn", comment:"") , for: .normal)
     }
@@ -148,13 +149,13 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ManagerProfileUserToSettingProfileUser") {
-            let something = segue.destination as! SettingProfileUserViewController
-            something.accountModel = self.accountModel
+        if (segue.identifier == "AUPSettingViewController") {
+            let something = segue.destination as! AUPSettingViewController
+            something.profileObj = self.profileObj!
         }
         else if (segue.identifier == "PhoneNumberAccountChangeCountry") {
             let something = segue.destination as! CountryAccountViewController
-            something.accountModel = self.accountModel
+            //something.profileObj = self.profileObj
         }
     }
     
@@ -168,11 +169,11 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
     
     // OPERATION - UPDATE
     @IBAction func updateNameAction(_ sender: Any) {
-        accountModel?.name = firstnameTextField.text!
-        accountModel?.lastName = lastnameTextField.text!
+        profileObj?.name = firstnameTextField.text!
+        profileObj?.lastName = lastnameTextField.text!
         
         if (firstnameTextField.text!.count) >= 3 && (firstnameTextField.text!.count) <= 13 && (lastnameTextField.text!.count) >= 3{
-            updateNamesAndEmail()
+            updateProfile()
         }
         else if firstnameTextField.text!.count < 3 && lastnameTextField.text!.count < 3{
             self.firstnameValidateLabel.text = NSLocalizedString("editfirstname-label-firstnamevalidate", comment:"")
@@ -197,8 +198,8 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         if isValidEmail(testStr: emailTextField.text!) == false{
             emailErrorDescriptionLabel.isHidden = false
         }else{
-            accountModel?.email = emailTextField.text!
-            updateNamesAndEmail()
+            profileObj?.email = emailTextField.text!
+            updateProfile()
         }
     }
     
@@ -220,64 +221,40 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func updatePasswordAccount() {
-        let utilityHelper = UtilityHelper()
-        let dateUpdate = utilityHelper.dateConvertToString()
-        
-        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+passwordnewTextField.text!+"/"+dateUpdate
-        let iamURL = URLConstants.IAM.iamManager_http
+    
+ 
 
-        
-        HttpClientApi.instance().makeAPICall(url: iamURL, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
-            
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+    // -------------------------------------------------------------------------------------
+    // FUNCTION : UPDATE
+    // MICROSERVICE : ACCOUNT
+    // ENTITY :  ProfileBO
+    // -------------------------------------------------------------------------------------
+    func updateProfile() {
+        amService.updateUserProfile(profile:profileObj!){(success, response, error) in
+            if success == true{
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"ManagerProfileUserToSettingProfileUser", sender: nil)
+                    self.performSegue(withIdentifier:"AUPSettingViewController", sender: nil)
                 }
             }
-        }, failure: { (data, response, error) in
-            DispatchQueue.main.async {
-                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated:  true)
-            }
-        })
-    }
-
-    
-    func updateNamesAndEmail() {
-        let accountHelper = AccountHelper()
-        let utilityHelper = UtilityHelper()
-        let dateUpdate = utilityHelper.dateConvertToString()
-        
-        var paramsDictionary = [String:Any]()
-        paramsDictionary = accountHelper.transformObjectToArray(username:(accountModel?.username)!, email:(accountModel?.email)!,name:(accountModel?.name)!, lastName:(accountModel?.lastName)!, dateCreation:(accountModel?.dateCreation)!, dateUpdate: dateUpdate)
-        
-        let account = URLConstants.ACCOUNT.account_http
-        
-        HttpClientApi.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
-            
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"ManagerProfileUserToSettingProfileUser", sender: nil)
+            else{
+                DispatchQueue.main.async() {
+                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated:  true)
                 }
             }
-        }, failure: { (data, response, error) in
-            DispatchQueue.main.async {
-                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated:  true)
-            }
-        })
+        }
     }
     
+    
+    // -------------------------------------------------------------------------------------
+    // FUNCTION : Check Password Current
+    // MICROSERVICE : IAM
+    // ENTITY :  String Password
+    // -------------------------------------------------------------------------------------
     func checkPasswordCurrent(password : String) {
-        
-        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+password
-        let account = URLConstants.IAM.iamAccess_http
-        HttpClientApi.instance().makeAPICall(url: account, params:paramsDictionary, method: .GET, success: { (data, response, error) in
-            
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
+        iamService.getPasswordCurrent(password:passwordcurrentTextField.text!){(success, response, error) in
+            if success == true{
                 DispatchQueue.main.async {
                     UIView.animate(withDuration: 0.5) { [unowned self] in
                         self.passwordnewView.isHidden = false
@@ -285,22 +262,53 @@ class ManagerProfileUserViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
-        }, failure: { (data, response, error) in
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
-                DispatchQueue.main.async {
+            else if success == false && error == nil{
+                DispatchQueue.main.async() {
                     self.passwordcurrentdetailLabel.text = NSLocalizedString("main-label-error", comment:"")
                     self.passwordcurrentdetailLabel.font = UIFont(name:"Avenir", size:20)
                     self.passwordcurrentdetailLabel.textColor = UIColor.red
-
                 }
             }
-            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FAIL{
-                DispatchQueue.main.async {
-                    let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+            else{
+                DispatchQueue.main.async() {
+                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)
                 }
             }
+        }
+    }
+    
+    
+    // -------------------------------------------------------------------------------------
+    // FUNCTION : UPDATE
+    // MICROSERVICE : IAM
+    // ENTITY :  ProfileBO
+    // -------------------------------------------------------------------------------------
+    func updatePasswordAccount() {
+        let utilityHelper = UtilityHelper()
+        let dateUpdate = utilityHelper.dateConvertToString()
+        
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+passwordnewTextField.text!+"/"+dateUpdate
+        let iamURL = URLConstants.IAM.iamManager_http
+        
+        
+        HttpService.instance().makeAPICall(url: iamURL, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
+            
+            if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier:"ManagerProfileUserToSettingProfileUser", sender: nil)
+                }
+            }
+        }, failure: { (data, response, error) in
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated:  true)
+            }
         })
     }
+
+    
+    
 }

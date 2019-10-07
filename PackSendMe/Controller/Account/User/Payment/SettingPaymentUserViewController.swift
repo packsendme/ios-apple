@@ -13,10 +13,12 @@ class SettingPaymentUserViewController: UIViewController {
     @IBOutlet weak var labelTitleScreenPay: UILabel!
     @IBOutlet weak var tablePayment: UITableView!
     var jsonAccountFinal : [String: Any]? = nil
-    var paymentL = [(String,Array<PaymentAccountDto>)]()
-    let paymentHelper = PaymentHelper()
-    var payTransactionSelect = PaymentAccountDto()
+    var paymentL = [(String,Array<PaymentAccountBO>)]()
+    let paymentBO = PaymentAccountBO()
+    var payTransactionSelect = PaymentAccountBO()
 
+    var paymentService = PaymentService()
+    
     @IBOutlet weak var paymentTitle: UILabel!
     
     override func viewDidLoad() {
@@ -27,41 +29,22 @@ class SettingPaymentUserViewController: UIViewController {
     }
     
     func loadPaymentMethodAccount(){
-        let url = URLConstants.ACCOUNT.accountpayment_http
-        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone
-
-        HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
-            //print (" URL statusCode = \(response?.statusCode)")
-            if let data = data {
-                do{
-                    if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
-                        let jsonAccount = try! (JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any])
-                       self.jsonAccountFinal = jsonAccount!["body"] as? [String:Any]
-                        self.paymentL = self.paymentHelper.generateObjJsonPayAccount(paymentAccountArray: self.jsonAccountFinal!)
-                       print("PAYMENTL 10000: \(self.paymentL.count)")
-                        self.refreshTable()
-                    }
-                    else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
-                        self.paymentL = self.paymentHelper.generateObjJsonPayAccountNull()
-                         self.refreshTable()
-                    }
-                } catch _ {
-                    DispatchQueue.main.async {
-                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(ac, animated:  true)
-                  }
+        paymentService.getPaymentsByUsername(){(success, response, error) in
+            if success{
+               self.paymentL = response as! [(String,Array<PaymentAccountBO>)]
+                self.refreshTable()
+            }
+            else if error != nil{
+                DispatchQueue.main.async {
+                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated:  true)
                 }
             }
-        }, failure: { (data, response, error) in
-            DispatchQueue.main.async {
-                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated:  true)
-            }
-        })
-    }
+        }
     
+    }
+        
     func refreshTable() {
         DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {

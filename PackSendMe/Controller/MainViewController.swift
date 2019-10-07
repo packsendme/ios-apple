@@ -91,5 +91,16 @@ class MainViewController: UIViewController {
         -> TimeInterval {
             return 0.3
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "AccessLoginControllerUsername") {
+            let loginVC = segue.destination as! AccessLoginViewController
+            loginVC.metadadosView = segue.identifier!
+        }
+    }
+  
+    @IBAction func nextPhoneNumberAction(_ sender: Any) {
+        self.performSegue(withIdentifier:"AccessLoginControllerUsername", sender: nil)
+    }
 
  }

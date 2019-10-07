@@ -16,7 +16,7 @@ class PhotoProfileViewController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var editBtn: UIBarButtonItem!
     @IBOutlet weak var profileimageImg: UIImageView!
     let imagePicker = UIImagePickerController()
-    var accountModel : AccountDto? = nil
+    var profileObj : ProfileBO? = nil
     var boxActivityView = UIView()
     var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -196,8 +196,8 @@ class PhotoProfileViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let settingProfile = segue.destination as? SettingProfileUserViewController
-        settingProfile!.accountModel = accountModel
+        let settingProfile = segue.destination as? AUPSettingViewController
+        settingProfile!.profileObj = profileObj!
     }
     
     //MARK: - Done image capture here

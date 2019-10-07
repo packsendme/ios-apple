@@ -474,11 +474,11 @@
 /* SCREEN - VALIDATE SMS */
 
 "main-title-smscod" = "Digite o código de 4 dígitos que enviamos para";
-"main-label-codRight" = "Você inseriu o número correto de celular?";
+"main-title-numbercorrect" = "O número do celular está correto?                       	   ";
 "main-title-receivecode" = "Enviarme novo código SMS";
 "main-title-editnumber" = "Editar número do meu celular?";
 /* Resend SMS */
-"main-title-codeforward" = "Reenviar Código SMS";
+"main-title-newsmscode" = "Novo código de 4 dígitos foi enviado para ";
 "main-label-codeforward" = "O nº do celular está correto?";
 "main-button-codeforward" = "Enviar Novo Código SMS";
 "main-button-cancelcode" = "Alterar Número do Celular";
@@ -535,6 +535,7 @@
 "setting-title-addcard" = "Adicionar Cartão";
 
 /* SettingProfileUserViewController */
+"profile-title-home" = "Perfil do Usuario";
 "profileuser-title-name" = "Nome";
 "profileuser-title-lastname"  = "Sobrenome";
 "profileuser-title-email" = "Email";

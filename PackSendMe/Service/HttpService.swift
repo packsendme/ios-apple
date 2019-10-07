@@ -1,5 +1,5 @@
 //
-//  HttpClientApi.swift
+//  HttpService.swift
 //  PackSendMe
 //
 //  Created by Ricardo Marzochi on 09/11/2018.
@@ -18,15 +18,15 @@ enum HttpMethod : String {
 }
 
 
-class HttpClientApi: NSObject{
+class HttpService: NSObject{
     
     //TODO: remove app transport security arbitary constant from info.plist file once we get API's
     var request : URLRequest?
     var session : URLSession?
     
-    static func instance() ->  HttpClientApi{
+    static func instance() -> HttpService{
         
-        return HttpClientApi()
+        return HttpService()
     }
     
     func makeAPICall(url: String,params: String? = nil, method: HttpMethod,

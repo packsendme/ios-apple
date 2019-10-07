@@ -454,7 +454,7 @@
 
 /* SCREEN - VALIDATE SMS */
 "main-title-smscod" = "Introduce el código de 5 dígitos que te enviamos a ";
-"main-label-codRight" = "¿Introdujiste  el numero de teléfono móvil correcto?";
+"main-title-numbercorrect" = "¿El número de móvil es correcto?                              ";
 "main-title-receivecode" = "Enviar nuevo código SMS";
 "main-title-editnumber" = "Editar número de mi celular";
 
@@ -463,7 +463,7 @@
 "main-title-inactive" = "Inactivo";
 
 /* Resend SMS */
-"main-title-codeforward" = "Reenviar Código SMS";
+"main-title-newsmscode" = "Nuevo código de 4 dígitos enviado para ";
 "main-label-codeforward" = "¿El n.º de móvil es correcto?";
 "main-button-codeforward" = "Enviar Nuevo Código SMS";
 "main-button-cancelcode" = "Cambiar el Número de Teléfono Móvil";
@@ -520,6 +520,7 @@
 "setting-title-addcard" = "Adicionar Tarjeta";
 
 /*  SettingProfileUserViewController */
+"profile-title-home" = "Perfil del usuario";
 "profileuser-title-name" = "Nombre";
 "profileuser-title-lastname"  = "Apelido";
 "profileuser-title-email" = "Email";

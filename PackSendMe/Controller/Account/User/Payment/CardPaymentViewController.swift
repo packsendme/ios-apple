@@ -28,7 +28,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var countrydataView: UIView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
     
-    var cardpaySelect = PaymentAccountDto()
+    var cardpaySelect = PaymentAccountBO()
     
     var utilityObj = UtilityHelper()
     var paymentService = PaymentService()

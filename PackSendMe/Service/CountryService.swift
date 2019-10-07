@@ -23,7 +23,7 @@ class CountryService: NSObject {
         let paramsDictionary : String = idcountry
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 1){
-            HttpClientApi.instance().makeAPICall(url: country_url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
+            HttpService.instance().makeAPICall(url: country_url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
                 if let data = data {
                     do{
                         if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
@@ -53,7 +53,7 @@ class CountryService: NSObject {
             var countriesData: [CountryVModel] = []
             let country_url = URLConstants.COUNTRY.country_http
         
-            HttpClientApi.instance().makeAPICall(url: country_url, params:nil, method: .GET, success: { (data, response, error) in
+            HttpService.instance().makeAPICall(url: country_url, params:nil, method: .GET, success: { (data, response, error) in
                 if let data = data {
                     do{
                         if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{

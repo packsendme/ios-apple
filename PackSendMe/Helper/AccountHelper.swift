@@ -67,41 +67,6 @@ class AccountHelper: NSObject {
     }
     
     
-    func getMenuConfiguration(jsonAccount : [String: Any]) -> AccountDto{
-        
-        var addressCollection = [AddressDto]()
-        var addressNamesL : [String] = [""]
-
-        var menuconfigAccountObj = AccountDto()
-        var addressObj = AddressDto()
-        
-        // PERSONAL INFORMATION
-        menuconfigAccountObj.name = jsonAccount["name"] as? String
-        menuconfigAccountObj.username = jsonAccount["username"] as? String
-        menuconfigAccountObj.email = jsonAccount["email"] as? String
-        menuconfigAccountObj.lastName = jsonAccount["lastName"] as? String
-        menuconfigAccountObj.dateCreation = jsonAccount["dateCreation"] as? String
-        
-        // ADDRESS INFORMATION
-        let addressArray = jsonAccount["address"] as? [[String:Any]]
-       
-        if addressArray != nil {
-            for address in addressArray! {
-                if address["main"] as! String == GlobalVariables.sharedManager.addressMain {
-                    let nameDescription = address["address"] as? String
-                    addressObj.type =  address["type"] as? String
-                    addressObj.main =  address["main"] as? String
-                    addressNamesL = addressParser.addressParser(addressParser: nameDescription!)
-                    addressObj.address = addressNamesL[0]
-                    addressObj.city = addressNamesL[1]
-                    addressObj.country = addressNamesL[2]
-                    addressCollection.append(addressObj)
-                    addressObj = AddressDto()
-                }
-            }
-        }
-        menuconfigAccountObj.address = addressCollection
-        return menuconfigAccountObj
-    }
+    
 
 }

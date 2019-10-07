@@ -5,7 +5,6 @@
 //  Created by Ricardo Marzochi on 09/11/2018.
 //  Copyright © 2018 Ricardo Marzochi. All rights reserved.
 //
-
 import UIKit
 
 class UtilityHelper: NSObject {
@@ -38,6 +37,6 @@ class UtilityHelper: NSObject {
         return dateFormatterGet.string(from: date)
     }
     
-
-
+    
+    
 }

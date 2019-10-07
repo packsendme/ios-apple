@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class CountryViewController: UIViewController{
+class IdentityCountryViewController: UIViewController{
 
     
     var countries: [CountryModel] = []
@@ -45,7 +45,7 @@ class CountryViewController: UIViewController{
     
 }
 
-extension CountryViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+extension IdentityCountryViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countriesData.count

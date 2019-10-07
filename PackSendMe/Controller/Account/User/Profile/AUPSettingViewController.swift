@@ -8,29 +8,28 @@
 
 import UIKit
 
-class SettingProfileUserViewController: UIViewController {
+class AUPSettingViewController: UIViewController {
 
     @IBOutlet weak var userprofileTable: UITableView!
     @IBOutlet weak var photoprofileBtn: UIButton!
     @IBOutlet weak var editAccessInfTitleLabel: UILabel!
     @IBOutlet weak var useraccountLabel: UILabel!
 
-    var accountModel : AccountDto? = nil
+    var profileObj = ProfileBO()
+    
+   // var passedAccountStruct = [AccountStruct]()
     var country : CountryVModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         country = CountryVModel(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance,sigla:"" )
 
-        
-        
-        editAccessInfTitleLabel.text = NSLocalizedString("setting-title-home", comment:"")
+        editAccessInfTitleLabel.text = NSLocalizedString("profile-title-setting", comment:"")
         userprofileTable.rowHeight = UITableViewAutomaticDimension
         userprofileTable.isScrollEnabled = true
         userprofileTable.translatesAutoresizingMaskIntoConstraints = false
-        useraccountLabel.text = accountModel?.name
+        useraccountLabel.text = profileObj.name
         
      //   photoprofileBtn.frame = CGRect(x: 160, y: 100, width: 50, height: 50)
         photoprofileBtn.layer.cornerRadius = 0.5 * photoprofileBtn.bounds.size.width
@@ -63,28 +62,29 @@ class SettingProfileUserViewController: UIViewController {
         self.performSegue(withIdentifier:"PhotoProfileViewControllerGo", sender: nil)
     }
     
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         
         if segue.identifier	== "PhotoProfileViewControllerGo"{
             let setupPhotoProfile = segue.destination as? PhotoProfileViewController
-            setupPhotoProfile?.accountModel = accountModel
+            setupPhotoProfile?.profileObj = profileObj
         }
-        if segue.identifier == "ManagerProfileUserViewControllerGoName"{
-            let setupUserProfile = segue.destination as? ManagerProfileUserViewController
-            setupUserProfile?.accountModel = accountModel
-            setupUserProfile?.metadadosView = URLConstants.IAM.nameUI
+        if segue.identifier == "AUPManagerNames"{
+            let setupUserProfile = segue.destination as? AUPManagerViewController
+            setupUserProfile?.profileObj = profileObj
+            setupUserProfile?.metadadosView = "names"
         }
-        if segue.identifier == "ManagerProfileUserViewControllerGoEmail"{
-            let setupUserProfile = segue.destination as? ManagerProfileUserViewController
-            setupUserProfile?.accountModel = accountModel
-            setupUserProfile?.metadadosView = URLConstants.IAM.emailUI
+        if segue.identifier == "AUPManagerEmail"{
+            let setupUserProfile = segue.destination as? AUPManagerViewController
+            setupUserProfile?.profileObj = profileObj
+            setupUserProfile?.metadadosView = "email"
         }
-        if segue.identifier == "ManagerProfileUserViewControllerGoPassword"{
-            let setupUserProfile = segue.destination as? ManagerProfileUserViewController
-            setupUserProfile?.accountModel = accountModel
-            setupUserProfile?.metadadosView = URLConstants.IAM.passwordUI
+        if segue.identifier == "AUPManagerPassword"{
+            let setupUserProfile = segue.destination as? AUPManagerViewController
+            setupUserProfile?.profileObj = profileObj
+            setupUserProfile?.metadadosView = "password"
         }
         if segue.identifier == "ManagerProfileUserViewControllerGoUsername"{
             let setupUserProfile = segue.destination as? ManagerUsernamePhoneViewController
@@ -92,10 +92,12 @@ class SettingProfileUserViewController: UIViewController {
             //setupUserProfile?.metadadosView = URLConstants.IAM.usernameUI
         }
     }
+    
+    
 
 }
 
-extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDelegate{
+extension AUPSettingViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -125,42 +127,42 @@ extension SettingProfileUserViewController: UITableViewDataSource, UITableViewDe
        if indexPath.row == 0{
             //cell.nameFieldUserLabel.font = UIFont(name:"Avenir", size:19)
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-name", comment:"")
-            cell.itemFieldUserLabel.text = accountModel?.name
+        cell.itemFieldUserLabel.text = profileObj.name
        }
        else if indexPath.row == 1{
             //cell.nameFieldUserLabel.font = UIFont(name:"Avenir", size:19)
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-lastname", comment:"")
-            cell.itemFieldUserLabel.text = accountModel?.lastName
+        cell.itemFieldUserLabel.text = profileObj.lastName
        }
        else if indexPath.row == 2{
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-email", comment:"")
-            cell.itemFieldUserLabel.text = accountModel?.email
+        cell.itemFieldUserLabel.text = profileObj.email
        }
        else if indexPath.row == 3{
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-password", comment:"")
             cell.itemFieldUserLabel.text =  String("123456781234567812345678".characters.map { _ in return "•" })
-            //cell.itemFieldUserLabel.text = accountModel?.password
+            //cell.itemFieldUserLabel.text = profileObj?.password
         
        }
        else if indexPath.row == 4{
             cell.nameFieldUserLabel.text = NSLocalizedString("profileuser-title-numberphone", comment:"")
-            cell.itemFieldUserLabel.text = accountModel?.username
+        cell.itemFieldUserLabel.text = profileObj.username
        }
        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if indexPath.row == 0{
-           self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoName", sender: nil)
+           self.performSegue(withIdentifier:"AUPManagerNames", sender: nil)
        }
        else if indexPath.row == 1{
-           self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoName", sender: nil)
+           self.performSegue(withIdentifier:"AUPManagerEmail", sender: nil)
        }
        else if indexPath.row == 2{
-            self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoEmail", sender: nil)
+            self.performSegue(withIdentifier:"AUPManagerPassword", sender: nil)
        }
        else if indexPath.row == 3{
-            self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoPassword", sender: nil)
+            self.performSegue(withIdentifier:"AUPManagerPassword", sender: nil)
        }
        else if indexPath.row == 4{
             self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoUsername", sender: nil)

@@ -449,12 +449,12 @@
 
 /* SCREEN - VALIDATE SMS */
 "main-title-smscod" = "Enter the 4-digit code we sent to";
-"main-label-codRight" = "Did you enter the correct mobile number?";
+"main-title-numbercorrect" = "Mobile number is correct?";
 "main-title-receivecode" = "Send me new SMS code";
 "main-title-editnumber" = "Edit my cell phone number?";
 /* Resend SMS */
-"main-title-codeforward" = "Resend SMS Code";
-"main-label-codeforward" = "Is the cell number correct?";
+"main-title-newsmscode" = "New 4 digit code has been sent to ";
+"main-label-codeforward" = "Is the cell number correct?                              ";
 "main-button-codeforward" = "Send New SMS Code";
 "main-button-cancelcode" = "Change Phone Number";
 
@@ -509,6 +509,7 @@
 "setting-title-addcard" = "Add Card";
 
 /* SettingProfileUserViewController */
+"profile-title-setting" = "User Profile";
 "profileuser-title-name" = "Name";
 "profileuser-title-lastname"  = "Last Name";
 "profileuser-title-email" = "Email";

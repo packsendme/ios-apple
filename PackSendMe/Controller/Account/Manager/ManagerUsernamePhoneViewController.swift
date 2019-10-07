@@ -47,7 +47,7 @@ class ManagerUsernamePhoneViewController: UIViewController, UITextFieldDelegate 
         if (segue.identifier == "ManagerProfileUserToCheckSMSCodeAccountView") {
             let something = segue.destination as! CheckSMSCodeAccountViewController
             something.numberphoneNew = codenumberLabel.text!+phonenumberTextField.text!
-            something.metadadosView = URLConstants.IAM.smscode_register
+            something.metadadosView = "SMSCodeRegister"
             something.country = country!
         }
         else if (segue.identifier == "ManagerUsernamePhoneViewControllerGoCountryAccount") {
@@ -87,7 +87,7 @@ class ManagerUsernamePhoneViewController: UIViewController, UITextFieldDelegate 
         let paramsDictionary : String = codenumberLabel.text!+phonenumberTextField.text!+"/"+dateNow
         let url = URLConstants.IAM.iamIdentity_http
         
-        HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
+        HttpService.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
                 do{
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                         DispatchQueue.main.async {

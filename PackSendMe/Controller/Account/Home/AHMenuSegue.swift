@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuSegue: UIStoryboardSegue {
+class AHMenuSegue: UIStoryboardSegue {
     
     override func perform() {
         menu()

@@ -17,15 +17,15 @@ class CountryAccountViewController: UIViewController{
     var countriesData: [CountryVModel] = []
     var countryService = CountryService()
     var countryObj = CountryVModel()
-    var cardpaySelect = PaymentAccountDto()
+    var cardpaySelect = PaymentAccountBO()
     
     // Type the Controller call (1) CardPaymentViewController  (2)ManagerUsernamePhoneViewController
     var operationTypeController: String = ""
     var refreshControl = UIRefreshControl()
 
 
-    var accountModel : AccountDto? = nil
-    var cardpayDto = PaymentAccountDto()
+    //var accountObj : AccountBO? = nil
+    var cardpayDto = PaymentAccountBO()
     var countryDto = CountryVModel()
     
     @IBOutlet weak var countrycurrent: UILabel!

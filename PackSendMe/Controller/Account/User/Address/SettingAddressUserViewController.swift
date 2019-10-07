@@ -59,7 +59,7 @@ class SettingAddressUserViewController: UIViewController {
         
         let account = URLConstants.ACCOUNT.account_http+"/address"
         
-        HttpClientApi.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
+        HttpService.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
             
             if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                 DispatchQueue.main.async {
@@ -74,12 +74,6 @@ class SettingAddressUserViewController: UIViewController {
             }
         })
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        let setupPhotoProfile = segue.destination as? SettingDataViewController
-       // setupPhotoProfile?.accountModel = accountModel!
-    }
-    
     
     @IBAction func goBack(_ sender: Any) {
         self.performSegue(withIdentifier:"SettingAddressUserViewToSettingDataAccountView", sender: nil)

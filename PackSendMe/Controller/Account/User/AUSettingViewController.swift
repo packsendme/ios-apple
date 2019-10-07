@@ -9,7 +9,7 @@ import UIKit
 import GooglePlaces
 
 
-class SettingDataViewController: UIViewController {
+class AUSettingViewController: UIViewController {
     
     @IBOutlet weak var settingTitleLabel: UILabel!
     @IBOutlet weak var settingTable: UITableView!
@@ -22,82 +22,64 @@ class SettingDataViewController: UIViewController {
     var itens : [[String]] = []
     var jsonAccountFinal : [String: Any]? = nil
     var boxActivityView = UIView()
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     var typeAddressChange : String? = nil
     var addressUserArray : [String:Any]? = nil
-    
-    var menuconfigAccount = AccountDto()
+    var profileObj : ProfileBO?
 
     var lastContentOffset: CGFloat = 0
 
     var oldContentOffset = CGPoint()
     let topConstraintRange = (CGFloat(120)..<CGFloat(300))
     var tableRowNumber : Int = 10
+    var amService = AccountService()
+
     
     override func viewDidLoad() {
-        //self.activityIndicator.startAnimating()
-        //activityActionStart()
-        //   loadingScreen()
-        //activityActionStart()
+        super.viewDidLoad()
         settingTitleLabel.text = NSLocalizedString("setting-title-home", comment:"")
+        self.activityActionStart(title : NSLocalizedString("main-title-loading", comment:""))
         loadAccount()
-        
         settingTable.delegate = self
         settingTable.dataSource = self
         settingTable.decelerationRate = UIScrollViewDecelerationRateFast
         super.viewDidLoad()
     }
     
-    func loadAccount(){
-        //GlobalVariables.sharedManager.username = "+5596064241"
-        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+URLConstants.ACCOUNT.account_load
-        let url = URLConstants.ACCOUNT.account_http
-        HttpClientApi.instance().makeAPICall(url: url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
-            //print (" URL statusCode = \(response?.statusCode)")
-            if let data = data {
-                do{
-                    if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
-                        
-                        let jsonAccount = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
-                        if(jsonAccount != nil){
-                            self.jsonAccountFinal = jsonAccount!["body"] as? [String:Any]
-                            self.menuconfigAccount = AccountHelper().getMenuConfiguration(jsonAccount: self.jsonAccountFinal!)
-                            self.refreshTable()
-                        }
-                    }
-                    else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
-                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(ac, animated:  true)
-                    }
-                } catch _ {
-                    DispatchQueue.main.async {
-                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(ac, animated:  true)
-                    }
-                }
-            }
-        }, failure: { (data, response, error) in
-            DispatchQueue.main.async {
-                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated:  true)
-            }
-        })
+
+
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 125, width: 180, height: 50))
+        boxActivityView.backgroundColor = UIColor.lightGray
+        boxActivityView.alpha = 0.9
+        boxActivityView.layer.cornerRadius = 10
         
+        //Here the spinnier is initialized
+        
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.color = UIColor.blue
+        
+        activityView.startAnimating()
+        
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.white
+        textLabel.text = title
+        
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        
+        view.addSubview(boxActivityView)
     }
     
-    func refreshTable() {
-        DispatchQueue.global(qos: .background).async {
-            DispatchQueue.main.async {
-                self.settingTable.reloadData()
-            }
-        }
+    func activityActionStop() {
+        //When button is pressed it removes the boxView from screen
+        self.boxActivityView.removeFromSuperview()
+        self.activityView.stopAnimating()
     }
-
     
     @IBAction func homeToolBtnAction(_ sender: Any) {
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.allViewToAccountHomeView, sender: nil)
+        self.performSegue(withIdentifier:"AHMainViewController", sender: nil)
     }
     
     @IBAction func menuToolBtnAction(_ sender: Any) {
@@ -108,16 +90,19 @@ class SettingDataViewController: UIViewController {
         dismiss(animated: false, completion: nil)
     }
     
-    @IBAction func closeAction(_ sender: Any) {
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.allViewToAccountHomeView, sender: nil)
+    override func didReceiveMemoryWarning() {
+           print(" DEALOCK MEMORY")
+        super.didReceiveMemoryWarning()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is SettingProfileUserViewController
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is AUPSettingViewController
         {
-            let setupAccessUser = segue.destination as? SettingProfileUserViewController
-            setupAccessUser?.accountModel = menuconfigAccount
+            print(" prepare AUPSettingViewController")
+
+            let aupsetting = segue.destination as? AUPSettingViewController
+            aupsetting!.profileObj = self.profileObj!
         }
         else if segue.destination is SettingAddressUserViewController
         {
@@ -126,12 +111,56 @@ class SettingDataViewController: UIViewController {
             //addressUserArray = jsonAccountFinal!["address"] as? [String:Any]
             //setupAccessUser?.addressUserArray = addressUserArray
         }
-        
     }
+    
+    func refreshTable() {
+        DispatchQueue.main.async(execute: { () -> Void in
+             self.settingTable.reloadData()
+            self.activityActionStop()
+        })
+    }
+    
+    // -------------------------------------------------------------------------------------
+    // FUNCTION : loadAccount()
+    // TYPE : HTTP
+    // ACTION :  GET
+    // -------------------------------------------------------------------------------------
+    func loadAccount(){
+        amService.getLoadAccountUser(){(success, response, error) in
+            if success == true{
+                self.profileObj = response as? ProfileBO
+              
+                //OperationQueue.main.addOperation ({//)
+                print(" VALUE --- \(self.profileObj!.username!)")
+                    
+                DispatchQueue.main.async {
+                    self.settingTable.reloadData()
+                    self.activityActionStop()
+                }
+                UIView.transition(with: self.view,
+                                  duration:0.1,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.settingTable.reloadData()
+                                    self.activityActionStop()},
+                                  completion: nil)
+                
+
+            }
+            else if success == false{
+                DispatchQueue.main.async() {
+                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated:  true)
+                }
+            }
+        }
+    }
+    
 }
 
 
-extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate{
+extension AUSettingViewController : UITableViewDataSource, UITableViewDelegate{
     
     // this delegate is called when the scrollView (i.e your UITableView) will start scrolling
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -151,14 +180,11 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
     }
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-    
-        guard var cell = tableView.dequeueReusableCell(withIdentifier:"SettingInformationCell") as? SettingViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:"SettingInformationCell") as? SettingViewCell
             else{
                 return UITableViewCell()
         }
- 
-        if(menuconfigAccount != nil){
-            
+        if(profileObj != nil){
             // ADDRESS-HOME ACCOUNT
             if(indexPath.row == 0){
                 cell.selectionStyle = .none
@@ -168,9 +194,6 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
             
             // USER ACCOUNT
             if(indexPath.row == 1){
-                //cell.titleCellLabel.text = NSLocalizedString("setting-title-personalinf", comment:"")
-                //cell.creditcardImage.isHidden = true
-                
                 var imagePersonalView : UIImageView
                 imagePersonalView  = UIImageView(frame:CGRect(x: 0, y: 0,width:1, height:1));
                 
@@ -190,9 +213,9 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
                     cell.cellImage.layer.masksToBounds = true
                 }
                 
-                cell.identificador1Label.text = menuconfigAccount.name
-                cell.identificador2Label.text = menuconfigAccount.username
-                cell.identificador3Label.text = menuconfigAccount.email
+                cell.identificador1Label.text = profileObj!.name
+                cell.identificador2Label.text = profileObj!.username
+                cell.identificador3Label.text = profileObj!.email
             }
             // NULL BLANCK CELL
             if(indexPath.row == 2){
@@ -208,8 +231,8 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
                 imageAddressView.image = UIImage(named: "icon-user-house.png")
                 cell.cellImage.image = imageAddressView.image
                 
-                if menuconfigAccount.address != nil {
-                    for address in menuconfigAccount.address! {
+                if profileObj!.address != nil {
+                    for address in profileObj!.address! {
                         if (address.type as! String == GlobalVariables.sharedManager.addressTypeHome) {
                             cell.identificador1Label.text = address.address
                             cell.identificador2Label.text = address.city
@@ -224,13 +247,13 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
             }
             // ADDRESS-JOB ACCOUNT
             if(indexPath.row == 4){
-                var imageAddressView : UIImageView
+               var imageAddressView : UIImageView
                 imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
                 imageAddressView.image = UIImage(named: "icon-user-work.png")
                 cell.cellImage.image = imageAddressView.image
                 
-                if menuconfigAccount.address != nil {
-                    for address in menuconfigAccount.address! {
+                if profileObj!.address != nil {
+                    for address in profileObj!.address! {
                         if (address.type == GlobalVariables.sharedManager.addressTypeJob) {
                             cell.identificador1Label.text = address.address
                             cell.identificador2Label.text = address.city
@@ -251,11 +274,11 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
             }
             // SECURITY
             if(indexPath.row == 6){
-                var imageAddressView : UIImageView
-                imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
-                imageAddressView.image = UIImage(named: "icon-user-security.png")
-                cell.cellImage.image = imageAddressView.image
-                cell.identificador2Label.text = NSLocalizedString("setting-title-security", comment:"")
+               var imageAddressView : UIImageView
+               imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
+               imageAddressView.image = UIImage(named: "icon-user-security.png")
+               cell.cellImage.image = imageAddressView.image
+               cell.identificador2Label.text = NSLocalizedString("setting-title-security", comment:"")
             }
             
             // EXIT
@@ -318,7 +341,7 @@ extension SettingDataViewController : UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.row == 1){
-            self.performSegue(withIdentifier:"SettingProfileUserViewControllerGo", sender: nil)
+            self.performSegue(withIdentifier:"AUPSettingViewController", sender: nil)
         }
             // AddressHome
         else if(indexPath.row == 3){
