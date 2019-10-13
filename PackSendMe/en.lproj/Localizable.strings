@@ -8,6 +8,8 @@
 
 /* SCREEN - GENERIC */
 "main-title-loading" = "Loading";
+"main-title-update" = "Updating";
+"main-title-saving" = "Saving";
 
 /* SCREEN - MAIN */
 "main-title-welcome" = "Welcome to PackSendMe";
@@ -508,40 +510,38 @@
 "setting-title-addhome" = "Add Address Home";
 "setting-title-addcard" = "Add Card";
 
-/* SettingProfileUserViewController */
-"profile-title-setting" = "User Profile";
+/* AUP - AUPSettingViewController */
+"aup-setting-title" = "User Profile";
 "profileuser-title-name" = "Name";
 "profileuser-title-lastname"  = "Last Name";
 "profileuser-title-email" = "Email";
 "profileuser-title-password" = "Password";
 "profileuser-title-numberphone" = "Phone Number";
 
-/* ManagerProfileUserViewController - Name  */
-"editfirstname-label-title" = "Edit Name";
-"editfirstname-title-btn" = "UPDATE NAME";
-"editfirstname-text-firstname" = "First Name";
-"editlastname-text-lastname" = "Last Name";
-"editfirstname-label-firstnamevalidate" = "First Name invalid";
-"editlastname-label-lastnamevalidate" = "Last Name invalid";
 
 
-/* ManagerProfileUserViewController - EMail  */
-"editemail-label-title" = "Edit E-Mail";
-"editemail-title-btn" = "UPDATE E-MAIL";
-"editemail-text-email" = "E-Mail";
-"editemail-label-emailvalidate" = "E-mail invalid";
+/* AUP - AUPManagerViewController */
+"aup-manager-btn-update" = "Confirm Change";
+
+/* Name  */
+"aup-manager-lbl-nametitle" = "Edit Nome";
+"aup-manager-txt-firstname" = "First Name";
+"aup-manager-txt-lastname" = "Last Name";
+"aup-manager-lbl-namevalidate" = "Invalid Name";
+
+/* EMail  */
+"aup-manager-lbl-emailtitle" = "Edit E-Mail";
+"aup-manager-txt-email" = "E-Mail";
+"aup-manager-lbl-emailvalidate" = "Invalid E-mail";
 
 
-/* ManagerProfileUserViewController - Password  */
-"editpassword-label-title" = "Change Password";
-"editpassword-title-btn" = "UPDATE PASSWORD";
-"editpassword-text-passwordCurrent" = "Current Password";
-"editpassword-text-passwordNew" = "New Password";
-"editpassword-text-password" = "Password";
-"editpasswordcurrent-title-btn" = "VERIFY PASSWORD";
-"editpasswordcurrent-text-passwordVerifiy" = "Verify Current Password";
-"editpasswordcurrent-text-detail" = "For your security, please enter your current password";
-"editpassword-label-passwordvalidate" = "Password invalid, must be at least 6 characters";
+/* Password  */
+"aup-manager-lbl-passwordtitle" = "Edit Senha";
+"aup-manager-lbl-passwordCurrent" = "Current password";
+"aup-manager-txt-passwordinput" = "Enter your password";
+"aup-manager-btn-passwordvalidate" = "Validate My Password";
+"aup-manager-txt-passwordNew" = "New Password";
+"aup-manager-lbl-passwordvalidate" = "Invalid Password, check the password you entered, must be at least 6 characters!";
 
 
 /* ManagerProfileUserViewController - PhoneNumber  */

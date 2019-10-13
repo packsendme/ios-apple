@@ -18,13 +18,13 @@ public struct UserBO{
     var responseStatus: HttpResponseModel?
     var dateOperation: String?
     
-    func createUserArray(username:String, email:String, password:String, name:String, lastName:String, country:String,dateOperation:String) -> Dictionary<String, Any> {
+    func createUserArray(username:String, password:String, activated:String, activationKey:String, resetPasswordKey:String, dateOperation:String) -> Dictionary<String, Any> {
         var paramsDictionary = [String:Any]()
         paramsDictionary["username"] = username
-        paramsDictionary["password"] = email
-        paramsDictionary["activated"] = name
-        paramsDictionary["activationKey"] = password
-        paramsDictionary["resetPasswordKey"] = lastName
+        paramsDictionary["password"] = password
+        paramsDictionary["activated"] = activated
+        paramsDictionary["activationKey"] = activationKey
+        paramsDictionary["resetPasswordKey"] = resetPasswordKey
         paramsDictionary["dateOperation"] = dateOperation
         return paramsDictionary
     }

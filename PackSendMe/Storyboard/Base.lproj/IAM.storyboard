@@ -76,6 +76,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="275" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isc-cT-6Y6">
                                 <rect key="frame" x="292" y="298" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
+                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button" image="icon-btn-next"/>
                                 <connections>
                                     <action selector="validateAcessAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rDX-r7-hJl"/>

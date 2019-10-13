@@ -129,13 +129,8 @@ class AUSettingViewController: UIViewController {
         amService.getLoadAccountUser(){(success, response, error) in
             if success == true{
                 self.profileObj = response as? ProfileBO
-              
-                //OperationQueue.main.addOperation ({//)
-                print(" VALUE --- \(self.profileObj!.username!)")
-                    
                 DispatchQueue.main.async {
                     self.settingTable.reloadData()
-                    self.activityActionStop()
                 }
                 UIView.transition(with: self.view,
                                   duration:0.1,

@@ -25,7 +25,7 @@ class AUPSettingViewController: UIViewController {
         
         country = CountryVModel(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance,sigla:"" )
 
-        editAccessInfTitleLabel.text = NSLocalizedString("profile-title-setting", comment:"")
+        editAccessInfTitleLabel.text = NSLocalizedString("aup-setting-title", comment:"")
         userprofileTable.rowHeight = UITableViewAutomaticDimension
         userprofileTable.isScrollEnabled = true
         userprofileTable.translatesAutoresizingMaskIntoConstraints = false
@@ -156,10 +156,10 @@ extension AUPSettingViewController: UITableViewDataSource, UITableViewDelegate{
            self.performSegue(withIdentifier:"AUPManagerNames", sender: nil)
        }
        else if indexPath.row == 1{
-           self.performSegue(withIdentifier:"AUPManagerEmail", sender: nil)
+           self.performSegue(withIdentifier:"AUPManagerNames", sender: nil)
        }
        else if indexPath.row == 2{
-            self.performSegue(withIdentifier:"AUPManagerPassword", sender: nil)
+            self.performSegue(withIdentifier:"AUPManagerEmail", sender: nil)
        }
        else if indexPath.row == 3{
             self.performSegue(withIdentifier:"AUPManagerPassword", sender: nil)

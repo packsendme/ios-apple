@@ -259,9 +259,8 @@ class IAService: NSObject {
     func updatePassword(password : String, completion: @escaping (Bool, Any?, Error?) -> Void){
         
         let dateUpdate = dateFormat.dateConvertToString()
-        let paramsDictionary = userObj.createUserArray(username: GlobalVariables.sharedManager.usernameNumberphone,
-            email: "", password: password, name: "", lastName: "", country: "", dateOperation: dateUpdate)
-
+        let paramsDictionary = userObj.createUserArray(username:GlobalVariables.sharedManager.usernameNumberphone, password:password, activated:"", activationKey:"", resetPasswordKey:"", dateOperation:dateUpdate)
+        
         let iamURL = URLConstants.IAM.iamManager_http
 
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
