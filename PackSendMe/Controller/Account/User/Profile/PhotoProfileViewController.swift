@@ -196,7 +196,7 @@ class PhotoProfileViewController: UIViewController, UIImagePickerControllerDeleg
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let settingProfile = segue.destination as? AUPSettingViewController
+        let settingProfile = segue.destination as? AMPSettingViewController
         settingProfile!.profileObj = profileObj!
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccessLoginViewController: UIViewController, UITextFieldDelegate{
+class IAUSettingViewController: UIViewController, UITextFieldDelegate{
     
     // Password - Login
     @IBOutlet weak var loginTitleLabel: UILabel!
@@ -30,8 +30,8 @@ class AccessLoginViewController: UIViewController, UITextFieldDelegate{
     var dateFormat = UtilityHelper()
     
     enum ViewType:String {
-        case usernameVC = "AccessLoginControllerUsername"
-        case passwordVC = "AccessLoginControllerPassword"
+        case usernameVC = "IAUSettingUsername"
+        case passwordVC = "IAUSettingPassword"
     }
     
     override func viewDidLoad() {
@@ -91,18 +91,17 @@ class AccessLoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AccessLoginControllerPassword" {
-            let loginVC = segue.destination as! AccessLoginViewController
+        if segue.identifier == "IAUSettingPassword" {
+            let loginVC = segue.destination as! IAUSettingViewController
             loginVC.metadadosView = segue.identifier!
         }
-        else  if segue.identifier == "AccessLoginControllerUsername" {
-            let loginVC = segue.destination as! AccessLoginViewController
+        else  if segue.identifier == "IAUSettingUsername" {
+            let loginVC = segue.destination as! IAUSettingViewController
             loginVC.metadadosView = segue.identifier!
         }
     }
     
     // Screen: LoginViewController - Username (PhoneNumber)
- 
     @IBAction func validateAcessAction(_ sender: Any) {
          validateLogin()
     }
@@ -113,7 +112,7 @@ class AccessLoginViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func backLoginUsername(_ sender: Any) {
-        self.performSegue(withIdentifier:"AccessLoginControllerUsername", sender: nil)
+        self.performSegue(withIdentifier:"IAUSettingUsername", sender: nil)
     }
     
     /* ################################### < HTTP SERVICE >  ############################################### */
@@ -126,13 +125,13 @@ class AccessLoginViewController: UIViewController, UITextFieldDelegate{
             if success == true{
                 if URLConstants.HTTP_STATUS_CODE.OK == responseCode as! Int {
                     DispatchQueue.main.async {
-                        self.performSegue(withIdentifier:"IdentitySMSViewController", sender: nil)
+                        self.performSegue(withIdentifier:"IRSSettingViewController", sender: nil)
                     }
                 }
                 else if URLConstants.HTTP_STATUS_CODE.FOUND == responseCode as! Int{
                     DispatchQueue.main.async {
                         DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "AccessLoginControllerPassword", sender: nil)
+                            self.performSegue(withIdentifier: "IAUSettingPassword", sender: nil)
                         }
                     }
                 }

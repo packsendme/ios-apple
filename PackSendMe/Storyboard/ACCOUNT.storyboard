@@ -317,13 +317,13 @@
         <!--Setting View Controller-->
         <scene sceneID="nbo-Of-PHI">
             <objects>
-                <viewController storyboardIdentifier="AUPSetting" id="t7q-qE-bfJ" customClass="AUPSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AUPSetting" id="t7q-qE-bfJ" customClass="AMPSettingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d0l-F8-F7b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0N-dz-RSm">
-                                <rect key="frame" x="0.0" y="79" width="375" height="147"/>
+                                <rect key="frame" x="0.0" y="79" width="375" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhA-pt-Lx0">
@@ -349,7 +349,7 @@
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="foT-3S-a8a">
-                                <rect key="frame" x="0.0" y="222" width="375" height="445"/>
+                                <rect key="frame" x="0.0" y="230" width="375" height="437"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -411,7 +411,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="PeM-kE-Jos"/>
                     </view>
                     <connections>
@@ -421,10 +421,10 @@
                         <outlet property="userprofileTable" destination="foT-3S-a8a" id="CXn-pV-qJn"/>
                         <segue destination="KZQ-6M-msm" kind="show" identifier="PhotoProfileViewControllerGo" id="Mga-PC-14E"/>
                         <segue destination="a6r-v2-u3x" kind="show" identifier="AllViewToAccountHomeView" id="GwH-oh-IYd"/>
-                        <segue destination="Qt7-5b-43p" kind="show" identifier="AUPManagerNames" id="MXB-iH-Ejh"/>
-                        <segue destination="9uw-hV-A47" kind="show" identifier="AUPManagerEmail" id="61E-Kx-uTR"/>
-                        <segue destination="dgf-TW-xU3" kind="show" identifier="AUPManagerPassword" id="iQc-bm-VxI"/>
-                        <segue destination="rhv-ek-hyp" kind="show" identifier="ManagerProfileUserViewControllerGoUsername" id="C4T-SA-DPB"/>
+                        <segue destination="Qt7-5b-43p" kind="show" identifier="AMPUpdateNames" id="MXB-iH-Ejh"/>
+                        <segue destination="9uw-hV-A47" kind="show" identifier="AMPUpdateEmail" id="61E-Kx-uTR"/>
+                        <segue destination="dgf-TW-xU3" kind="show" identifier="AMPUpdatePassword" id="iQc-bm-VxI"/>
+                        <segue destination="rhv-ek-hyp" kind="show" identifier="AMPUpdateUsername" id="C4T-SA-DPB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6d-n1-cbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -716,7 +716,7 @@
         <!--AUPManagerViewController-->
         <scene sceneID="Bqn-mZ-LAm">
             <objects>
-                <viewController id="Qt7-5b-43p" userLabel="AUPManagerViewController" customClass="AUPManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qt7-5b-43p" userLabel="AUPManagerViewController" customClass="AMPUpdateViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x2Z-hN-oBU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -741,7 +741,8 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMd-C3-gIa">
                                         <rect key="frame" x="17" y="80" width="164" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="UW4-VT-glr">
@@ -752,20 +753,21 @@
                                         <rect key="frame" x="17" y="103" width="164" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30H-ni-Qgm">
                                         <rect key="frame" x="194" y="80" width="166" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ry-8T-bZy">
                                         <rect key="frame" x="196" y="103" width="164" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" textContentType="additional-name"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="EwJ-iU-6mI">
@@ -811,7 +813,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="Q9v-st-R2F"/>
+                                    <segue destination="t7q-qE-bfJ" kind="show" identifier="AMPSettingViewController" id="Q9v-st-R2F"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -835,10 +837,10 @@
             </objects>
             <point key="canvasLocation" x="2897" y="536"/>
         </scene>
-        <!--Manager View Controller-->
+        <!--Update View Controller-->
         <scene sceneID="LmD-Ut-aKo">
             <objects>
-                <viewController id="9uw-hV-A47" customClass="AUPManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9uw-hV-A47" customClass="AMPUpdateViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Mf-e0-7UD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -850,14 +852,15 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQY-L1-gw0">
                                         <rect key="frame" x="20" y="80" width="222" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rkl-1Q-DGc">
                                         <rect key="frame" x="19" y="103" width="340" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="fCr-8D-569">
@@ -895,7 +898,7 @@
                                             <inset key="imageInsets" minX="-26" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="Wal-Zp-xhr"/>
+                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AMPSettingViewController" id="Wal-Zp-xhr"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -924,10 +927,10 @@
             </objects>
             <point key="canvasLocation" x="4069.5999999999999" y="608.54572713643188"/>
         </scene>
-        <!--Manager View Controller-->
+        <!--Update View Controller-->
         <scene sceneID="GK7-6J-swc">
             <objects>
-                <viewController id="dgf-TW-xU3" customClass="AUPManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dgf-TW-xU3" customClass="AMPUpdateViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zd0-Rn-wSg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -939,14 +942,15 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goV-jo-srt">
                                         <rect key="frame" x="20" y="80" width="340" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyb-qI-MQA">
                                         <rect key="frame" x="19" y="103" width="340" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="qtZ-MW-XrB">
@@ -984,7 +988,7 @@
                                             <inset key="imageInsets" minX="-26" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="ePO-fd-Ze9"/>
+                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AMPSettingViewController" id="ePO-fd-Ze9"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1004,14 +1008,15 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Verify Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfP-3q-ZDw" userLabel="passwordcurrentLabel">
                                         <rect key="frame" x="20" y="71" width="340" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NHV-eR-AdM">
                                         <rect key="frame" x="19" y="94" width="340" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="62f-gt-GKo">
@@ -1062,10 +1067,10 @@
             </objects>
             <point key="canvasLocation" x="4764" y="608.54572713643188"/>
         </scene>
-        <!--Manager Username Phone View Controller-->
+        <!--Update View Controller-->
         <scene sceneID="JmD-HG-BwM">
             <objects>
-                <viewController storyboardIdentifier="managerProfilePhoneView" id="rhv-ek-hyp" customClass="ManagerUsernamePhoneViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="managerProfilePhoneView" id="rhv-ek-hyp" customClass="AMPUpdateViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yEc-BD-EH2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1078,9 +1083,6 @@
                                 <state key="normal" title="UPDATE PHONE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="updatePhoneNumberAction:" destination="rhv-ek-hyp" eventType="touchUpInside" id="GoB-A2-eff"/>
-                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL6-WE-JNT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
@@ -1091,7 +1093,7 @@
                                             <inset key="imageInsets" minX="-26" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="swt-fy-lLQ"/>
+                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AMPSettingViewController" id="swt-fy-lLQ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1139,7 +1141,7 @@
                                         <size key="titleShadowOffset" width="40" height="45"/>
                                         <state key="normal" image="iconUSA"/>
                                         <connections>
-                                            <segue destination="LR7-d6-DYb" kind="show" identifier="ManagerUsernamePhoneViewControllerGoCountryAccount" id="6xS-Cw-Fab"/>
+                                            <segue destination="LR7-d6-DYb" kind="show" identifier="AUCSettingViewController" id="6xS-Cw-Fab"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="P8V-TB-ST3">
@@ -1161,24 +1163,24 @@
                         <viewLayoutGuide key="safeArea" id="i7Y-1y-NI3"/>
                     </view>
                     <connections>
-                        <outlet property="codenumberLabel" destination="y9Q-DC-mrP" id="PU9-Fi-fZx"/>
-                        <outlet property="countrycodeBtn" destination="XYh-hs-Upd" id="uTk-wA-ZMf"/>
-                        <outlet property="newphoneLabel" destination="cim-3s-fFs" id="SZl-2l-KI8"/>
-                        <outlet property="phoneValidateLabel" destination="0wb-wJ-McA" id="QEU-jx-GEN"/>
-                        <outlet property="phonenumberTextField" destination="rUa-mB-CCC" id="iIe-PO-Al9"/>
-                        <outlet property="phonenumberTitleLabel" destination="VOK-w6-F1u" id="hDb-PQ-N1f"/>
-                        <outlet property="updatephoneBtn" destination="0o6-8t-cj4" id="cc3-Q9-beL"/>
-                        <segue destination="I50-Dp-LGc" kind="show" identifier="ManagerProfileUserToCheckSMSCodeAccountView" id="y0J-8R-DyM"/>
+                        <outlet property="aupCodUsernameLabel" destination="y9Q-DC-mrP" id="eLv-pl-WRq"/>
+                        <outlet property="aupCountryBtn" destination="XYh-hs-Upd" id="y9C-Wi-lTv"/>
+                        <outlet property="aupUsernameBtn" destination="0o6-8t-cj4" id="Ixy-zr-4hZ"/>
+                        <outlet property="aupUsernameEditTitleLabel" destination="VOK-w6-F1u" id="D0d-SD-SQl"/>
+                        <outlet property="aupUsernameFieldLabel" destination="cim-3s-fFs" id="N7z-U0-B7g"/>
+                        <outlet property="aupUsernameTextField" destination="rUa-mB-CCC" id="oEI-Wx-J0c"/>
+                        <outlet property="aupValidateMsgLabel" destination="0wb-wJ-McA" id="ejr-I3-GTq"/>
+                        <segue destination="I50-Dp-LGc" kind="show" identifier="AMSCheckViewController" id="y0J-8R-DyM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9q-oW-A6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5620" y="609"/>
         </scene>
-        <!--Country Account View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="322-rG-xPg">
             <objects>
-                <viewController storyboardIdentifier="CountryAccountView" id="LR7-d6-DYb" customClass="CountryAccountViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CountryAccountView" id="LR7-d6-DYb" customClass="AMCSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1pq-OU-7re">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1200,7 +1202,7 @@
                                         <state key="normal" image="icon-tool-close"/>
                                         <connections>
                                             <action selector="closeActionB:" destination="LR7-d6-DYb" eventType="touchUpInside" id="bV8-R8-2dP"/>
-                                            <segue destination="rhv-ek-hyp" kind="show" identifier="CountryAccountViewControllerGoManagerUsernamePhone" id="FYM-dO-T7a"/>
+                                            <segue destination="rhv-ek-hyp" kind="show" identifier="AUPManagerUsername" id="FYM-dO-T7a"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1301,12 +1303,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kyp-jf-x5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3957.5999999999999" y="1455.9220389805098"/>
+            <point key="canvasLocation" x="4878" y="1390"/>
         </scene>
-        <!--CheckSMS Code Account View Controller-->
+        <!--Check View Controller-->
         <scene sceneID="P87-Q9-xsN">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="I50-Dp-LGc" customClass="CheckSMSCodeAccountViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="I50-Dp-LGc" customClass="AMSCheckViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZV8-e2-Doo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1435,7 +1437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oId-LF-8fm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7282" y="627"/>
+            <point key="canvasLocation" x="7166" y="627"/>
         </scene>
         <!--Card Payment View Controller-->
         <scene sceneID="NAL-8F-nie">
@@ -1648,12 +1650,13 @@
         <image name="icons-menu-ballH" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xYK-71-VQ8"/>
+        <segue reference="y0J-8R-DyM"/>
+        <segue reference="66A-7X-Vbp"/>
         <segue reference="6xS-Cw-Fab"/>
-        <segue reference="FYM-dO-T7a"/>
+        <segue reference="8QF-X0-zLm"/>
         <segue reference="piG-6i-804"/>
-        <segue reference="ePO-fd-Ze9"/>
+        <segue reference="swt-fy-lLQ"/>
         <segue reference="dQ1-dt-qkQ"/>
-        <segue reference="GwH-oh-IYd"/>
+        <segue reference="YP8-WQ-bwe"/>
     </inferredMetricsTieBreakers>
 </document>

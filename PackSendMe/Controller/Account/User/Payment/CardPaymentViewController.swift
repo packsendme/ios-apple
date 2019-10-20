@@ -38,8 +38,8 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     var boxActivityView = UIView()
     var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
-    var countryDto : CountryVModel? = nil
-    var countryObj = CountryVModel()
+    var countryDto : CountryBO? = nil
+    var countryObj = CountryBO()
     var utilDateObj = UtilityHelper()
     var operationType : String = ""
     var statusEdit : Bool = false
@@ -149,7 +149,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
             countrycardImage.image = GlobalVariables.sharedManager.countryImageInstance
             countrycardBtn.setTitle(GlobalVariables.sharedManager.countryNameInstance, for: .normal)
             // Set Object ComntryDto to Save
-            countryDto = CountryVModel.init(
+            countryDto = CountryBO.init(
                 countryImage: GlobalVariables.sharedManager.countryImageInstance!,
                 name: GlobalVariables.sharedManager.countryNameInstance,
                 cod: GlobalVariables.sharedManager.countryCodInstance,
@@ -362,7 +362,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
         alert.setValue(messageAttrString, forKey: "attributedMessage")
         
         alert.addAction(UIAlertAction(title: NSLocalizedString("payment-title-editcard", comment:""), style: .default , handler:{ (UIAlertAction)in
-            self.activityActionStart(title : NSLocalizedString("main-title-loading", comment:""))
+            self.activityActionStart(title : NSLocalizedString("a-action-lbl-loading", comment:""))
             UIView.transition(with: self.view,
                               duration:0.1,
                               options: .transitionCrossDissolve,
@@ -378,7 +378,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
         
         alert.addAction(UIAlertAction(title: NSLocalizedString("payment-title-deletecard", comment:""), style: .default , handler:{ (UIAlertAction)in
             DispatchQueue.main.async {
-                self.activityActionStart(title : NSLocalizedString("main-title-loading", comment:""))
+                self.activityActionStart(title : NSLocalizedString("a-action-lbl-loading", comment:""))
                 self.removeCardPay()
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -428,7 +428,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CountryAccountViewController"{
-            let something = segue.destination as! CountryAccountViewController
+            let something = segue.destination as! AMCSettingViewController
             something.countryDto = self.countryDto!
             something.operationTypeController = GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_CARDPAY
             something.cardpaySelect = self.cardpaySelect
@@ -496,7 +496,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
                 duration:0.1,
                 options: .transitionCrossDissolve,
                 animations: {
-                    let country = response as! CountryVModel
+                    let country = response as! CountryBO
                     self.countryDto = country
                     self.countrycardImage.image = country.countryImage
                     self.countrycardBtn.setTitle(country.name, for: .normal)
@@ -569,7 +569,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func savePaymentMethod(_ sender: Any) {
-        activityActionStart(title : NSLocalizedString("main-title-loading", comment:""))
+        activityActionStart(title : NSLocalizedString("a-action-lbl-loading", comment:""))
         cardpaySelect.dateOperation = dateFormat.dateConvertToString()
         // Operation Type : ADD NEW CARD PAY
         if cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_save{

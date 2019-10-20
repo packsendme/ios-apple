@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AUPSettingViewController: UIViewController {
+class AMPSettingViewController: UIViewController {
 
     @IBOutlet weak var userprofileTable: UITableView!
     @IBOutlet weak var photoprofileBtn: UIButton!
@@ -18,12 +18,12 @@ class AUPSettingViewController: UIViewController {
     var profileObj = ProfileBO()
     
    // var passedAccountStruct = [AccountStruct]()
-    var country : CountryVModel? = nil
+    var country : CountryBO? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        country = CountryVModel(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance,sigla:"" )
+        country = CountryBO(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance,sigla:"" )
 
         editAccessInfTitleLabel.text = NSLocalizedString("aup-setting-title", comment:"")
         userprofileTable.rowHeight = UITableViewAutomaticDimension
@@ -50,19 +50,9 @@ class AUPSettingViewController: UIViewController {
         userprofileTable.dataSource = self
     }
     
-    
-    @IBAction func hometoolAction(_ sender: Any) {
-        self.performSegue(withIdentifier:URLConstants.ACCOUNT.allViewToAccountHomeView, sender: nil)
-    }
-    
-    @IBAction func menutoolAction(_ sender: Any) {
-    }
-    
     @IBAction func photoProfileAction(_ sender: Any){
         self.performSegue(withIdentifier:"PhotoProfileViewControllerGo", sender: nil)
     }
-    
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -71,18 +61,18 @@ class AUPSettingViewController: UIViewController {
             let setupPhotoProfile = segue.destination as? PhotoProfileViewController
             setupPhotoProfile?.profileObj = profileObj
         }
-        if segue.identifier == "AUPManagerNames"{
-            let setupUserProfile = segue.destination as? AUPManagerViewController
+        if segue.identifier == "AMPUpdateNames"{
+            let setupUserProfile = segue.destination as? AMPUpdateViewController
             setupUserProfile?.profileObj = profileObj
             setupUserProfile?.metadadosView = "names"
         }
-        if segue.identifier == "AUPManagerEmail"{
-            let setupUserProfile = segue.destination as? AUPManagerViewController
+        if segue.identifier == "AMPUpdateEmail"{
+            let setupUserProfile = segue.destination as? AMPUpdateViewController
             setupUserProfile?.profileObj = profileObj
             setupUserProfile?.metadadosView = "email"
         }
-        if segue.identifier == "AUPManagerPassword"{
-            let setupUserProfile = segue.destination as? AUPManagerViewController
+        if segue.identifier == "AMPUpdatePassword"{
+            let setupUserProfile = segue.destination as? AMPUpdateViewController
             setupUserProfile?.profileObj = profileObj
             setupUserProfile?.metadadosView = "password"
         }
@@ -97,7 +87,7 @@ class AUPSettingViewController: UIViewController {
 
 }
 
-extension AUPSettingViewController: UITableViewDataSource, UITableViewDelegate{
+extension AMPSettingViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5

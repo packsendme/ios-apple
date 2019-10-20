@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IdentityUserDataViewController: UIViewController, UITextFieldDelegate {
+class IRUManagerViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nextEmailBtn: UIButton!
     @IBOutlet weak var nextPasswordBtn: UIButton!
@@ -31,9 +31,9 @@ class IdentityUserDataViewController: UIViewController, UITextFieldDelegate {
     var formatPlaceHoldName = UtilityHelper()
     
     enum ViewType:String {
-        case email = "IdentityUserDataEmail"
-        case password = "IdentityUserDataPassword"
-        case name = "IdentityUserDataNames"
+        case email = "IRUManagerEmail"
+        case password = "IRUManagerPassword"
+        case name = "IRUManagerNames"
     }
     
     override func viewDidLoad() {
@@ -57,33 +57,33 @@ class IdentityUserDataViewController: UIViewController, UITextFieldDelegate {
             emailValidateErrorLabel.isHidden = false
         }else{
             profileObj.email = emailTextField.text!
-            self.performSegue(withIdentifier:"IdentityUserDataPassword", sender: nil)
+            self.performSegue(withIdentifier:"IRUManagerPassword", sender: nil)
         }
     }
     
     @IBAction func nextPasswordBtn(_ sender: Any) {
         profileObj.password = passwordTextField.text!
-        self.performSegue(withIdentifier:"IdentityUserDataNames", sender: nil)
+        self.performSegue(withIdentifier:"IRUManagerNames", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "IdentityUserDataEmail") {
-            let emailVC = segue.destination as! IdentityUserDataViewController
+        if (segue.identifier == "IRUManagerEmail") {
+            let emailVC = segue.destination as! IRUManagerViewController
             emailVC.metadadosView = segue.identifier!
             emailVC.profileObj = profileObj
 
-        } else if (segue.identifier == "IdentityUserDataPassword") {
-            let passwordVC = segue.destination as! IdentityUserDataViewController
+        } else if (segue.identifier == "IRUManagerPassword") {
+            let passwordVC = segue.destination as! IRUManagerViewController
             passwordVC.metadadosView = segue.identifier!
             passwordVC.profileObj = profileObj
         }
-        else if (segue.identifier == "IdentityUserDataNames") {
-            let names = segue.destination as! IdentityUserDataViewController
+        else if (segue.identifier == "IRUManagerNames") {
+            let names = segue.destination as! IRUManagerViewController
             names.metadadosView = segue.identifier!
             names.profileObj = profileObj
         }
-        else if (segue.identifier == "AccessLoginControllerUsername") {
-            let loginVC = segue.destination as! AccessLoginViewController
+        else if (segue.identifier == "IAUSettingUsername") {
+            let loginVC = segue.destination as! IAUSettingViewController
             loginVC.metadadosView = segue.identifier!
         }
     }
@@ -247,15 +247,15 @@ class IdentityUserDataViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func returnEmailAction(_ sender: Any) {
-        self.performSegue(withIdentifier:"AccessLoginControllerUsername", sender: nil)
+        self.performSegue(withIdentifier:"IAUSettingUsername", sender: nil)
     }
     
     @IBAction func returnPasswordAction(_ sender: Any) {
-        self.performSegue(withIdentifier:"IdentityUserDataEmail", sender: nil)
+        self.performSegue(withIdentifier:"IRUManagerEmail", sender: nil)
     }
     
     @IBAction func returnNamesAction(_ sender: Any) {
-        self.performSegue(withIdentifier:"IdentityUserDataPassword", sender: nil)
+        self.performSegue(withIdentifier:"IRUManagerPassword", sender: nil)
     }
     
     /* ###################################################################################################

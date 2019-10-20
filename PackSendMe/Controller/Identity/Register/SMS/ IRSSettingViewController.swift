@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class IdentitySMSViewController: UIViewController, UITextFieldDelegate {
+class IRSSettingViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleCheckSMSLabel: UILabel!
     @IBOutlet weak var codeSMS1TextField: UITextField!
@@ -129,7 +129,7 @@ class IdentitySMSViewController: UIViewController, UITextFieldDelegate {
         })
         let changePhoneAction = UIAlertAction(title: NSLocalizedString("main-button-cancelcode", comment:""), style: UIAlertActionStyle.default, handler: {
             alert -> Void in
-            self.performSegue(withIdentifier:"LoginViewControllerChangePhone", sender: nil)
+            self.performSegue(withIdentifier:"IAUSettingUsername", sender: nil)
         })
         alertController.view.addSubview(numberLabel)
         alertController.addAction(sendsmsAction)
@@ -138,12 +138,12 @@ class IdentitySMSViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "IdentityUserDataEmail") {
-            let something = segue.destination as! IdentityUserDataViewController
+        if (segue.identifier == "IRUManagerEmail") {
+            let something = segue.destination as! IRUManagerViewController
             something.metadadosView = segue.identifier!
         }
-        if (segue.identifier == "AccessLoginControllerUsername") {
-            let loginVC = segue.destination as! AccessLoginViewController
+        if (segue.identifier == "IAUSettingUsername") {
+            let loginVC = segue.destination as! IAUSettingViewController
             loginVC.metadadosView = segue.identifier!
         }
     }
@@ -265,7 +265,7 @@ class IdentitySMSViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func changeNumberPhone(_ sender: Any) {
-        self.performSegue(withIdentifier:"LoginViewControllerChangePhone", sender: nil)
+        self.performSegue(withIdentifier:"IAUSettingUsername", sender: nil)
     }
     
     

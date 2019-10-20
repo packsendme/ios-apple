@@ -7,9 +7,11 @@
 */
 
 /* SCREEN - GENERIC */
-"main-title-loading" = "Cargando";
-"main-title-update" = "Actualizando";
-"main-title-saving" = "Almacenamiento";
+"a-action-lbl-loading" = "Cargando";
+"a-action-lbl-update" = "Actualizando";
+"a-action-lbl-saving" = "Almacenamiento";
+"a-action-lbl-validation" = "Validación";
+
 
 /* SCREEN - MAIN */
 "main-title-welcome" = "Bienvenida a PackSendMe";
@@ -548,18 +550,17 @@
 /* Password  */
 "aup-manager-lbl-passwordtitle" = "Editar Contraseña";
 "aup-manager-lbl-passwordCurrent" = "Contraseña Actual";
-"aup-manager-txt-passwordinput" = "Ingrese su contraseña";
+"aup-manager-txt-passwordinput" = "Ingrese su contraseña (mínimo 6-12 caracteres máximos)";
 "aup-manager-btn-passwordvalidate" = "Validar mi Contraseña";
 "aup-manager-txt-passwordNew" = "Nueva contraseña";
 "aup-manager-lbl-passwordvalidate" = "Contraseña no válida, verifique que la contraseña que ingresó debe tener al menos 6 caracteres!";
 
-/* ManagerProfileUserViewController - PhoneNumber  */
-"editusername-label-newphone" = "Nuevo Número de Teléfono";
-"editusername-label-title" = "Editar Número Teléfono";
-"editusername-title-btn" = "ACTUALIZAR TELÉFONO";
-"editfirstname-text-username" = "000 000 000";
-"editusername-label-usernamevalidate" = "Teléfono inválido";
-"editusername-label-usernameregistered" = "Numero Teléfono está registrado";
+/* Username  - Movil */
+"aup-manager-lbl-usernametitle" = "Editar Móvil";
+"aup-manager-lbl-username" = "Número Móvil";
+"aup-manager-txt-usernameinput" = "Ingrese su nuevo número móvil";
+"editusername-label-passwordvalinvalid" = "Móvil inválido";
+"editusername-label-passwordvalregistered" = "El número de móvil ya registrado, verifique el número";
 
 
 /* PhotoProfileViewController */

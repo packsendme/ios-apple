@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-public struct CountryVModel {
+public struct CountryBO {
 
     var name: String?
     var countryImage: UIImage?
@@ -30,31 +30,26 @@ public struct CountryVModel {
         self.sigla = sigla
     }
     
-    func getCountryFromJson(json : [String:  Any]) -> CountryVModel{
+    func getCountryFromJson(json : [String:  Any]) -> CountryBO{
         let countryJson = json["body"] as! [String:Any]
-   
         let countryS = countryJson["nameimagecountry"] as! String
         let countryImage = UIImage(named:countryS)
- 
-        let country = CountryVModel (countryImage: countryImage!, name: countryJson["namecountry"] as! String, cod: countryJson["codcountry"] as! String, format: countryJson["formatnumbercountry"] as! String,
+        let country = CountryBO (countryImage: countryImage!, name: countryJson["namecountry"] as! String, cod: countryJson["codcountry"] as! String, format: countryJson["formatnumbercountry"] as! String,
             sigla: countryJson["idcountry"] as! String)
         return country
     }
     
-    func getCountriesFromJson(countriesJson:[String:  Any]) -> [CountryVModel]{
-        var countries = [CountryVModel]()
-        
+    func getCountriesFromJson(countriesJson:[String:  Any]) -> [CountryBO]{
+        var countries = [CountryBO]()
         let countryJson = countriesJson["body"] as! [String:Any]
         let countriesArray = countryJson["countries"] as? [[String:Any]]
         
         for country in countriesArray! {
-            
             let countryS = country["nameimagecountry"] as! String
-
             let countryImg = UIImage(named:countryS)
             print(" IMAGE ES \(countryS)")
             
-            let countryCurrent = CountryVModel(
+            let countryCurrent = CountryBO(
                 countryImage: countryImg!,
                 name: (country["namecountry"] as? String)!,
                 cod: (country["codcountry"] as? String)!,

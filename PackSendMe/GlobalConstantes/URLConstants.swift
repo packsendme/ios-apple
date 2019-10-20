@@ -21,20 +21,8 @@ struct URLConstants{
         static let iamIdentity_http = "http://192.241.133.13:9093/iam/identity/"
         static let iamAccess_http = "http://192.241.133.13:9093/iam/access/"
         static let iamManager_http = "http://192.241.133.13:9093/iam/manager/"
-
-        // Manager Access User (firstName / LastName / email / password / username)
-        static let managerAccessViewToFirstNameView = "firstNameView"
-        static let managerAccessViewToLastNameView = "lastNameView"
-        static let managerAccessViewToEmailView = "emailView"
-        static let managerAccessViewToPasswordView = "passwordView"
-        static let managerAccessViewToUsernameView = "usernameView"
-        
-        // Manager Address User (address home / address work)
-        
-        // Manager Payment User (payment master / payment secund)
-        
-
     }
+
     struct PAYMENT{
         static let payment_http = "http://192.241.133.13:9095/payment/"
         static let pay_validatecard = "http://192.241.133.13:9095/payment/card/validate/"

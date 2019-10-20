@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
+class AMSCheckViewController: UIViewController, UITextFieldDelegate {
     
     // New SMS Code - UIVIEM
     
@@ -25,7 +25,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var newSMSCodeBtn: UIButton!
     
     var dateFormat = UtilityHelper()
-    var country : CountryVModel? = nil
+    var country : CountryBO? = nil
     var numberphoneNew = String()
 
     var timer = Timer()
@@ -81,7 +81,7 @@ class CheckSMSCodeAccountViewController: UIViewController, UITextFieldDelegate {
     
     
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(CheckSMSCodeAccountViewController.updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(AMSCheckViewController.updateTimer)), userInfo: nil, repeats: true)
     }
     
     func updateTimer() {

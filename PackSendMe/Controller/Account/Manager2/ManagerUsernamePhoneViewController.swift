@@ -19,7 +19,7 @@ class ManagerUsernamePhoneViewController: UIViewController, UITextFieldDelegate 
     @IBOutlet weak var updatephoneBtn: UIButton!
     @IBOutlet weak var phoneValidateLabel: UILabel!
 
-    var country : CountryVModel? = nil
+    var country : CountryBO? = nil
     var numberphoneOld = String()
     var dateFormat = UtilityHelper()
     var formatPlaceHoldName = UtilityHelper()
@@ -45,13 +45,13 @@ class ManagerUsernamePhoneViewController: UIViewController, UITextFieldDelegate 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "ManagerProfileUserToCheckSMSCodeAccountView") {
-            let something = segue.destination as! CheckSMSCodeAccountViewController
-            something.numberphoneNew = codenumberLabel.text!+phonenumberTextField.text!
-            something.metadadosView = "SMSCodeRegister"
-            something.country = country!
+            let something = segue.destination as! AMSettingViewController
+          //  something.numberphoneNew = codenumberLabel.text!+phonenumberTextField.text!
+          //  something.metadadosView = "SMSCodeRegister"
+          //  something.country = country!
         }
         else if (segue.identifier == "ManagerUsernamePhoneViewControllerGoCountryAccount") {
-            let something = segue.destination as! CountryAccountViewController
+            let something = segue.destination as! AMCSettingViewController
             something.countryDto = country!
             something.operationTypeController = GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_NUMBER
         }

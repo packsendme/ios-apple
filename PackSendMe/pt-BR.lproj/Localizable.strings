@@ -7,10 +7,10 @@
 */
 
 /* SCREEN - GENERIC */
-"main-title-loading" = "Carregando";
-"main-title-update" = "Atualizando";
-"main-title-saving" = "Salvando";
-
+"a-action-lbl-loading" = "Carregando";
+"a-action-lbl-update" = "Atualizando";
+"a-action-lbl-saving" = "Salvando";
+"a-action-lbl-validation" = "Validação";
 
 
 /* SCREEN - MAIN */
@@ -553,29 +553,24 @@
 "aup-manager-txt-firstname" = "Nome";
 "aup-manager-txt-lastname" = "Sobrenome";
 "aup-manager-lbl-namevalidate" = "Nome invalido";
-
 /* EMail  */
 "aup-manager-lbl-emailtitle" = "Editar E-Mail";
 "aup-manager-txt-email" = "E-Mail";
 "aup-manager-lbl-emailvalidate" = "E-mail invalido";
-
-
 /* Password  */
 "aup-manager-lbl-passwordtitle" = "Editar Senha";
 "aup-manager-lbl-passwordCurrent" = "Senha Atual";
-"aup-manager-txt-passwordinput" = "Entre com a sua senha";
+"aup-manager-txt-passwordinput" = "Entre com a sua senha (min 6-12 max caracteres) ";
 "aup-manager-btn-passwordvalidate" = "Validar Minha Senha";
 "aup-manager-txt-passwordNew" = "Nova Senha";
 "aup-manager-lbl-passwordvalidate" = "Senha Inválida, verifique a senha informada, deve ter pelo menos 6 caracteres!";
+/* Username  - Movil */
+"aup-manager-lbl-usernametitle" = "Editar Número Celular";
+"aup-manager-lbl-username" = "Número Celuar";
+"aup-manager-txt-usernameinput" = "Entre com a seu novo número celular";
+"aup-manager-lbl-usernameinvalid" = "Número Celular Inválido";
+"aup-manager-lbl-usernamevalregistered" = "O número do celular já esta registrado, verifique o número";
 
-
-/* ManagerProfileUserViewController - PhoneNumber  */
-"editusername-label-newphone" = "Novo Número Telefone";
-"editusername-label-title" = "Editar Telefone";
-"editusername-title-btn" = "ALTERAR TELEFONE";
-"editusername-text-username" = "000 000 000";
-"editusername-label-usernamevalidate" = "Telefone invalido";
-"editusername-label-usernameregistered" = "Numero Telefone ja está cadastrado";
 
 /* PhotoProfileViewController */
 "photoprofile-activity-save" = "Salvando Foto";

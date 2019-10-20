@@ -9,14 +9,13 @@
 import UIKit
 import CoreData
 
-class CountryAccountViewController: UIViewController{
+class AMCSettingViewController: UIViewController{
     
     @IBOutlet weak var headView: UIView!
-    var countries: [CountryVModel] = []
-    var countryHelperOb = CountryHelper()
-    var countriesData: [CountryVModel] = []
+    var countries: [CountryBO] = []
+    var countriesData: [CountryBO] = []
     var countryService = CountryService()
-    var countryObj = CountryVModel()
+    var countryObj = CountryBO()
     var cardpaySelect = PaymentAccountBO()
     
     // Type the Controller call (1) CardPaymentViewController  (2)ManagerUsernamePhoneViewController
@@ -26,7 +25,7 @@ class CountryAccountViewController: UIViewController{
 
     //var accountObj : AccountBO? = nil
     var cardpayDto = PaymentAccountBO()
-    var countryDto = CountryVModel()
+    var countryDto = CountryBO()
     
     @IBOutlet weak var countrycurrent: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -57,7 +56,7 @@ class CountryAccountViewController: UIViewController{
         countryService.findCountryAll{(success, response, error) in
             if success{
                 print("GET BLOCK")
-                guard let countriesArray = response as? [CountryVModel] else { return }
+                guard let countriesArray = response as? [CountryBO] else { return }
                 self.countries = countriesArray
                 self.countriesData = self.countries
                 //self.countriesTableView.reloadData()
@@ -103,7 +102,7 @@ class CountryAccountViewController: UIViewController{
             something.cardpaySelect = self.cardpaySelect
         }
             // ManagerProfileUserViewController
-        else if segue.identifier == "CountryAccountViewControllerGoManagerUsernamePhone"{
+        else if segue.identifier == "AUPManagerUsername"{
             let something = segue.destination as! ManagerUsernamePhoneViewController
             something.country = self.countryDto
         }
@@ -120,7 +119,7 @@ class CountryAccountViewController: UIViewController{
 
 }
 
-extension CountryAccountViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+extension AMCSettingViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countriesData.count
@@ -131,20 +130,14 @@ extension CountryAccountViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //var country = countriesData[indexPath.section][indexPath.row]
-        print(" cellForRowAt ")
-
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier:"CountryCell") as? CountryViewCell
             else{
                 return UITableViewCell()
         }
         let country = countriesData[indexPath.row]
-        print(" Country: \(country.name) ")
         cell.namecountryLabel.text =  country.name
         cell.countryImageView.image = country.countryImage
         //self.view.layoutIfNeeded()
-
         return cell
     }
     
@@ -156,7 +149,7 @@ extension CountryAccountViewController: UITableViewDataSource, UITableViewDelega
             return
         }
         print("TESTE:  \(searchText.prefix(1))")
-        countriesData = countries.filter({(country : CountryVModel ) -> Bool in
+        countriesData = countries.filter({(country : CountryBO ) -> Bool in
             return country.name!.lowercased().contains(searchText.lowercased())
         })
         self.countriesTableView.reloadData()
@@ -166,7 +159,7 @@ extension CountryAccountViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.cellForRow(at: indexPath) as! CountryViewCell
         let countrySelect = countriesData[indexPath.row]
         
-        countryDto = CountryVModel(countryImage: countrySelect.countryImage!, name: countrySelect.name!, cod: countrySelect.cod!, format: countrySelect.format!,sigla: countrySelect.sigla!)
+        countryDto = CountryBO(countryImage: countrySelect.countryImage!, name: countrySelect.name!, cod: countrySelect.cod!, format: countrySelect.format!,sigla: countrySelect.sigla!)
         countryselectLabel.text = cell.namecountryLabel.text
         countryselectImage.image =  cell.countryImageView.image
         
@@ -174,7 +167,7 @@ extension CountryAccountViewController: UITableViewDataSource, UITableViewDelega
             self.performSegue(withIdentifier: "CardPaymentViewController", sender: self)
         }
         else if operationTypeController == GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_NUMBER{
-            self.performSegue(withIdentifier: "CountryAccountViewControllerGoManagerUsernamePhone", sender: self)
+            self.performSegue(withIdentifier: "AUPManagerUsername", sender: self)
         }
     }
 }

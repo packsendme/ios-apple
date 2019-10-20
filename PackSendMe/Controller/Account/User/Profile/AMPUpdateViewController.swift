@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AUPManagerViewController: UIViewController, UITextFieldDelegate {
+class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     
     // Edit Name
     @IBOutlet weak var nameTitleLabel: UILabel!
@@ -41,23 +41,36 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordcurrentdetailLabel: UILabel!
     @IBOutlet weak var passwordValidateLabel: UILabel!
     
-    
-    var metadadosView : String = ""
+    // Edit Password
+    @IBOutlet weak var aupUsernameEditTitleLabel: UILabel!
+    @IBOutlet weak var aupUsernameFieldLabel: UILabel!
+    @IBOutlet weak var aupUsernameTextField: UITextField!
+    @IBOutlet weak var aupValidateMsgLabel: UILabel!
+    @IBOutlet weak var aupCodUsernameLabel: UILabel!
+    @IBOutlet weak var aupCountryBtn: UIButton!
+    @IBOutlet weak var aupUsernameBtn: UIButton!
+
+    // Variable
     var profileObj : ProfileBO? = nil
+    var countryObj : CountryBO? = nil
     var formatPlaceHoldName = UtilityHelper()
-    var refreshControl = UIRefreshControl()
-    var usernameNumber: String = ""
-    var country : CountryVModel? = nil
-    var boxActivityView = UIView()
-    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     var amService = AccountService()
     var iamService = IAService()
+
     
+    var metadadosView : String = ""
+    var refreshControl = UIRefreshControl()
+    var usernameNumber: String = ""
+    var boxActivityView = UIView()
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+
     
     enum ViewType:String {
         case name = "names"
         case email = "email"
         case password = "password"
+        case username = "username"
     }
     
     override func viewDidLoad() {
@@ -72,6 +85,9 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
         else if metadadosView == ViewType.password.rawValue{
             setupPassword()
         }
+        else if metadadosView == ViewType.username.rawValue{
+            setupUsername()
+        }
         
     }
     
@@ -84,7 +100,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
                 profileObj!.name = firstnameTextField.text!
                 updatenameBtn.isEnabled = true
                // updatenameBtn.isHighlighted = false
-                updatenameBtn.backgroundColor = UIColor(red:0.38, green:0.35, blue:0.35, alpha:1.0)
+                updatenameBtn.backgroundColor = UIColor(red:0.30, green:0.29, blue:0.29, alpha:1.0)
             }
             else{
                 updatenameBtn.isEnabled = false
@@ -108,7 +124,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
             if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (firstnameTextField.text?.count)! >= 3{
                 updatenameBtn.isEnabled = true
                 //updatenameBtn.isHighlighted = true
-                updatenameBtn.backgroundColor = UIColor(red:0.38, green:0.35, blue:0.35, alpha:1.0)
+                updatenameBtn.backgroundColor = UIColor(red:0.30, green:0.29, blue:0.29, alpha:1.0)
             }
             else{
                 updatenameBtn.isEnabled = false
@@ -127,7 +143,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
             if (text?.utf16.count)! >= 6{
                 passwordverifyBtn.isEnabled = true
                 passwordverifyBtn.isHighlighted = false
-                passwordverifyBtn.backgroundColor = UIColor(red:0.38, green:0.35, blue:0.35, alpha:1.0)
+                passwordverifyBtn.backgroundColor = UIColor(red:0.30, green:0.29, blue:0.29, alpha:1.0)
             }
             else{
                 passwordverifyBtn.isEnabled = false
@@ -143,7 +159,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
             if (text?.utf16.count)! >= 6{
                 passwordnewBtn.isEnabled = true
                 passwordnewBtn.isHighlighted = false
-                passwordnewBtn.backgroundColor = UIColor(red:0.38, green:0.35, blue:0.35, alpha:1.0)
+                passwordnewBtn.backgroundColor = UIColor(red:0.30, green:0.29, blue:0.29, alpha:1.0)
             }
             else{
                 passwordnewBtn.isEnabled = false
@@ -154,13 +170,29 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
             if (text?.utf16.count)! >= 11  {
                 passwordnewTextField.deleteBackward()
             }
+        
+        case aupUsernameTextField:
+            if (text?.utf16.count)! >= 6{
+                aupUsernameBtn.isEnabled = true
+                aupUsernameBtn.isHighlighted = false
+                aupUsernameBtn.backgroundColor = UIColor(red:0.30, green:0.29, blue:0.29, alpha:1.0)
+            }
+            else{
+                aupUsernameBtn.isEnabled = false
+                aupUsernameBtn.isHighlighted = false
+                aupUsernameBtn.backgroundColor = UIColor(red:0.58, green:0.58, blue:0.58, alpha:1.0)
+            }
+            
+            if (text?.utf16.count)! >= 15  {
+                passwordnewTextField.deleteBackward()
+            }
 
         case emailTextField:
             if (text?.utf16.count)! >= 10 && (text?.utf16.count)! <= 254  {
                 profileObj!.email = emailTextField.text!
                 updateemailBtn.isEnabled = true
                 updateemailBtn.isHighlighted = false
-                updateemailBtn.backgroundColor = UIColor(red:0.38, green:0.35, blue:0.35, alpha:1.0)
+                updateemailBtn.backgroundColor = UIColor(red:0.38, green:0.29, blue:0.29, alpha:1.0)
             }
             else{
                 updateemailBtn.isEnabled = false
@@ -206,6 +238,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     func setupPassword(){
         self.passwordTitleLabel.text = NSLocalizedString("aup-manager-lbl-passwordtitle", comment:"")
         // Current Password
+        self.passwordcurrentTextField.becomeFirstResponder()
         self.passwordcurrentView.isHidden = false
         self.passwordcurrentLabel.text = NSLocalizedString("aup-manager-lbl-passwordCurrent", comment:"")
         self.passwordcurrentdetailLabel.text = NSLocalizedString("aup-manager-lbl-passwordvalidate", comment:"")
@@ -222,18 +255,38 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
         passwordverifyBtn.backgroundColor = UIColor(red:0.66, green:0.66, blue:0.66, alpha:1.0)
         passwordnewBtn.backgroundColor = UIColor(red:0.66, green:0.66, blue:0.66, alpha:1.0)
         let holder = settingHolder(field: "aup-manager-txt-passwordinput") as! NSMutableAttributedString
-        self.self.passwordcurrentTextField.attributedPlaceholder = holder
+        self.passwordcurrentTextField.attributedPlaceholder = holder
         self.passwordnewTextField.attributedPlaceholder = holder
+    }
+    
+    func setupUsername(){
+        self.aupUsernameEditTitleLabel.text =  NSLocalizedString("aup-manager-lbl-usernametitle", comment:"")
+        self.aupUsernameFieldLabel.text = NSLocalizedString("aup-manager-lbl-username", comment:"")
+        self.aupCodUsernameLabel.text = GlobalVariables.sharedManager.countryCodInstance
+        let holder = settingHolder(field: "aup-manager-txt-usernameinput") as! NSMutableAttributedString
+        self.aupUsernameTextField.attributedPlaceholder = holder
+        self.aupUsernameBtn.setTitle(NSLocalizedString("aup-manager-btn-update", comment:"") , for: .normal)
+        aupUsernameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
+        self.aupCountryBtn.setImage(countryObj?.countryImage, for: .normal)
+        self.aupValidateMsgLabel.isHidden = true
+        self.aupUsernameTextField.becomeFirstResponder()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "AUPSettingViewController") {
-            let something = segue.destination as! AUPSettingViewController
+        if (segue.identifier == "AMPSettingViewController") {
+            let something = segue.destination as! AMPSettingViewController
             something.profileObj = self.profileObj!
         }
-        else if (segue.identifier == "PhoneNumberAccountChangeCountry") {
-            let something = segue.destination as! CountryAccountViewController
-            //something.profileObj = self.profileObj
+        else if (segue.identifier == "AMSCheckViewController") {
+            let something = segue.destination as! AMSCheckViewController
+            something.numberphoneNew = aupCodUsernameLabel.text!+aupUsernameTextField.text!
+            something.metadadosView = "SMSCodeRegister"
+            something.country = countryObj!
+        }
+        else if (segue.identifier == "AMCSettingViewController") {
+            let something = segue.destination as! AMCSettingViewController
+            something.countryDto = countryObj!
+            something.operationTypeController = GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_NUMBER
         }
     }
     
@@ -249,27 +302,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     @IBAction func updateNameAction(_ sender: Any) {
         profileObj?.name = firstnameTextField.text!
         profileObj?.lastName = lastnameTextField.text!
-        
-        if (firstnameTextField.text!.count) >= 3 && (firstnameTextField.text!.count) <= 13 && (lastnameTextField.text!.count) >= 3{
-            updateProfile()
-        }
-        else if firstnameTextField.text!.count < 3 && lastnameTextField.text!.count < 3{
-            self.firstnameValidateLabel.text = NSLocalizedString("editfirstname-label-firstnamevalidate", comment:"")
-            self.firstnameValidateLabel.isHidden = false
-            self.lastnameValidateLabel.text = NSLocalizedString("editlastname-label-lastnamevalidate", comment:"")
-            self.lastnameValidateLabel.isHidden = false
-
-        }
-        else if firstnameTextField.text!.count < 3{
-            self.firstnameValidateLabel.text = NSLocalizedString("editfirstname-label-firstnamevalidate", comment:"")
-            self.lastnameValidateLabel.isHidden = true
-            self.firstnameValidateLabel.isHidden = false
-        }
-        else if lastnameTextField.text!.count < 3{
-            self.lastnameValidateLabel.text = NSLocalizedString("editlastname-label-lastnamevalidate", comment:"")
-            self.firstnameValidateLabel.isHidden = true
-            self.lastnameValidateLabel.isHidden = false
-        }
+        updateProfile()
     }
     
     @IBAction func updateEmailAction(_ sender: Any) {
@@ -287,16 +320,9 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func passwordVerify(_ sender: Any) {
-        if passwordcurrentTextField.text!.count >= 6{
-            let passwordTrim = passwordcurrentTextField.text
-            let formattedPassword = passwordTrim!.replacingOccurrences(of: " ", with: "")
-            checkPasswordCurrent(password: formattedPassword)
-        }
-        else{
-            self.passwordcurrentdetailLabel.text = NSLocalizedString("editpassword-label-passwordvalidate", comment:"")
-            self.passwordcurrentdetailLabel.font = UIFont(name:"Helvetica", size:15)
-            self.passwordcurrentdetailLabel.textColor = UIColor.red
-        }
+        let passwordTrim = passwordcurrentTextField.text
+        let formattedPassword = passwordTrim!.replacingOccurrences(of: " ", with: "")
+        checkPasswordCurrent(password: formattedPassword)
     }
     
     func activityActionStop() {
@@ -307,8 +333,11 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     
     func activityActionStart(title : String) {
         // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 150, width: 180, height: 50))
-        boxActivityView.backgroundColor = UIColor.lightGray
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 220, width: 180, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+
+
+            //UIColor.lightGray
         boxActivityView.alpha = 0.9
         boxActivityView.layer.cornerRadius = 10
         
@@ -320,7 +349,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
         activityView.startAnimating()
         
         let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        textLabel.textColor = UIColor.white
+        textLabel.textColor = UIColor.black
         textLabel.text = title
         
         boxActivityView.addSubview(activityView)
@@ -346,7 +375,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     }
     
     
- // =================================================================================================================================//
+ //=================================================================================================================================//
 
 
     // -------------------------------------------------------------------------------------
@@ -355,7 +384,7 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     // ENTITY :  ProfileBO
     // -------------------------------------------------------------------------------------
     func updateProfile() {
-        activityActionStart(title : NSLocalizedString("main-title-loading", comment:""))
+        activityActionStart(title : NSLocalizedString("a-action-lbl-update", comment:""))
         amService.updateUserProfile(profile:profileObj!){(success, response, error) in
             if success == true{
                 DispatchQueue.main.async {
@@ -379,12 +408,15 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     // ENTITY :  String Password
     // -------------------------------------------------------------------------------------
     func checkPasswordCurrent(password : String) {
+        activityActionStart(title : NSLocalizedString("a-action-lbl-validation", comment:""))
         iamService.getPasswordCurrent(password:passwordcurrentTextField.text!){(success, response, error) in
             if success == true{
                 DispatchQueue.main.async {
+                    self.activityActionStop()
                     UIView.animate(withDuration: 0.5) { [unowned self] in
                         self.passwordnewView.isHidden = false
                         self.passwordcurrentView.alpha = 0
+                        self.passwordnewTextField.becomeFirstResponder()
                     }
                 }
             }
@@ -412,7 +444,8 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
     // ENTITY :  ProfileBO
     // -------------------------------------------------------------------------------------
     func updatePasswordAccount() {
-        iamService.updatePassword(password: passwordcurrentTextField.text!){(success, response, error) in
+        activityActionStart(title : NSLocalizedString("a-action-lbl-update", comment:""))
+        iamService.updatePassword(password: passwordnewTextField.text!){(success, response, error) in
             if success == true{
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier:"AUPSettingViewController", sender: nil)
@@ -427,5 +460,34 @@ class AUPManagerViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    // -------------------------------------------------------------------------------------
+    // FUNCTION : Check PhoneNumber User if is TRUE or FALSE
+    // MICROSERVICE : IAM
+    // ENTITY :  UserBO
+    // -------------------------------------------------------------------------------------
+    func checkNumberphone() {
+        activityActionStart(title : NSLocalizedString("a-action-lbl-update", comment:""))
+        amService.updateUserProfile(profile:profileObj!){(success, response, error) in
+            if success == true{
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier:"AUSManagerViewController", sender: nil)
+                }
+            }
+            if success == false{
+                self.aupValidateMsgLabel.isHidden = false
+                self.aupValidateMsgLabel.text = NSLocalizedString("aup-manager-lbl-usernamevalregistered", comment:"")
+                self.activityActionStop()
+            }
+            else{
+                DispatchQueue.main.async() {
+                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated:  true)
+                }
+            }
+        }
+    }
+    
 
 }

@@ -9,7 +9,7 @@ import UIKit
 import GooglePlaces
 
 
-class AUSettingViewController: UIViewController {
+class AMSettingViewController: UIViewController {
     
     @IBOutlet weak var settingTitleLabel: UILabel!
     @IBOutlet weak var settingTable: UITableView!
@@ -38,7 +38,7 @@ class AUSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTitleLabel.text = NSLocalizedString("setting-title-home", comment:"")
-        self.activityActionStart(title : NSLocalizedString("main-title-loading", comment:""))
+        self.activityActionStart(title : NSLocalizedString("a-action-lbl-loading", comment:""))
         loadAccount()
         settingTable.delegate = self
         settingTable.dataSource = self
@@ -97,11 +97,11 @@ class AUSettingViewController: UIViewController {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is AUPSettingViewController
+        if segue.destination is AMPSettingViewController
         {
             print(" prepare AUPSettingViewController")
 
-            let aupsetting = segue.destination as? AUPSettingViewController
+            let aupsetting = segue.destination as? AMPSettingViewController
             aupsetting!.profileObj = self.profileObj!
         }
         else if segue.destination is SettingAddressUserViewController
@@ -155,7 +155,7 @@ class AUSettingViewController: UIViewController {
 }
 
 
-extension AUSettingViewController : UITableViewDataSource, UITableViewDelegate{
+extension AMSettingViewController : UITableViewDataSource, UITableViewDelegate{
     
     // this delegate is called when the scrollView (i.e your UITableView) will start scrolling
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

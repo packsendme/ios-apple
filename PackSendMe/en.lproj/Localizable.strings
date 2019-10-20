@@ -6,10 +6,11 @@
   Copyright © 2018 Ricardo Marzochi. All rights reserved.
 */
 
-/* SCREEN - GENERIC */
-"main-title-loading" = "Loading";
-"main-title-update" = "Updating";
-"main-title-saving" = "Saving";
+/* FUNCTION - GENERIC */
+"a-action-lbl-loading" = "Loading";
+"a-action-lbl-update" = "Updating";
+"a-action-lbl-saving" = "Saving";
+"a-action-lbl-validation" = "Validation";
 
 /* SCREEN - MAIN */
 "main-title-welcome" = "Welcome to PackSendMe";
@@ -528,20 +529,23 @@
 "aup-manager-txt-firstname" = "First Name";
 "aup-manager-txt-lastname" = "Last Name";
 "aup-manager-lbl-namevalidate" = "Invalid Name";
-
 /* EMail  */
 "aup-manager-lbl-emailtitle" = "Edit E-Mail";
 "aup-manager-txt-email" = "E-Mail";
 "aup-manager-lbl-emailvalidate" = "Invalid E-mail";
-
-
 /* Password  */
 "aup-manager-lbl-passwordtitle" = "Edit Senha";
 "aup-manager-lbl-passwordCurrent" = "Current password";
-"aup-manager-txt-passwordinput" = "Enter your password";
+"aup-manager-txt-passwordinput" = "Enter your password (min 6-12 max caracteres)";
 "aup-manager-btn-passwordvalidate" = "Validate My Password";
 "aup-manager-txt-passwordNew" = "New Password";
 "aup-manager-lbl-passwordvalidate" = "Invalid Password, check the password you entered, must be at least 6 characters!";
+/* Username  - Movil */
+"aup-manager-lbl-usernametitle" = "Edit Phone Number";
+"aup-manager-lbl-username" = "Phone Number";
+"aup-manager-txt-usernameinput" = "Enter your new mobile number";
+"editusername-label-passwordvalinvalid" = "Invalid Cell Number";
+"editusername-label-passwordvalregistered" = "The mobile number is already registered, check the number";
 
 
 /* ManagerProfileUserViewController - PhoneNumber  */
