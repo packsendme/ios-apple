@@ -59,7 +59,7 @@ class AHMenuViewController: UIViewController {
         useraccountImg.layer.cornerRadius = useraccountImg.frame.height/2
         useraccountImg.clipsToBounds = true
         
-        nameprofileLabel.text = GlobalVariables.sharedManager.nameFirstMenu+" "+GlobalVariables.sharedManager.nameLastMenu
+        nameprofileLabel.text = GlobalVariables.sharedManager.nameFirst+" "+GlobalVariables.sharedManager.nameLast
         learnmoreBtn.setTitle(NSLocalizedString("menu-btn-learnmore", comment:""), for: .normal)
         makemoneyBtn.setTitle(NSLocalizedString("menu-btn-makemoney", comment:""), for: .normal)
 
@@ -134,7 +134,7 @@ extension AHMenuViewController: UITableViewDataSource, UITableViewDelegate, UISe
             dismiss(animated: false, completion: nil)
         }
         else if(indexPath.row == 4){
-            self.performSegue(withIdentifier:"AUSettingViewController", sender: nil)
+            self.performSegue(withIdentifier:"AMSettingViewController", sender: nil)
         }
     }
     

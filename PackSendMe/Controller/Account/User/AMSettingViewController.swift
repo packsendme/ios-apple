@@ -100,7 +100,6 @@ class AMSettingViewController: UIViewController {
         if segue.destination is AMPSettingViewController
         {
             print(" prepare AUPSettingViewController")
-
             let aupsetting = segue.destination as? AMPSettingViewController
             aupsetting!.profileObj = self.profileObj!
         }
@@ -131,16 +130,17 @@ class AMSettingViewController: UIViewController {
                 self.profileObj = response as? ProfileBO
                 DispatchQueue.main.async {
                     self.settingTable.reloadData()
-                }
-                UIView.transition(with: self.view,
-                                  duration:0.1,
+                    self.activityActionStop()
+                
+                    UIView.transition(with: self.view,
+                                  duration:0.5,
                                   options: .transitionCrossDissolve,
                                   animations: {
-                                    self.settingTable.reloadData()
-                                    self.activityActionStop()},
+                                    self.settingTable.reloadData()},
                                   completion: nil)
                 
-
+                }
+            self.activityActionStop()
             }
             else if success == false{
                 DispatchQueue.main.async() {
@@ -336,7 +336,7 @@ extension AMSettingViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.row == 1){
-            self.performSegue(withIdentifier:"AUPSettingViewController", sender: nil)
+            self.performSegue(withIdentifier:"AMPSettingViewController", sender: nil)
         }
             // AddressHome
         else if(indexPath.row == 3){

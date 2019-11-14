@@ -20,12 +20,18 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var newSMSCodeBtn: UIButton!
+    var boxActivityView = UIView()
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
     var dateFormat = UtilityHelper()
     var timer = Timer()
     var isTimerRunning = false
     var timeRemaining = 120
-    var iamService = IAService()
+    var iamService = IdentityService()
+    var smsService = SMSCodeService()
+    var numberphoneNew = String()
+    var profileObj = ProfileBO()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +59,7 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 13.4
-        let titleLabel = NSLocalizedString("main-title-smscod", comment:"")+"  "+GlobalVariables.sharedManager.usernameNumberphone
+        let titleLabel = NSLocalizedString("main-title-smscod", comment:"")+"  "+numberphoneNew
         let attrString = NSMutableAttributedString(string: titleLabel)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         titleCheckSMSLabel.attributedText = attrString
@@ -66,7 +72,7 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
     func setTitleNewSMSCode(){
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 13.4
-        let titleLabel = NSLocalizedString("main-title-newsmscode", comment:"")+"  "+GlobalVariables.sharedManager.usernameNumberphone
+        let titleLabel = NSLocalizedString("main-title-newsmscode", comment:"")+"  "+numberphoneNew
         let attrString = NSMutableAttributedString(string: titleLabel)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         titleCheckSMSLabel.attributedText = attrString
@@ -120,7 +126,7 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
         alertController.setValue(messageAttrString, forKey: "attributedMessage")
  
         let numberLabel = UILabel(frame: CGRect(x: 100, y: 20, width: 1000, height: 65))
-        numberLabel.text = GlobalVariables.sharedManager.usernameNumberphone
+        numberLabel.text = self.numberphoneNew
         numberLabel.textColor = UIColor.red
         numberLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(18.0))
         
@@ -140,12 +146,46 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "IRUManagerEmail") {
             let something = segue.destination as! IRUManagerViewController
+            something.profileObj = profileObj
             something.metadadosView = segue.identifier!
         }
         if (segue.identifier == "IAUSettingUsername") {
             let loginVC = segue.destination as! IAUSettingViewController
             loginVC.metadadosView = segue.identifier!
         }
+    }
+    
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 100, y: view.frame.midY - 70, width: 160, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+        
+        
+        //UIColor.lightGray
+        boxActivityView.alpha = 0.9
+        boxActivityView.layer.cornerRadius = 10
+        
+        //Here the spinnier is initialized
+        
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.color = UIColor.black
+        
+        activityView.startAnimating()
+        
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.black
+        textLabel.text = title
+        
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        
+        view.addSubview(boxActivityView)
+    }
+    
+    func activityActionStop() {
+        //When button is pressed it removes the boxView from screen
+        self.boxActivityView.removeFromSuperview()
+        self.activityView.stopAnimating()
     }
 
     @objc func textFieldDidChange(textField: UITextField){
@@ -271,23 +311,30 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
     
     /* ###################################################################################################
      ################################### < HTTP SERVICE >  ############################################### */
-
+    
+    
     func validateSMSCode() {
-        iamService.getSMSCodeValidate(codeSMS1 : codeSMS1TextField.text!, codeSMS2 : codeSMS2TextField.text!, codeSMS3 : codeSMS3TextField.text!, codeSMS4 : codeSMS4TextField.text!){(success, response, error) in
+            activityActionStart(title : NSLocalizedString("a-action-lbl-update", comment:""))
+        
+            let smscode : String = codeSMS1TextField.text!+codeSMS2TextField.text!+codeSMS3TextField.text!+codeSMS4TextField.text!
+            smsService.getSMSCodeValidate(username : numberphoneNew, codeSMS : smscode){(success, response, error) in
             
             if success == true{
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"IdentityUserDataEmail", sender: nil)
-                }
+                    DispatchQueue.main.async {
+                        self.profileObj.username = self.numberphoneNew
+                        self.performSegue(withIdentifier:"IRUManagerEmail", sender: nil)
+                    }
             }
             else  if success == false && error == nil{
                 DispatchQueue.main.async {
+                    self.activityActionStop()
                     self.errorValidateLabel.isHidden = false
                     self.errorValidateLabel.text = NSLocalizedString("error-label-smsinvalid", comment:"")
                 }
             }
             else if error != nil{
                 DispatchQueue.main.async {
+                    self.activityActionStop()
                     let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)
@@ -296,27 +343,44 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // -------------------------------------------------------------------------------------
+    // FUNCTION : Generar New SMS Code
+    // MICROSERVICE : sms
+    // ENTITY :
+    // -------------------------------------------------------------------------------------
     func generatorNewSMSCode() {
-        let code: Int = iamService.generatorSMSCode()
-        
-        if  code == URLConstants.HTTP_STATUS_CODE.OK{
-            DispatchQueue.main.async {
-                UIView.transition(with: self.view,
-                                  duration:0.1,
-                                  options: .transitionCrossDissolve,
-                                  animations: {
-                                    self.setTitleNewSMSCode()
-                                    self.runTimer()},
-                                  completion: nil)
-                
+        activityActionStart(title : NSLocalizedString("a-action-lbl-update", comment:""))
+        iamService.getIdentityAuthentication(username : numberphoneNew){(success, response, error) in
+            let responseCode = response
+            if success == true{
+                if URLConstants.HTTP_STATUS_CODE.OK == responseCode as! Int {
+                    DispatchQueue.main.async {
+                        UIView.transition(with: self.view,
+                                          duration:0.1,
+                                          options: .transitionCrossDissolve,
+                                          animations: {
+                                            self.activityActionStop()
+                                            self.setTitleNewSMSCode()
+                                            self.runTimer()},
+                                          completion: nil)
+                    }
+                }
+                else if URLConstants.HTTP_STATUS_CODE.FOUND == responseCode as! Int{
+                    self.activityActionStop()
+                    self.errorValidateLabel.isHidden = false
+                    self.errorValidateLabel.text = NSLocalizedString("editusername-label-passwordvalregistered", comment:"")
+                }
             }
-        } else{
-            DispatchQueue.main.async {
-                let ac = UIAlertController(title: NSLocalizedString(NSLocalizedString("error-title-failconnection", comment:""), comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated:  true)
+            else if success == false || error != nil {
+                DispatchQueue.main.async {
+                    self.activityActionStop()
+                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated:  true)
+                }
             }
         }
+        
     }
-    
+
 }

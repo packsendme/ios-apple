@@ -12,20 +12,18 @@ class AMPSettingViewController: UIViewController {
 
     @IBOutlet weak var userprofileTable: UITableView!
     @IBOutlet weak var photoprofileBtn: UIButton!
-    @IBOutlet weak var editAccessInfTitleLabel: UILabel!
     @IBOutlet weak var useraccountLabel: UILabel!
 
     var profileObj = ProfileBO()
-    
    // var passedAccountStruct = [AccountStruct]()
-    var country : CountryBO? = nil
-    
+    var countryObj : CountryBO? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        country = CountryBO(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance,sigla:"" )
+        countryObj = CountryBO(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance,sigla:"" )
 
-        editAccessInfTitleLabel.text = NSLocalizedString("aup-setting-title", comment:"")
+       // ampTitleSettingLbl.text = NSLocalizedString("aup-setting-title", comment:"")
         userprofileTable.rowHeight = UITableViewAutomaticDimension
         userprofileTable.isScrollEnabled = true
         userprofileTable.translatesAutoresizingMaskIntoConstraints = false
@@ -62,24 +60,25 @@ class AMPSettingViewController: UIViewController {
             setupPhotoProfile?.profileObj = profileObj
         }
         if segue.identifier == "AMPUpdateNames"{
-            let setupUserProfile = segue.destination as? AMPUpdateViewController
-            setupUserProfile?.profileObj = profileObj
-            setupUserProfile?.metadadosView = "names"
+            let setupNames = segue.destination as? AMPUpdateViewController
+            setupNames?.profileObj = profileObj
+            setupNames?.metadadosView = amUpdateProfile.name.rawValue
         }
         if segue.identifier == "AMPUpdateEmail"{
-            let setupUserProfile = segue.destination as? AMPUpdateViewController
-            setupUserProfile?.profileObj = profileObj
-            setupUserProfile?.metadadosView = "email"
+            let setupEmail = segue.destination as? AMPUpdateViewController
+            setupEmail?.profileObj = profileObj
+            setupEmail?.metadadosView = amUpdateProfile.email.rawValue
         }
         if segue.identifier == "AMPUpdatePassword"{
-            let setupUserProfile = segue.destination as? AMPUpdateViewController
-            setupUserProfile?.profileObj = profileObj
-            setupUserProfile?.metadadosView = "password"
+            let setupPassword = segue.destination as? AMPUpdateViewController
+            setupPassword?.profileObj = profileObj
+            setupPassword?.metadadosView = amUpdateProfile.password.rawValue
         }
-        if segue.identifier == "ManagerProfileUserViewControllerGoUsername"{
-            let setupUserProfile = segue.destination as? ManagerUsernamePhoneViewController
-            setupUserProfile?.country = country
-            //setupUserProfile?.metadadosView = URLConstants.IAM.usernameUI
+        if segue.identifier == "AMPUpdateUsername"{
+            let setupUsername = segue.destination as? AMPUpdateViewController
+            setupUsername?.countryObj = countryObj
+            setupUsername?.profileObj = profileObj
+            setupUsername?.metadadosView = amUpdateProfile.username.rawValue
         }
     }
     
@@ -107,7 +106,7 @@ extension AMPSettingViewController: UITableViewDataSource, UITableViewDelegate{
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //var country = countriesData[indexPath.section][indexPath.row]
+        //var countryObj = countriesData[indexPath.section][indexPath.row]
         
        guard let cell = tableView.dequeueReusableCell(withIdentifier:"AccessInfoCell") as? ProfileUserViewCell
             else{
@@ -143,19 +142,19 @@ extension AMPSettingViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if indexPath.row == 0{
-           self.performSegue(withIdentifier:"AUPManagerNames", sender: nil)
+           self.performSegue(withIdentifier:"AMPUpdateNames", sender: nil)
        }
        else if indexPath.row == 1{
-           self.performSegue(withIdentifier:"AUPManagerNames", sender: nil)
+           self.performSegue(withIdentifier:"AMPUpdateNames", sender: nil)
        }
        else if indexPath.row == 2{
-            self.performSegue(withIdentifier:"AUPManagerEmail", sender: nil)
+            self.performSegue(withIdentifier:"AMPUpdateEmail", sender: nil)
        }
        else if indexPath.row == 3{
-            self.performSegue(withIdentifier:"AUPManagerPassword", sender: nil)
+            self.performSegue(withIdentifier:"AMPUpdatePassword", sender: nil)
        }
        else if indexPath.row == 4{
-            self.performSegue(withIdentifier:"ManagerProfileUserViewControllerGoUsername", sender: nil)
+            self.performSegue(withIdentifier:"AMPUpdateUsername", sender: nil)
        }
     }
 }

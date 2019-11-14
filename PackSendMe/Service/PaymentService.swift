@@ -60,7 +60,7 @@ class PaymentService: NSObject {
     }
     
     func getPaymentsByUsername(completion: @escaping (Bool, Any?, Error?) -> Void){
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http
+        let payment_url = "" //URLConstants.ACCOUNT.accountpayment_http
         let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone
 
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
@@ -103,7 +103,7 @@ class PaymentService: NSObject {
         payType:paymentDto.payType!, payExpiry:paymentDto.payExpiry!, payStatus:paymentDto.payStatus!,
         payValue:paymentDto.payValue!, dateOperation:paymentDto.dateOperation!)
 
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone
+        let payment_url = "3"//URLConstants.ACCOUNT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone
          print(" RESULT postPaymentMethod \(payment_url)")
 
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
@@ -188,7 +188,7 @@ class PaymentService: NSObject {
             payType:paymentDto.payType!, payExpiry:paymentDto.payExpiry!, payStatus:paymentDto.payStatus!,
             payValue:paymentDto.payValue!, dateOperation:paymentDto.dateOperation!)
         
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone+"/"+paymentDto.payCodenum!
+        let payment_url = "1"//URLConstants.ACCOUNT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone+"/"+paymentDto.payCodenum!
         
         print(" RESULT updatePaymentMethod \(payment_url)")
         
@@ -223,7 +223,7 @@ class PaymentService: NSObject {
         
         let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+paymentDto.payCodenum!+"/"+paymentDto.payType!
         
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http
+        let payment_url = "1" //URLConstants.ACCOUNT.accountpayment_http
         
         print(" RESULT removePaymentMethod \(payment_url)")
         
@@ -256,7 +256,7 @@ class PaymentService: NSObject {
     func getPaymentByNumcod(codnum : String, completion: @escaping (Bool, Any?, Error?) -> Void){
         
         let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+codnum
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http
+        let payment_url = "1" //URLConstants.ACCOUNT.accountpayment_http
         print(" RESULT getPaymentByNumcod \(payment_url)")
         
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){

@@ -11,6 +11,8 @@
 "a-action-lbl-update" = "Atualizando";
 "a-action-lbl-saving" = "Salvando";
 "a-action-lbl-validation" = "Validação";
+"a-action-lbl-validationcode" = "Validação Código";
+
 
 
 /* SCREEN - MAIN */
@@ -485,6 +487,7 @@
 "main-label-codeforward" = "O nº do celular está correto?";
 "main-button-codeforward" = "Enviar Novo Código SMS";
 "main-button-cancelcode" = "Alterar Número do Celular";
+"main-status-newsms" = "Novo Código";
 
 
 "error-label-smscode1" = "Code SMS 1 está vazio";
@@ -567,7 +570,7 @@
 /* Username  - Movil */
 "aup-manager-lbl-usernametitle" = "Editar Número Celular";
 "aup-manager-lbl-username" = "Número Celuar";
-"aup-manager-txt-usernameinput" = "Entre com a seu novo número celular";
+"aup-manager-txt-usernameinput" = "Entre novo número";
 "aup-manager-lbl-usernameinvalid" = "Número Celular Inválido";
 "aup-manager-lbl-usernamevalregistered" = "O número do celular já esta registrado, verifique o número";
 

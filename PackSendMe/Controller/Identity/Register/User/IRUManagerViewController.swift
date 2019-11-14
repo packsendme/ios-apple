@@ -24,7 +24,7 @@ class IRUManagerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!
 
-    var iamService = IAService()
+    var iamService = IdentityService()
     var metadadosView : String = ""
     var profileObj = ProfileBO()
     var dateFormat = UtilityHelper()
@@ -190,14 +190,17 @@ class IRUManagerViewController: UIViewController, UITextFieldDelegate {
                 
         case lastnameTextField:
             if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 && (nameTextField.text?.count)! >= 3{
+                profileObj.lastName = lastnameTextField.text!
                 nextNameBtn.isEnabled = true
             }
+            else{
+                nextNameBtn.isEnabled = false
+            }
+            
             if (text?.utf16.count)! >= 13  {
                 lastnameTextField.deleteBackward()
             }
-            if (text?.utf16.count)! >= 3 && (text?.utf16.count)! <= 13 {
-                profileObj.lastName = lastnameTextField.text!
-            }
+
   
         case passwordTextField:
             if (text?.utf16.count)! >= 6{
@@ -242,7 +245,8 @@ class IRUManagerViewController: UIViewController, UITextFieldDelegate {
         let dateNow = dateFormat.dateConvertToString()
         profileObj.country = GlobalVariables.sharedManager.countryCodInstance
         profileObj.dateOperation = dateNow
-        profileObj.username = GlobalVariables.sharedManager.usernameNumberphone
+        print(" number \(profileObj.username)")
+ 
         registerAccount()
     }
     
@@ -266,8 +270,11 @@ class IRUManagerViewController: UIViewController, UITextFieldDelegate {
             if success == true{
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "ACCOUNT", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "AccountView") as! AHMainViewController
-                    self.show(vc, sender: self)
+                    let homePSM = storyboard.instantiateViewController(withIdentifier: "AccountView") as! AHMainViewController
+                    GlobalVariables.sharedManager.nameFirst = self.profileObj.name!
+                    GlobalVariables.sharedManager.nameLast = self.profileObj.lastName!
+                    GlobalVariables.sharedManager.usernameNumberphone = self.profileObj.username!
+                    self.show(homePSM, sender: self)
                 }
             }
             else if success == false{

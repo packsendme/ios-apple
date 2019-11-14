@@ -205,19 +205,19 @@
                         <outlet property="menuToolBtn" destination="V8L-ik-a8B" id="bbD-DM-WQL"/>
                         <outlet property="nameprofileLabel" destination="fBl-3Y-JxU" id="hah-hm-AXP"/>
                         <outlet property="useraccountImg" destination="bMN-j8-nmP" id="Uwn-tO-dH8"/>
-                        <segue destination="iVR-D9-ADh" kind="show" identifier="AUSettingViewController" id="Rrf-qj-TBH"/>
+                        <segue destination="iVR-D9-ADh" kind="show" identifier="AMSettingViewController" id="Rrf-qj-TBH"/>
                         <segue destination="a6r-v2-u3x" kind="show" identifier="AllViewToAccountHomeView" id="Z9E-2M-P2r"/>
                         <segue destination="LWX-5W-YzS" kind="show" identifier="SettingViewToManagerPaymentView" id="piG-6i-804"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvb-3y-XUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="-181"/>
+            <point key="canvasLocation" x="625" y="-335"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="XxJ-Qn-zTC">
             <objects>
-                <viewController storyboardIdentifier="AUSetting" id="iVR-D9-ADh" customClass="AUSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AUSetting" id="iVR-D9-ADh" customClass="AMSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dsk-An-LuU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -305,7 +305,7 @@
                     <connections>
                         <outlet property="settingTable" destination="uaG-dr-QJJ" id="CUw-Xm-FeY"/>
                         <outlet property="settingTitleLabel" destination="kTL-X0-zPp" id="WEM-va-BbM"/>
-                        <segue destination="t7q-qE-bfJ" kind="show" identifier="AUPSettingViewController" id="r5c-OB-67t"/>
+                        <segue destination="t7q-qE-bfJ" kind="show" identifier="AMPSettingViewController" id="r5c-OB-67t"/>
                         <segue destination="7tK-AD-SWU" kind="show" identifier="SettingViewToManagerAddressView" id="dbA-sj-a6m"/>
                     </connections>
                 </viewController>
@@ -314,10 +314,10 @@
             </objects>
             <point key="canvasLocation" x="1781.5999999999999" y="-181.25937031484258"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--AMPSettingViewControle-->
         <scene sceneID="nbo-Of-PHI">
             <objects>
-                <viewController storyboardIdentifier="AUPSetting" id="t7q-qE-bfJ" customClass="AMPSettingViewController" sceneMemberID="viewController">
+                <viewController id="t7q-qE-bfJ" userLabel="AMPSettingViewControle" customClass="AMPSettingViewController" customModule="PackSendMe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d0l-F8-F7b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -403,19 +403,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KFk-2x-vuJ">
-                                <rect key="frame" x="0.0" y="25" width="375" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="23"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="PeM-kE-Jos"/>
                     </view>
                     <connections>
-                        <outlet property="editAccessInfTitleLabel" destination="KFk-2x-vuJ" id="E12-ss-RHh"/>
                         <outlet property="photoprofileBtn" destination="mhA-pt-Lx0" id="OCg-8E-xNt"/>
                         <outlet property="useraccountLabel" destination="YAa-hO-S8A" id="g3N-ff-Acz"/>
                         <outlet property="userprofileTable" destination="foT-3S-a8a" id="CXn-pV-qJn"/>
@@ -429,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C6d-n1-cbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3240.8000000000002" y="-602.24887556221893"/>
+            <point key="canvasLocation" x="2950" y="-663"/>
         </scene>
         <!--Photo Profile View Controller-->
         <scene sceneID="k8M-nV-ixv">
@@ -1083,6 +1075,9 @@
                                 <state key="normal" title="UPDATE PHONE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="updateUsernameAction:" destination="rhv-ek-hyp" eventType="touchUpInside" id="plw-2Z-Xbh"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL6-WE-JNT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
@@ -1093,7 +1088,7 @@
                                             <inset key="imageInsets" minX="-26" minY="-10" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AMPSettingViewController" id="swt-fy-lLQ"/>
+                                                <segue destination="t7q-qE-bfJ" kind="show" identifier="AMPSettingViewController" id="BIg-hD-7XK"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -1133,7 +1128,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="23"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYh-hs-Upd">
                                         <rect key="frame" x="8" y="92" width="50" height="50"/>
@@ -1141,7 +1136,7 @@
                                         <size key="titleShadowOffset" width="40" height="45"/>
                                         <state key="normal" image="iconUSA"/>
                                         <connections>
-                                            <segue destination="LR7-d6-DYb" kind="show" identifier="AUCSettingViewController" id="6xS-Cw-Fab"/>
+                                            <segue destination="LR7-d6-DYb" kind="show" identifier="AMCSettingViewController" id="6xS-Cw-Fab"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="P8V-TB-ST3">
@@ -1202,7 +1197,7 @@
                                         <state key="normal" image="icon-tool-close"/>
                                         <connections>
                                             <action selector="closeActionB:" destination="LR7-d6-DYb" eventType="touchUpInside" id="bV8-R8-2dP"/>
-                                            <segue destination="rhv-ek-hyp" kind="show" identifier="AUPManagerUsername" id="FYM-dO-T7a"/>
+                                            <segue destination="rhv-ek-hyp" kind="show" identifier="AMPManagerUsername" id="FYM-dO-T7a"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1313,40 +1308,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter the 5-digit code we sent to " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gq-JA-bou">
+                                <rect key="frame" x="15" y="54" width="332" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVd-Kz-0pH">
+                                <rect key="frame" x="0.0" y="20" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon-tool-back"/>
+                                <connections>
+                                    <action selector="closeAction:" destination="I50-Dp-LGc" eventType="touchUpInside" id="OpV-eI-ORe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hq-S5-L0j">
+                                <rect key="frame" x="15" y="349" width="343" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.87835711240768433" green="0.87848061323165894" blue="0.87831813097000122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <state key="normal" title="Send me new code">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="newSMSCode:" destination="I50-Dp-LGc" eventType="touchUpInside" id="c9q-ZF-3p2"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-S9-NfP">
-                                <rect key="frame" x="16" y="160" width="326" height="128"/>
+                                <rect key="frame" x="15" y="164" width="326" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbU-7Z-tkb">
-                                        <rect key="frame" x="42" y="51" width="40" height="30"/>
+                                        <rect key="frame" x="42" y="43" width="40" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" textContentType="tel"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GQ5-oD-pOU">
-                                        <rect key="frame" x="111" y="51" width="40" height="30"/>
+                                        <rect key="frame" x="111" y="43" width="40" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" textContentType="tel"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vV0-Gx-Q30">
-                                        <rect key="frame" x="180" y="51" width="40" height="30"/>
+                                        <rect key="frame" x="180" y="43" width="40" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" textContentType="tel"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D5k-TX-jxq">
-                                        <rect key="frame" x="248" y="51" width="40" height="30"/>
+                                        <rect key="frame" x="248" y="43" width="40" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" textContentType="tel"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-text-line" translatesAutoresizingMaskIntoConstraints="NO" id="NRD-OI-5vY">
                                         <rect key="frame" x="43" y="73" width="40" height="17"/>
@@ -1371,53 +1394,16 @@
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3I-SA-rJ0">
+                                        <rect key="frame" x="4" y="-8" width="79" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter the 5-digit code we sent to " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gq-JA-bou">
-                                <rect key="frame" x="16" y="73" width="332" height="114"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3I-SA-rJ0">
-                                <rect key="frame" x="15" y="172" width="79" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVd-Kz-0pH">
-                                <rect key="frame" x="0.0" y="20" width="60" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icon-tool-back"/>
-                                <connections>
-                                    <segue destination="rhv-ek-hyp" kind="show" id="8QF-X0-zLm"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxp-Tx-klq">
-                                <rect key="frame" x="15" y="363" width="343" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <state key="normal" title="UPDATE PHONE">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hq-S5-L0j">
-                                <rect key="frame" x="13" y="308" width="343" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.1268728595890411" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <state key="normal" title="Send me new code">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="newSMSCode:" destination="I50-Dp-LGc" eventType="touchUpInside" id="c9q-ZF-3p2"/>
-                                    <action selector="updatePhoneNumberAction:" destination="rhv-ek-hyp" eventType="touchUpInside" id="gtj-bP-Ih4"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="GVm-As-54W"/>
@@ -1427,17 +1413,16 @@
                         <outlet property="codeSMS2TextField" destination="GQ5-oD-pOU" id="nN1-ci-c4P"/>
                         <outlet property="codeSMS3TextField" destination="vV0-Gx-Q30" id="ftL-bl-HhP"/>
                         <outlet property="codeSMS4TextField" destination="D5k-TX-jxq" id="WdL-Fh-OQd"/>
-                        <outlet property="confirmeSMSCodeBtn" destination="Lxp-Tx-klq" id="pil-dJ-hGz"/>
                         <outlet property="errorValidateLabel" destination="fOv-b8-nI0" id="ZcG-B9-xRi"/>
                         <outlet property="newSMSCodeBtn" destination="0hq-S5-L0j" id="ZOv-wY-WHZ"/>
                         <outlet property="timerLabel" destination="g3I-SA-rJ0" id="8r7-Qw-vLJ"/>
                         <outlet property="titleSMSCodeLabel" destination="0gq-JA-bou" id="ehc-tZ-iUq"/>
-                        <segue destination="a6r-v2-u3x" kind="show" identifier="CheckSMSCodeToHomePackSend" id="YP8-WQ-bwe"/>
+                        <segue destination="a6r-v2-u3x" kind="show" identifier="AHMainViewController" id="YP8-WQ-bwe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oId-LF-8fm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7166" y="627"/>
+            <point key="canvasLocation" x="6808.8000000000002" y="626.53673163418296"/>
         </scene>
         <!--Card Payment View Controller-->
         <scene sceneID="NAL-8F-nie">
@@ -1650,13 +1635,12 @@
         <image name="icons-menu-ballH" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y0J-8R-DyM"/>
         <segue reference="66A-7X-Vbp"/>
         <segue reference="6xS-Cw-Fab"/>
-        <segue reference="8QF-X0-zLm"/>
+        <segue reference="C4T-SA-DPB"/>
         <segue reference="piG-6i-804"/>
-        <segue reference="swt-fy-lLQ"/>
-        <segue reference="dQ1-dt-qkQ"/>
+        <segue reference="r5c-OB-67t"/>
+        <segue reference="Rrf-qj-TBH"/>
         <segue reference="YP8-WQ-bwe"/>
     </inferredMetricsTieBreakers>
 </document>

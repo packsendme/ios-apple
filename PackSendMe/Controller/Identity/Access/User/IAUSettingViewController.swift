@@ -26,8 +26,12 @@ class IAUSettingViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var phoneNextBtn: UIButton!
     
     var metadadosView : String = ""
-    var iamService = IAService()
+    var iamService = IdentityService()
     var dateFormat = UtilityHelper()
+    var usernamephone : String = ""
+    var boxActivityView = UIView()
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     
     enum ViewType:String {
         case usernameVC = "IAUSettingUsername"
@@ -93,17 +97,22 @@ class IAUSettingViewController: UIViewController, UITextFieldDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "IAUSettingPassword" {
             let loginVC = segue.destination as! IAUSettingViewController
+            loginVC.usernamephone = usernamecodeLabel.text!+usernameTexField.text!
             loginVC.metadadosView = segue.identifier!
         }
         else  if segue.identifier == "IAUSettingUsername" {
             let loginVC = segue.destination as! IAUSettingViewController
             loginVC.metadadosView = segue.identifier!
         }
+        else  if segue.identifier == "IRSSettingViewController" {
+            let smsVC = segue.destination as! IRSSettingViewController
+            smsVC.numberphoneNew = usernamecodeLabel.text!+usernameTexField.text!
+        }
     }
     
     // Screen: LoginViewController - Username (PhoneNumber)
     @IBAction func validateAcessAction(_ sender: Any) {
-         validateLogin()
+         validateUsernameLogin()
     }
     
     // Screen: LoginViewController - Password
@@ -115,12 +124,46 @@ class IAUSettingViewController: UIViewController, UITextFieldDelegate{
         self.performSegue(withIdentifier:"IAUSettingUsername", sender: nil)
     }
     
+    func activityActionStop() {
+        //When button is pressed it removes the boxView from screen
+        self.boxActivityView.removeFromSuperview()
+        self.activityView.stopAnimating()
+    }
+    
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 100, y: view.frame.midY - 80, width: 160, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+        
+        
+        //UIColor.lightGray
+        boxActivityView.alpha = 0.9
+        boxActivityView.layer.cornerRadius = 10
+        
+        //Here the spinnier is initialized
+        
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.color = UIColor.black
+        
+        activityView.startAnimating()
+        
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.black
+        textLabel.text = title
+        
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        
+        view.addSubview(boxActivityView)
+    }
+    
     /* ################################### < HTTP SERVICE >  ############################################### */
     
 
-    func validateLogin() {
-        GlobalVariables.sharedManager.usernameNumberphone = usernamecodeLabel.text!+usernameTexField.text!
-        iamService.getIdentityAuthentication(){(success, response, error) in
+    func validateUsernameLogin() {
+        activityActionStart(title : NSLocalizedString("a-action-lbl-validation", comment:""))
+        let phone = usernamecodeLabel.text!+usernameTexField.text!
+        iamService.getIdentityAuthentication(username : phone){(success, response, error) in
             let responseCode = response
             if success == true{
                 if URLConstants.HTTP_STATUS_CODE.OK == responseCode as! Int {
@@ -138,6 +181,7 @@ class IAUSettingViewController: UIViewController, UITextFieldDelegate{
             }
             else if success == false || error != nil {
                 DispatchQueue.main.async {
+                    self.activityActionStop()
                     let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)
@@ -147,20 +191,29 @@ class IAUSettingViewController: UIViewController, UITextFieldDelegate{
     }
     
     func userAccess() {
-        iamService.getAccessManager(password: passwordTextField.text!){(success, response, error) in
+        activityActionStart(title : NSLocalizedString("a-action-lbl-validation", comment:""))
+        iamService.getAccessManager(username:usernamephone ,password: passwordTextField.text!){(success, response, error) in
             if success == true{
+                let userObj = response as! UserBO
+                GlobalVariables.sharedManager.nameFirst = userObj.firstname!
+                GlobalVariables.sharedManager.nameLast = userObj.lastname!
+                GlobalVariables.sharedManager.usernameNumberphone = self.usernamephone
+                GlobalVariables.sharedManager.profileImage = "imageProfile_"+self.usernamephone
+
                 let storyboard: UIStoryboard = UIStoryboard(name: "ACCOUNT", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "AccountView") as! AHMainViewController
-                self.show(vc, sender: self)
+                let mainHomePSM = storyboard.instantiateViewController(withIdentifier: "AccountView") as! AHMainViewController
+                self.show(mainHomePSM, sender: self)
             }
             else  if success == false && error == nil{
                 DispatchQueue.main.async {
+                    self.activityActionStop()
                     self.loginerrorLabel.isHidden = false
                     self.loginerrorLabel.text = NSLocalizedString("main-label-error", comment:"")
                 }
             }
             else if error != nil{
                 DispatchQueue.main.async {
+                    self.activityActionStop()
                     let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)

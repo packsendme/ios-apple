@@ -11,6 +11,7 @@
 "a-action-lbl-update" = "Actualizando";
 "a-action-lbl-saving" = "Almacenamiento";
 "a-action-lbl-validation" = "Validación";
+"a-action-lbl-validationcode" = "Validación Código";
 
 
 /* SCREEN - MAIN */
@@ -471,6 +472,8 @@
 "main-label-codeforward" = "¿El n.º de móvil es correcto?";
 "main-button-codeforward" = "Enviar Nuevo Código SMS";
 "main-button-cancelcode" = "Cambiar el Número de Teléfono Móvil";
+"main-status-newsms" = "Nuevo Código";
+
 
 
 "error-label-smscode1" = "Code SMS 1 está vacío";
@@ -558,7 +561,7 @@
 /* Username  - Movil */
 "aup-manager-lbl-usernametitle" = "Editar Móvil";
 "aup-manager-lbl-username" = "Número Móvil";
-"aup-manager-txt-usernameinput" = "Ingrese su nuevo número móvil";
+"aup-manager-txt-usernameinput" = "Ingrese nuevo número";
 "editusername-label-passwordvalinvalid" = "Móvil inválido";
 "editusername-label-passwordvalregistered" = "El número de móvil ya registrado, verifique el número";
 

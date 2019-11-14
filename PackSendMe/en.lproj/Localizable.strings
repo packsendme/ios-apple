@@ -11,6 +11,8 @@
 "a-action-lbl-update" = "Updating";
 "a-action-lbl-saving" = "Saving";
 "a-action-lbl-validation" = "Validation";
+"a-action-lbl-validationcode" = "Validation Code";
+
 
 /* SCREEN - MAIN */
 "main-title-welcome" = "Welcome to PackSendMe";
@@ -455,11 +457,15 @@
 "main-title-numbercorrect" = "Mobile number is correct?";
 "main-title-receivecode" = "Send me new SMS code";
 "main-title-editnumber" = "Edit my cell phone number?";
+"main-status-newsms" = "Wait for New SMS";
+
 /* Resend SMS */
 "main-title-newsmscode" = "New 4 digit code has been sent to ";
 "main-label-codeforward" = "Is the cell number correct?                              ";
 "main-button-codeforward" = "Send New SMS Code";
 "main-button-cancelcode" = "Change Phone Number";
+"main-status-newsms" = "New Code";
+
 
 "error-label-smscode1" = "Code SMS 1 is empty";
 "error-label-smscode2" = "Code SMS 2 is empty";
@@ -543,10 +549,9 @@
 /* Username  - Movil */
 "aup-manager-lbl-usernametitle" = "Edit Phone Number";
 "aup-manager-lbl-username" = "Phone Number";
-"aup-manager-txt-usernameinput" = "Enter your new mobile number";
+"aup-manager-txt-usernameinput" = "Enter new number";
 "editusername-label-passwordvalinvalid" = "Invalid Cell Number";
 "editusername-label-passwordvalregistered" = "The mobile number is already registered, check the number";
-
 
 /* ManagerProfileUserViewController - PhoneNumber  */
 "editusername-label-newphone" = "New Phone Number";
@@ -555,7 +560,6 @@
 "editusername-text-username" = "000 000 000";
 "editusername-label-usernamevalidate" = "Phone number invalid";
 "editusername-label-usernameregistered" = "Phone number is already registered";
-
 
 /* PhotoProfileViewController */
 "photoprofile-activity-save" = "Saving Photo";

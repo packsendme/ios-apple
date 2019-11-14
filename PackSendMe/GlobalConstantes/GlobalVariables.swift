@@ -41,8 +41,8 @@ class GlobalVariables {
     // Account
     public var profileImage: String = ""
     public var usernameNumberphone: String = ""
-    public var nameFirstMenu: String = ""
-    public var nameLastMenu: String = ""
+    public var nameFirst: String = ""
+    public var nameLast: String = ""
     public var profileImageDefault: String = "icon-user-photo"
 
     // Payment

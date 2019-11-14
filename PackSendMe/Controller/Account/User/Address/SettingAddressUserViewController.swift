@@ -57,7 +57,7 @@ class SettingAddressUserViewController: UIViewController {
         
         paramsDictionary = accountHelper.addressObjectToArray(username:(GlobalVariables.sharedManager.usernameNumberphone), address:(addressDescription), type:(typeAddressChange)!, main:(GlobalVariables.sharedManager.addressMain), dateUpdate: (dateUpdate))
         
-        let account = URLConstants.ACCOUNT.account_http+"/address"
+        let account = "1"//URLConstants.ACCOUNT.account_http+"/address"
         
         HttpService.instance().makeAPIBodyCall(url: account, params:paramsDictionary, method: .PUT, success: { (data, response, error) in
             

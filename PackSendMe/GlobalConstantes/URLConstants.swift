@@ -14,14 +14,9 @@ struct URLConstants{
     struct googleMaps{
         static let trackingID = "AIzaSyDt5pgW0boE_KhyVZHpNAh-o7Z0dQWt2IA"
         static let APIPlaces_TrackingID = "AIzaSyBYAqvauHBJyWYokwSb-sXrHD7HUAqVsq8"
-   
     }
 
-    struct IAM{
-        static let iamIdentity_http = "http://192.241.133.13:9093/iam/identity/"
-        static let iamAccess_http = "http://192.241.133.13:9093/iam/access/"
-        static let iamManager_http = "http://192.241.133.13:9093/iam/manager/"
-    }
+
 
     struct PAYMENT{
         static let payment_http = "http://192.241.133.13:9095/payment/"
@@ -33,18 +28,11 @@ struct URLConstants{
         static let country_http = "http://192.241.133.13:9096/country/"
     }
     
-    struct ACCOUNT{
-        static let account_http = "http://192.241.133.13:9094/account/"
-        static let accountpersonal_http = "http://192.241.133.13:9094/account/personalname/"
-        static let accountpayment_http = "http://192.241.133.13:9094/account/payment/"
-
-        static let account_load = "/load"
-        // All View To AccounthoME
-        static let allViewToAccountHomeView = "AllViewToAccountHomeView"
-        static let settingViewToManagerPaymentView = "SettingViewToManagerPaymentView"
-        
-      
+    struct SMS{
+        static let smscode_http = "http://192.241.133.13:9097/sms/"
     }
+    
+
     
     struct HTTP_STATUS{
         static let statusUsernameRegister = "USERNAME_REGISTER"

@@ -102,21 +102,21 @@ class AMCSettingViewController: UIViewController{
             something.cardpaySelect = self.cardpaySelect
         }
             // ManagerProfileUserViewController
-        else if segue.identifier == "AUPManagerUsername"{
-            let something = segue.destination as! ManagerUsernamePhoneViewController
-            something.country = self.countryDto
+        else if segue.identifier == "AMPManagerUsername"{
+            let usernameManager = segue.destination as! AMPUpdateViewController
+            usernameManager.metadadosView = amUpdateProfile.username.rawValue
+            usernameManager.countryObj = self.countryDto
         }
     }
     
     @IBAction func closeActionB(_ sender: Any) {
-        if operationTypeController == GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_CARDPAY{
-            self.performSegue(withIdentifier: "CardPaymentViewController", sender: self)
+        if operationTypeController == amCountryViewReturn.amPaymentCard.rawValue{
+            self.performSegue(withIdentifier:"CardPaymentViewController", sender: self)
         }
-        else if operationTypeController == GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_NUMBER{
-            self.performSegue(withIdentifier: "CountryAccountViewControllerGoManagerUsernamePhone", sender: self)
+        else if operationTypeController == amCountryViewReturn.ampSettingViewController.rawValue{
+            self.performSegue(withIdentifier:"AMPManagerUsername", sender: self)
         }
     }
-
 }
 
 extension AMCSettingViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{

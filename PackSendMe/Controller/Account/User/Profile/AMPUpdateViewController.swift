@@ -41,7 +41,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordcurrentdetailLabel: UILabel!
     @IBOutlet weak var passwordValidateLabel: UILabel!
     
-    // Edit Password
+    // Edit Username
     @IBOutlet weak var aupUsernameEditTitleLabel: UILabel!
     @IBOutlet weak var aupUsernameFieldLabel: UILabel!
     @IBOutlet weak var aupUsernameTextField: UITextField!
@@ -55,8 +55,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     var countryObj : CountryBO? = nil
     var formatPlaceHoldName = UtilityHelper()
     var amService = AccountService()
-    var iamService = IAService()
-
+    var iamService = IdentityService()
     
     var metadadosView : String = ""
     var refreshControl = UIRefreshControl()
@@ -65,27 +64,19 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     @IBOutlet weak var activity: UIActivityIndicatorView!
 
-    
-    enum ViewType:String {
-        case name = "names"
-        case email = "email"
-        case password = "password"
-        case username = "username"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if metadadosView == ViewType.name.rawValue{
+        if metadadosView == amUpdateProfile.name.rawValue{
             setupName()
         }
-        else if metadadosView == ViewType.email.rawValue{
+        else if metadadosView == amUpdateProfile.email.rawValue{
             setupEmail()
         }
-        else if metadadosView == ViewType.password.rawValue{
+        else if metadadosView == amUpdateProfile.password.rawValue{
             setupPassword()
         }
-        else if metadadosView == ViewType.username.rawValue{
+        else if metadadosView == amUpdateProfile.username.rawValue{
             setupUsername()
         }
         
@@ -160,6 +151,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
                 passwordnewBtn.isEnabled = true
                 passwordnewBtn.isHighlighted = false
                 passwordnewBtn.backgroundColor = UIColor(red:0.30, green:0.29, blue:0.29, alpha:1.0)
+                profileObj!.password = passwordnewTextField.text
             }
             else{
                 passwordnewBtn.isEnabled = false
@@ -260,6 +252,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupUsername(){
+        self.aupUsernameTextField.becomeFirstResponder()
         self.aupUsernameEditTitleLabel.text =  NSLocalizedString("aup-manager-lbl-usernametitle", comment:"")
         self.aupUsernameFieldLabel.text = NSLocalizedString("aup-manager-lbl-username", comment:"")
         self.aupCodUsernameLabel.text = GlobalVariables.sharedManager.countryCodInstance
@@ -268,8 +261,10 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         self.aupUsernameBtn.setTitle(NSLocalizedString("aup-manager-btn-update", comment:"") , for: .normal)
         aupUsernameTextField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: UIControlEvents.editingChanged)
         self.aupCountryBtn.setImage(countryObj?.countryImage, for: .normal)
+        aupUsernameBtn.backgroundColor = UIColor(red:0.66, green:0.66, blue:0.66, alpha:1.0)
+        self.aupCodUsernameLabel.text = countryObj?.cod
         self.aupValidateMsgLabel.isHidden = true
-        self.aupUsernameTextField.becomeFirstResponder()
+        aupUsernameBtn.isEnabled = false
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -286,7 +281,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         else if (segue.identifier == "AMCSettingViewController") {
             let something = segue.destination as! AMCSettingViewController
             something.countryDto = countryObj!
-            something.operationTypeController = GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_NUMBER
+            something.operationTypeController = amCountryViewReturn.ampSettingViewController.rawValue
         }
     }
     
@@ -333,7 +328,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     
     func activityActionStart(title : String) {
         // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 220, width: 180, height: 50))
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 120, y: view.frame.midY - 70, width: 180, height: 50))
         boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
 
 
@@ -363,7 +358,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         let name  = NSLocalizedString(field, comment:"")
         
         // Set the Font
-        placeHolder = NSMutableAttributedString(string:name, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 20.0)!])
+        placeHolder = NSMutableAttributedString(string:name, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 17.0)!])
         
         // Set the color
         let color = UIColor(red:0.76, green:0.75, blue:0.75, alpha:1.0)
@@ -372,6 +367,12 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         
         // Add attribute
        return placeHolder
+    }
+    
+    
+    
+    @IBAction func updateUsernameAction(_ sender: Any) {
+        validateUsernamePhone()
     }
     
     
@@ -388,10 +389,11 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         amService.updateUserProfile(profile:profileObj!){(success, response, error) in
             if success == true{
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"AUPSettingViewController", sender: nil)
+                    self.performSegue(withIdentifier:"AMPSettingViewController", sender: nil)
                 }
             }
             else{
+                self.activityActionStop()
                 DispatchQueue.main.async() {
                     let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -429,6 +431,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
             }
             else{
                 DispatchQueue.main.async() {
+                    self.activityActionStop()
                     let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)
@@ -448,11 +451,12 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         iamService.updatePassword(password: passwordnewTextField.text!){(success, response, error) in
             if success == true{
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"AUPSettingViewController", sender: nil)
+                    self.performSegue(withIdentifier:"AMSPSettingViewController", sender: nil)
                 }
             }
             else{
                 DispatchQueue.main.async() {
+                    self.activityActionStop()
                     let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)
@@ -466,28 +470,31 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     // MICROSERVICE : IAM
     // ENTITY :  UserBO
     // -------------------------------------------------------------------------------------
-    func checkNumberphone() {
+    func validateUsernamePhone() {
         activityActionStart(title : NSLocalizedString("a-action-lbl-update", comment:""))
-        amService.updateUserProfile(profile:profileObj!){(success, response, error) in
+        let phone = aupCodUsernameLabel.text!+aupUsernameTextField.text!
+        iamService.getIdentityAuthentication(username : phone){(success, response, error) in
+            let responseCode = response
             if success == true{
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"AUSManagerViewController", sender: nil)
+                if URLConstants.HTTP_STATUS_CODE.OK == responseCode as! Int {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier:"AMSCheckViewController", sender: nil)
+                    }
+                }
+                else if URLConstants.HTTP_STATUS_CODE.FOUND == responseCode as! Int{
+                    self.aupValidateMsgLabel.text = NSLocalizedString("editusername-label-passwordvalregistered", comment:"")
                 }
             }
-            if success == false{
-                self.aupValidateMsgLabel.isHidden = false
-                self.aupValidateMsgLabel.text = NSLocalizedString("aup-manager-lbl-usernamevalregistered", comment:"")
+            else if success == false || error != nil {
                 self.activityActionStop()
-            }
-            else{
-                DispatchQueue.main.async() {
-                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
+                DispatchQueue.main.async {
+                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)
                 }
             }
         }
+
     }
-    
 
 }
