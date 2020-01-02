@@ -76,6 +76,16 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
         let attrString = NSMutableAttributedString(string: titleLabel)
         attrString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
         titleCheckSMSLabel.attributedText = attrString
+        self.errorValidateLabel.isHidden = true
+        codeSMS1TextField.text = "";
+        codeSMS2TextField.text = "";
+        codeSMS3TextField.text = "";
+        codeSMS4TextField.text = "";
+        codeSMS1TextField.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
+        codeSMS2TextField.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
+        codeSMS3TextField.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
+        codeSMS4TextField.backgroundColor = UIColor(red:0.91, green:0.91, blue:0.91, alpha:1.0)
+        codeSMS1TextField.becomeFirstResponder()
     }
     
     func runTimer() {
@@ -157,28 +167,20 @@ class IRSSettingViewController: UIViewController, UITextFieldDelegate {
     
     func activityActionStart(title : String) {
         // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 100, y: view.frame.midY - 70, width: 160, height: 50))
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 35, y: view.frame.midY - 40, width:50, height: 50))
         boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
-        
-        
         //UIColor.lightGray
         boxActivityView.alpha = 0.9
         boxActivityView.layer.cornerRadius = 10
-        
         //Here the spinnier is initialized
-        
         activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         activityView.color = UIColor.black
-        
         activityView.startAnimating()
-        
         let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
         textLabel.textColor = UIColor.black
-        textLabel.text = title
-        
+        textLabel.text = ""
         boxActivityView.addSubview(activityView)
         boxActivityView.addSubview(textLabel)
-        
         view.addSubview(boxActivityView)
     }
     

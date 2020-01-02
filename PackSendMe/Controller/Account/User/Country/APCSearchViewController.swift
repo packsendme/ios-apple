@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AMCSettingViewController: UIViewController{
+class APCSearchViewController: UIViewController{
     
     @IBOutlet weak var headView: UIView!
     var countries: [CountryBO] = []
@@ -68,10 +68,10 @@ class AMCSettingViewController: UIViewController{
             }
         }
         
-        if operationTypeController == GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_CARDPAY{
+        if operationTypeController == GAViewController.APPayCard.rawValue{
             countrytitleLabel.text = NSLocalizedString("country-card-title", comment:"")
         }
-        else if operationTypeController == GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_NUMBER{
+        else if operationTypeController == GAViewController.APPManagerUsername.rawValue{
             countrytitleLabel.text = NSLocalizedString("country-number-title", comment:"")
         }
         
@@ -95,31 +95,31 @@ class AMCSettingViewController: UIViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CardPaymentViewController"{
-            let something = segue.destination as! CardPaymentViewController
+        if segue.identifier == "APPayCardViewController"{
+            let something = segue.destination as! APPayCardViewController
             something.cardpaySelect = cardpayDto
             something.countryDto = self.countryDto
             something.cardpaySelect = self.cardpaySelect
         }
             // ManagerProfileUserViewController
-        else if segue.identifier == "AMPManagerUsername"{
-            let usernameManager = segue.destination as! AMPUpdateViewController
-            usernameManager.metadadosView = amUpdateProfile.username.rawValue
+        else if segue.identifier == "APPManagerUsername"{
+            let usernameManager = segue.destination as! APPManagerViewController
+            usernameManager.metadadosView = GAConstants.username.rawValue
             usernameManager.countryObj = self.countryDto
         }
     }
     
     @IBAction func closeActionB(_ sender: Any) {
-        if operationTypeController == amCountryViewReturn.amPaymentCard.rawValue{
-            self.performSegue(withIdentifier:"CardPaymentViewController", sender: self)
+        if operationTypeController == GAViewController.APPManagerUsername.rawValue{
+            self.performSegue(withIdentifier:"APPManagerUsername", sender: self)
         }
-        else if operationTypeController == amCountryViewReturn.ampSettingViewController.rawValue{
-            self.performSegue(withIdentifier:"AMPManagerUsername", sender: self)
+        else if operationTypeController == GAViewController.APPayCard.rawValue{
+            self.performSegue(withIdentifier:"APPayCardViewController", sender: self)
         }
     }
 }
 
-extension AMCSettingViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+extension APCSearchViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countriesData.count
@@ -163,11 +163,11 @@ extension AMCSettingViewController: UITableViewDataSource, UITableViewDelegate, 
         countryselectLabel.text = cell.namecountryLabel.text
         countryselectImage.image =  cell.countryImageView.image
         
-        if operationTypeController == GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_CARDPAY{
-            self.performSegue(withIdentifier: "CardPaymentViewController", sender: self)
+        if operationTypeController == GAViewController.APPayCard.rawValue{
+            self.performSegue(withIdentifier: "APPayCardViewController", sender: self)
         }
-        else if operationTypeController == GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_NUMBER{
-            self.performSegue(withIdentifier: "AUPManagerUsername", sender: self)
+        else if operationTypeController == GAViewController.APPManagerUsername.rawValue{
+            self.performSegue(withIdentifier: "APPManagerUsername", sender: self)
         }
     }
 }

@@ -8,19 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		8104BFE12316ED190097BA65 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8104BFE02316ED190097BA65 /* PaymentService.swift */; };
-		8104ED5121D57E070046A853 /* AMPUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8104ED5021D57E070046A853 /* AMPUpdateViewController.swift */; };
+		8104ED5121D57E070046A853 /* APPManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8104ED5021D57E070046A853 /* APPManagerViewController.swift */; };
 		8105A90322847F5D00C711BB /* StreetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8105A90222847F5D00C711BB /* StreetViewCell.swift */; };
-		810B6B49230ACE6A00E2BFE1 /* CardPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810B6B48230ACE6900E2BFE1 /* CardPaymentViewController.swift */; };
+		810B6B49230ACE6A00E2BFE1 /* APPayCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810B6B48230ACE6900E2BFE1 /* APPayCardViewController.swift */; };
 		811F820A21B473E1000238E9 /* AHMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820921B473E1000238E9 /* AHMenuViewController.swift */; };
 		811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820D21B49623000238E9 /* MenuViewCell.swift */; };
 		811F821021B82FE2000238E9 /* AHMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F820F21B82FE2000238E9 /* AHMenuSegue.swift */; };
 		811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821721BDD25A000238E9 /* SettingViewCell.swift */; };
-		811F821C21BEB212000238E9 /* AMSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821B21BEB212000238E9 /* AMSettingViewController.swift */; };
+		811F821C21BEB212000238E9 /* APSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811F821B21BEB212000238E9 /* APSearchViewController.swift */; };
 		8129D9F3233BACC400C9EDA8 /* IdentityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129D9F2233BACC400C9EDA8 /* IdentityService.swift */; };
 		813ADDBC232A67D5000AC5B7 /* CardValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813ADDBB232A67D5000AC5B7 /* CardValidation.swift */; };
+		8143D57A23A02DD700A44522 /* GPEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8143D57923A02DD700A44522 /* GPEnum.swift */; };
 		815A75502310693000F2262C /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A754F2310693000F2262C /* CountryService.swift */; };
 		815A755223106C9E00F2262C /* CountryBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A755123106C9E00F2262C /* CountryBO.swift */; };
-		81651DE723659EF4005D94C8 /* AMPOperationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81651DE623659EF4005D94C8 /* AMPOperationEnum.swift */; };
+		81651DE723659EF4005D94C8 /* GAEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81651DE623659EF4005D94C8 /* GAEnum.swift */; };
 		817D065A2179CE40007B22EB /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D06592179CE40007B22EB /* URLConstants.swift */; };
 		817D065E217A080E007B22EB /* UserBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D065D217A080E007B22EB /* UserBO.swift */; };
 		817D0661217D2D0C007B22EB /*  IRSSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D0660217D2D0C007B22EB /*  IRSSettingViewController.swift */; };
@@ -32,8 +33,8 @@
 		8184D8EB214C20AF00FF0E08 /* IAM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8184D8E9214C20AF00FF0E08 /* IAM.storyboard */; };
 		8184D8F0214C20AF00FF0E08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8184D8EE214C20AF00FF0E08 /* LaunchScreen.storyboard */; };
 		8184D8FF214D0F4300FF0E08 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8184D901214D0F4300FF0E08 /* Localizable.strings */; };
-		8193755F21FF7B96002E4923 /* AMCSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193755E21FF7B96002E4923 /* AMCSettingViewController.swift */; };
-		8193756221FFB43B002E4923 /* AMSCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193756121FFB43B002E4923 /* AMSCheckViewController.swift */; };
+		8193755F21FF7B96002E4923 /* APCSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193755E21FF7B96002E4923 /* APCSearchViewController.swift */; };
+		8193756221FFB43B002E4923 /* APSCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8193756121FFB43B002E4923 /* APSCheckViewController.swift */; };
 		819CC0E2215D5F50004AD1CA /* CountryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */; };
 		819CC0E4215D62C7004AD1CA /* IACSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0E3215D62C7004AD1CA /* IACSettingViewController.swift */; };
 		819CC0ED217131DD004AD1CA /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819CC0EC217131DD004AD1CA /* GlobalVariables.swift */; };
@@ -41,43 +42,39 @@
 		81AB622C23429EE90030C1F3 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB622B23429EE90030C1F3 /* AccountService.swift */; };
 		81AB6233234A7B790030C1F3 /* UtilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AB6232234A7B790030C1F3 /* UtilityHelper.swift */; };
 		81DAE04E218F505A002A19D9 /* IAUSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DAE04D218F505A002A19D9 /* IAUSettingViewController.swift */; };
-		81DB208722B2724C006F43FB /* AddressAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB208622B2724C006F43FB /* AddressAccountDto.swift */; };
-		81DB208922B2A5B5006F43FB /* ParserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB208822B2A5B5006F43FB /* ParserHelper.swift */; };
 		81DC728F21AEF2C400B6ECF8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 81DC728E21AEF2C400B6ECF8 /* Podfile */; };
 		81F3ECD321935A5D000F4D8C /* IRUManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD221935A5D000F4D8C /* IRUManagerViewController.swift */; };
-		81F3ECD5219480F6000F4D8C /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD4219480F6000F4D8C /* AccountModel.swift */; };
-		81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD621948A75000F4D8C /* AddressModel.swift */; };
 		81F3ECD921958A19000F4D8C /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECD821958A19000F4D8C /* HttpService.swift */; };
-		81F3ECDB2195AFDD000F4D8C /* AccountHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */; };
 		81F3ECE0219C79A1000F4D8C /* ACCOUNT.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */; };
 		81F3ECE3219C7A34000F4D8C /* AHMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F3ECE2219C7A34000F4D8C /* AHMainViewController.swift */; };
 		81F9686C22D12E5800A809A8 /* PaymentAccountBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9686B22D12E5800A809A8 /* PaymentAccountBO.swift */; };
 		81F9687022D4B30000A809A8 /* MenuConfigSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9686F22D4B30000A809A8 /* MenuConfigSession.swift */; };
 		81F9687422D6884800A809A8 /* AddressBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9687322D6884800A809A8 /* AddressBO.swift */; };
 		81F9687622D689C500A809A8 /* ProfileBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F9687522D689C500A809A8 /* ProfileBO.swift */; };
-		81FBEC3421C674FE00CBDBC8 /* AMPSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3321C674FE00CBDBC8 /* AMPSettingViewController.swift */; };
-		81FBEC3621C6766900CBDBC8 /* SettingAddressUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */; };
-		81FBEC3821C6768100CBDBC8 /* SettingPaymentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */; };
+		81FBEC3421C674FE00CBDBC8 /* APPSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3321C674FE00CBDBC8 /* APPSearchViewController.swift */; };
+		81FBEC3621C6766900CBDBC8 /* APAManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3521C6766900CBDBC8 /* APAManagerViewController.swift */; };
+		81FBEC3821C6768100CBDBC8 /* APPaySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC3721C6768100CBDBC8 /* APPaySearchViewController.swift */; };
 		81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */; };
-		81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */; };
+		81FBEC4D21CBF40500CBDBC8 /* APPPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC4C21CBF40500CBDBC8 /* APPPhotoViewController.swift */; };
 		DCEF9AAAFFE72A8EAD91D24B /* Pods_PackSendMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 942B95EFDF2737896B62F37F /* Pods_PackSendMe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8104BFE02316ED190097BA65 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
-		8104ED5021D57E070046A853 /* AMPUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPUpdateViewController.swift; sourceTree = "<group>"; };
+		8104ED5021D57E070046A853 /* APPManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPManagerViewController.swift; sourceTree = "<group>"; };
 		8105A90222847F5D00C711BB /* StreetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetViewCell.swift; sourceTree = "<group>"; };
-		810B6B48230ACE6900E2BFE1 /* CardPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentViewController.swift; sourceTree = "<group>"; };
+		810B6B48230ACE6900E2BFE1 /* APPayCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPayCardViewController.swift; sourceTree = "<group>"; };
 		811F820921B473E1000238E9 /* AHMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHMenuViewController.swift; sourceTree = "<group>"; };
 		811F820D21B49623000238E9 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewCell.swift; path = PackSendMe/View/MenuViewCell.swift; sourceTree = SOURCE_ROOT; };
 		811F820F21B82FE2000238E9 /* AHMenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHMenuSegue.swift; sourceTree = "<group>"; };
 		811F821721BDD25A000238E9 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingViewCell.swift; path = PackSendMe/View/SettingViewCell.swift; sourceTree = SOURCE_ROOT; };
-		811F821B21BEB212000238E9 /* AMSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMSettingViewController.swift; sourceTree = "<group>"; };
+		811F821B21BEB212000238E9 /* APSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APSearchViewController.swift; sourceTree = "<group>"; };
 		8129D9F2233BACC400C9EDA8 /* IdentityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityService.swift; sourceTree = "<group>"; };
 		813ADDBB232A67D5000AC5B7 /* CardValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidation.swift; sourceTree = "<group>"; };
+		8143D57923A02DD700A44522 /* GPEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPEnum.swift; sourceTree = "<group>"; };
 		815A754F2310693000F2262C /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 		815A755123106C9E00F2262C /* CountryBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryBO.swift; sourceTree = "<group>"; };
-		81651DE623659EF4005D94C8 /* AMPOperationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPOperationEnum.swift; sourceTree = "<group>"; };
+		81651DE623659EF4005D94C8 /* GAEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GAEnum.swift; sourceTree = "<group>"; };
 		817D06592179CE40007B22EB /* URLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		817D065D217A080E007B22EB /* UserBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserBO.swift; path = PackSendMe/BusinessObject/UserBO.swift; sourceTree = SOURCE_ROOT; };
 		817D0660217D2D0C007B22EB /*  IRSSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " IRSSettingViewController.swift"; sourceTree = "<group>"; };
@@ -98,8 +95,8 @@
 		8184D900214D0F4300FF0E08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8184D902214D0F4900FF0E08 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8184D903214D0F4A00FF0E08 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8193755E21FF7B96002E4923 /* AMCSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMCSettingViewController.swift; sourceTree = "<group>"; };
-		8193756121FFB43B002E4923 /* AMSCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMSCheckViewController.swift; sourceTree = "<group>"; };
+		8193755E21FF7B96002E4923 /* APCSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APCSearchViewController.swift; sourceTree = "<group>"; };
+		8193756121FFB43B002E4923 /* APSCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APSCheckViewController.swift; sourceTree = "<group>"; };
 		819CC0E1215D5F50004AD1CA /* CountryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryViewCell.swift; path = PackSendMe/View/CountryViewCell.swift; sourceTree = SOURCE_ROOT; };
 		819CC0E3215D62C7004AD1CA /* IACSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IACSettingViewController.swift; sourceTree = "<group>"; };
 		819CC0EC217131DD004AD1CA /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
@@ -107,25 +104,20 @@
 		81AB622B23429EE90030C1F3 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		81AB6232234A7B790030C1F3 /* UtilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityHelper.swift; sourceTree = "<group>"; };
 		81DAE04D218F505A002A19D9 /* IAUSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAUSettingViewController.swift; sourceTree = "<group>"; };
-		81DB208622B2724C006F43FB /* AddressAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAccountDto.swift; sourceTree = "<group>"; };
-		81DB208822B2A5B5006F43FB /* ParserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserHelper.swift; sourceTree = "<group>"; };
 		81DC728E21AEF2C400B6ECF8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		81F3ECD221935A5D000F4D8C /* IRUManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRUManagerViewController.swift; sourceTree = "<group>"; };
-		81F3ECD4219480F6000F4D8C /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountModel.swift; path = PackSendMe/BusinessObject/AccountModel.swift; sourceTree = SOURCE_ROOT; };
-		81F3ECD621948A75000F4D8C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddressModel.swift; path = PackSendMe/BusinessObject/AddressModel.swift; sourceTree = SOURCE_ROOT; };
 		81F3ECD821958A19000F4D8C /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
-		81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHelper.swift; sourceTree = "<group>"; };
 		81F3ECDF219C79A1000F4D8C /* ACCOUNT.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ACCOUNT.storyboard; sourceTree = "<group>"; };
 		81F3ECE2219C7A34000F4D8C /* AHMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHMainViewController.swift; sourceTree = "<group>"; };
 		81F9686B22D12E5800A809A8 /* PaymentAccountBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentAccountBO.swift; sourceTree = "<group>"; };
 		81F9686F22D4B30000A809A8 /* MenuConfigSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConfigSession.swift; sourceTree = "<group>"; };
 		81F9687322D6884800A809A8 /* AddressBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBO.swift; sourceTree = "<group>"; };
 		81F9687522D689C500A809A8 /* ProfileBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBO.swift; sourceTree = "<group>"; };
-		81FBEC3321C674FE00CBDBC8 /* AMPSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPSettingViewController.swift; sourceTree = "<group>"; };
-		81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAddressUserViewController.swift; sourceTree = "<group>"; };
-		81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPaymentUserViewController.swift; sourceTree = "<group>"; };
+		81FBEC3321C674FE00CBDBC8 /* APPSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPSearchViewController.swift; sourceTree = "<group>"; };
+		81FBEC3521C6766900CBDBC8 /* APAManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APAManagerViewController.swift; sourceTree = "<group>"; };
+		81FBEC3721C6768100CBDBC8 /* APPaySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPaySearchViewController.swift; sourceTree = "<group>"; };
 		81FBEC4421C70ADC00CBDBC8 /* ProfileUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileUserViewCell.swift; path = PackSendMe/View/ProfileUserViewCell.swift; sourceTree = SOURCE_ROOT; };
-		81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProfileViewController.swift; sourceTree = "<group>"; };
+		81FBEC4C21CBF40500CBDBC8 /* APPPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPPhotoViewController.swift; sourceTree = "<group>"; };
 		942B95EFDF2737896B62F37F /* Pods_PackSendMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PackSendMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6870FD3795CE67063CA593A /* Pods-PackSendMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.debug.xcconfig"; sourceTree = "<group>"; };
 		DE1A535711A750BD4EE5FCDE /* Pods-PackSendMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PackSendMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PackSendMe/Pods-PackSendMe.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +162,7 @@
 				819CC0F021739C34004AD1CA /* MainViewController.swift */,
 				8105A8FA22847DF000C711BB /* Account */,
 				817D065F217D2CD9007B22EB /* Identity */,
+				8143D578239EA33E00A44522 /* Generic */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,7 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				81AB622D2342AB680030C1F3 /* Home */,
-				81AB622F234367680030C1F3 /* Manager */,
+				81AB622F234367680030C1F3 /* Profile */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -188,6 +181,7 @@
 			children = (
 				819CC0EC217131DD004AD1CA /* GlobalVariables.swift */,
 				817D06592179CE40007B22EB /* URLConstants.swift */,
+				81DC728E21AEF2C400B6ECF8 /* Podfile */,
 			);
 			path = GlobalConstantes;
 			sourceTree = "<group>";
@@ -209,9 +203,6 @@
 				817D065D217A080E007B22EB /* UserBO.swift */,
 				815A755123106C9E00F2262C /* CountryBO.swift */,
 				817D06692181213A007B22EB /* HttpResponseModel.swift */,
-				81F3ECD4219480F6000F4D8C /* AccountModel.swift */,
-				81F3ECD621948A75000F4D8C /* AddressModel.swift */,
-				81DB208622B2724C006F43FB /* AddressAccountDto.swift */,
 				81F9686B22D12E5800A809A8 /* PaymentAccountBO.swift */,
 			);
 			path = BusinessObject;
@@ -229,11 +220,18 @@
 		812EB67A21595FE200DE540A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				81F3ECDA2195AFDD000F4D8C /* AccountHelper.swift */,
-				81DB208822B2A5B5006F43FB /* ParserHelper.swift */,
 				81AB6232234A7B790030C1F3 /* UtilityHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		8143D578239EA33E00A44522 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				81651DE623659EF4005D94C8 /* GAEnum.swift */,
+				8143D57923A02DD700A44522 /* GPEnum.swift */,
+			);
+			path = Generic;
 			sourceTree = "<group>";
 		};
 		815A754E2310691500F2262C /* Service */ = {
@@ -252,7 +250,7 @@
 		81651DE02358CD28005D94C8 /* Country */ = {
 			isa = PBXGroup;
 			children = (
-				8193755E21FF7B96002E4923 /* AMCSettingViewController.swift */,
+				8193755E21FF7B96002E4923 /* APCSearchViewController.swift */,
 			);
 			path = Country;
 			sourceTree = "<group>";
@@ -260,7 +258,7 @@
 		81651DE1235A2D00005D94C8 /* SMS */ = {
 			isa = PBXGroup;
 			children = (
-				8193756121FFB43B002E4923 /* AMSCheckViewController.swift */,
+				8193756121FFB43B002E4923 /* APSCheckViewController.swift */,
 			);
 			path = SMS;
 			sourceTree = "<group>";
@@ -309,7 +307,6 @@
 		8184D8D9214C20AF00FF0E08 = {
 			isa = PBXGroup;
 			children = (
-				81DC728E21AEF2C400B6ECF8 /* Podfile */,
 				8184D8E4214C20AF00FF0E08 /* PackSendMe */,
 				8184D8E3214C20AF00FF0E08 /* Products */,
 				F926172B8C861889A15AEDEC /* Pods */,
@@ -365,35 +362,34 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		81AB622F234367680030C1F3 /* Manager */ = {
+		81AB622F234367680030C1F3 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				811F821B21BEB212000238E9 /* AMSettingViewController.swift */,
-				81AB623023436D290030C1F3 /* Profile */,
+				811F821B21BEB212000238E9 /* APSearchViewController.swift */,
+				81AB623023436D290030C1F3 /* Personal */,
 				81651DE1235A2D00005D94C8 /* SMS */,
 				81651DE02358CD28005D94C8 /* Country */,
 				81D4EC3F22BFFFA00013A4C6 /* Payment */,
 				81AB623123436D3D0030C1F3 /* Address */,
 			);
-			name = Manager;
+			name = Profile;
 			path = User;
 			sourceTree = "<group>";
 		};
-		81AB623023436D290030C1F3 /* Profile */ = {
+		81AB623023436D290030C1F3 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				81FBEC3321C674FE00CBDBC8 /* AMPSettingViewController.swift */,
-				8104ED5021D57E070046A853 /* AMPUpdateViewController.swift */,
-				81FBEC4C21CBF40500CBDBC8 /* PhotoProfileViewController.swift */,
-				81651DE623659EF4005D94C8 /* AMPOperationEnum.swift */,
+				81FBEC3321C674FE00CBDBC8 /* APPSearchViewController.swift */,
+				8104ED5021D57E070046A853 /* APPManagerViewController.swift */,
+				81FBEC4C21CBF40500CBDBC8 /* APPPhotoViewController.swift */,
 			);
-			path = Profile;
+			path = Personal;
 			sourceTree = "<group>";
 		};
 		81AB623123436D3D0030C1F3 /* Address */ = {
 			isa = PBXGroup;
 			children = (
-				81FBEC3521C6766900CBDBC8 /* SettingAddressUserViewController.swift */,
+				81FBEC3521C6766900CBDBC8 /* APAManagerViewController.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
@@ -409,8 +405,8 @@
 		81D4EC3F22BFFFA00013A4C6 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				81FBEC3721C6768100CBDBC8 /* SettingPaymentUserViewController.swift */,
-				810B6B48230ACE6900E2BFE1 /* CardPaymentViewController.swift */,
+				81FBEC3721C6768100CBDBC8 /* APPaySearchViewController.swift */,
+				810B6B48230ACE6900E2BFE1 /* APPayCardViewController.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -567,50 +563,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				81DAE04E218F505A002A19D9 /* IAUSettingViewController.swift in Sources */,
-				81DB208722B2724C006F43FB /* AddressAccountDto.swift in Sources */,
 				815A75502310693000F2262C /* CountryService.swift in Sources */,
 				817D066A2181213A007B22EB /* HttpResponseModel.swift in Sources */,
 				81F3ECE3219C7A34000F4D8C /* AHMainViewController.swift in Sources */,
-				81FBEC4D21CBF40500CBDBC8 /* PhotoProfileViewController.swift in Sources */,
+				81FBEC4D21CBF40500CBDBC8 /* APPPhotoViewController.swift in Sources */,
 				8129D9F3233BACC400C9EDA8 /* IdentityService.swift in Sources */,
 				81F9687022D4B30000A809A8 /* MenuConfigSession.swift in Sources */,
 				8184D8E8214C20AF00FF0E08 /* ViewController.swift in Sources */,
 				811F820E21B49623000238E9 /* MenuViewCell.swift in Sources */,
 				817D065A2179CE40007B22EB /* URLConstants.swift in Sources */,
-				81FBEC3621C6766900CBDBC8 /* SettingAddressUserViewController.swift in Sources */,
+				81FBEC3621C6766900CBDBC8 /* APAManagerViewController.swift in Sources */,
 				817D0661217D2D0C007B22EB /*  IRSSettingViewController.swift in Sources */,
 				819CC0ED217131DD004AD1CA /* GlobalVariables.swift in Sources */,
-				81FBEC3421C674FE00CBDBC8 /* AMPSettingViewController.swift in Sources */,
-				81F3ECDB2195AFDD000F4D8C /* AccountHelper.swift in Sources */,
+				81FBEC3421C674FE00CBDBC8 /* APPSearchViewController.swift in Sources */,
 				8184D8E6214C20AF00FF0E08 /* AppDelegate.swift in Sources */,
 				815A755223106C9E00F2262C /* CountryBO.swift in Sources */,
 				811F821821BDD25A000238E9 /* SettingViewCell.swift in Sources */,
 				81AB6233234A7B790030C1F3 /* UtilityHelper.swift in Sources */,
-				810B6B49230ACE6A00E2BFE1 /* CardPaymentViewController.swift in Sources */,
+				810B6B49230ACE6A00E2BFE1 /* APPayCardViewController.swift in Sources */,
 				8104BFE12316ED190097BA65 /* PaymentService.swift in Sources */,
-				8104ED5121D57E070046A853 /* AMPUpdateViewController.swift in Sources */,
+				8104ED5121D57E070046A853 /* APPManagerViewController.swift in Sources */,
 				8105A90322847F5D00C711BB /* StreetViewCell.swift in Sources */,
 				81F3ECD921958A19000F4D8C /* HttpService.swift in Sources */,
 				8182DC2C236AD57200DC8131 /* SMSCodeService.swift in Sources */,
 				813ADDBC232A67D5000AC5B7 /* CardValidation.swift in Sources */,
 				819CC0E4215D62C7004AD1CA /* IACSettingViewController.swift in Sources */,
 				819CC0F121739C34004AD1CA /* MainViewController.swift in Sources */,
-				81F3ECD5219480F6000F4D8C /* AccountModel.swift in Sources */,
-				81DB208922B2A5B5006F43FB /* ParserHelper.swift in Sources */,
-				811F821C21BEB212000238E9 /* AMSettingViewController.swift in Sources */,
-				81FBEC3821C6768100CBDBC8 /* SettingPaymentUserViewController.swift in Sources */,
-				81651DE723659EF4005D94C8 /* AMPOperationEnum.swift in Sources */,
+				811F821C21BEB212000238E9 /* APSearchViewController.swift in Sources */,
+				81FBEC3821C6768100CBDBC8 /* APPaySearchViewController.swift in Sources */,
+				81651DE723659EF4005D94C8 /* GAEnum.swift in Sources */,
 				819CC0E2215D5F50004AD1CA /* CountryViewCell.swift in Sources */,
 				81FBEC4521C70ADC00CBDBC8 /* ProfileUserViewCell.swift in Sources */,
+				8143D57A23A02DD700A44522 /* GPEnum.swift in Sources */,
 				811F821021B82FE2000238E9 /* AHMenuSegue.swift in Sources */,
-				8193756221FFB43B002E4923 /* AMSCheckViewController.swift in Sources */,
+				8193756221FFB43B002E4923 /* APSCheckViewController.swift in Sources */,
 				81F9687622D689C500A809A8 /* ProfileBO.swift in Sources */,
 				81AB622C23429EE90030C1F3 /* AccountService.swift in Sources */,
-				81F3ECD721948A75000F4D8C /* AddressModel.swift in Sources */,
 				81F3ECD321935A5D000F4D8C /* IRUManagerViewController.swift in Sources */,
 				81F9687422D6884800A809A8 /* AddressBO.swift in Sources */,
 				81F9686C22D12E5800A809A8 /* PaymentAccountBO.swift in Sources */,
-				8193755F21FF7B96002E4923 /* AMCSettingViewController.swift in Sources */,
+				8193755F21FF7B96002E4923 /* APCSearchViewController.swift in Sources */,
 				817D065E217A080E007B22EB /* UserBO.swift in Sources */,
 				811F820A21B473E1000238E9 /* AHMenuViewController.swift in Sources */,
 			);

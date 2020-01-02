@@ -18,11 +18,7 @@ struct URLConstants{
 
 
 
-    struct PAYMENT{
-        static let payment_http = "http://192.241.133.13:9095/payment/"
-        static let pay_validatecard = "http://192.241.133.13:9095/payment/card/validate/"
-        static let payment_method = "http://192.241.133.13:9095/payment/method/"
-     }
+
     
     struct COUNTRY{
         static let country_http = "http://192.241.133.13:9096/country/"

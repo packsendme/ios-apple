@@ -9,7 +9,7 @@ import UIKit
 import GooglePlaces
 
 
-class AMSettingViewController: UIViewController {
+class APSearchViewController: UIViewController {
     
     @IBOutlet weak var settingTitleLabel: UILabel!
     @IBOutlet weak var settingTable: UITableView!
@@ -17,23 +17,22 @@ class AMSettingViewController: UIViewController {
     var headerHeightConstraint:NSLayoutConstraint!
     
     let loadingView = UIView()
-    var accountHelper = AccountHelper()
-    var addressParser = ParserHelper()
     var itens : [[String]] = []
     var jsonAccountFinal : [String: Any]? = nil
     var boxActivityView = UIView()
     var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-    var typeAddressChange : String? = nil
+    var typeAddress : String? = nil
     var addressUserArray : [String:Any]? = nil
-    var profileObj : ProfileBO?
-
     var lastContentOffset: CGFloat = 0
+
+    var profileObj : ProfileBO?
+    var amService = AccountService()
+    var addressObj = AddressBO()
 
     var oldContentOffset = CGPoint()
     let topConstraintRange = (CGFloat(120)..<CGFloat(300))
     var tableRowNumber : Int = 10
-    var amService = AccountService()
-
+    var profileImageDefault: String = "icon-user-photo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,32 +42,24 @@ class AMSettingViewController: UIViewController {
         settingTable.delegate = self
         settingTable.dataSource = self
         settingTable.decelerationRate = UIScrollViewDecelerationRateFast
-        super.viewDidLoad()
     }
-    
-
-
+ 
     func activityActionStart(title : String) {
         // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 125, width: 180, height: 50))
-        boxActivityView.backgroundColor = UIColor.lightGray
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 35, y: view.frame.midY - 40, width:50, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+        //UIColor.lightGray
         boxActivityView.alpha = 0.9
         boxActivityView.layer.cornerRadius = 10
-        
         //Here the spinnier is initialized
-        
         activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        activityView.color = UIColor.blue
-        
+        activityView.color = UIColor.black
         activityView.startAnimating()
-        
         let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        textLabel.textColor = UIColor.white
-        textLabel.text = title
-        
+        textLabel.textColor = UIColor.black
+        textLabel.text = ""
         boxActivityView.addSubview(activityView)
         boxActivityView.addSubview(textLabel)
-        
         view.addSubview(boxActivityView)
     }
     
@@ -77,19 +68,7 @@ class AMSettingViewController: UIViewController {
         self.boxActivityView.removeFromSuperview()
         self.activityView.stopAnimating()
     }
-    
-    @IBAction func homeToolBtnAction(_ sender: Any) {
-        self.performSegue(withIdentifier:"AHMainViewController", sender: nil)
-    }
-    
-    @IBAction func menuToolBtnAction(_ sender: Any) {
-        let transition = CATransition()
-        transition.duration = 0.1
-        transition.type = kCATransition
-        transition.subtype = kCATransitionFromBottom
-        dismiss(animated: false, completion: nil)
-    }
-    
+
     override func didReceiveMemoryWarning() {
            print(" DEALOCK MEMORY")
         super.didReceiveMemoryWarning()
@@ -97,18 +76,15 @@ class AMSettingViewController: UIViewController {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is AMPSettingViewController
+        if segue.destination is APPSearchViewController
         {
-            print(" prepare AUPSettingViewController")
-            let aupsetting = segue.destination as? AMPSettingViewController
+            let aupsetting = segue.destination as? APPSearchViewController
             aupsetting!.profileObj = self.profileObj!
         }
-        else if segue.destination is SettingAddressUserViewController
+        else if segue.destination is APAManagerViewController
         {
-            let setupAccessUser = segue.destination as? SettingAddressUserViewController
-            setupAccessUser?.typeAddressChange = typeAddressChange
-            //addressUserArray = jsonAccountFinal!["address"] as? [String:Any]
-            //setupAccessUser?.addressUserArray = addressUserArray
+            let setupAddress = segue.destination as? APAManagerViewController
+            setupAddress?.typeAddress = typeAddress
         }
     }
     
@@ -155,7 +131,7 @@ class AMSettingViewController: UIViewController {
 }
 
 
-extension AMSettingViewController : UITableViewDataSource, UITableViewDelegate{
+extension APSearchViewController : UITableViewDataSource, UITableViewDelegate{
     
     // this delegate is called when the scrollView (i.e your UITableView) will start scrolling
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -175,6 +151,7 @@ extension AMSettingViewController : UITableViewDataSource, UITableViewDelegate{
     }
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let addressObj = AddressBO()
         guard let cell = tableView.dequeueReusableCell(withIdentifier:"SettingInformationCell") as? SettingViewCell
             else{
                 return UITableViewCell()
@@ -201,7 +178,7 @@ extension AMSettingViewController : UITableViewDataSource, UITableViewDelegate{
                     cell.cellImage.layer.masksToBounds = true
                 }
                 else{
-                    imagePersonalView.image = UIImage(named: GlobalVariables.sharedManager.profileImageDefault)
+                    imagePersonalView.image = UIImage(named: profileImageDefault)
                     cell.cellImage?.image = imagePersonalView.image
                     let radius = cell.cellImage.frame.width / 2
                     cell.cellImage.layer.cornerRadius = radius
@@ -225,19 +202,17 @@ extension AMSettingViewController : UITableViewDataSource, UITableViewDelegate{
                 imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
                 imageAddressView.image = UIImage(named: "icon-user-house.png")
                 cell.cellImage.image = imageAddressView.image
-                
+                cell.identificador2Label.text = NSLocalizedString("setting-title-addhome", comment:"")
+
                 if profileObj!.address != nil {
                     for address in profileObj!.address! {
-                        if (address.type as! String == GlobalVariables.sharedManager.addressTypeHome) {
+                        if (address.type == addressObj.addressTypeHome) {
                             cell.identificador1Label.text = address.address
                             cell.identificador2Label.text = address.city
                             cell.identificador3Label.text = address.country
                             cell.identificador1Label.textColor = UIColor.black
                         }
                     }
-                }
-                else{
-                    cell.identificador2Label.text = NSLocalizedString("setting-title-addhome", comment:"")
                 }
             }
             // ADDRESS-JOB ACCOUNT
@@ -246,19 +221,17 @@ extension AMSettingViewController : UITableViewDataSource, UITableViewDelegate{
                 imageAddressView  = UIImageView(frame:CGRect(x: 0, y: 0,width:10, height:10));
                 imageAddressView.image = UIImage(named: "icon-user-work.png")
                 cell.cellImage.image = imageAddressView.image
-                
+                cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
+
                 if profileObj!.address != nil {
                     for address in profileObj!.address! {
-                        if (address.type == GlobalVariables.sharedManager.addressTypeJob) {
+                        if (address.type == addressObj.addressTypeJob) {
                             cell.identificador1Label.text = address.address
                             cell.identificador2Label.text = address.city
                             cell.identificador3Label.text = address.country
                             cell.identificador1Label.textColor = UIColor.black
                         }
                     }
-                }
-                else{
-                    cell.identificador2Label.text = NSLocalizedString("setting-title-addwork", comment:"")
                 }
             }
             
@@ -336,17 +309,17 @@ extension AMSettingViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.row == 1){
-            self.performSegue(withIdentifier:"AMPSettingViewController", sender: nil)
+            self.performSegue(withIdentifier:"APPSearchViewController", sender: nil)
         }
             // AddressHome
         else if(indexPath.row == 3){
-            typeAddressChange = GlobalVariables.sharedManager.addressTypeHome
-            self.performSegue(withIdentifier:"SettingViewToManagerAddressView", sender: nil)
+            typeAddress = addressObj.addressTypeHome
+            self.performSegue(withIdentifier:"APAManagerViewController", sender: nil)
         }
             // AddressJob
         else if(indexPath.row == 4){
-            typeAddressChange = GlobalVariables.sharedManager.addressTypeJob
-            self.performSegue(withIdentifier:"SettingViewToManagerAddressView", sender: nil)
+            typeAddress = addressObj.addressTypeJob
+            self.performSegue(withIdentifier:"APAManagerViewController", sender: nil)
         }
             // Payment Main
         else if(indexPath.row == 6){

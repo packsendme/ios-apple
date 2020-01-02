@@ -29,6 +29,9 @@ class IRUManagerViewController: UIViewController, UITextFieldDelegate {
     var profileObj = ProfileBO()
     var dateFormat = UtilityHelper()
     var formatPlaceHoldName = UtilityHelper()
+    var boxActivityView = UIView()
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     
     enum ViewType:String {
         case email = "IRUManagerEmail"
@@ -262,10 +265,37 @@ class IRUManagerViewController: UIViewController, UITextFieldDelegate {
         self.performSegue(withIdentifier:"IRUManagerPassword", sender: nil)
     }
     
+    
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 35, y: view.frame.midY - 40, width:50, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+        //UIColor.lightGray
+        boxActivityView.alpha = 0.9
+        boxActivityView.layer.cornerRadius = 10
+        //Here the spinnier is initialized
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.color = UIColor.black
+        activityView.startAnimating()
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.black
+        textLabel.text = ""
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        view.addSubview(boxActivityView)
+    }
+    
+    func activityActionStop() {
+        //When button is pressed it removes the boxView from screen
+        self.boxActivityView.removeFromSuperview()
+        self.activityView.stopAnimating()
+    }
+    
     /* ###################################################################################################
      ################################### < HTTP SERVICE >  ############################################### */
     
     func registerAccount() {
+        activityActionStart(title : NSLocalizedString("a-action-lbl-validation", comment:""))
         iamService.postCreateAccount(account: profileObj){(success, response, error) in
             if success == true{
                 DispatchQueue.main.async {
@@ -278,6 +308,7 @@ class IRUManagerViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             else if success == false{
+                self.activityActionStop()
                 DispatchQueue.main.async {
                     let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-msg-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))

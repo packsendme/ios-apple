@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
+class APPManagerViewController: UIViewController, UITextFieldDelegate {
     
     // Edit Name
     @IBOutlet weak var nameTitleLabel: UILabel!
@@ -41,7 +41,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordcurrentdetailLabel: UILabel!
     @IBOutlet weak var passwordValidateLabel: UILabel!
     
-    // Edit Username
+    // Edit PhoneUsername
     @IBOutlet weak var aupUsernameEditTitleLabel: UILabel!
     @IBOutlet weak var aupUsernameFieldLabel: UILabel!
     @IBOutlet weak var aupUsernameTextField: UITextField!
@@ -67,20 +67,19 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if metadadosView == amUpdateProfile.name.rawValue{
+        if metadadosView == GAConstants.name.rawValue{
             setupName()
         }
-        else if metadadosView == amUpdateProfile.email.rawValue{
+        else if metadadosView == GAConstants.email.rawValue{
             setupEmail()
         }
-        else if metadadosView == amUpdateProfile.password.rawValue{
+        else if metadadosView == GAConstants.password.rawValue{
             setupPassword()
         }
-        else if metadadosView == amUpdateProfile.username.rawValue{
+        else if metadadosView == GAConstants.username.rawValue{
             setupUsername()
         }
-        
-    }
+     }
     
     func textFieldDidChange(textField: UITextField){
         let text = textField.text
@@ -268,20 +267,20 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "AMPSettingViewController") {
-            let something = segue.destination as! AMPSettingViewController
+        if (segue.identifier == "APPSearchViewController") {
+            let something = segue.destination as! APPSearchViewController
             something.profileObj = self.profileObj!
         }
-        else if (segue.identifier == "AMSCheckViewController") {
-            let something = segue.destination as! AMSCheckViewController
+        else if (segue.identifier == "APSCheckViewController") {
+            let something = segue.destination as! APSCheckViewController
             something.numberphoneNew = aupCodUsernameLabel.text!+aupUsernameTextField.text!
             something.metadadosView = "SMSCodeRegister"
             something.country = countryObj!
         }
-        else if (segue.identifier == "AMCSettingViewController") {
-            let something = segue.destination as! AMCSettingViewController
+        else if (segue.identifier == "APCSearchViewController") {
+            let something = segue.destination as! APCSearchViewController
             something.countryDto = countryObj!
-            something.operationTypeController = amCountryViewReturn.ampSettingViewController.rawValue
+            something.operationTypeController = GAViewController.APPSearch.rawValue
         }
     }
     
@@ -320,51 +319,42 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         checkPasswordCurrent(password: formattedPassword)
     }
     
+ //        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 120, y: view.frame.midY - 70, width: 180, height: 50))
+   
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 40, y: view.frame.midY - 70, width:50, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+        //UIColor.lightGray
+        boxActivityView.alpha = 0.9
+        boxActivityView.layer.cornerRadius = 10
+        //Here the spinnier is initialized
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.color = UIColor.black
+        activityView.startAnimating()
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.black
+        textLabel.text = ""
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        view.addSubview(boxActivityView)
+    }
+    
     func activityActionStop() {
         //When button is pressed it removes the boxView from screen
         self.boxActivityView.removeFromSuperview()
         self.activityView.stopAnimating()
     }
-    
-    func activityActionStart(title : String) {
-        // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 120, y: view.frame.midY - 70, width: 180, height: 50))
-        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
 
-
-            //UIColor.lightGray
-        boxActivityView.alpha = 0.9
-        boxActivityView.layer.cornerRadius = 10
-        
-        //Here the spinnier is initialized
-        
-        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        activityView.color = UIColor.black
-        
-        activityView.startAnimating()
-        
-        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        textLabel.textColor = UIColor.black
-        textLabel.text = title
-        
-        boxActivityView.addSubview(activityView)
-        boxActivityView.addSubview(textLabel)
-        
-        view.addSubview(boxActivityView)
-    }
     
     func settingHolder(field : String) -> NSMutableAttributedString{
         var placeHolder = NSMutableAttributedString()
         let name  = NSLocalizedString(field, comment:"")
-        
         // Set the Font
         placeHolder = NSMutableAttributedString(string:name, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 17.0)!])
-        
         // Set the color
         let color = UIColor(red:0.76, green:0.75, blue:0.75, alpha:1.0)
-
         placeHolder.addAttribute(NSForegroundColorAttributeName, value: color, range:NSRange(location:0,length:name.count))
-        
         // Add attribute
        return placeHolder
     }
@@ -376,7 +366,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
     }
     
     
- //=================================================================================================================================//
+ //========================= HTTP ====================================================================================//
 
 
     // -------------------------------------------------------------------------------------
@@ -389,7 +379,8 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         amService.updateUserProfile(profile:profileObj!){(success, response, error) in
             if success == true{
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"AMPSettingViewController", sender: nil)
+                    GlobalVariables.sharedManager.nameFirst = self.profileObj!.name!
+                    self.performSegue(withIdentifier:"APPSearchViewController", sender: nil)
                 }
             }
             else{
@@ -451,7 +442,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
         iamService.updatePassword(password: passwordnewTextField.text!){(success, response, error) in
             if success == true{
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier:"AMSPSettingViewController", sender: nil)
+                    self.performSegue(withIdentifier:"APPSerchViewController", sender: nil)
                 }
             }
             else{
@@ -478,7 +469,7 @@ class AMPUpdateViewController: UIViewController, UITextFieldDelegate {
             if success == true{
                 if URLConstants.HTTP_STATUS_CODE.OK == responseCode as! Int {
                     DispatchQueue.main.async {
-                        self.performSegue(withIdentifier:"AMSCheckViewController", sender: nil)
+                        self.performSegue(withIdentifier:"APSCheckViewController", sender: nil)
                     }
                 }
                 else if URLConstants.HTTP_STATUS_CODE.FOUND == responseCode as! Int{

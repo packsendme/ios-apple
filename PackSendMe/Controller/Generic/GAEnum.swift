@@ -8,14 +8,18 @@
 
 import UIKit
 
-enum amUpdateProfile:String {
+enum GAConstants:String {
     case name = "names"
     case email = "email"
     case password = "password"
     case username = "username" // phonumber
 }
 
-enum amCountryViewReturn:String {
-    case ampSettingViewController = "AMPSettingViewController"
-    case amPaymentCard = "CardPaymentViewController"
+enum GAViewController:String {
+    case APPSearch = "APPSearchViewController"
+    case APPaySearch = "APPaySearchViewController"
+    case APPayCard = "APPayCardViewController"
+    case APPManagerUsername = "APPManagerUsernameViewController"
+
+
 }

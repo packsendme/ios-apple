@@ -132,28 +132,20 @@ class IAUSettingViewController: UIViewController, UITextFieldDelegate{
     
     func activityActionStart(title : String) {
         // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 100, y: view.frame.midY - 80, width: 160, height: 50))
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 40, y: view.frame.midY - 95, width:50, height: 50))
         boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
-        
-        
         //UIColor.lightGray
         boxActivityView.alpha = 0.9
         boxActivityView.layer.cornerRadius = 10
-        
         //Here the spinnier is initialized
-        
         activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         activityView.color = UIColor.black
-        
         activityView.startAnimating()
-        
         let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
         textLabel.textColor = UIColor.black
-        textLabel.text = title
-        
+        textLabel.text = ""
         boxActivityView.addSubview(activityView)
         boxActivityView.addSubview(textLabel)
-        
         view.addSubview(boxActivityView)
     }
     

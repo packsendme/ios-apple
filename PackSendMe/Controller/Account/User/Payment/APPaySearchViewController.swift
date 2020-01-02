@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingPaymentUserViewController: UIViewController {
+class APPaySearchViewController: UIViewController {
     
     @IBOutlet weak var labelTitleScreenPay: UILabel!
     @IBOutlet weak var tablePayment: UITableView!
@@ -16,51 +16,62 @@ class SettingPaymentUserViewController: UIViewController {
     var paymentL = [(String,Array<PaymentAccountBO>)]()
     let paymentBO = PaymentAccountBO()
     var payTransactionSelect = PaymentAccountBO()
-
     var paymentService = PaymentService()
-    
     @IBOutlet weak var paymentTitle: UILabel!
-    
+
+    var boxActivityView = UIView()
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         paymentTitle.text = NSLocalizedString("payment-title-methodopay", comment:"")
         //self.tablePayment.rowHeight = UITableViewAutomaticDimension
+        self.activityActionStart(title : NSLocalizedString("a-action-lbl-loading", comment:""))
         loadPaymentMethodAccount()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     func loadPaymentMethodAccount(){
         paymentService.getPaymentsByUsername(){(success, response, error) in
-            if success{
-               self.paymentL = response as! [(String,Array<PaymentAccountBO>)]
-                self.refreshTable()
-            }
-            else if error != nil{
+            
+            if success == true{
+                self.paymentL = response as! [(String,Array<PaymentAccountBO>)]
                 DispatchQueue.main.async {
-                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(ac, animated:  true)
+                    self.tablePayment.reloadData()
+                    self.activityActionStop()
+                    
+                    UIView.transition(with: self.view,
+                                    duration:0.5,
+                                    options: .transitionCrossDissolve,
+                                    animations: {
+                                    self.tablePayment.reloadData()},
+                                    completion: nil)
+                }
+                self.activityActionStop()
+            }
+            else if success == false{
+                if error != nil{
+                    DispatchQueue.main.async {
+                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(ac, animated:  true)
+                    }
                 }
             }
         }
-    
     }
-        
-    func refreshTable() {
-        DispatchQueue.global(qos: .background).async {
-            DispatchQueue.main.async {
-                self.tablePayment.reloadData()
-            }
-        }
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "VoucherPayOperationView"{
 
         }
-        if segue.identifier == "CardPayOperationView"{
-            print(" ----**************-------")
-            let cardpayVC = segue.destination as? CardPaymentViewController
+        if segue.identifier == "APPayCardViewController"{
+            let cardpayVC = segue.destination as? APPayCardViewController
             cardpayVC?.cardpaySelect = payTransactionSelect
         }
         if segue.identifier == "PromotionPayOperationView"{
@@ -68,33 +79,55 @@ class SettingPaymentUserViewController: UIViewController {
         }
     }
     
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 35, y: view.frame.midY - 40, width:50, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+        //UIColor.lightGray
+        boxActivityView.alpha = 0.9
+        boxActivityView.layer.cornerRadius = 10
+        //Here the spinnier is initialized
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.color = UIColor.black
+        activityView.startAnimating()
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.black
+        textLabel.text = ""
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        view.addSubview(boxActivityView)
+    }
+    
+    func activityActionStop() {
+        //When button is pressed it removes the boxView from screen
+        self.boxActivityView.removeFromSuperview()
+        self.activityView.stopAnimating()
+    }
+    
 }
 
-extension SettingPaymentUserViewController : UITableViewDataSource, UITableViewDelegate{
+extension APPaySearchViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print (" TOTAL numberOfRowsInSection  = \(self.paymentL[section].1.count)")
         return self.paymentL[section].1.count
     }
-    
+  
     func numberOfSections(in tableView: UITableView) -> Int {
-       //print (" TOTAL LINHA  = \(paymentL.count)")
         return paymentL.count
     }
+    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return paymentL[section].0
     }
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCell", for: indexPath) //as? SettingViewCell
-
        guard let cell = tableView.dequeueReusableCell(withIdentifier:"PaymentCell", for: indexPath) as? SettingViewCell
         else{
           return UITableViewCell()
         }
 
-        cell.identificador1Label.font = UIFont(name:"Avenir", size:17)
+        cell.identificador1Label.font = UIFont(name:"Avenir", size:18)
         cell.identificador1Label.textColor = UIColor.darkGray
         tableView.rowHeight = 60
         let payTransaction = paymentL[indexPath.section].1[indexPath.row]
@@ -112,20 +145,21 @@ extension SettingPaymentUserViewController : UITableViewDataSource, UITableViewD
             cell.identificador1Label.text = String(mySubstring) as String
             cell.identificador3Label.isHidden = false
         }
+        else{
+            cell.identificador1Label.frame.origin = CGPoint(x: 20, y: 16)
+
+        }
         
-        
-        if payTransaction.payStatus == GlobalVariables.sharedManager.validateCard {
+        if payTransaction.payStatus == GPConstants.validateCard.rawValue {
             cell.identificador3Label.textColor = UIColor.blue
             cell.identificador3Label.font = UIFont(name:"Avenir", size:16)
             cell.identificador3Label.text = NSLocalizedString("payment-title-statusvalidated", comment:"")
         }
-        else if payTransaction.payStatus == GlobalVariables.sharedManager.InvalidCard {
+        else if payTransaction.payStatus == GPConstants.invalidCard.rawValue {
             cell.identificador3Label.textColor = UIColor.red
             cell.identificador3Label.font = UIFont(name:"Avenir", size:16)
             cell.identificador3Label.text = NSLocalizedString("payment-title-statusinvalid", comment:"")
         }
-
-        
         switch payTransaction.payEntity {
             case "VisaCard":
                 cell.cellImage.image =  UIImage(named: "icon-card-visa")
@@ -148,22 +182,16 @@ extension SettingPaymentUserViewController : UITableViewDataSource, UITableViewD
             case "TicketPromotion":
                 cell.cellImage.image = UIImage(named: "icon-promotion")
             default:
-                cell.cellImage.image = UIImage(named: "icon-card-standard")
+                cell.cellImage.image = UIImage(named: "")
         }
         return cell
     }
     
-   /*
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 45;//Choose your custom row height
-    }
-    */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         payTransactionSelect = paymentL[indexPath.section].1[indexPath.row]
         
         if payTransactionSelect.payType == "CARD_PAY"{
-            self.performSegue(withIdentifier:"CardPayOperationView", sender: nil)
+            self.performSegue(withIdentifier:"APPayCardViewController", sender: nil)
         }
         else if payTransactionSelect.payType == "VOUCHER_PAY"{
             self.performSegue(withIdentifier:"VoucherPayOperationView", sender: nil)
@@ -174,14 +202,14 @@ extension SettingPaymentUserViewController : UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60.0
+        return 70.0
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
         let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.backgroundView?.backgroundColor = UIColor.groupTableViewBackground
-        header.textLabel!.textColor = UIColor.darkGray
+        header.textLabel!.textColor = UIColor.black
         header.textLabel!.font = UIFont(name:"Avenir", size:20)
        // header.textLabel!.font = UIFont.boldSystemFont(ofSize: 17)
         header.textLabel!.frame = header.frame

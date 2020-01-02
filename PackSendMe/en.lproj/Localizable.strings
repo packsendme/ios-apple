@@ -596,16 +596,11 @@
 "payment-title-changecard" = "Please select an option";
 "payment-title-editcard" = "Edit Card";
 "payment-title-deletecard" = "Delete Card";
-
 "card-title-countrycard" = "Select Country Card";
-
 "carpay-body-foundcard" = "The card informed is already registered. Verify Card Data";
 "carpay-validation-error" = "Invalid card number, check number";
 "carpay-msghead-validation" = "Validation Credit Card";
 "cardpay-msgbody-validation" = "Check the data of the card informed. Your validation was not successful";
-
-
-
 "paymentadd-field-cardname" = "Card Holder";
 "paymentadd-field-cardnumber" = "Number";
 "paymentadd-field-cardexpdate" = "Exp. Date";
@@ -616,7 +611,6 @@
 "paymentadd-label-cardnamenot" = "Enter the CVV number";
 "paymentadd-btn-editpayment" = "EDIT PAYMENT";
 "paymentadd-btn-deletepayment" = "DELETE PAYMENT";
-
 "payment-titlebtnscreen-paymentdelete" = "Delete";
 "payment-titlebtnscreen-paymentcancel" = "Cancel";
 "payment-titlescreen-paymentdelete" = "Delete Payment";

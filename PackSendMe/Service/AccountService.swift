@@ -16,7 +16,7 @@ public struct AccountService{
     struct url_account{
         static let account_http = "http://192.241.133.13:9094/account/"
         static let accountmanager_http = "http://192.241.133.13:9094/account/manager/"
-        static let accountpayment_http = "http://192.241.133.13:9094/account/payment/"
+        static let accountadress_http = "http://192.241.133.13:9094/account/address/"
     }
     
     
@@ -106,5 +106,46 @@ public struct AccountService{
             })
         }
     }
+    
+    // -------------------------------------------------------------------------------------
+    // FUNCTION : updateProfileAddress()
+    // SCREEEN : AUPManagerViewControlle
+    // ACTION :  UPDATE
+    // -------------------------------------------------------------------------------------
+    func updateProfileAddress(username : String, location : String, typeAddress : String, priorityAddress : String, completion: @escaping (Bool, Any?, Error?) -> Void){
+        let addressObj = AddressBO()
+        let dateUpdate = dateFormat.dateConvertToString()
+        let accountURL = url_account.accountadress_http+username
+        var paramsDictionary = [String:Any]()
+
+        paramsDictionary = addressObj.addressObjectToArray(address:location, type:typeAddress, main:priorityAddress, dateUpdate: dateUpdate)
+
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
+            HttpService.instance().makeAPIBodyCall(url: accountURL, params:paramsDictionary, method: .PUT, success:
+                { (data, response, error) in
+                    do{
+                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                            DispatchQueue.main.async {
+                                completion(true,nil,nil)
+                            }
+                        }
+                        else{
+                            DispatchQueue.main.async {
+                                completion(false,nil,nil)
+                            }
+                        }
+                    } catch _ {
+                        DispatchQueue.main.async {
+                            completion(false,nil,error)
+                        }
+                    }
+            }, failure: {  (data, response, error) in
+                DispatchQueue.main.async {
+                    completion(false,nil,error)
+                }
+            })
+        }
+    }
+
     
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AMSCheckViewController: UIViewController, UITextFieldDelegate {
+class APSCheckViewController: UIViewController, UITextFieldDelegate {
     
     // New SMS Code - UIVIEM
     
@@ -75,7 +75,7 @@ class AMSCheckViewController: UIViewController, UITextFieldDelegate {
     
     
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(AMSCheckViewController.updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(APSCheckViewController.updateTimer)), userInfo: nil, repeats: true)
     }
     
     func updateTimer() {
@@ -273,39 +273,31 @@ class AMSCheckViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 45, y: view.frame.midY - 40, width:50, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+        //UIColor.lightGray
+        boxActivityView.alpha = 0.9
+        boxActivityView.layer.cornerRadius = 10
+        //Here the spinnier is initialized
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.color = UIColor.black
+        activityView.startAnimating()
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.black
+        textLabel.text = ""
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        view.addSubview(boxActivityView)
+    }
+    
     func activityActionStop() {
         //When button is pressed it removes the boxView from screen
         self.boxActivityView.removeFromSuperview()
         self.activityView.stopAnimating()
     }
-    
-    func activityActionStart(title : String) {
-        // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 120, y: view.frame.midY - 70, width: 200, height: 50))
-        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
 
-        
-        //UIColor.lightGray
-        boxActivityView.alpha = 0.9
-        boxActivityView.layer.cornerRadius = 10
-        
-        //Here the spinnier is initialized
-        
-        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        activityView.color = UIColor.black
-        
-        activityView.startAnimating()
-        
-        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        textLabel.textColor = UIColor.black
-        textLabel.text = title
-        
-        boxActivityView.addSubview(activityView)
-        boxActivityView.addSubview(textLabel)
-        
-        view.addSubview(boxActivityView)
-    }
-    
     
 // ################################# HTTP #################################################################//
     

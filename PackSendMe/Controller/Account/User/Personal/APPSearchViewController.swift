@@ -8,19 +8,22 @@
 
 import UIKit
 
-class AMPSettingViewController: UIViewController {
+class APPSearchViewController: UIViewController {
 
+    @IBOutlet weak var ampScreenTitleLabel: UILabel!
     @IBOutlet weak var userprofileTable: UITableView!
     @IBOutlet weak var photoprofileBtn: UIButton!
     @IBOutlet weak var useraccountLabel: UILabel!
 
     var profileObj = ProfileBO()
-   // var passedAccountStruct = [AccountStruct]()
     var countryObj : CountryBO? = nil
+    var profileImageDefault: String = "icon-user-photo"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        ampScreenTitleLabel.text = NSLocalizedString("aup-setting-title", comment:"")
         countryObj = CountryBO(countryImage: GlobalVariables.sharedManager.countryImageInstance!, name: GlobalVariables.sharedManager.countryNameInstance, cod: GlobalVariables.sharedManager.countryCodInstance, format: GlobalVariables.sharedManager.countryFormatInstance,sigla:"" )
 
        // ampTitleSettingLbl.text = NSLocalizedString("aup-setting-title", comment:"")
@@ -41,7 +44,7 @@ class AMPSettingViewController: UIViewController {
             photoprofileBtn.setImage(profileImage, for: .normal)
         }
         else{
-            let dataImage = UIImage(named: GlobalVariables.sharedManager.profileImageDefault)
+            let dataImage = UIImage(named: profileImageDefault)
             photoprofileBtn.setImage(dataImage, for: .normal)
         }
         userprofileTable.delegate = self
@@ -49,50 +52,45 @@ class AMPSettingViewController: UIViewController {
     }
     
     @IBAction func photoProfileAction(_ sender: Any){
-        self.performSegue(withIdentifier:"PhotoProfileViewControllerGo", sender: nil)
+        self.performSegue(withIdentifier:"APPPhoto", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        
-        if segue.identifier	== "PhotoProfileViewControllerGo"{
-            let setupPhotoProfile = segue.destination as? PhotoProfileViewController
-            setupPhotoProfile?.profileObj = profileObj
-        }
-        if segue.identifier == "AMPUpdateNames"{
-            let setupNames = segue.destination as? AMPUpdateViewController
+        if segue.identifier == "APPManagerNames"{
+            let setupNames = segue.destination as? APPManagerViewController
             setupNames?.profileObj = profileObj
-            setupNames?.metadadosView = amUpdateProfile.name.rawValue
+            setupNames?.metadadosView = GAConstants.name.rawValue
         }
-        if segue.identifier == "AMPUpdateEmail"{
-            let setupEmail = segue.destination as? AMPUpdateViewController
+        if segue.identifier == "APPManagerEmail"{
+            let setupEmail = segue.destination as? APPManagerViewController
             setupEmail?.profileObj = profileObj
-            setupEmail?.metadadosView = amUpdateProfile.email.rawValue
+            setupEmail?.metadadosView = GAConstants.email.rawValue
         }
-        if segue.identifier == "AMPUpdatePassword"{
-            let setupPassword = segue.destination as? AMPUpdateViewController
+        if segue.identifier == "APPManagerPassword"{
+            let setupPassword = segue.destination as? APPManagerViewController
             setupPassword?.profileObj = profileObj
-            setupPassword?.metadadosView = amUpdateProfile.password.rawValue
+            setupPassword?.metadadosView = GAConstants.password.rawValue
         }
-        if segue.identifier == "AMPUpdateUsername"{
-            let setupUsername = segue.destination as? AMPUpdateViewController
+        if segue.identifier == "APPManagerUsername"{
+            let setupUsername = segue.destination as? APPManagerViewController
             setupUsername?.countryObj = countryObj
             setupUsername?.profileObj = profileObj
-            setupUsername?.metadadosView = amUpdateProfile.username.rawValue
+            setupUsername?.metadadosView = GAConstants.username.rawValue
         }
     }
     
+    @IBAction func photoReturn(_ sender: Any) {
+        
+    }
     
-
 }
 
-extension AMPSettingViewController: UITableViewDataSource, UITableViewDelegate{
+extension APPSearchViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
-    
- 
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 15;
@@ -102,8 +100,6 @@ extension AMPSettingViewController: UITableViewDataSource, UITableViewDelegate{
     {
         return 75.0;//Choose your custom row height
     }
-    
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //var countryObj = countriesData[indexPath.section][indexPath.row]
@@ -142,21 +138,24 @@ extension AMPSettingViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if indexPath.row == 0{
-           self.performSegue(withIdentifier:"AMPUpdateNames", sender: nil)
+           self.performSegue(withIdentifier:"APPManagerNames", sender: nil)
        }
        else if indexPath.row == 1{
-           self.performSegue(withIdentifier:"AMPUpdateNames", sender: nil)
+           self.performSegue(withIdentifier:"APPManagerNames", sender: nil)
        }
        else if indexPath.row == 2{
-            self.performSegue(withIdentifier:"AMPUpdateEmail", sender: nil)
+            self.performSegue(withIdentifier:"APPManagerEmail", sender: nil)
        }
        else if indexPath.row == 3{
-            self.performSegue(withIdentifier:"AMPUpdatePassword", sender: nil)
+            self.performSegue(withIdentifier:"APPManagerPassword", sender: nil)
        }
        else if indexPath.row == 4{
-            self.performSegue(withIdentifier:"AMPUpdateUsername", sender: nil)
+            self.performSegue(withIdentifier:"APPManagerUsername", sender: nil)
        }
     }
+    
+    
+    
 }
 
 

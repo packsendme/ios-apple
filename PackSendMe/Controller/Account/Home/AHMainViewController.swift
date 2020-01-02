@@ -36,9 +36,20 @@ class AHMainViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(menuBtn)*/
         
         mapView.reloadInputViews()
+       /*
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! AHMenuViewController
         present(menu_vc!, animated: true)
+        */
+    }
+    
+    override func didReceiveMemoryWarning() {
+        print(" DEALOCK MEMORY")
+        super.didReceiveMemoryWarning()
+    }
 
+    func reloadMenu(){
+        menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! AHMenuViewController
+        present(menu_vc!, animated: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -63,19 +74,15 @@ class AHMainViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
-    @IBAction func menuActionView(_ sender: UIButton) {
-         showMenu()
-    }
-    
     func showMenu(){
         let transition:CATransition = CATransition()
         transition.duration = 0.25
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromTop
-       // present(menu_vc!, animated: true)
-        show(menu_vc, sender: true)
-       //self.performSegue(withIdentifier:"AHMenuViewController", sender: nil)
+        //present(menu_vc!, animated: true)
+        //show(menu_vc, sender: true)
+       self.performSegue(withIdentifier:"AHMenuViewController", sender: nil)
        /* let storyboard = UIStoryboard(name: "ACCOUNT", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
         self.present(controller, animated: false, completion: nil)*/
@@ -83,6 +90,7 @@ class AHMainViewController: UIViewController, CLLocationManagerDelegate {
     
 
     @IBAction func actionMenu(_ sender: Any) {
+       // reloadMenu()
         showMenu()
     }
     

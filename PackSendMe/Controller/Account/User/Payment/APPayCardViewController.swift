@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardPaymentViewController: UIViewController, UITextFieldDelegate {
+class APPayCardViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var cardtitleLabel: UILabel!
 
@@ -46,7 +46,6 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(" ********************** ")
         
         cardtitleLabel.text = NSLocalizedString("payment-title-card", comment:"")
         numcarderrorLabel.isHidden = true
@@ -70,15 +69,17 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
         // SELECT AUTO COUNTRY
         self.countrycardImage.image = UIImage(named: "icon-countrydefault")
         self.countrycardBtn.setTitle(NSLocalizedString("card-title-countrycard", comment:""), for: .normal)
-
+        
         // Operation Type : ADD NEW CARD PAY
-        if cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_save{
+        if cardpaySelect.operationTransaction == GPConstants.op_save.rawValue{
             cardPaySettingFieldCard()
+            self.savepayBtn.setTitle(NSLocalizedString("payment-title-addcard", comment:""), for: .normal)
             menuslideBtn.isHidden = true
         }
         // Operation Type : EDIT CARD PAY
-        else if cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_edit{
+        else if cardpaySelect.operationTransaction == GPConstants.op_edit.rawValue{
             cardPaySettingFieldCard()
+            self.savepayBtn.setTitle(NSLocalizedString("payment-title-editcard", comment:""), for: .normal)
             menuslideBtn.isHidden = false
             if countryDto == nil{
                 statusEdit = false
@@ -92,18 +93,18 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     
     func cardPaySettingFieldCard(){
         
-        if cardpaySelect.payCodenum != nil &&  cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_edit{
+        if cardpaySelect.payCodenum != nil &&  cardpaySelect.operationTransaction == GPConstants.op_edit.rawValue{
             numbercardFieldText.isEnabled = true
             let numcodFourLast = cardpaySelect.payCodenum!.suffix(4)
             print("LAST CODE \(numcodFourLast)")
             let mySubstring = "•••• •••• •••• "+numcodFourLast
             numbercardFieldText.text = String(mySubstring) as String
         }
-        else if cardpaySelect.payCodenum == nil &&  cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_save{
+        else if cardpaySelect.payCodenum == nil &&  cardpaySelect.operationTransaction == GPConstants.op_save.rawValue{
             numbercardFieldText.placeholder = "•••• •••• •••• ••••"
             numbercardFieldText.becomeFirstResponder()
         }
-        else if cardpaySelect.payCodenum != nil &&  cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_save{
+        else if cardpaySelect.payCodenum != nil &&  cardpaySelect.operationTransaction == GPConstants.op_save.rawValue{
             numbercardFieldText.text = self.modifyCreditCardString(creditCardString: cardpaySelect.payCodenum!)
         }
         
@@ -118,7 +119,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
           datecardFieldText.attributedPlaceholder = NSAttributedString(string: "MM/YY",attributes: [NSForegroundColorAttributeName: UIColor.lightGray])
         }
         
-        if cardpaySelect.payValue != nil &&  cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_save{
+        if cardpaySelect.payValue != nil &&  cardpaySelect.operationTransaction == GPConstants.op_save.rawValue{
             cvvcardFieldText.text = cardpaySelect.payValue
         }
         else{
@@ -396,90 +397,81 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    func activityActionStart(title : String) {
+        // You only need to adjust this frame to move it anywhere you want
+        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 35, y: view.frame.midY - 40, width:50, height: 50))
+        boxActivityView.backgroundColor = UIColor(red:0.90, green:0.90, blue:0.90, alpha:1.0)
+        //UIColor.lightGray
+        boxActivityView.alpha = 0.9
+        boxActivityView.layer.cornerRadius = 10
+        //Here the spinnier is initialized
+        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityView.color = UIColor.black
+        activityView.startAnimating()
+        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
+        textLabel.textColor = UIColor.black
+        textLabel.text = ""
+        boxActivityView.addSubview(activityView)
+        boxActivityView.addSubview(textLabel)
+        view.addSubview(boxActivityView)
+    }
+    
     func activityActionStop() {
         //When button is pressed it removes the boxView from screen
         self.boxActivityView.removeFromSuperview()
         self.activityView.stopAnimating()
     }
-    
-    func activityActionStart(title : String) {
-        // You only need to adjust this frame to move it anywhere you want
-        boxActivityView = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 125, width: 180, height: 50))
-        boxActivityView.backgroundColor = UIColor.lightGray
-        boxActivityView.alpha = 0.9
-        boxActivityView.layer.cornerRadius = 10
-        
-        //Here the spinnier is initialized
-        
-        activityView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        activityView.color = UIColor.red
-        
-        activityView.startAnimating()
-        
-        let textLabel = UILabel(frame: CGRect(x: 60, y: 0, width: 200, height: 50))
-        textLabel.textColor = UIColor.white
-        textLabel.text = title
-        
-        boxActivityView.addSubview(activityView)
-        boxActivityView.addSubview(textLabel)
-        
-        view.addSubview(boxActivityView)
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CountryAccountViewController"{
-            let something = segue.destination as! AMCSettingViewController
+        if segue.identifier == "APCSearchViewController"{
+            let something = segue.destination as! APCSearchViewController
             something.countryDto = self.countryDto!
-            something.operationTypeController = GlobalVariables.sharedManager.OP_CHANGE_COUNTRY_CARDPAY
+            something.operationTypeController = GAViewController.APPayCard.rawValue
             something.cardpaySelect = self.cardpaySelect
         }
      }
     
     
     func validateCreditCard(){
-            paymentService.getValidateCreditCard(paymentDto: cardpaySelect){(success, response, error) in
-                if success == true{
-                   self.cardpaySelect.payStatus = GlobalVariables.sharedManager.validateCard
-                    DispatchQueue.main.async {
-                        self.findCardByCodnum(codNum: self.cardpaySelect.payCodenum!)
-                    }
-                }
-                else if success == false  && error == nil{
-                    print("validateCreditCard() --> NOK ")
-                    self.cardpaySelect.payStatus = GlobalVariables.sharedManager.InvalidCard
-                    DispatchQueue.main.async {
-                        
-                        let alertController = UIAlertController(title: NSLocalizedString("carpay-msghead-validation", comment:""), message: NSLocalizedString("cardpay-msgbody-validation", comment:""), preferredStyle: .alert)
-                        
-                        alertController.addAction(UIAlertAction(title: "OK", style: .default)
-                        { action -> Void in
-                            self.saveCardPay()
-                        })
-                        self.present(alertController, animated:  true)
-                    }
-                }
-                else if error != nil{
-                    print("validateCreditCard() --> NOK ")
-
-                    DispatchQueue.main.async {
-                        let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(ac, animated:  true)
-                    }
+        paymentService.getValidateCreditCard(paymentDto: cardpaySelect){(success, response, error) in
+            if success == true{
+                self.cardpaySelect.payStatus = GPConstants.validateCard.rawValue
+                DispatchQueue.main.async {
+                    self.findCardByCodnum(codNum: self.cardpaySelect.payCodenum!)
                 }
             }
+            else if success == false  && error == nil{
+                self.cardpaySelect.payStatus = GPConstants.invalidCard.rawValue
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: NSLocalizedString("carpay-msghead-validation", comment:""), message: NSLocalizedString("cardpay-msgbody-validation", comment:""), preferredStyle: .alert)
+                        
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default)
+                    { action -> Void in
+                        self.saveCardPay()
+                    })
+                    self.present(alertController, animated:  true)
+                }
+            }
+            else if error != nil{
+                print("validateCreditCard() --> NOK ")
+                DispatchQueue.main.async {
+                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(ac, animated:  true)
+                }
+            }
+        }
     }
     
     
     func saveCardPay(){
-          paymentService.postPaymentMethod(paymentDto: cardpaySelect){(success, response, error) in
-            if success{
-                print("saveCardPay() --> OK ")
-                self.performSegue(withIdentifier:"CardPaymentGoSettingPaymentUser", sender: self)
-            }
-            else if error != nil{
-                DispatchQueue.main.async {
-                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
+        paymentService.postPaymentMethod(paymentDto: cardpaySelect){(success, response, error) in
+        if success{
+            self.performSegue(withIdentifier:"APPaySearchViewController", sender: self)
+        }
+        else if error != nil{
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(ac, animated:  true)
                 }
@@ -488,21 +480,23 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getCountryDetails(codCountry : String){
+        self.activityActionStart(title: "")
         countryService.findDetailCountryByID(idcountry: codCountry){(success, response, error) in
             if success{
-                print("GET BLOCK")
-                
-                UIView.transition(with: self.view,
-                duration:0.1,
-                options: .transitionCrossDissolve,
-                animations: {
-                    let country = response as! CountryBO
-                    self.countryDto = country
-                    self.countrycardImage.image = country.countryImage
-                    self.countrycardBtn.setTitle(country.name, for: .normal)
-                    self.cardpaySelect.payCountry = country.sigla
-                },
-                completion: nil)
+                DispatchQueue.main.async {
+                    self.activityActionStop()
+                    UIView.transition(with: self.view,
+                                      duration:0.5,
+                                      options: .transitionCrossDissolve,
+                                      animations: {
+                                        let country = response as! CountryBO
+                                        self.countryDto = country
+                                        self.countrycardImage.image = country.countryImage
+                                        self.countrycardBtn.setTitle(country.name, for: .normal)
+                                        self.cardpaySelect.payCountry = country.sigla
+                                      },
+                                      completion: nil)
+                    }
             }
             else if error != nil{
                 DispatchQueue.main.async {
@@ -517,7 +511,6 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     func findCardByCodnum(codNum : String){
         paymentService.getPaymentByNumcod(codnum: cardpaySelect.payCodenum!){(success, response, error) in
             if success == true{
-               print("GET findCardPayByCodnum")
                self.saveCardPay()
             }
             else  if success == false && error == nil{
@@ -540,8 +533,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     func updateCardPay(){
         paymentService.putPaymentMethod(paymentDto: cardpaySelect){(success, response, error) in
             if success{
-                print("saveCardPay() --> OK ")
-                self.performSegue(withIdentifier:"CardPaymentGoSettingPaymentUser", sender: self)
+                self.performSegue(withIdentifier:"APPaySearchViewController", sender: self)
             }
             else if error != nil{
                 DispatchQueue.main.async {
@@ -556,7 +548,7 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
     func removeCardPay(){
         paymentService.removePaymentMethod(paymentDto: cardpaySelect){(success, response, error) in
             if success{
-                self.performSegue(withIdentifier:"CardPaymentGoSettingPaymentUser", sender: self)
+                self.performSegue(withIdentifier:"APPaySearchViewController", sender: self)
             }
             else if error != nil{
                 DispatchQueue.main.async {
@@ -572,11 +564,11 @@ class CardPaymentViewController: UIViewController, UITextFieldDelegate {
         activityActionStart(title : NSLocalizedString("a-action-lbl-loading", comment:""))
         cardpaySelect.dateOperation = dateFormat.dateConvertToString()
         // Operation Type : ADD NEW CARD PAY
-        if cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_save{
+        if cardpaySelect.operationTransaction == GPConstants.op_save.rawValue{
             validateCreditCard()
         }
         // Operation Type : EDIT CARD PAY
-        else if cardpaySelect.operationTransaction == GlobalVariables.sharedManager.op_edit{
+        else if cardpaySelect.operationTransaction == GPConstants.op_edit.rawValue{
             updateCardPay()
         }
     }
