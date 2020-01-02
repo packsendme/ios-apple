@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Access Login View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MobileStoryboard" id="BYZ-38-t0r" customClass="AccessLoginViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MobileStoryboard" id="BYZ-38-t0r" customClass="IAUSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                                         <size key="titleShadowOffset" width="40" height="45"/>
                                         <state key="normal" image="iconUSA"/>
                                         <connections>
-                                            <segue destination="sLP-jZ-wCk" kind="show" identifier="countryIdentity" id="G6f-3t-j3K"/>
+                                            <segue destination="sLP-jZ-wCk" kind="show" identifier="IACSettingViewController" id="G6f-3t-j3K"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -76,6 +76,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="275" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isc-cT-6Y6">
                                 <rect key="frame" x="292" y="298" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
+                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button" image="icon-btn-next"/>
                                 <connections>
                                     <action selector="validateAcessAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rDX-r7-hJl"/>
@@ -91,8 +92,8 @@
                         <outlet property="phonetitleLabel" destination="o24-OK-pvv" id="5Rx-8o-0s8"/>
                         <outlet property="usernameTexField" destination="BsA-9K-Jbb" id="ly2-ke-gbC"/>
                         <outlet property="usernamecodeLabel" destination="IDb-aZ-Pf5" id="h9J-ge-H55"/>
-                        <segue destination="DuS-k8-BcD" kind="show" identifier="AccessLoginControllerPassword" id="1Uz-5e-gkz"/>
-                        <segue destination="5tg-1r-Syo" kind="show" identifier="IdentitySMSViewController" id="HZr-kO-nnP"/>
+                        <segue destination="DuS-k8-BcD" kind="show" identifier="IAUSettingPassword" id="1Uz-5e-gkz"/>
+                        <segue destination="5tg-1r-Syo" kind="show" identifier="IRSSettingViewController" id="HZr-kO-nnP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,7 +145,7 @@
                                         </state>
                                         <connections>
                                             <action selector="nextPhoneNumberAction:" destination="Do7-Jh-EsA" eventType="touchUpInside" id="Cix-gt-adS"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="AccessLoginControllerUsername" id="Oxo-C8-nQa"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="IAUSettingUsername" id="Oxo-C8-nQa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -171,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="-764" y="116.49175412293854"/>
         </scene>
-        <!--Identity Country View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="4wJ-JR-cLw">
             <objects>
-                <viewController storyboardIdentifier="CountryView" id="sLP-jZ-wCk" customClass="IdentityCountryViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CountryView" id="sLP-jZ-wCk" customClass="IACSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l3z-pJ-Jzb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +196,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="icon-tool-close"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="eK2-8F-u6T"/>
+                                            <action selector="closeView:" destination="sLP-jZ-wCk" eventType="touchUpInside" id="RAA-hv-CW4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -290,22 +291,23 @@
                         <outlet property="countryselectLabel" destination="dQ1-dZ-Vuc" id="8Of-SC-aAG"/>
                         <outlet property="countrytitleLabel" destination="hqy-aU-mFg" id="tws-Oz-cW0"/>
                         <outlet property="searchBar" destination="QSV-tU-rBI" id="ZXF-EA-GWR"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="IAUSettingUsername" id="khW-pB-g7E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CwJ-Af-F0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-794.39999999999998" y="892.80359820089961"/>
         </scene>
-        <!--IdentitySMS View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="QLl-MP-5GW">
             <objects>
-                <viewController storyboardIdentifier="IdentitySMSViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5tg-1r-Syo" customClass="IdentitySMSViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdentitySMSViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5tg-1r-Syo" customClass="IRSSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rcc-O3-MgJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKM-Iu-pwi">
-                                <rect key="frame" x="16" y="165" width="326" height="128"/>
+                                <rect key="frame" x="16" y="202" width="326" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z61-kR-b2A">
@@ -358,18 +360,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ErrorLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en5-rr-oer">
                                         <rect key="frame" x="43" y="107" width="246" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="OriyaSangamMN-Bold" family="Oriya Sangam MN" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="OriyaSangamMN-Bold" family="Oriya Sangam MN" pointSize="15"/>
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4t-eb-qIW">
-                                <rect key="frame" x="290" y="310" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icon-btn-next"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter the 5-digit code we sent to " textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-Nq-Rud">
                                 <rect key="frame" x="16" y="78" width="332" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -377,8 +374,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1D-3b-Fco">
+                                <rect key="frame" x="269" y="186" width="79" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                                <color key="textColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-95-AXP">
+                                <rect key="frame" x="0.0" y="20" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon-tool-back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="popoverPresentation" identifier="IAUSettingUsername" popoverAnchorView="YYw-95-AXP" id="Ztd-v1-DkZ">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4t-eb-qIW">
+                                <rect key="frame" x="290" y="352" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icon-btn-next"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pm-U5-b9E">
-                                <rect key="frame" x="16" y="357" width="276" height="30"/>
+                                <rect key="frame" x="16" y="399" width="276" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
                                 <state key="normal" title="Edit my cell phone number">
@@ -388,15 +407,8 @@
                                     <action selector="changeNumberPhone:" destination="5tg-1r-Syo" eventType="touchUpInside" id="HzT-es-FZK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1D-3b-Fco">
-                                <rect key="frame" x="15" y="172" width="79" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yT-1Y-nwW">
-                                <rect key="frame" x="16" y="306" width="285" height="30"/>
+                                <rect key="frame" x="16" y="348" width="285" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
                                 <state key="normal" title="Send me new SMS code">
@@ -404,16 +416,6 @@
                                 </state>
                                 <connections>
                                     <action selector="newsmscodeAction:" destination="5tg-1r-Syo" eventType="touchUpInside" id="B16-ha-8df"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-95-AXP">
-                                <rect key="frame" x="0.0" y="20" width="60" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icon-tool-back"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="popoverPresentation" identifier="LoginViewControllerChangePhone" popoverAnchorView="YYw-95-AXP" id="Ztd-v1-DkZ">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -431,17 +433,17 @@
                         <outlet property="nextBtn" destination="x4t-eb-qIW" id="ZQX-Pe-Wlg"/>
                         <outlet property="timerLabel" destination="K1D-3b-Fco" id="Vn6-pR-she"/>
                         <outlet property="titleCheckSMSLabel" destination="7fe-Nq-Rud" id="zQa-p0-W97"/>
-                        <segue destination="fIk-E9-Yxe" kind="show" identifier="IdentityUserDataEmail" id="fUt-1S-bhP"/>
+                        <segue destination="fIk-E9-Yxe" kind="show" identifier="IRUManagerEmail" id="fUt-1S-bhP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HrY-m2-K9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="118" y="893"/>
         </scene>
-        <!--Identity User Data View Controller-->
+        <!--Manager View Controller-->
         <scene sceneID="nts-xl-Tte">
             <objects>
-                <viewController id="fIk-E9-Yxe" customClass="IdentityUserDataViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fIk-E9-Yxe" customClass="IRUManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8AU-Xg-nJ4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -510,18 +512,18 @@
                         <outlet property="emailTitleLabel" destination="nSc-tg-9FW" id="tCE-DZ-OOh"/>
                         <outlet property="emailValidateErrorLabel" destination="Obw-75-OWn" id="6hm-Fm-XeW"/>
                         <outlet property="nextEmailBtn" destination="T3d-oG-NbF" id="bN4-X2-cHN"/>
-                        <segue destination="xM1-2Y-Rp8" kind="show" identifier="IdentityUserDataPassword" id="cfp-Pv-7pV"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="AccessLoginControllerUsername" id="0oW-NE-Yzh"/>
+                        <segue destination="xM1-2Y-Rp8" kind="show" identifier="IRUManagerPassword" id="cfp-Pv-7pV"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="IAUSettingUsername" id="0oW-NE-Yzh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRX-0A-hdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1061.5999999999999" y="1055.6221889055473"/>
         </scene>
-        <!--Access Login View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="8mr-57-gK5">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DuS-k8-BcD" customClass="AccessLoginViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DuS-k8-BcD" customClass="IAUSettingViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="99O-Rz-gQb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -532,7 +534,7 @@
                                 <state key="normal" title="Button" image="icon-tool-back"/>
                                 <connections>
                                     <action selector="backLoginUsername:" destination="DuS-k8-BcD" eventType="touchUpInside" id="d4G-G9-ZAP"/>
-                                    <segue destination="BYZ-38-t0r" kind="popoverPresentation" identifier="AccessLoginViewController" popoverAnchorView="Y2L-CJ-umK" id="cBa-ia-DTe">
+                                    <segue destination="BYZ-38-t0r" kind="popoverPresentation" identifier="IAUSettingUsername" popoverAnchorView="Y2L-CJ-umK" id="cBa-ia-DTe">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -553,7 +555,7 @@
                                         <rect key="frame" x="8" y="36" width="341" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ricardomarzochi" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-5P-pU5">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xbo-5P-pU5">
                                         <rect key="frame" x="8" y="8" width="336" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
@@ -613,10 +615,10 @@
             </objects>
             <point key="canvasLocation" x="893.60000000000002" y="115.59220389805098"/>
         </scene>
-        <!--Identity User Data View Controller-->
+        <!--Manager View Controller-->
         <scene sceneID="gjR-e0-kXV">
             <objects>
-                <viewController id="xM1-2Y-Rp8" customClass="IdentityUserDataViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xM1-2Y-Rp8" customClass="IRUManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UL8-3x-VEk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -627,7 +629,7 @@
                                 <state key="normal" image="icon-tool-back"/>
                                 <connections>
                                     <action selector="returnPasswordAction:" destination="xM1-2Y-Rp8" eventType="touchUpInside" id="PGM-cv-xCo"/>
-                                    <segue destination="fIk-E9-Yxe" kind="show" identifier="IdentityUserDataEmail" id="6ws-Sh-QWl"/>
+                                    <segue destination="fIk-E9-Yxe" kind="show" identifier="IRUManagerEmail" id="6ws-Sh-QWl"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rtE-gH-H7j">
@@ -678,17 +680,17 @@
                         <outlet property="nextPasswordBtn" destination="Zd9-yR-3dC" id="o8e-zP-CK3"/>
                         <outlet property="passwordTextField" destination="ccj-te-pRS" id="bj3-bh-BCK"/>
                         <outlet property="passwordTitleLabel" destination="JEq-Kf-l0U" id="K2Y-3s-BYB"/>
-                        <segue destination="6QV-qj-L0P" kind="show" identifier="IdentityUserDataNames" id="KTF-4C-U6b"/>
+                        <segue destination="6QV-qj-L0P" kind="show" identifier="IRUManagerNames" id="KTF-4C-U6b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8g-jv-Tfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1928.8" y="1056.5217391304348"/>
         </scene>
-        <!--Identity User Data View Controller-->
+        <!--Manager View Controller-->
         <scene sceneID="CTq-j0-5lG">
             <objects>
-                <viewController id="6QV-qj-L0P" customClass="IdentityUserDataViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6QV-qj-L0P" customClass="IRUManagerViewController" customModule="PackSendMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gaT-uo-ySp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -698,7 +700,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icon-tool-back"/>
                                 <connections>
-                                    <segue destination="xM1-2Y-Rp8" kind="show" identifier="IdentityUserDataPassword" id="LyF-xb-Myi"/>
+                                    <segue destination="xM1-2Y-Rp8" kind="show" identifier="IRUManagerPassword" id="LyF-xb-Myi"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hED-Xf-ysq">
@@ -778,8 +780,10 @@
         <image name="iconUSA" width="96" height="96"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cfp-Pv-7pV"/>
+        <segue reference="HZr-kO-nnP"/>
+        <segue reference="KTF-4C-U6b"/>
+        <segue reference="LyF-xb-Myi"/>
         <segue reference="6ws-Sh-QWl"/>
-        <segue reference="0oW-NE-Yzh"/>
+        <segue reference="Ztd-v1-DkZ"/>
     </inferredMetricsTieBreakers>
 </document>

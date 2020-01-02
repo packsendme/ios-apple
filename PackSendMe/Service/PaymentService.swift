@@ -10,6 +10,13 @@ import UIKit
 
 class PaymentService: NSObject {
     
+    struct url_PAYMENT{
+        static let payment_http = "http://192.241.133.13:9095/payment/"
+        static let pay_validatecard = "http://192.241.133.13:9095/payment/card/validate/"
+        static let payment_method = "http://192.241.133.13:9095/payment/method/"
+        static let accountpayment_http = "http://192.241.133.13:9094/account/payment/"
+    }
+    
     var paymentAccountObj = PaymentAccountBO()
     
     static func instance() ->  PaymentService{
@@ -60,7 +67,7 @@ class PaymentService: NSObject {
     }
     
     func getPaymentsByUsername(completion: @escaping (Bool, Any?, Error?) -> Void){
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http
+        let payment_url = url_PAYMENT.accountpayment_http
         let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone
 
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
@@ -98,18 +105,17 @@ class PaymentService: NSObject {
         
     func postPaymentMethod(paymentDto : PaymentAccountBO, completion: @escaping (Bool, Any?, Error?) -> Void){
         var paramsDictionary = [String:Any]()
+        
         paramsDictionary = paymentAccountObj.createPaymentDictionary(
-        payName:"", payCodenum:paymentDto.payCodenum!,payCountry:paymentDto.payCountry!, payEntity:paymentDto.payEntity!,
-        payType:paymentDto.payType!, payExpiry:paymentDto.payExpiry!, payStatus:paymentDto.payStatus!,
-        payValue:paymentDto.payValue!, dateOperation:paymentDto.dateOperation!)
+        payName:"", payCodenum:paymentDto.payCodenum!,payCountry:paymentDto.payCountry!,
+        payEntity:paymentDto.payEntity!,payType:paymentDto.payType!, payExpiry:paymentDto.payExpiry!,
+        payStatus:paymentDto.payStatus!,payValue:paymentDto.payValue!,dateOperation:paymentDto.dateOperation!)
 
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone
-         print(" RESULT postPaymentMethod \(payment_url)")
+        let payment_url = url_PAYMENT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone
+        print(" RESULT postPaymentMethod \(payment_url)")
 
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
-           
             HttpService.instance().makeAPIBodyCall(url: payment_url, params:paramsDictionary, method: .POST, success: { (data, response, error) in
-
                 if let data = data {
                     do{
                         if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
@@ -135,7 +141,7 @@ class PaymentService: NSObject {
     func getValidateCreditCard(paymentDto : PaymentAccountBO, completion: @escaping (Bool, Any?, Error?) -> Void){
         
         let paramsDictionary : String = paymentDto.payCodenum!+"/"+paymentDto.payCountry!+"/"+paymentDto.payEntity!+"/"+paymentDto.payValue!+"/"+paymentDto.payExpiry!
-        let payment_url = URLConstants.PAYMENT.pay_validatecard
+        let payment_url = url_PAYMENT.pay_validatecard
 
         print(" RESULT getValidateCreditCard \(payment_url) ")
 
@@ -146,25 +152,16 @@ class PaymentService: NSObject {
                     if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
                         let jsonCountry = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
                         let responseCode = jsonCountry!["responseCode"] as? Int
-                        
-                        print(" RESULT getValidateCreditCard \(responseCode) ")
-
-                        
                         if responseCode == GlobalVariables.sharedManager.VALIDATE_CARD_SUCCESS{
-                            print(" RESULT responseCode OK \(responseCode) ")
-
                             DispatchQueue.main.async {
                                 completion(true,jsonCountry,nil)
                             }
                         }
                         else if responseCode == GlobalVariables.sharedManager.VALIDATE_CARD_ERROR{
-                            print(" RESULT responseCode NOK \(responseCode) ")
-
                             DispatchQueue.main.async {
                                 completion(false,nil,error)
                             }
                         }
-                        
                     }
                 } catch _ {
                     DispatchQueue.main.async {
@@ -188,7 +185,7 @@ class PaymentService: NSObject {
             payType:paymentDto.payType!, payExpiry:paymentDto.payExpiry!, payStatus:paymentDto.payStatus!,
             payValue:paymentDto.payValue!, dateOperation:paymentDto.dateOperation!)
         
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone+"/"+paymentDto.payCodenum!
+        let payment_url = url_PAYMENT.accountpayment_http+GlobalVariables.sharedManager.usernameNumberphone+"/"+paymentDto.payCodenum!
         
         print(" RESULT updatePaymentMethod \(payment_url)")
         
@@ -220,17 +217,10 @@ class PaymentService: NSObject {
     
     
     func removePaymentMethod(paymentDto : PaymentAccountBO, completion: @escaping (Bool, Any?, Error?) -> Void){
-        
         let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+paymentDto.payCodenum!+"/"+paymentDto.payType!
-        
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http
-        
-        print(" RESULT removePaymentMethod \(payment_url)")
-        
+        let payment_url = url_PAYMENT.accountpayment_http
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
-            
             HttpService.instance().makeAPICall(url: payment_url, params:paramsDictionary, method: .DELETE, success: { (data, response, error) in
-                
                 if let data = data {
                     do{
                         if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
@@ -254,31 +244,23 @@ class PaymentService: NSObject {
     }
     
     func getPaymentByNumcod(codnum : String, completion: @escaping (Bool, Any?, Error?) -> Void){
-        
         let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/"+codnum
-        let payment_url = URLConstants.ACCOUNT.accountpayment_http
+        let payment_url = url_PAYMENT.accountpayment_http
         print(" RESULT getPaymentByNumcod \(payment_url)")
         
-        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
-            HttpService.instance().makeAPICall(url: payment_url, params:paramsDictionary, method: .GET, success: { (data, response, error) in
-                if let data = data {
-                    do{
-                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
-                            print(" RESULT CODE getPaymentByNumcod \(response?.statusCode)")
-
-                            DispatchQueue.main.async {
-                                completion(false,nil,nil)
-                            }
-                        }
-                        else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
-                            DispatchQueue.main.async {
-                                print(" RESULT CODE getPaymentByNumcod \(response?.statusCode)")
-                                completion(true,nil,nil)
-                            }
-                        }
-                    } catch _ {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2 )
+        {
+            HttpService.instance().makeAPICall(url: payment_url, params:paramsDictionary, method: .GET, success:
+            { (data, response, error) in
+                do{
+                    if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
                         DispatchQueue.main.async {
-                            completion(false,nil,error)
+                            completion(false,nil,nil)
+                        }
+                    }
+                    else if response?.statusCode == URLConstants.HTTP_STATUS_CODE.NOTFOUND{
+                        DispatchQueue.main.async {
+                            completion(true,nil,nil)
                         }
                     }
                 }

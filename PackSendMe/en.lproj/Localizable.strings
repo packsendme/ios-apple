@@ -6,8 +6,13 @@
   Copyright © 2018 Ricardo Marzochi. All rights reserved.
 */
 
-/* SCREEN - GENERIC */
-"main-title-loading" = "Loading";
+/* FUNCTION - GENERIC */
+"a-action-lbl-loading" = "Loading";
+"a-action-lbl-update" = "Updating";
+"a-action-lbl-saving" = "Saving";
+"a-action-lbl-validation" = "Validation";
+"a-action-lbl-validationcode" = "Validation Code";
+
 
 /* SCREEN - MAIN */
 "main-title-welcome" = "Welcome to PackSendMe";
@@ -452,11 +457,15 @@
 "main-title-numbercorrect" = "Mobile number is correct?";
 "main-title-receivecode" = "Send me new SMS code";
 "main-title-editnumber" = "Edit my cell phone number?";
+"main-status-newsms" = "Wait for New SMS";
+
 /* Resend SMS */
 "main-title-newsmscode" = "New 4 digit code has been sent to ";
 "main-label-codeforward" = "Is the cell number correct?                              ";
 "main-button-codeforward" = "Send New SMS Code";
 "main-button-cancelcode" = "Change Phone Number";
+"main-status-newsms" = "New Code";
+
 
 "error-label-smscode1" = "Code SMS 1 is empty";
 "error-label-smscode2" = "Code SMS 2 is empty";
@@ -508,41 +517,41 @@
 "setting-title-addhome" = "Add Address Home";
 "setting-title-addcard" = "Add Card";
 
-/* SettingProfileUserViewController */
-"profile-title-setting" = "User Profile";
+/* AUP - AUPSettingViewController */
+"aup-setting-title" = "User Profile";
 "profileuser-title-name" = "Name";
 "profileuser-title-lastname"  = "Last Name";
 "profileuser-title-email" = "Email";
 "profileuser-title-password" = "Password";
 "profileuser-title-numberphone" = "Phone Number";
 
-/* ManagerProfileUserViewController - Name  */
-"editfirstname-label-title" = "Edit Name";
-"editfirstname-title-btn" = "UPDATE NAME";
-"editfirstname-text-firstname" = "First Name";
-"editlastname-text-lastname" = "Last Name";
-"editfirstname-label-firstnamevalidate" = "First Name invalid";
-"editlastname-label-lastnamevalidate" = "Last Name invalid";
 
 
-/* ManagerProfileUserViewController - EMail  */
-"editemail-label-title" = "Edit E-Mail";
-"editemail-title-btn" = "UPDATE E-MAIL";
-"editemail-text-email" = "E-Mail";
-"editemail-label-emailvalidate" = "E-mail invalid";
+/* AUP - AUPManagerViewController */
+"aup-manager-btn-update" = "Confirm Change";
 
-
-/* ManagerProfileUserViewController - Password  */
-"editpassword-label-title" = "Change Password";
-"editpassword-title-btn" = "UPDATE PASSWORD";
-"editpassword-text-passwordCurrent" = "Current Password";
-"editpassword-text-passwordNew" = "New Password";
-"editpassword-text-password" = "Password";
-"editpasswordcurrent-title-btn" = "VERIFY PASSWORD";
-"editpasswordcurrent-text-passwordVerifiy" = "Verify Current Password";
-"editpasswordcurrent-text-detail" = "For your security, please enter your current password";
-"editpassword-label-passwordvalidate" = "Password invalid, must be at least 6 characters";
-
+/* Name  */
+"aup-manager-lbl-nametitle" = "Edit Nome";
+"aup-manager-txt-firstname" = "First Name";
+"aup-manager-txt-lastname" = "Last Name";
+"aup-manager-lbl-namevalidate" = "Invalid Name";
+/* EMail  */
+"aup-manager-lbl-emailtitle" = "Edit E-Mail";
+"aup-manager-txt-email" = "E-Mail";
+"aup-manager-lbl-emailvalidate" = "Invalid E-mail";
+/* Password  */
+"aup-manager-lbl-passwordtitle" = "Edit Senha";
+"aup-manager-lbl-passwordCurrent" = "Current password";
+"aup-manager-txt-passwordinput" = "Enter your password (min 6-12 max caracteres)";
+"aup-manager-btn-passwordvalidate" = "Validate My Password";
+"aup-manager-txt-passwordNew" = "New Password";
+"aup-manager-lbl-passwordvalidate" = "Invalid Password, check the password you entered, must be at least 6 characters!";
+/* Username  - Movil */
+"aup-manager-lbl-usernametitle" = "Edit Phone Number";
+"aup-manager-lbl-username" = "Phone Number";
+"aup-manager-txt-usernameinput" = "Enter new number";
+"editusername-label-passwordvalinvalid" = "Invalid Cell Number";
+"editusername-label-passwordvalregistered" = "The mobile number is already registered, check the number";
 
 /* ManagerProfileUserViewController - PhoneNumber  */
 "editusername-label-newphone" = "New Phone Number";
@@ -551,7 +560,6 @@
 "editusername-text-username" = "000 000 000";
 "editusername-label-usernamevalidate" = "Phone number invalid";
 "editusername-label-usernameregistered" = "Phone number is already registered";
-
 
 /* PhotoProfileViewController */
 "photoprofile-activity-save" = "Saving Photo";
@@ -588,16 +596,11 @@
 "payment-title-changecard" = "Please select an option";
 "payment-title-editcard" = "Edit Card";
 "payment-title-deletecard" = "Delete Card";
-
 "card-title-countrycard" = "Select Country Card";
-
 "carpay-body-foundcard" = "The card informed is already registered. Verify Card Data";
 "carpay-validation-error" = "Invalid card number, check number";
 "carpay-msghead-validation" = "Validation Credit Card";
 "cardpay-msgbody-validation" = "Check the data of the card informed. Your validation was not successful";
-
-
-
 "paymentadd-field-cardname" = "Card Holder";
 "paymentadd-field-cardnumber" = "Number";
 "paymentadd-field-cardexpdate" = "Exp. Date";
@@ -608,7 +611,6 @@
 "paymentadd-label-cardnamenot" = "Enter the CVV number";
 "paymentadd-btn-editpayment" = "EDIT PAYMENT";
 "paymentadd-btn-deletepayment" = "DELETE PAYMENT";
-
 "payment-titlebtnscreen-paymentdelete" = "Delete";
 "payment-titlebtnscreen-paymentcancel" = "Cancel";
 "payment-titlescreen-paymentdelete" = "Delete Payment";

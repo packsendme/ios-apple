@@ -16,28 +16,13 @@ class AHMainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var homeToolBtn: UIBarButtonItem!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuView: UIView!
-    //@IBOutlet weak var mapView: GMSMapView!
     let locationManager:CLLocationManager = CLLocationManager()
-    //var menuBtn : UIButton = UIButton()
- 
     var menu_vc : AHMenuViewController!
     var amService = AccountService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        UIView.transition(with: self.view,
-                          duration:0.1,
-                          options: .transitionCrossDissolve,
-                          animations: {
-                            self.loadNamesAccount()},
-                          completion: nil)
-       
-        
-        print(" NAME \(GlobalVariables.sharedManager.nameLastMenu) ")
-        print(" NAME \(GlobalVariables.sharedManager.nameFirstMenu)")
-        GlobalVariables.sharedManager.profileImage = "imageProfile_"+GlobalVariables.sharedManager.usernameNumberphone
+
         homeToolBtn.isEnabled = false
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -51,31 +36,21 @@ class AHMainViewController: UIViewController, CLLocationManagerDelegate {
         self.view.addSubview(menuBtn)*/
         
         mapView.reloadInputViews()
+       /*
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! AHMenuViewController
         present(menu_vc!, animated: true)
-
+        */
+    }
+    
+    override func didReceiveMemoryWarning() {
+        print(" DEALOCK MEMORY")
+        super.didReceiveMemoryWarning()
     }
 
-    func loadNamesAccount() {
-        amService.getLoadNamesAccount(){(success, response, error) in
-            if success == true{
-                DispatchQueue.main.async {
-                    let profileObj = response as! ProfileBO
-                    GlobalVariables.sharedManager.nameFirstMenu  = profileObj.name!
-                    GlobalVariables.sharedManager.nameLastMenu = profileObj.lastName!
-                }
-            }
-            else if success == false{
-                DispatchQueue.main.async {
-                    let ac = UIAlertController(title: NSLocalizedString("error-title-failconnection", comment:""), message: NSLocalizedString("error-body-failconnection", comment:""), preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(ac, animated:  true)
-                    
-                }
-            }
-        }
+    func reloadMenu(){
+        menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! AHMenuViewController
+        present(menu_vc!, animated: true)
     }
-
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         mapView.settings.myLocationButton = true
@@ -99,24 +74,15 @@ class AHMainViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
-    @IBAction func menuActionView(_ sender: UIButton) {
-         showMenu()
-    }
-    
     func showMenu(){
-        
-        
         let transition:CATransition = CATransition()
         transition.duration = 0.25
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromTop
-        
-       // present(menu_vc!, animated: true)
-        show(menu_vc, sender: true)
-
-       //self.performSegue(withIdentifier:"AHMenuViewController", sender: nil)
-
+        //present(menu_vc!, animated: true)
+        //show(menu_vc, sender: true)
+       self.performSegue(withIdentifier:"AHMenuViewController", sender: nil)
        /* let storyboard = UIStoryboard(name: "ACCOUNT", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
         self.present(controller, animated: false, completion: nil)*/
@@ -124,14 +90,13 @@ class AHMainViewController: UIViewController, CLLocationManagerDelegate {
     
 
     @IBAction func actionMenu(_ sender: Any) {
+       // reloadMenu()
         showMenu()
     }
     
     @IBAction func unwindToOne(_ sender: UIStoryboardSegue) {
         
-    
     }
-    
     
 }
 

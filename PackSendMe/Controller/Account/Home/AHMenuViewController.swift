@@ -15,6 +15,8 @@ class AHMenuViewController: UIViewController {
     @IBOutlet weak var nameprofileLabel: UILabel!
     @IBOutlet weak var menuTable: UITableView!
     var menuData: [String] = []
+    var profileImageDefault: String = "icon-user-photo"
+
     
     @IBOutlet weak var useraccountImg: UIImageView!
     @IBOutlet weak var learnmoreBtn: UIButton!
@@ -40,7 +42,7 @@ class AHMenuViewController: UIViewController {
             useraccountImg.layer.masksToBounds = true
         }
         else{
-            imagePersonalView.image = UIImage(named: GlobalVariables.sharedManager.profileImageDefault)
+            imagePersonalView.image = UIImage(named: profileImageDefault)
             useraccountImg?.image = imagePersonalView.image
             let radius = useraccountImg.frame.width / 2
             useraccountImg.layer.cornerRadius = radius
@@ -59,7 +61,7 @@ class AHMenuViewController: UIViewController {
         useraccountImg.layer.cornerRadius = useraccountImg.frame.height/2
         useraccountImg.clipsToBounds = true
         
-        nameprofileLabel.text = GlobalVariables.sharedManager.nameFirstMenu+" "+GlobalVariables.sharedManager.nameLastMenu
+        nameprofileLabel.text = GlobalVariables.sharedManager.nameFirst
         learnmoreBtn.setTitle(NSLocalizedString("menu-btn-learnmore", comment:""), for: .normal)
         makemoneyBtn.setTitle(NSLocalizedString("menu-btn-makemoney", comment:""), for: .normal)
 
@@ -130,11 +132,11 @@ extension AHMenuViewController: UITableViewDataSource, UITableViewDelegate, UISe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if(indexPath.row == 1){
-            self.performSegue(withIdentifier:"SettingViewToManagerPaymentView", sender: nil)
-            dismiss(animated: false, completion: nil)
+            self.performSegue(withIdentifier:"APPaySearchViewController", sender: nil)
+            //dismiss(animated: false, completion: nil)
         }
         else if(indexPath.row == 4){
-            self.performSegue(withIdentifier:"AUSettingViewController", sender: nil)
+            self.performSegue(withIdentifier:"APSearchViewController", sender: nil)
         }
     }
     

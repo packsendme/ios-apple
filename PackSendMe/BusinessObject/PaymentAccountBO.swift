@@ -72,7 +72,7 @@ public struct PaymentAccountBO: Codable {
             if(paymentArray != nil){
                 for pay in paymentArray! {
                     let payType = pay["payType"] as? String
-                    if payType == GlobalVariables.sharedManager.voucherPay{
+                    if payType == GPConstants.voucherPay.rawValue{
                         let voucherPayTransaction = PaymentAccountBO(
                             titleHead: NSLocalizedString("payment-title-vouchers", comment:""),
                             payName: pay["payName"] as? String,
@@ -84,10 +84,10 @@ public struct PaymentAccountBO: Codable {
                             payStatus: pay["payStatus"] as? String,
                             payValue: pay["payValue"] as? String,
                             dateOperation: pay["dateOperation"] as? String,
-                            operationTransaction: GlobalVariables.sharedManager.op_edit)
+                            operationTransaction: GPConstants.op_edit.rawValue)
                         paymentFullCollection.append(voucherPayTransaction)
                     }
-                    else if payType == GlobalVariables.sharedManager.cardPay{
+                    else if payType == GPConstants.cardPay.rawValue{
                         let cardPayTransaction = PaymentAccountBO(
                             titleHead: NSLocalizedString("payment-title-card", comment:""),
                             payName: nil,
@@ -99,10 +99,10 @@ public struct PaymentAccountBO: Codable {
                             payStatus: pay["payStatus"] as? String,
                             payValue: pay["payValue"] as? String,
                             dateOperation: pay["dateOperation"] as? String,
-                            operationTransaction: GlobalVariables.sharedManager.op_edit)
+                            operationTransaction: GPConstants.op_edit.rawValue)
                         paymentFullCollection.append(cardPayTransaction)
                     }
-                    else if payType == GlobalVariables.sharedManager.promotionPay{
+                    else if payType == GPConstants.promotionPay.rawValue{
                         let promotionPayTransaction = PaymentAccountBO(
                             titleHead: NSLocalizedString("payment-title-promotions", comment:""),
                             payName: pay["payName"] as? String,
@@ -114,7 +114,7 @@ public struct PaymentAccountBO: Codable {
                             payStatus: pay["payStatus"] as? String,
                             payValue: pay["payValue"] as? String,
                             dateOperation: pay["dateUpdate"] as? String,
-                            operationTransaction: GlobalVariables.sharedManager.op_edit)
+                            operationTransaction: GPConstants.op_edit.rawValue)
                         paymentFullCollection.append(promotionPayTransaction)
                     }
                 }
@@ -130,12 +130,12 @@ public struct PaymentAccountBO: Codable {
             payCodenum: nil,
             payCountry : nil,
             payEntity: nil,
-            payType: GlobalVariables.sharedManager.voucherPay,
+            payType: GPConstants.voucherPay.rawValue,
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
             dateOperation: nil,
-            operationTransaction: GlobalVariables.sharedManager.op_save)
+            operationTransaction: GPConstants.op_save.rawValue)
         paymentFullCollection.append(voucherPayTransaction)
         
         // CARD
@@ -145,12 +145,12 @@ public struct PaymentAccountBO: Codable {
             payCodenum: nil,
             payCountry : nil,
             payEntity: nil,
-            payType: GlobalVariables.sharedManager.cardPay,
+            payType: GPConstants.cardPay.rawValue,
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
             dateOperation: nil,
-            operationTransaction: GlobalVariables.sharedManager.op_save)
+            operationTransaction: GPConstants.op_save.rawValue)
         paymentFullCollection.append(cardPayTransaction)
         
         // PROMOTIONS
@@ -160,12 +160,12 @@ public struct PaymentAccountBO: Codable {
             payCodenum: nil,
             payCountry : nil,
             payEntity: nil,
-            payType: GlobalVariables.sharedManager.promotionPay,
+            payType: GPConstants.promotionPay.rawValue,
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
             dateOperation: nil,
-            operationTransaction: GlobalVariables.sharedManager.op_save)
+            operationTransaction: GPConstants.op_save.rawValue)
         paymentFullCollection.append(promotionPayTransaction)
         return parseFromJSONToPayment(payTransactions:paymentFullCollection)
     }
@@ -183,12 +183,12 @@ public struct PaymentAccountBO: Codable {
             payCodenum: nil,
             payCountry : nil,
             payEntity: nil,
-            payType: GlobalVariables.sharedManager.voucherPay,
+            payType: GPConstants.voucherPay.rawValue,
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
             dateOperation: nil,
-            operationTransaction: GlobalVariables.sharedManager.op_save)
+            operationTransaction: GPConstants.op_save.rawValue)
         paymentFullCollection.append(voucherPayTransaction)
         
         // CARD
@@ -198,12 +198,12 @@ public struct PaymentAccountBO: Codable {
             payCodenum: nil,
             payCountry : nil,
             payEntity: nil,
-            payType: GlobalVariables.sharedManager.cardPay,
+            payType: GPConstants.cardPay.rawValue,
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
             dateOperation: nil,
-            operationTransaction: GlobalVariables.sharedManager.op_save)
+            operationTransaction: GPConstants.op_save.rawValue)
         paymentFullCollection.append(cardPayTransaction)
         
         // PROMOTIONS
@@ -213,12 +213,12 @@ public struct PaymentAccountBO: Codable {
             payCodenum: nil,
             payCountry : nil,
             payEntity: nil,
-            payType: GlobalVariables.sharedManager.promotionPay,
+            payType: GPConstants.promotionPay.rawValue,
             payExpiry: nil,
             payStatus: nil,
             payValue: nil,
             dateOperation: nil,
-            operationTransaction: GlobalVariables.sharedManager.op_save)
+            operationTransaction: GPConstants.op_save.rawValue)
         paymentFullCollection.append(promotionPayTransaction)
         return parseFromJSONToPayment(payTransactions:paymentFullCollection)
     }

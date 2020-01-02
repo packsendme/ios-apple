@@ -21,8 +21,7 @@ class GlobalVariables {
     public var status: String = ""
 
     // Transaction CRUD
-    public var op_save : String = "SAVE-OP"
-    public var op_edit : String = "EDIT-OP"
+
     
     // ValidationCard
     public var VALIDATE_CARD_SUCCESS : Int = 305
@@ -31,34 +30,18 @@ class GlobalVariables {
 
     
     // Address
-    public var addressTypeJob: String = "addressJob"
-    public var addressTypeHome: String = "addressHome"
-    public var addressMain: String = "main"
-    public var addressSecond: String = "second"
+
+
     public var personalInformation: String = "personalInformation"
     public var addressInformation: String = "addressInformation"
     
     // Account
     public var profileImage: String = ""
     public var usernameNumberphone: String = ""
-    public var nameFirstMenu: String = ""
-    public var nameLastMenu: String = ""
-    public var profileImageDefault: String = "icon-user-photo"
+    public var nameFirst: String = ""
+    public var nameLast: String = ""
 
-    // Payment
-    public var cardPay: String = "CARD_PAY"
-    public var voucherPay: String = "VOUCHER_PAY"
-    public var promotionPay: String = "PROMOTION_PAY"
     
-    public var validateCard: String = "Validation-Card"
-    public var InvalidCard: String = "Invalid-Card"
-    
-    // Operation
-    public var OP_CHANGE_COUNTRY_NUMBER: String = "ManagerUsernamePhoneViewController"
-    public var OP_CHANGE_COUNTRY_CARDPAY: String = "CardPaymentViewController"
-    
-
-
     class var sharedManager: GlobalVariables {
         struct Static {
             static let instance = GlobalVariables()

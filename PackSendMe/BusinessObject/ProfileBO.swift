@@ -38,7 +38,7 @@ public struct ProfileBO{
             name: jsonAccount["name"] as? String,
             password: jsonAccount["lastName"] as? String,
             lastName: jsonAccount["lastName"] as? String,
-            country: jsonAccount["codcountry"] as? String,
+            country: jsonAccount["country"] as? String,
             dateOperation: jsonAccount["dateOperation"] as? String,
             address: nil)
         return profileObj
@@ -55,7 +55,7 @@ public struct ProfileBO{
             name: jsonAccount["name"] as? String,
             password: jsonAccount["lastName"] as? String,
             lastName: jsonAccount["lastName"] as? String,
-            country: jsonAccount["codcountry"] as? String,
+            country: jsonAccount["country"] as? String,
             dateOperation: jsonAccount["dateOperation"] as? String,
             address: addressCollection)
          return profileObj

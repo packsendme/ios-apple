@@ -13,44 +13,12 @@ public struct AccountService{
     var dateFormat = UtilityHelper()
     var profileObj = ProfileBO()
     
-    // -------------------------------------------------------------------------------------
-    // FUNCTION : getLoadNamesAccount()
-    // SCREEEN : HomePackSendMe
-    // ACTION :  LOAD
-    // -------------------------------------------------------------------------------------
-    func getLoadNamesAccount(completion: @escaping (Bool, Any?, Error?) -> Void){
-        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone
-        let accountURL = URLConstants.ACCOUNT.accountpersonal_http
-        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
-            HttpService.instance().makeAPICall(url: accountURL, params:paramsDictionary, method: .GET, success: { (data, response, error) in
-                if let data = data {
-                    do{
-                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.FOUND{
-                            let jsonPay = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:  Any]
-                            let jsonPayBody = jsonPay!["body"] as? [String:Any]
-                            let namesL = self.profileObj.createAccountObject(jsonAccount:jsonPayBody!)
-                            DispatchQueue.main.async {
-                                completion(true,namesL,nil)
-                            }
-                        }
-                        else{
-                            DispatchQueue.main.async {
-                                completion(false,nil,nil)
-                            }
-                        }
-                    } catch _ {
-                        DispatchQueue.main.async {
-                            completion(false,nil,error)
-                        }
-                    }
-                }
-            }, failure: {  (data, response, error) in
-                DispatchQueue.main.async {
-                    completion(false,nil,error)
-                }
-            })
-        }
+    struct url_account{
+        static let account_http = "http://192.241.133.13:9094/account/"
+        static let accountmanager_http = "http://192.241.133.13:9094/account/manager/"
+        static let accountadress_http = "http://192.241.133.13:9094/account/address/"
     }
+    
     
     // -------------------------------------------------------------------------------------
     // FUNCTION : getLoadAccount()
@@ -58,8 +26,8 @@ public struct AccountService{
     // ACTION :  GET
     // -------------------------------------------------------------------------------------
     func getLoadAccountUser(completion: @escaping (Bool, Any?, Error?) -> Void){
-        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+URLConstants.ACCOUNT.account_load
-        let accountURL = URLConstants.ACCOUNT.account_http
+        let paramsDictionary : String = GlobalVariables.sharedManager.usernameNumberphone+"/load"
+        let accountURL = url_account.account_http
         DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
             HttpService.instance().makeAPICall(url: accountURL, params:paramsDictionary, method: .GET, success: { (data, response, error) in
                 if let data = data {
@@ -100,7 +68,7 @@ public struct AccountService{
     func updateUserProfile(profile : ProfileBO, completion: @escaping (Bool, Any?, Error?) -> Void){
  
         let dateUpdate = dateFormat.dateConvertToString()
-        let accountURL = URLConstants.ACCOUNT.account_http
+        let accountURL = url_account.account_http
 
         var paramsDictionary = [String:Any]()
         paramsDictionary = profileObj.createAccountDictionary(
@@ -138,5 +106,46 @@ public struct AccountService{
             })
         }
     }
+    
+    // -------------------------------------------------------------------------------------
+    // FUNCTION : updateProfileAddress()
+    // SCREEEN : AUPManagerViewControlle
+    // ACTION :  UPDATE
+    // -------------------------------------------------------------------------------------
+    func updateProfileAddress(username : String, location : String, typeAddress : String, priorityAddress : String, completion: @escaping (Bool, Any?, Error?) -> Void){
+        let addressObj = AddressBO()
+        let dateUpdate = dateFormat.dateConvertToString()
+        let accountURL = url_account.accountadress_http+username
+        var paramsDictionary = [String:Any]()
 
+        paramsDictionary = addressObj.addressObjectToArray(address:location, type:typeAddress, main:priorityAddress, dateUpdate: dateUpdate)
+
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2 ){
+            HttpService.instance().makeAPIBodyCall(url: accountURL, params:paramsDictionary, method: .PUT, success:
+                { (data, response, error) in
+                    do{
+                        if response?.statusCode == URLConstants.HTTP_STATUS_CODE.OK{
+                            DispatchQueue.main.async {
+                                completion(true,nil,nil)
+                            }
+                        }
+                        else{
+                            DispatchQueue.main.async {
+                                completion(false,nil,nil)
+                            }
+                        }
+                    } catch _ {
+                        DispatchQueue.main.async {
+                            completion(false,nil,error)
+                        }
+                    }
+            }, failure: {  (data, response, error) in
+                DispatchQueue.main.async {
+                    completion(false,nil,error)
+                }
+            })
+        }
+    }
+
+    
 }

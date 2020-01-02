@@ -7,7 +7,12 @@
 */
 
 /* SCREEN - GENERIC */
-"main-title-loading" = "Cargando";
+"a-action-lbl-loading" = "Cargando";
+"a-action-lbl-update" = "Actualizando";
+"a-action-lbl-saving" = "Almacenamiento";
+"a-action-lbl-validation" = "Validación";
+"a-action-lbl-validationcode" = "Validación Código";
+
 
 /* SCREEN - MAIN */
 "main-title-welcome" = "Bienvenida a PackSendMe";
@@ -467,6 +472,8 @@
 "main-label-codeforward" = "¿El n.º de móvil es correcto?";
 "main-button-codeforward" = "Enviar Nuevo Código SMS";
 "main-button-cancelcode" = "Cambiar el Número de Teléfono Móvil";
+"main-status-newsms" = "Nuevo Código";
+
 
 
 "error-label-smscode1" = "Code SMS 1 está vacío";
@@ -519,8 +526,8 @@
 "setting-title-addhome" = "Añadir Dirección Casa";
 "setting-title-addcard" = "Adicionar Tarjeta";
 
-/*  SettingProfileUserViewController */
-"profile-title-home" = "Perfil del usuario";
+/* AUP - AUPSettingViewController */
+"aup-setting-title" = "Perfil del usuario";
 "profileuser-title-name" = "Nombre";
 "profileuser-title-lastname"  = "Apelido";
 "profileuser-title-email" = "Email";
@@ -528,39 +535,35 @@
 "profileuser-title-numberphone" = "Teléfono";
 
 
-/* ManagerProfileUserViewController - Name  */
-"editfirstname-label-title" = "Editar Nombre";
-"editfirstname-title-btn" = "ACTUALIZAR NOMBRE";
-"editfirstname-text-firstname" = "Nombre";
-"editfirstname-text-lastname" = "Apelidos";
-"editfirstname-label-firstnamevalidate" = "Nombre inválido";
-"editlastname-label-lastnamevalidate" = "Apelidos inválido";
+/* AUP - AUPManagerViewController */
+"aup-manager-btn-update" = "Confirmar Cambio";
 
-/* ManagerProfileUserViewController - EMail  */
-"editemail-label-title" = "Editar Correo Electrónico";
-"editemail-title-btn" = "ACTUALIZAR CORREO ELECTRÓNICO";
-"editfirstname-text-email" = "Correo Electrónico";
-"editemail-label-emailvalidate" = "Correo inválido";
+/* Name  */
+"aup-manager-lbl-nametitle" = "Editar Nombre";
+"aup-manager-txt-firstname" = "Nombre";
+"aup-manager-txt-lastname" = "Apelidos";
+"aup-manager-lbl-namevalidate" = "Nombre inválido";
+
+/* EMail  */
+"aup-manager-lbl-emailtitle" = "Editar Correo Electrónico";
+"aup-manager-txt-email" = "Correo Electrónico";
+"aup-manager-lbl-emailvalidate" = "Correo Electrónico inválido";
 
 
-/* ManagerProfileUserViewController - Password  */
-"editpassword-label-title" = "Cambiar Contraseña";
-"editpassword-title-btn" = "ACTUALIZAR CONTRASEÑA";
-"editpassword-text-passwordCurrent" = "Contraseña Actual";
-"editpassword-text-passwordNew" = "Nueva Contraseña";
-"editfirstname-text-password" = "Contraseña";
-"editpasswordcurrent-title-btn" = "COMPROBAR CONTRASEÑA";
-"editpasswordcurrent-text-passwordVerifiy" = "Comprobar la Contraseña Actual";
-"editpasswordcurrent-text-detail" = "Para su seguridad, por favor informe su contraseña actual";
-"editpassword-label-passwordvalidate" = "La contraseña invalida, debe tener al menos 6 caracteres";
+/* Password  */
+"aup-manager-lbl-passwordtitle" = "Editar Contraseña";
+"aup-manager-lbl-passwordCurrent" = "Contraseña Actual";
+"aup-manager-txt-passwordinput" = "Ingrese su contraseña (mínimo 6-12 caracteres máximos)";
+"aup-manager-btn-passwordvalidate" = "Validar mi Contraseña";
+"aup-manager-txt-passwordNew" = "Nueva contraseña";
+"aup-manager-lbl-passwordvalidate" = "Contraseña no válida, verifique que la contraseña que ingresó debe tener al menos 6 caracteres!";
 
-/* ManagerProfileUserViewController - PhoneNumber  */
-"editusername-label-newphone" = "Nuevo Número de Teléfono";
-"editusername-label-title" = "Editar Número Teléfono";
-"editusername-title-btn" = "ACTUALIZAR TELÉFONO";
-"editfirstname-text-username" = "000 000 000";
-"editusername-label-usernamevalidate" = "Teléfono inválido";
-"editusername-label-usernameregistered" = "Numero Teléfono está registrado";
+/* Username  - Movil */
+"aup-manager-lbl-usernametitle" = "Editar Móvil";
+"aup-manager-lbl-username" = "Número Móvil";
+"aup-manager-txt-usernameinput" = "Ingrese nuevo número";
+"editusername-label-passwordvalinvalid" = "Móvil inválido";
+"editusername-label-passwordvalregistered" = "El número de móvil ya registrado, verifique el número";
 
 
 /* PhotoProfileViewController */

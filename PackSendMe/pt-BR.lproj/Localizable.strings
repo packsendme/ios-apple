@@ -7,7 +7,12 @@
 */
 
 /* SCREEN - GENERIC */
-"main-title-loading" = "Carregando";
+"a-action-lbl-loading" = "Carregando";
+"a-action-lbl-update" = "Atualizando";
+"a-action-lbl-saving" = "Salvando";
+"a-action-lbl-validation" = "Validação";
+"a-action-lbl-validationcode" = "Validação Código";
+
 
 
 /* SCREEN - MAIN */
@@ -482,6 +487,7 @@
 "main-label-codeforward" = "O nº do celular está correto?";
 "main-button-codeforward" = "Enviar Novo Código SMS";
 "main-button-cancelcode" = "Alterar Número do Celular";
+"main-status-newsms" = "Novo Código";
 
 
 "error-label-smscode1" = "Code SMS 1 está vazio";
@@ -534,49 +540,40 @@
 "setting-title-addhome" = "Adicionar Endereço Residencial";
 "setting-title-addcard" = "Adicionar Cartão";
 
-/* SettingProfileUserViewController */
-"profile-title-home" = "Perfil do Usuario";
+/* AUP - AUPSettingViewController */
+"aup-setting-title" = "Perfil do Usuario";
 "profileuser-title-name" = "Nome";
 "profileuser-title-lastname"  = "Sobrenome";
 "profileuser-title-email" = "Email";
 "profileuser-title-password" = "Senha";
 "profileuser-title-numberphone" = "Telefone";
 
+/* AUP - AUPManagerViewController */
+"aup-manager-btn-update" = "Confirma Alteração";
 
-/* ManagerProfileUserViewController - Name  */
-"editfirstname-label-title" = "Editar Nome";
-"editfirstname-title-btn" = "ALTERAR NOME";
-"editfirstname-text-firstname" = "Nome";
-"editlastname-text-lastname" = "Sobrenome";
-"editfirstname-label-firstnamevalidate" = "Nome invalido";
-"editlastname-label-lastnamevalidate" = "Sobrenome invalido";
+/* Name  */
+"aup-manager-lbl-nametitle" = "Editar Nome";
+"aup-manager-txt-firstname" = "Nome";
+"aup-manager-txt-lastname" = "Sobrenome";
+"aup-manager-lbl-namevalidate" = "Nome invalido";
+/* EMail  */
+"aup-manager-lbl-emailtitle" = "Editar E-Mail";
+"aup-manager-txt-email" = "E-Mail";
+"aup-manager-lbl-emailvalidate" = "E-mail invalido";
+/* Password  */
+"aup-manager-lbl-passwordtitle" = "Editar Senha";
+"aup-manager-lbl-passwordCurrent" = "Senha Atual";
+"aup-manager-txt-passwordinput" = "Entre com a sua senha (min 6-12 max caracteres) ";
+"aup-manager-btn-passwordvalidate" = "Validar Minha Senha";
+"aup-manager-txt-passwordNew" = "Nova Senha";
+"aup-manager-lbl-passwordvalidate" = "Senha Inválida, verifique a senha informada, deve ter pelo menos 6 caracteres!";
+/* Username  - Movil */
+"aup-manager-lbl-usernametitle" = "Editar Número Celular";
+"aup-manager-lbl-username" = "Número Celuar";
+"aup-manager-txt-usernameinput" = "Entre novo número";
+"aup-manager-lbl-usernameinvalid" = "Número Celular Inválido";
+"aup-manager-lbl-usernamevalregistered" = "O número do celular já esta registrado, verifique o número";
 
-/* ManagerProfileUserViewController - EMail  */
-"editemail-label-title" = "Editar E-Mail";
-"editemail-title-btn" = "ALTERAR E-MAIL";
-"editemail-text-email" = "E-Mail";
-"editemail-label-emailvalidate" = "E-mail invalido";
-
-
-/* ManagerProfileUserViewController - Password  */
-"editpassword-label-title" = "Alterar Senha";
-"editpassword-title-btn" = "ATUALIZAR SENHA";
-"editpassword-text-passwordCurrent" = "Password Atual";
-"editpassword-text-passwordNew" = "Nova Senha";
-"editpassword-text-password" = "Senha";
-"editpasswordcurrent-title-btn" = "VALIDAR SENHA";
-"editpasswordcurrent-text-passwordVerifiy" = "Validar Senha Atual";
-"editpasswordcurrent-text-detail" = "Para sua segurança, por favor informe sua senha atual";
-"editpassword-label-passwordvalidate" = "Senha invalida, deve ter pelo menos 6 caracteres";
-
-
-/* ManagerProfileUserViewController - PhoneNumber  */
-"editusername-label-newphone" = "Novo Número Telefone";
-"editusername-label-title" = "Editar Telefone";
-"editusername-title-btn" = "ALTERAR TELEFONE";
-"editusername-text-username" = "000 000 000";
-"editusername-label-usernamevalidate" = "Telefone invalido";
-"editusername-label-usernameregistered" = "Numero Telefone ja está cadastrado";
 
 /* PhotoProfileViewController */
 "photoprofile-activity-save" = "Salvando Foto";

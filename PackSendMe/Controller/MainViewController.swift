@@ -18,9 +18,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var accesscountryBtn: UIButton!
 
     var codeCountry: String = ""
-    var countries: [CountryModel] = []
-    var countryHelperOb = CountryHelper()
-    var countriesData: [CountryModel] = []
+    var countries: [CountryBO] = []
+    var countriesData: [CountryBO] = []
     var countryService = CountryService()
     
 
@@ -53,7 +52,7 @@ class MainViewController: UIViewController {
     func getCountryDetails(codCountry : String){
         countryService.findDetailCountryByID(idcountry: codCountry){(success, response, error) in
             if success{
-                let country = response as! CountryVModel
+                let country = response as! CountryBO
                 print("country code is \(country.name!)")
                 print("country code is \(country.sigla!)")
 
@@ -93,14 +92,14 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "AccessLoginControllerUsername") {
-            let loginVC = segue.destination as! AccessLoginViewController
+        if (segue.identifier == "IAUSettingUsername") {
+            let loginVC = segue.destination as! IAUSettingViewController
             loginVC.metadadosView = segue.identifier!
         }
     }
   
     @IBAction func nextPhoneNumberAction(_ sender: Any) {
-        self.performSegue(withIdentifier:"AccessLoginControllerUsername", sender: nil)
+        self.performSegue(withIdentifier:"IAUSettingUsername", sender: nil)
     }
 
  }

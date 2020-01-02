@@ -11,8 +11,8 @@ import UIKit
 
 class CountryService: NSObject {
     
-    var countriesData: [CountryModel] = []
-    var countryObj = CountryVModel()
+    var countriesData: [CountryBO] = []
+    var countryObj = CountryBO()
     
     static func instance() ->  CountryService{
         return CountryService()
@@ -49,8 +49,8 @@ class CountryService: NSObject {
     
     func findCountryAll(completion: @escaping (Bool, Any?, Error?) -> Void){
          DispatchQueue.global().asyncAfter(deadline: .now() + 2	){
-               print(" Dispatch Finalizado")
-            var countriesData: [CountryVModel] = []
+            print(" Dispatch Finalizado")
+            var countriesData: [CountryBO] = []
             let country_url = URLConstants.COUNTRY.country_http
         
             HttpService.instance().makeAPICall(url: country_url, params:nil, method: .GET, success: { (data, response, error) in
